@@ -1,0 +1,8 @@
+Goals:
+1. show how we might identify a user, capture their details, and securely store them in a database (encrypted)
+
+Notes:
+1. this is not working, and probably never was
+2. Repository needs configured, add dependency in both pom and module
+3. Encryption needs configured, add dependency in both pom and module
+4. not sure if the example code is complete, check

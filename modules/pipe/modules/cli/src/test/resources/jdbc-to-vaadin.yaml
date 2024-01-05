@@ -1,0 +1,30 @@
+Name: Extract data from JDBC database connection to CSV file
+
+source:
+  className: com.walterjwhite.jdbc.impl.service.JDBCSource
+  instance:
+    JDBCSourceConfiguration:
+      query: SELECT * FROM ORDER
+
+      username: orderService
+      password: orders
+
+sink:
+  className: com.walterjwhite.vaadin.impl.service.VaadinSink
+  instance:
+    windowSize: 200
+
+transformations:
+  - com.walterjwhite.data.pipe.impl.transformation.ReplaceCharacters
+    replacePattern: "^ $"
+    with: ""
+    regex: True
+  - com.walterjwhite.data.pipe.impl.transformation.RemoveCharacters
+    replacePattern: "(\n|\r)"
+    with: ""
+    regex: True
+
+libraryPath:
+  - $env.USER_HOME/.m2/repository/com.walterjwhite/vaadin/plugins/data-pipe/0.1/data-pipe.jar
+  - $env.USER_HOME/.m2/repository/com.walterjwhite/jdbc/plugins/data-pipe/0.1/data-pipe.jar
+

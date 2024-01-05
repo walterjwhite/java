@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java.infrastructure.metrics.modules</groupId>
+    <artifactId>netflix-atlas</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java.infrastructure.metrics.modules.netflix-atlas</groupId>
+  <artifactId>impl</artifactId>
+
+
+
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>micrometer-netflix-atlas</artifactId>
+      <version>0.2.0</version>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
+</project>

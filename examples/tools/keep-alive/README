@@ -1,0 +1,6 @@
+Goals:
+1. show how to use the heartbeat aspect to provide a callback for long-running methods
+
+Notes:
+1. this works, a heartbeat is printed at a regular interval while the method is executing
+2. if required, use an atomic integer / variable

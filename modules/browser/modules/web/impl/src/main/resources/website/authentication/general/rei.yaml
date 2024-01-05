@@ -1,0 +1,17 @@
+uri: https://www.rei.com/login?toUrl=/
+
+sessionTimeout: PT5M
+
+fieldGroups:
+  - fieldPairs:
+    - id: username
+      fieldSecretType: Username
+      inputLocator:
+        argument: logonId
+        locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+
+    - id: password
+      fieldSecretType: Password
+      inputLocator:
+        argument: password
+        locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id

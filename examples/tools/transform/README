@@ -1,0 +1,5 @@
+Goals:
+1. show how to use the transform API and implementation
+
+Notes:
+1. this works, the text, hello <i>, is transformed using ROT13_5

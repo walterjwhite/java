@@ -1,0 +1,2 @@
+targetClassName: com.walterjwhite.inject.cli.CLIApplication
+targetMethodName: main

@@ -1,0 +1,6 @@
+Goals:
+1. experiment with Java 8 streams
+2. experiment with rx java
+
+Notes:
+1. this does not work, check pom.xml, this is meant to be run inside of an IDE and does not make use of any injection framework

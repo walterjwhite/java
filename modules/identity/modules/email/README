@@ -1,0 +1,2 @@
+use case
+Securely send a token to initialize a session that takes substantial time to initiate.

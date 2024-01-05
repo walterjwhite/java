@@ -1,0 +1,11 @@
+Goals:
+1. show how to use the repository to create an entity
+2. show how to use the orm.xml to use a JPA Event listener to observe JPA events
+3. show that when an entity is persisted, it is also indexed
+4. show how to search for that entity using a generic API (can swap out underlying implementation, ie. ES for SOLR)
+5. show how the bridge service works to "bridge" the gap between index and repository (JPA)
+
+Notes:
+1. not working
+2. this project depends on us setting some encrypetd values (IVFilePath, KeyFilePath)
+3. this project depends on the index bridge service to be configured / registered

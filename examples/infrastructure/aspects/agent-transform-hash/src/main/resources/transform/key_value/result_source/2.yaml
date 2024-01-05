@@ -1,0 +1,8 @@
+name: Some Complex Object Name
+address:
+  line1: 500 First Ave
+  line2: Byte Buddy Department
+  city:  Pittsburgh
+  state: Pennsylvania
+  country: US
+  postalCode: unknown

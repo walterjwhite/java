@@ -1,0 +1,7 @@
+targetClassName: com.walterjwhite.examples.transform.TransformExampleCommandLineHandler
+targetMethodName: testMethod
+
+hashAlgorithm: SHA256
+
+arguments:
+  - 0

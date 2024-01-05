@@ -1,0 +1,8 @@
+targetClassName: com.walterjwhite.examples.transform.TransformExampleCommandLineHandler
+targetMethodName: build
+
+resultClass: com.walterjwhite.examples.transform.SomeComplexObject
+result: transform/key_value/result_source/2.yaml
+
+
+

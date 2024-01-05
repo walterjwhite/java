@@ -1,0 +1,4 @@
+Goals:
+Illustrate getting the property "Token" from the command-line, although, it could also be picked up from any other property source.
+
+To test, pass, -Token <Token Value>

@@ -1,0 +1,17 @@
+message reader
+- scheduled, fixed delay of 60 seconds
+- upon reading new incoming message, fire an event
+- @TODO: enable random delay
+
+local message writer
+- scheduled, fixed delay of 60 seconds
+- upon reading new incoming message, fire an event
+- allows for manually queuing messages by placing files in the appropriate location
+- @TODO: enable random delay
+
+amazon / local message service
+- listens for events
+- on incoming event, persist in appropriate location
+
+specific handler / event listener
+- on incoming event (from message reader (amazon / local)) process event

@@ -1,0 +1,6 @@
+Goals:
+1. experiment with jbrowserdriver outside of full-featured applications
+
+Notes:
+1. this does not work, though it should not require much effort to get it working
+2. might as well make use of the CLI API and leverage injection rather than hard-code settings

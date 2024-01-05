@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <property name="LOG_FILENAME" value="log"/>
+  <appender name="RollingFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>/var/log/remote/${LOG_FILENAME}</File>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <FileNamePattern>/var/log/remote/%d{yyyy-MM-dd}.log.gz</FileNamePattern>
+      <MaxHistory>10</MaxHistory>
+      <!--<CompressionMode>GZ</CompressionMode>-->
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy/MM/dd HH:mm:ss Z} %level %thread %logger{60}:%line %msg%n</pattern>
+    </encoder>
+  </appender>
+  <logger name="com.walterjwhite" level="TRACE"/>
+  <root level="WARN">
+    <appender-ref ref="RollingFILE"/>
+  </root>
+</configuration>

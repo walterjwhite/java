@@ -1,0 +1,12 @@
+generic properties / configuration values
+
+serviceSupports:
+1. defaults (@DefaultValue applied to a field in an interface / enum)
+2. environment
+3. command-line (provided special executables exist to get a value, decrypt a value, etc.
+
+
+notes:
+1. guice is fully functional
+2. CDI is a WIP
+

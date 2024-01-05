@@ -1,0 +1,9 @@
+sources:
+ - type: SSHSource
+   host: atlantis
+   commandLine: tail -f /var/log/apache | grep ERROR
+
+sinks:
+ - type: VaadinGrid
+   title: Atlantis Apache (ERROR) Logs
+ - type: ElasticSearch

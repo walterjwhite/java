@@ -1,0 +1,18 @@
+uri: https://mychart.ahn.org
+
+sessionTimeout: PT5M
+
+fieldGroups:
+  - fieldPairs:
+      - id: username
+        fieldSecretType: Username
+        inputLocator:
+          argument: Login
+          locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+
+      - id: password
+        fieldSecretType: Password
+        inputLocator:
+          argument: Password
+          locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+

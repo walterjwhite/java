@@ -1,0 +1,22 @@
+package com.walterjwhite.examples.transform;
+
+import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(doNotUseGetters = true)
+@Data
+public class Address implements Serializable {
+  protected String line1;
+  protected String line2;
+  protected String line3;
+
+  protected String city;
+  protected String state;
+  protected String country;
+  protected String postalCode;
+}

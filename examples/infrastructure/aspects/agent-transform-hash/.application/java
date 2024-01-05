@@ -1,0 +1,5 @@
+
+_AGENT=$(find target -maxdepth 1 -type f | grep \\-shaded.jar$ | /usr/local/bin/grep -Pv "(javadoc|sources)")
+_AGENT_ARGS="-javaagent:$_AGENT"
+
+_APPLICATION=$(find ../transform/target -maxdepth 1 -type f | grep \\.jar$ | /usr/local/bin/grep -Pv "(javadoc|sources)")

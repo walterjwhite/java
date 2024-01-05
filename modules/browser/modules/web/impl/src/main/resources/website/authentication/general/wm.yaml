@@ -1,0 +1,5 @@
+uri: https://www.wm.com
+usernameLocator: //*[@id="flyoutloginEmail"]
+passwordLocator: //*[@id="flyoutloginPassword"]
+
+loginLocator: //*[@id="login-popover"]/div[3]/div/div/form/div[2]/div[1]/div/button/span

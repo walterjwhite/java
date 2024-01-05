@@ -1,0 +1,14 @@
+Common data structures using JPA2 model
+
+TODO:
+1. implement alternative to JPA Event listeners, half-baked solution
+   observer interfaces
+   abstract repository
+2. EntityContainerType (is this useful)?
+3. PersistenceOption / create - do I really need both, what was I intending here, can I just make it simple?
+4. Selection is unused
+5. Option is unused
+6. PersistenceOptionConfiguration is unused
+7. jdbc, jdbc-run modules look good, but are not used, clean up, setup examples
+8. jpa-ddl module is unused
+9.

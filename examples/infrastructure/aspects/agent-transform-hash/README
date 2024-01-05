@@ -1,0 +1,5 @@
+example of using a java agent
+
+1. include maven jar plugin, setup premain
+2. use -javaagent:<jar>
+

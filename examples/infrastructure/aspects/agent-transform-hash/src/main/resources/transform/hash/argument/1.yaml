@@ -1,0 +1,7 @@
+targetClassName: com.walterjwhite.examples.transform.NonDIObject
+targetMethodName: testMethod
+
+hashAlgorithm: SHA256
+
+arguments:
+  - 0

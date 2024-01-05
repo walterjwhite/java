@@ -1,0 +1,23 @@
+uri: https://www.walgreens.com/login.jsp
+
+fieldGroups:
+  - fieldPairs:
+      - id: username
+        fieldSecretType: Username
+        inputLocator:
+          argument: user_name
+          locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+
+      - id: password
+        fieldSecretType: Password
+        inputLocator:
+          argument: user_password
+          locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+
+
+
+
+
+
+
+

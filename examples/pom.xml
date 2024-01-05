@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite</groupId>
+    <artifactId>java</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java</groupId>
+  <artifactId>examples</artifactId>
+  <version>0.2.0</version>
+  <packaging>pom</packaging>
+
+
+  <modules>
+    <module>infrastructure/aspects/byte-buddy</module>
+    <module>command-line/cli-guice-multiple-implementations</module>
+    <module>command-line/cli</module>
+    <module>command-line/ssh-agent-jsch-agent-proxy</module>
+    <module>command-line/cli-get-token</module>
+    <module>command-line/cli-daemon</module>
+    <module>command-line/cli-browser</module>
+    <module>command-line/email-get-token</module>
+    <module>command-line/email-javamail-async</module>
+    <module>command-line/cli-jersey-guice</module>
+    <module>infrastructure/aspects/heartbeat</module>
+    <module>tools/identity</module>
+    <module>tools/index</module>
+    <module>tools/interruption</module>
+    <module>platform/java-agent</module>
+    <module>platform/SPI</module>
+    <module>tools/jbrowserdriver</module>
+    <module>infrastructure/aspects/agent-replace-main</module>
+    <module>infrastructure/aspects/agent-transform-hash</module>
+    <module>platform/java8-streams</module>
+    <!-- Unable to deploy -->
+    <!--    <module>tools/jmh</module>-->
+    <module>tools/keep-alive</module>
+    <module>tools/logging</module>
+    <module>tools/metrics-capturing</module>
+    <module>practice</module>
+    <module>tools/rest-client</module>
+    <module>tools/ssh</module>
+    <!-- WIP -->
+    <!--    <module>SPI</module>-->
+    <module>tools/tensorflow</module>
+    <module>tools/time-constrained</module>
+    <module>tools/contextual-loggable</module>
+    <!--    <module>data/datanucleus</module>-->
+    <module>tools/queue</module>
+    <module>tools/startup-shutdown-aware</module>
+    <!--<module>vaadin</module>-->
+    <!--<module>querydsl</module>-->
+    <module>tools/serialization</module>
+    <module>tools/transform</module>
+    <module>platform/time-constrained-with-logging-agent</module>
+    <module>tools/passay</module>
+  </modules>
+</project>

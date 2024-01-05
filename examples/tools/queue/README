@@ -1,0 +1,8 @@
+Goals:
+1. show how to leverage the queue API
+	scheduled jobs
+2. show how heartbeats could be used to show that a job is still running
+
+Notes:
+1. this is not working
+2. values need to be provided for the job execution heartbeat (either default, or via another source, CLI, env, etc.)

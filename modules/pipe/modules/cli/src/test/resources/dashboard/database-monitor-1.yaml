@@ -1,0 +1,14 @@
+sources:
+ - type: PeriodicDatabaseSource
+   interval: 1
+   intervalUnit: MINUTES
+   driverPath: /opt/libraries/oracle-jdbc-driver.jar
+   host: neptune
+   username: scott
+   password: tiger
+   query: SELECT USER_ID,USER_NAME,ACTIVTY_DATETIME FROM USER_ACTVITY WHERE TRUNC(ACTIVTY_DATETIME) = TRUNC(SYSDATE) ORDER BY ACTIVTY_DATETIME DESC
+
+sinks:
+ - type: VaadinGrid
+   title: Database (most recent user activity)
+ - type: ElasticSearch

@@ -1,0 +1,30 @@
+Name: Extract data from JDBC database connection to CSV file
+
+source:
+  className: com.walterjwhite.jdbc.impl.service.JDBCSource
+  instance:
+    JDBCSourceConfiguration:
+      query: SELECT * FROM ORDER
+
+      username: orderService
+      password: orders
+
+sink:
+  className: com.walterjwhite.csv.impl.service.CSVSink
+  instance:
+    outputFilename: /tmp/extracts/orders.csv
+
+transformations:
+  - com.walterjwhite.data.pipe.impl.transformation.ReplaceCharacters
+    replacePattern: "^ $"
+    with: ""
+    regex: True
+  - com.walterjwhite.data.pipe.impl.transformation.RemoveCharacters
+    replacePattern: "(\n|\r)"
+    with: ""
+    regex: True
+
+libraryPath:
+  - $env.USER_HOME/.m2/repository/com.walterjwhite/modules/csv/plugins/data-pipe/0.1/data-pipe.jar
+  - $env.USER_HOME/.m2/repository/com.walterjwhite/modules/jdbc/plugins/data-pipe/0.1/data-pipe.jar
+

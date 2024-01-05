@@ -1,0 +1,7 @@
+Goals:
+1. experiment with JMH
+2. see if a wrapper could be built to automatically analyze existing code
+
+Notes:
+1. this does not work, a previous iteration was working, and should be close to get running again
+2. JMH example: http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/

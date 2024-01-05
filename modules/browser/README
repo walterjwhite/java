@@ -1,0 +1,12 @@
+NOTE:
+1. removed next-crawl-view.sql
+2. should be able to use new approach for scheduling jobs to manage this automatically
+   1. as a Crawl object is created, it will automatically spawn a corresponding job (through the "event" of creating the Crawl object)
+   2. for any existing Crawl objects, when the JVM is initialized, a startup job will schedule these jobs to run
+
+jbrowserdriver - issue with setting the proxy when using as a remote driver: https://github.com/MachinePublishers/jBrowserDriver/issues/239
+
+checkout apache nutch
+	search / crawl pages
+
+pre-fetch pages

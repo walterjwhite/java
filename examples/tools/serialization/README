@@ -1,0 +1,6 @@
+Goals:
+1. show how to use the serialization service to serialize / deserialize entities
+
+Notes:
+1. this is partially working, it can write okay to a file
+2. however, it is unable to read from a file properly

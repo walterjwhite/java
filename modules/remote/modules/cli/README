@@ -1,0 +1,7 @@
+Provides command-line utilities for manipulating messages:
+
+1. encryption
+2. decryption
+
+Message serialization is not handled because messages are already expected to be 
+serialized into a YAML format.

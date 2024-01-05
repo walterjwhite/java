@@ -1,0 +1,11 @@
+#!/bin/bash
+
+_JAR=$(find target -maxdepth 1 -type f | grep \\.jar$ | grep guice | grep -Pv "(sources|javadoc)")
+_IV_PATH=$(cat ./iv.file.path.secret)
+_KEY_PATH=$(cat ./key.file.path.secret)
+
+java -jar $_JAR \
+  -IVFilePath $_IV_PATH \
+  -KeyFilePath $_KEY_PATH \
+  -EncryptionOperatingMode IV \
+  $@ 2> log

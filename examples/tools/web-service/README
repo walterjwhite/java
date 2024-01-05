@@ -1,0 +1,6 @@
+Goals:
+1. experiment with wrapping and exposing existing services as web services
+
+Notes:
+1. this does not work, when I need web services, get this working again
+2. alternatively, there are new protocols being developed which might make this obsolete, I think they're compatible with Streams

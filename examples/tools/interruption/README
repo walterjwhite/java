@@ -1,0 +1,8 @@
+Goals:
+1. show how tasks, services, and applications can be interrupted
+2. if the application exits, tasks and services will be interrupted, tasks first, then services
+
+Notes:
+1. this is working, @see InterruptableExampleCommandLineHandler, InterruptableExampleOperatingMode, InterruptableTaskExample, InterruptableServiceExample
+2. to perform the same functionality without using the annotations, look at how the annotations are implemented - /aspects/shutdownAware
+3. implement a sleep in the main application / handler so we can also press CTRL+C to request an abort

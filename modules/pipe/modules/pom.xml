@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java.modules</groupId>
+    <artifactId>pipe</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java.modules.pipe</groupId>
+  <artifactId>modules</artifactId>
+  <version>0.2.0</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>cli</module>
+    <module>csv</module>
+    <module>email</module>
+    <!--<module>email-javamail</module>-->
+    <module>event-bus</module>
+    <module>file</module>
+    <module>index</module>
+    <!--        <module>javafx</module>-->
+    <module>jdbc</module>
+    <module>shell</module>
+    <module>vaadin</module>
+  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.pipe</groupId>
+      <artifactId>impl</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+  </dependencies>
+</project>

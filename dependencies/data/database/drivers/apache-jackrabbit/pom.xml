@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java</groupId>
+    <artifactId>dependencies</artifactId>
+    <version>0.2.0</version>
+    <relativePath>../../../../pom.xml</relativePath>
+  </parent>
+  <groupId>com.walterjwhite.java.dependencies</groupId>
+  <artifactId>apache-jackrabbit</artifactId>
+  <packaging>pom</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax.jcr</groupId>
+      <artifactId>jcr</artifactId>
+      <version>2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jackrabbit</groupId>
+      <artifactId>jackrabbit-core</artifactId>
+      <version>${apache.jackrabbit.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>0.2.0</version>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
+  <properties>
+    <apache.jackrabbit.version>2.21.15</apache.jackrabbit.version>
+  </properties>
+</project>

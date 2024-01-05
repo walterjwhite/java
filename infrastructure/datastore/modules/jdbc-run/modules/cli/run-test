@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+java -jar target/jdbc-run-cli-0.0.15-SNAPSHOT-shaded.jar -MasterRunScriptPath /tmp/runScript.yaml -JDBCUrl jdbc:p6spy:h2:/tmp/db-test -JDBCDriverClassName org.h2.Driver -JDBCDriverPath /home/w/.m2/repository/com/h2database/h2/1.4.197/h2-1.4.197.jar

@@ -1,0 +1,8 @@
+Goals:
+1. show how to use the built-in Java Services pattern in which "services" can be configured at runtime for which implementation you'd like to use:
+	@see: https://docs.oracle.com/javase/7/docs/api/java/util/ServiceLoader.html
+2. experiment with this to see what benefits it might provide
+
+Notes:
+1. this does not work, this is a placeholder proof of concept and should not take too much effort to get to work
+

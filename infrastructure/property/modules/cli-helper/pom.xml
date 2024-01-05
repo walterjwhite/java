@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java.infrastructure.property</groupId>
+    <artifactId>modules</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+  <artifactId>cli-helper</artifactId>
+  <version>0.2.0</version>
+
+
+  <dependencies>
+    <!--
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.inject.modules.cli</groupId>
+      <artifactId>api</artifactId>
+      <version>0.0.19</version>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>com.walterjwhite.java.configuration.cli</groupId>
+      <artifactId>guice</artifactId>
+      <version>0.2.0</version>
+      <type>pom</type>
+    </dependency>
+    <!-- support the following for property injection -->
+    <!--<dependency>-->
+    <!--<groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>-->
+    <!--<artifactId>command</artifactId>-->
+    <!--<version>0.0.15-SNAPSHOT</version>-->
+    <!--<scope>runtime</scope>-->
+    <!--</dependency>-->
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>default</artifactId>
+      <version>0.2.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>environment</artifactId>
+      <version>0.2.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>file</artifactId>
+      <version>0.2.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>properties</artifactId>
+      <version>0.2.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>system</artifactId>
+      <version>0.2.0</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+  <properties>
+    <application.environment>Development</application.environment>
+  </properties>
+</project>

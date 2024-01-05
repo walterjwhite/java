@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.jetty</groupId>
+    <artifactId>modules</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.jetty.modules</groupId>
+  <artifactId>servlet</artifactId>
+
+
+  <dependencies>
+    <!-- TODO: perhaps pull this dependency out -->
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>google-guice-servlet</artifactId>
+      <version>0.2.0</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlet</artifactId>
+      <version>${jetty.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+  <properties>
+    <!--    <jetty.version>11.0.8</jetty.version>-->
+    <!--    <jetty.version>10.0.8</jetty.version>-->
+    <jetty.version>11.0.13</jetty.version>
+  </properties>
+</project>

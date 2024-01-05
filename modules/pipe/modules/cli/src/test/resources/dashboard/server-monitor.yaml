@@ -1,0 +1,32 @@
+Name: Server Monitor
+Description:
+  1. monitors all log files across servers (apache, tomcat)
+  2. searches all log files for Exceptions (as they occur)
+  3. monitors currently executing queries (look at oracle V$ tables)
+  4. lists currently logged in users, count
+  5. checks for files in certain directory(ies)
+  6. provides integrated search functionality
+     a. search across all log files (find all events from user ...)
+     b.
+
+layout:
+ - GroupLayout:
+    name: Apache Logs
+    configurations:
+      - configurations/dashboard/apache-monitor.1.yaml
+      - configurations/dashboard/apache-monitor.2.yaml
+      - configurations/dashboard/apache-monitor.3.yaml
+      - configurations/dashboard/apache-monitor.4.yaml
+ - GroupLayout:
+    name: Tomcat Logs
+    configurations:
+      - configurations/dashboard/tomcat-monitor.1.yaml
+      - configurations/dashboard/tomcat-monitor.2.yaml
+      - configurations/dashboard/tomcat-monitor.3.yaml
+      - configurations/dashboard/tomcat-monitor.4.yaml
+ - GroupLayout:
+    name: DataBase Monitor
+    configurations:
+      - configurations/dashboard/database-monitor.1.yaml
+      - configurations/dashboard/database-monitor.2.yaml
+      - configurations/dashboard/database-monitor.3.yaml

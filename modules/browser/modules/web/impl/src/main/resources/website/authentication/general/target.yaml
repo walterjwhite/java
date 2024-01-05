@@ -1,0 +1,18 @@
+uri: target.com
+
+sessionTimeout: PT5M
+
+fieldGroups:
+  - fieldPairs:
+      - id: username
+        fieldSecretType: Username
+        inputLocator:
+          argument: ap_email
+          locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+
+  - fieldPairs:
+      - id: password
+        fieldSecretType: Password
+        inputLocator:
+          argument: ap_password
+          locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id

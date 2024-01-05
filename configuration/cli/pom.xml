@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java</groupId>
+    <artifactId>configuration</artifactId>
+    <version>0.2.0</version>
+  </parent>
+
+
+  <groupId>com.walterjwhite.java.configuration</groupId>
+  <artifactId>cli</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+    <module>guice</module>
+    <module>spring</module>
+  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.inject.modules.cli</groupId>
+      <artifactId>api</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <!-- Default / only implementation for command-line parsing -->
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>cli-commons-cli</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>0.2.0</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>default</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>properties</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>environment</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>system</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+  </dependencies>
+</project>

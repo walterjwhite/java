@@ -1,0 +1,9 @@
+Goals:
+1. test if we can have multiple implementations and inject the correct one by using a qualifier
+2. test if we have multiple child implementations the child will be correctly selected
+
+Notes:
+1. this partially works, we can easily select the right "parent" by using a qualifier
+2. however, the correct child does not get injected, ie. if we have a @Primary database service which requires an @Primary Repository, we have to have 2 separate classes / 
+constructors and thus end up with more boilerplate code :(
+3. this is a work in progress

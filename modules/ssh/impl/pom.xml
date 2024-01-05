@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java.modules</groupId>
+    <artifactId>ssh</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java.modules.ssh</groupId>
+  <artifactId>impl</artifactId>
+  <version>0.2.0</version>
+
+
+
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.ssh.api</groupId>
+      <artifactId>service</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>sshj</artifactId>
+      <version>0.2.0</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>expectit</artifactId>
+      <version>0.2.0</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
+      <artifactId>core</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.shell</groupId>
+      <artifactId>impl</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15on</artifactId>
+      <version>${bouncycastle.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-ext-jdk14</artifactId>
+      <version>${bouncycastle.spec.version}</version>
+    </dependency>
+  </dependencies>
+  <properties>
+    <bouncycastle.version>1.70</bouncycastle.version>
+    <bouncycastle.spec.version>1.72</bouncycastle.spec.version>
+  </properties>
+</project>

@@ -1,0 +1,16 @@
+Goals:
+1. show how to capture metrics with little to no effort
+2. all public methods will be captured via metrics
+
+Notes:
+1. this does not work, partially (mostly) because Gauge and Histogram are not implemented
+
+2. application should run indefinitely
+3. while running, all public methods should be captured via:
+    Timer
+    Gauge
+    Counter
+    Summary
+4. statistics are pulled from prometheus to the endpoint automatically setup at startup :8181
+5. I don't like the idea of exposing a scraper, instead, why not try to push directly to prometheus?
+	prometheus does NOT work this way (the last time I checked, NOTED: 2019/07/16, probably checked 2018/07/01 or earlier)

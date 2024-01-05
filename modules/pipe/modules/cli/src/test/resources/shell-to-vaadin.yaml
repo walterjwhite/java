@@ -1,0 +1,27 @@
+Name: Monitor log file and display it in a Vaadin Grid widget
+
+source:
+  className: com.walterjwhite.shell.impl.service.ShellSource
+  instance:
+    JDBCSourceConfiguration:
+      commandLine: tail -f /var/log/linux-builder/router
+
+sink:
+  className: com.walterjwhite.vaadin.impl.service.VaadinSink
+  instance:
+    windowSize: 200
+
+transformations:
+  - com.walterjwhite.data.pipe.impl.transformation.ReplaceCharacters
+    replacePattern: "^ $"
+    with: ""
+    regex: True
+  - com.walterjwhite.data.pipe.impl.transformation.RemoveCharacters
+    replacePattern: "(\n|\r)"
+    with: ""
+    regex: True
+
+libraryPath:
+  - $env.USER_HOME/.m2/repository/com.walterjwhite/vaadin/plugins/data-pipe/0.1/data-pipe.jar
+  - $env.USER_HOME/.m2/repository/com.walterjwhite/shell/plugins/data-pipe/0.1/data-pipe.jar
+

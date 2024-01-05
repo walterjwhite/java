@@ -1,0 +1,4 @@
+targetClassName: com.walterjwhite.examples.transform.NonDIObject
+targetMethodName: testMethodKeyValue
+
+result: Fred

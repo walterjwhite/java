@@ -1,0 +1,6 @@
+Goals:
+1. show how to leverage the SSH libraries and property injection to run commands on remote hosts
+
+Notes:
+1. this does not work
+2. need to configure the ssh command module?  should be a simple fix to wire it up

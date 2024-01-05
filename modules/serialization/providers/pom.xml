@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java.modules</groupId>
+    <artifactId>serialization</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java.modules.serialization</groupId>
+  <artifactId>providers</artifactId>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>jackson-base</module>
+    <module>jackson-json</module>
+    <module>jackson-yaml</module>
+    <module>kryo</module>
+    <module>native</module>
+    <module>snakeyaml</module>
+    <!--TODO: support google protocol buffers -->
+    <!--<module>google-protocol-buffers</module>-->
+  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.serialization.api</groupId>
+      <artifactId>service</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+  </dependencies>
+</project>

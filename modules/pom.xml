@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite</groupId>
+    <artifactId>java</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java</groupId>
+  <artifactId>modules</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+    <module>amazon</module>
+    <module>browser</module>
+    <module>calendar</module>
+    <module>compression</module>
+    <module>csv</module>
+    <module>datetime</module>
+    <module>download</module>
+    <module>email</module>
+    <module>encryption</module>
+    <module>exchange</module>
+    <module>file</module>
+    <module>google</module>
+    <module>identity</module>
+    <module>index</module>
+    <module>ip</module>
+    <module>keep-alive</module>
+    <!--<module>machine-learning</module>-->
+    <module>person</module>
+    <module>pipe</module>
+    <module>print</module>
+    <module>queue</module>
+    <module>remote</module>
+    <!--    <module>robotics</module>-->
+    <module>serialization</module>
+    <module>shell</module>
+    <module>ssh</module>
+    <module>template</module>
+    <!-- TODO: rename this to interface or something -->
+    <module>web-service</module>
+  </modules>
+</project>

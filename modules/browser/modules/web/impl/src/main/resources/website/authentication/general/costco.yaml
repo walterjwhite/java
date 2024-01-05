@@ -1,0 +1,21 @@
+uri: https://www.costco.com/LogonForm
+
+sessionTimeout: PT5M
+
+fieldGroups:
+  - fieldPairs:
+    - id: username
+      fieldSecretType: Username
+      inputLocator:
+        argument: signInName
+        locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+
+    - id: password
+      fieldSecretType: Password
+      inputLocator:
+        argument: password
+        locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+
+    submitLocator:
+      argument: next
+      locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id

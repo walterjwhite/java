@@ -1,0 +1,40 @@
+Name: Aggregates multiple streams together and outputs them to multiple sinks
+
+sources:
+  - className: com.walterjwhite.shell.impl.service.ShellSource
+    instance:
+      JDBCSourceConfiguration:
+        commandLine: tail -f /var/log/linux-builder/router
+
+  - className: com.walterjwhite.shell.impl.service.ShellSource
+      instance:
+        JDBCSourceConfiguration:
+          commandLine: tail -f /var/log/linux-builder/workstation
+
+sinks:
+  - className: com.walterjwhite.vaadin.impl.service.VaadinSink
+    instance:
+      windowSize: 200
+
+  - className: com.walterjwhite.index.impl.service.IndexSink
+      instance:
+        index: default
+
+transformations:
+  - className: com.walterjwhite.data.pipe.impl.transformation.ReplaceCharacters
+    replacePattern: "^ $"
+    with: ""
+    regex: True
+  - className: com.walterjwhite.data.pipe.impl.transformation.RemoveCharacters
+    replacePattern: "(\n|\r)"
+    with: ""
+    regex: True
+
+filters:
+  - className: com.walterjwhite.data.pipe.impl.filters.PatternFilter
+    pattern: "ERROR"
+    regex: False
+
+libraryPath:
+  - $env.USER_HOME/.m2/repository/com.walterjwhite/vaadin/plugins/data-pipe/0.1/data-pipe.jar
+  - $env.USER_HOME/.m2/repository/com.walterjwhite/shell/plugins/data-pipe/0.1/data-pipe.jar

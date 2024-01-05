@@ -1,0 +1,63 @@
+uri: https://www.patientnotebook.com/Enhanced/Index
+
+sessionTimeout: PT5M
+
+fieldGroups:
+  - fieldPairs:
+      - id: username
+        fieldSecretType: Username
+        inputLocator:
+          argument: Username
+          locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+
+      - id: password
+        fieldSecretType: Password
+        inputLocator:
+          argument: Password
+          locatorType: !<com.walterjwhite.browser.api.enumeration.LocatorType> Id
+
+passwordPolicy:
+  minimumLength: 12
+  maximumLength: 50
+  characterSetConfigurations:
+    - number: 1
+      characterClass: LowerCase
+    - number: 1
+      characterClass: UpperCase
+    - number: 1
+      characterClass: Numeric
+    - number: 1
+      characterClass: Special
+      characters: "!@#$&*"
+
+passwordChangeScript:
+  - browserAction: Click
+    arguments:
+      - Id
+      - btnLeftNavToggleMobile
+
+  - browserAction: Click
+    arguments:
+      - Id
+      - lnkLeftNavProfile
+  - browserAction: Click
+    arguments:
+      - Id
+      - account-info-edit-password
+
+  - browserAction: Type
+    arguments:
+      - Id
+      - account-info-current-password
+      - <CURRENT_PASSWORD>
+  - browserAction: Type
+    arguments:
+      - Id
+      - account-info-new-password
+      - <NEW_PASSWORD>
+
+  - browserAction: Type
+    arguments:
+      - Id
+      - account-info-new-password-confirm
+      - <CURRENT_PASSWORD>

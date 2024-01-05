@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+  <persistence-unit name="defaultJPAUnit">
+    <class>com.walterjwhite.datastore.api.model.entity.AbstractEntity</class>
+    <class>com.walterjwhite.browser.api.model.URIFilterConfiguration</class>
+    <class>com.walterjwhite.browser.api.model.BrowserSessionResourceURI</class>
+    <class>com.walterjwhite.browser.api.model.BrowserSession</class>
+    <class>com.walterjwhite.browser.api.model.ResourceURI</class>
+    <class>com.walterjwhite.browser.plugins.crawler.api.model.CrawlSessionResourceURI</class>
+    <class>com.walterjwhite.browser.plugins.crawler.api.model.CrawlSession</class>
+    <class>com.walterjwhite.browser.plugins.crawler.api.model.Crawl</class>
+    <class>com.walterjwhite.queuedJob.api.model.Job</class>
+    <class>com.walterjwhite.queuedJob.api.model.JobExecution</class>
+    <class>com.walterjwhite.queuedJob.api.model.JobExecutor</class>
+    <class>com.walterjwhite.queuedJob.api.model.Resource</class>
+    <class>com.walterjwhite.queuedJob.api.model.ResourceType</class>
+    <class>com.walterjwhite.queuedJob.api.model.Schedule</class>
+    <properties>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+      <!--<property name="hibernate.connection.autocommit" value="false"/>-->
+      <!--<property name="org.hibernate.FlushMode" value="commit"/>-->
+      <property name="org.hibernate.flushMode" value="COMMIT"/>
+      <!-- PostgreSQL -->
+      <!--<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>-->
+      <!--<property name="hibernate.connection.url" value="jdbc:postgresql://localhost/crawler?user=crawler&amp;password=crawler;"/>-->
+      <!-- H2 -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+      <property name="hibernate.connection.url" value="jdbc:h2:./db/repository"/>
+      <!--<property name="show_sql" value="true"/>-->
+      <!--<property name="hibernate.show_sql" value="true"/>-->
+      <!--<property name="hibernate.format_sql" value="true"/>-->
+      <!--<property name="hibernate.use_sql_comments" value="true"/>-->
+      <!--<property name="hibernate.hbm2ddl.import_files" value="next-crawl-view.sql"/>-->
+      <property name="javax.persistence.sql-load-script-source" value="data.sql"/>
+    </properties>
+  </persistence-unit>
+</persistence>

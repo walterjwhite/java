@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java</groupId>
+    <artifactId>examples</artifactId>
+    <version>0.2.0</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+  <groupId>com.walterjwhite.java.examples</groupId>
+  <artifactId>java-agent</artifactId>
+
+
+  <dependencies>
+  </dependencies>
+  <properties>
+    <application.environment>Development</application.environment>
+  </properties>
+  <!-- For demonstrative purposes, we're not using .agent profile activation to show using a barebone agent configuration -->
+  <!-- If using .agent, this is all provided and we can instead focus on the transformations we need to implement -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <addDefaultImplementationEntries>
+                      true</addDefaultImplementationEntries>
+              <addDefaultSpecificationEntries>
+                      true</addDefaultSpecificationEntries>
+            </manifest>
+            <manifestEntries>
+              <Premain-Class>com.walterjwhite.examples.platform.agent.ExampleAgent</Premain-Class>
+              <Can-Redefine-Classes>false</Can-Redefine-Classes>
+              <Can-Retransform-Classes>true</Can-Retransform-Classes>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <shadedArtifactAttached>true</shadedArtifactAttached>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <manifestEntries>
+                    <Premain-Class>com.walterjwhite.examples.platform.agent.ExampleAgent</Premain-Class>
+                    <ApplicationEnvironment>${application.environment}</ApplicationEnvironment>
+                    <ApplicationSCMVersion>${git.commit.id.abbrev}</ApplicationSCMVersion>
+                    <Can-Redefine-Classes>false</Can-Redefine-Classes>
+                    <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                  </manifestEntries>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,9 @@
+sources:
+ - type: SSHSource
+   host: jupiter
+   commandLine: tail -f /var/log/tomcat | grep ERROR
+
+sinks:
+ - type: VaadinGrid
+   title: Jupiter Tomcat (ERROR) Logs
+ - type: ElasticSearch

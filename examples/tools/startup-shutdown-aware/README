@@ -1,0 +1,7 @@
+Goals:
+1. show how startup / shutdown aware work
+
+Explanation
+1. StartupAware is instantiated by the container (eager singleton), it implements AutoCloseable and when the container closes it is called to close
+2. ShutdownAware implements AutoCloseable and is manually instantiated and when the container closes, it is instructed to close
+

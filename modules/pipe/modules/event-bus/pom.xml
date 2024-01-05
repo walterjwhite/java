@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java.modules.pipe</groupId>
+    <artifactId>modules</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java.modules.pipe.modules</groupId>
+  <artifactId>event-bus</artifactId>
+  <version>0.2.0</version>
+
+
+  <dependencies>
+    <!--<dependency>-->
+    <!--<groupId>com.walterjwhite.java.infrastructure.google-guice.modules</groupId>-->
+    <!--<artifactId>cli</artifactId>-->
+    <!--<version>0.0.15-SNAPSHOT</version>-->
+    <!--</dependency>-->
+    <!--
+        <dependency>
+            <groupId>com.walterjwhite.java.modules.shell.api</groupId>
+            <artifactId>service</artifactId>
+            <version>0.0.15-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.walterjwhite.java.modules.shell</groupId>
+            <artifactId>impl</artifactId>
+            <version>0.0.15-SNAPSHOT</version>
+        </dependency>
+        -->
+    <!-- Use the regular queue API here, but with durability disabled? -->
+    <!--<dependency>-->
+    <!--<groupId>com.walterjwhite.java.modules.queue.modules</groupId>-->
+    <!--<artifactId>guava-event-bus</artifactId>-->
+    <!--<version>0.0.15-SNAPSHOT</version>-->
+    <!--</dependency>-->
+  </dependencies>
+</project>

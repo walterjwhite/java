@@ -1,0 +1,8 @@
+Goals:
+1. illustrate the Property API and how properties are set automatically from the environment (proxy)
+2. illustrate building a CLI application
+3. illustrate ChronoUnit bug fix (property injection with ChronoUnits will now work)
+
+Notes:
+1. application works and will print proxy settings (if there are any)
+

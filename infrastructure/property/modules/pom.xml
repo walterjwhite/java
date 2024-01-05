@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java.infrastructure</groupId>
+    <artifactId>property</artifactId>
+    <version>0.2.0</version>
+  </parent>
+  <groupId>com.walterjwhite.java.infrastructure.property</groupId>
+  <artifactId>modules</artifactId>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>cli-commons-cli</module>
+    <module>cli-helper</module>
+    <module>command</module>
+    <module>default</module>
+    <module>environment</module>
+    <module>file</module>
+    <module>manifest</module>
+    <module>properties</module>
+    <module>redis</module>
+    <module>system</module>
+  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property</groupId>
+      <artifactId>api</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property</groupId>
+      <artifactId>impl</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property</groupId>
+      <artifactId>validation</artifactId>
+      <version>0.2.0</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,18 @@
+1. update to use guice properties
+2. update to use proxy
+3. fix tests, add timeConstrained
+
+https://www.putorius.net/find-public-ip-address-linux-command-line.html
+1. curl https://ipaddr.pub
+2. curl https://whatsmyip.com/ -s | grep -oE "\b([0-9]{1,3}.){3}[0-9]{1,3}\b" -m1
+3. curl https://www.google.com/search?q=what+is+my+ip+address -s | grep -oE "\b([0-9]{1,3}.){3}[0-9]{1,3}\b" -m1
+4. curl -s http://ipecho.net/plain
+5. curl -s http://whatismyip.akamai.com
+6. wget -qO- http://ipecho.net/plain
+7. wget -qO - icanhazip.com
+8. dig @ns1.google.com TXT o-o.myaddr.l.google.com +short
+9. dig +short myip.opendns.com @resolver1.opendns.com
+10. host myip.opendns.com resolver1.opendns.com | grep -m2 -oE "\b([0-9]{1,3}.){3}[0-9]{1,3}\b" | tail -n1
+11. nslookup -query=TXT o-o.myaddr.l.google.com ns1.google.com | grep -m2 -oE "\b([0-9]{1,3}.){3}[0-9]{1,3}\b" | tail -n1
+12. nslookup myip.opendns.com resolver1.opendns.com | grep -m2 -oE "\b([0-9]{1,3}.){3}[0-9]{1,3}\b" | tail -n1
+

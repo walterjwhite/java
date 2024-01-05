@@ -1,0 +1,6 @@
+Goals:
+1. show how to use time constrained to limit the execution time for a method
+
+Notes:
+1. this works
+2. can the time constraint code be cleaned up?, getAllowedExecutionDuration is a bit clunky
