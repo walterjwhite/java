@@ -4,29 +4,25 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>download</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.download</groupId>
   <artifactId>impl</artifactId>
-  <version>0.2.0</version>
-
-
-
   <dependencies>
     <dependency>
-      <groupId>com.walterjwhite.java.modules.download.api</groupId>
-      <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <groupId>com.walterjwhite.java.modules.download</groupId>
+      <artifactId>api</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.file.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.encryption</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

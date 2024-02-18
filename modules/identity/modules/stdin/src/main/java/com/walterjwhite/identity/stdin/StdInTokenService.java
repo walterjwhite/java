@@ -1,39 +1,43 @@
 package com.walterjwhite.identity.stdin;
 
-import com.walterjwhite.identity.api.service.TokenException;
 import com.walterjwhite.identity.api.service.TokenService;
+import com.walterjwhite.logging.annotation.Sensitive;
+import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.timeout.TimeConstrainedMethodInvocation;
 import com.walterjwhite.timeout.annotation.TimeConstrained;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.time.Duration;
 import jakarta.inject.Inject;
-import lombok.RequiredArgsConstructor;
+import java.time.temporal.ChronoUnit;
 
-/** A user enters a token ... */
-@RequiredArgsConstructor(onConstructor_ = @Inject)
+import java.time.Duration;
+
+
 public class StdInTokenService implements TokenService, TimeConstrainedMethodInvocation {
+  protected final int timeoutInMilliseconds;
+
+  @Inject
+  public StdInTokenService(@Property(StdInTokenTimeout.class) final int timeoutInMilliseconds) {
+    this.timeoutInMilliseconds = timeoutInMilliseconds;
+  }
+
+  @Sensitive
   @TimeConstrained
   public String get(final String text) {
-    final String helpText = "Please enter token for: " + text;
-
-    try {
-      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-      return bufferedReader.readLine();
-    } catch (IOException e) {
-      throw new TokenException(e);
-    }
+    System.err.println(text);
+    return new String(System.console().readPassword());
   }
 
-  // durationInMillis
+  
   @Override
   public Duration getAllowedExecutionDuration() {
-    return null;
+    return Duration.of(timeoutInMilliseconds, ChronoUnit.MILLIS);
   }
 
   @Override
-  public void onSuccess(String message, Object... arguments) {}
+  public void onSuccess(String message, Object... arguments) {
+    System.out.println("Successfully processed token: " + message);
+  }
 
-  public void onException(final Exception e) {}
+  public void onException(final Exception e) {
+    System.err.println("Error processing token: " + e.getMessage());
+  }
 }

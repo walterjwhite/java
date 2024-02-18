@@ -4,12 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>serialization</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.serialization</groupId>
   <artifactId>providers</artifactId>
   <packaging>pom</packaging>
-
   <modules>
     <module>jackson-base</module>
     <module>jackson-json</module>
@@ -17,14 +16,12 @@
     <module>kryo</module>
     <module>native</module>
     <module>snakeyaml</module>
-    <!--TODO: support google protocol buffers -->
-    <!--<module>google-protocol-buffers</module>-->
   </modules>
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

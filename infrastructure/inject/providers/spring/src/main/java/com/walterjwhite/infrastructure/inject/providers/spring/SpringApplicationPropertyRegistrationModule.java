@@ -4,6 +4,7 @@ import com.walterjwhite.infrastructure.inject.core.helper.ApplicationHelper;
 import com.walterjwhite.property.api.PropertyManager;
 import lombok.RequiredArgsConstructor;
 
+
 @RequiredArgsConstructor
 public class SpringApplicationPropertyRegistrationModule {
   protected final SpringApplicationModule springApplicationModule;

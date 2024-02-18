@@ -4,22 +4,17 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>pipe</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.pipe</groupId>
   <artifactId>modules</artifactId>
-  <version>0.2.0</version>
   <packaging>pom</packaging>
-
   <modules>
     <module>cli</module>
     <module>csv</module>
     <module>email</module>
-    <!--<module>email-javamail</module>-->
     <module>event-bus</module>
     <module>file</module>
-    <module>index</module>
-    <!--        <module>javafx</module>-->
     <module>jdbc</module>
     <module>shell</module>
     <module>vaadin</module>
@@ -28,7 +23,7 @@
     <dependency>
       <groupId>com.walterjwhite.java.modules.pipe</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

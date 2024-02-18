@@ -21,26 +21,31 @@ public abstract class AbstractSSHService<SSHEntityType extends AbstractSSHEntity
       throws IOException {
     sshClient.loadKnownHosts();
 
-    // AUTOMATICALLY TRUST THE HOST ...
+
     sshClient.addHostKeyVerifier(new PromiscuousVerifier());
 
     sshClient.connect(host);
 
-    // LOGGER.warn("user:" + username);
 
-    // sshClient.authPublickey(System.getProperty("user.name"), publicKeyLocation);
+
+
     sshClient.authPublickey(username, getPublicKeyPath());
 
     return sshClient.startSession();
   }
 
-  // that is most certainly not true
+  
+  
+
   protected String getPublicKeyPath() {
-    if (sshPublicKeyPath != null && !sshPublicKeyPath.isEmpty()) return sshPublicKeyPath;
+    if (sshPublicKeyPath != null && !sshPublicKeyPath.isEmpty()) {
+      return sshPublicKeyPath;
+    }
 
     return getDefaultPublicKeyPath();
   }
 
+  
   protected String getDefaultPublicKeyPath() {
     return System.getProperty("user.home") + File.separator + ".ssh" + File.separator + "id_ecdsa";
   }
@@ -48,7 +53,7 @@ public abstract class AbstractSSHService<SSHEntityType extends AbstractSSHEntity
   public void execute() throws Exception {
     try (SSHClient sshClient = new SSHClient()) {
       try (Session session =
-          setupSSH(sshClient, command.getHost().getName(), command.getUser().getName())) {
+          setupSSH(sshClient, command.getHost().getHostname(), command.getUser().getUsername())) {
         doExecute(sshClient, session);
       }
     }

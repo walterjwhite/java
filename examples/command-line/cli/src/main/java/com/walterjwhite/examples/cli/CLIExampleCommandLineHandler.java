@@ -5,22 +5,22 @@ import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.property.api.enumeration.SystemProxy;
 import com.walterjwhite.property.api.property.ProxyHost;
 import com.walterjwhite.property.api.property.ProxyPort;
+import jakarta.inject.Inject;
 import java.util.Arrays;
 import java.util.Optional;
-import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class CLIExampleCommandLineHandler implements CommandLineHandler {
-  protected final Optional<String> proxyHost;
-  protected final Optional<Integer> proxyPort;
+  protected final String proxyHost;
+  protected final Integer proxyPort;
 
   @Inject
   public CLIExampleCommandLineHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
-      @Property(ProxyHost.class) Optional proxyHost,
-      @Property(ProxyPort.class) Optional proxyPort) {
-    //    super(shutdownTimeoutInSeconds);
+
+      @Property(ProxyHost.class) String proxyHost,
+      @Property(ProxyPort.class) Integer proxyPort) {
+
     this.proxyHost = proxyHost;
     this.proxyPort = proxyPort;
   }
@@ -32,26 +32,17 @@ public class CLIExampleCommandLineHandler implements CommandLineHandler {
         System.getProperty(
             SystemProxy.HttpProxy.getClass().getName() + "." + SystemProxy.HttpProxy.name()));
 
-    if (proxyHost.isPresent()) {
-      LOGGER.info("proxyHost: {}", proxyHost.get());
-    } else {
-      LOGGER.info("No proxyHost is specified");
-    }
-    if (proxyPort.isPresent()) {
-      LOGGER.info("proxyPort: {}", proxyPort.get());
-    } else {
-      LOGGER.info("No proxyPort is specified");
-    }
-
+    LOGGER.info("proxyHost: {}", proxyHost);
+    LOGGER.info("proxyPort: {}", proxyPort);
     executeTest();
 
     LOGGER.info("arguments: {}", Arrays.stream(arguments));
   }
 
   protected void executeTest() {
-    // no, use process builder here
+
     try {
-      //      System.getenv().put("GOPATH", "/usr/local");
+
 
       final Process process =
           Runtime.getRuntime()

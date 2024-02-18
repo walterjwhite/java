@@ -3,6 +3,7 @@ package com.walterjwhite.identity.api.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+
 @Deprecated
 @Slf4j
 @RequiredArgsConstructor

@@ -2,8 +2,8 @@ package com.walterjwhite.data.pipe.modules.event.bus;
 
 import com.walterjwhite.data.pipe.impl.AbstractSink;
 import com.walterjwhite.data.pipe.modules.event.bus.api.model.SystemSinkConfiguration;
-import java.io.PrintStream;
 import jakarta.inject.Inject;
+import java.io.PrintStream;
 
 public class SystemSink extends AbstractSink<String, SystemSinkConfiguration> {
   protected PrintStream printStream;

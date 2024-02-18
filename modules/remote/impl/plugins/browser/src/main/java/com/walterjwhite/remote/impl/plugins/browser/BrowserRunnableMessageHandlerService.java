@@ -6,6 +6,6 @@ import com.walterjwhite.queue.event.annotation.SubscribeTo;
 public class BrowserRunnableMessageHandlerService extends AbstractRunnable {
  @Override
  protected void doCall() throws Exception {
-   // Class.forName(entity.getBrowserCallable().getName());
+
  }
 }

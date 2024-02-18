@@ -14,7 +14,7 @@ public class RestClient {
         abstractWebTargetRequest.getWebTarget().request(abstractWebTargetRequest.getMediaType());
     abstractWebTargetRequest.prepare(invocationBuilder);
 
-    // get, post, ...
+
     final Response response = abstractWebTargetRequest.invoke(invocationBuilder);
 
     final Map mapResponse = response.readEntity(Map.class);

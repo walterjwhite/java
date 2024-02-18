@@ -79,24 +79,5 @@ public class Log<Type> extends LinkedList<Type> {
     super.addFirst(e);
   }
 
-  /*
-      @Override
-      public Type get(int index) {
-
-          return super.get(index);
-      }
-
-      @Override
-      public void forEach(Consumer<? super Type> action) {
-          super.forEach(action); //To change body of generated methods, choose Tools | Templates.
-      }
-
-      public boolean isDirty() {
-          return dirty;
-      }
-
-      public void setDirty(boolean dirty) {
-          this.dirty = dirty;
-      }
-  */
+  
 }

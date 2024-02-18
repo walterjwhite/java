@@ -14,6 +14,6 @@ public class ElasticMetricsModule extends AbstractModule {
 
     bind(ElasticConfig.class).toProvider(ElasticConfigProvider.class);
     bind(MeterRegistry.class)
-        .toProvider(ElasticMeterRegistryProvider.class) /*.in(Singleton.class)*/;
+        .toProvider(ElasticMeterRegistryProvider.class) ;
   }
 }

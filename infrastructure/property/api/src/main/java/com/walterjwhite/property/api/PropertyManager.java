@@ -6,10 +6,11 @@ import org.reflections.Reflections;
 public interface PropertyManager {
   void initialize();
 
-  //  Properties getProperties();
+
 
   Iterable<Class<? extends ConfigurableProperty>> getKeys();
 
+  
   Reflections getReflections();
 
   String get(final Class<? extends ConfigurableProperty> configurableProperty);
@@ -20,5 +21,5 @@ public interface PropertyManager {
 
   Class type(Class<? extends ConfigurableProperty> configurableProperty);
 
-  //  String getContextualName(Class<? extends ConfigurableProperty> configurableProperty);
+
 }

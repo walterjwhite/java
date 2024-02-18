@@ -1,0 +1,15 @@
+Actions:
+1. look for an alternative to prometheus since prometheus must scrape this endpoint
+2. implement gauge
+   a. simple incrementer/decrementer to measure current items ...
+   b. other values such as memory, bytes processes, request size ...
+3. automatically create histogram / summary
+   a. for timer
+   b. request size
+
+
+NOTES:
+1. cannot currently use lombok with aspectj otherwise advice don't work and don't get built
+2. prometheus must be configured to scrape this endpoint
+   this is automatically done through my linux configuration
+3. due to the design, I can only scrape a single application at a time

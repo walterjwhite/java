@@ -1,11 +1,11 @@
 package com.walterjwhite.identity.email;
 
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.event.MessageCountAdapter;
+import jakarta.mail.event.MessageCountEvent;
 import java.util.concurrent.BlockingQueue;
 import java.util.regex.Pattern;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.event.MessageCountAdapter;
-import javax.mail.event.MessageCountEvent;
 
 public class EmailTokenMessageCountAdapter extends MessageCountAdapter {
   protected final transient BlockingQueue<String> tokenQueue;

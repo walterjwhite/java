@@ -1,12 +1,16 @@
 package com.walterjwhite.email.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
+
+import com.walterjwhite.datastore.jdo.model.AbstractEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import javax.jdo.annotations.PersistenceCapable;
+
 @Data
 @ToString(doNotUseGetters = true)
+@PersistenceCapable
 public class EmailAccount extends AbstractEntity {
   @EqualsAndHashCode.Exclude protected String name;
 

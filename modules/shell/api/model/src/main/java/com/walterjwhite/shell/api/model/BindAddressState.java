@@ -1,6 +1,6 @@
 package com.walterjwhite.shell.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
+
 import java.time.LocalDateTime;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.Data;
@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
 @PersistenceCapable
-public class BindAddressState extends AbstractEntity {
+public class BindAddressState {
 
   protected LocalDateTime currentDateTime = LocalDateTime.now();
 
@@ -22,12 +22,12 @@ public class BindAddressState extends AbstractEntity {
 
   @EqualsAndHashCode.Exclude protected ShellCommand shellCommand;
 
-  //
-  //  public BindAddressState(
-  //      BindAddress bindAddress, ServiceStatus serviceStatus, ShellCommand shellCommand) {
-  //
-  //    this.bindAddress = bindAddress;
-  //    this.serviceStatus = serviceStatus;
-  //    this.shellCommand = shellCommand;
-  //  }
+
+
+
+
+
+
+
+
 }

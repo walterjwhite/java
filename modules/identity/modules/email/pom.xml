@@ -4,23 +4,20 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.identity</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.identity.modules</groupId>
   <artifactId>email</artifactId>
-
-
   <dependencies>
-    <!-- TODO: make this generic so that we can use any async provider -->
     <dependency>
-      <groupId>com.walterjwhite.java.modules.email.providers.javamail.modules</groupId>
-      <artifactId>async</artifactId>
-      <version>0.2.0</version>
+      <groupId>com.walterjwhite.java.modules.email.providers.javamail</groupId>
+      <artifactId>organization</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.email</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

@@ -37,7 +37,7 @@ public class PipeSessionInstance {
 
   protected void stop() {
     for (Pipe pipe : pipes) {
-      //            pipe.close();
+
     }
   }
 }

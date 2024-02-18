@@ -22,7 +22,7 @@ public class JerseyExample {
   }
 
   @GET
-  //  @Produces("text/plain")
+
   @Path("/hello/{name}")
   @Produces(MediaType.APPLICATION_JSON)
   public Response getHello(@PathParam("name") final String name) {

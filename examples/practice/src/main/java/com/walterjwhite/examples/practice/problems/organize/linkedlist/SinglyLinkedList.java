@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 public class SinglyLinkedList {
   protected int value;
-  // @ToString.Exclude
+
   protected SinglyLinkedList next;
 
   public SinglyLinkedList(int value) {

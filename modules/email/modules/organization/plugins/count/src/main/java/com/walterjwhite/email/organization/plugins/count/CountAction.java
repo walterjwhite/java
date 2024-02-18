@@ -5,11 +5,11 @@ import com.walterjwhite.email.api.model.PrivateEmailAccount;
 import com.walterjwhite.email.organization.api.Action;
 import com.walterjwhite.email.organization.api.configuration.rule.EmailMatcherRule;
 import com.walterjwhite.property.api.annotation.Property;
+import jakarta.inject.Inject;
 import java.util.HashMap;
 import java.util.Map;
-import jakarta.inject.Inject;
 
-// @NoArgsConstructor(onConstructor_ = @Inject)
+
 public class CountAction implements Action {
   protected final Map<Object, Integer> countMap = new HashMap<>();
 

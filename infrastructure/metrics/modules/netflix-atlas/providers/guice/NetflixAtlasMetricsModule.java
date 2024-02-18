@@ -11,6 +11,6 @@ public class NetflixAtlasMetricsModule extends AbstractMetricsModule {
     super.configure();
 
     bind(AtlasConfig.class).toProvider(AtlasConfigProvider.class);
-    bind(MeterRegistry.class).toProvider(AtlasMeterRegistryProvider.class) /*.in(Singleton.class)*/;
+    bind(MeterRegistry.class).toProvider(AtlasMeterRegistryProvider.class) ;
   }
 }

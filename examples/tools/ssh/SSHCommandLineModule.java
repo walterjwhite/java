@@ -17,6 +17,6 @@ public class SSHCommandLineModule extends AbstractCommandLineModule {
     install(new SSHModule());
 
     install(new CriteriaBuilderModule());
-    install(new GoogleGuicePersistModule(/*propertyManager, reflections*/ ));
+    install(new GoogleGuicePersistModule( ));
   }
 }

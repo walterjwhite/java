@@ -53,7 +53,7 @@ public class ShellProcessExecution extends AbstractProcessExecution {
 
   @Override
   protected void doSetTimeout(int timeoutInSeconds) {
-    // process.waitFor(timeoutInSeconds, TimeUnit.SECONDS);
+
   }
 
   @Override

@@ -5,9 +5,12 @@ import com.walterjwhite.browser.api.model.BrowserActionInstance;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.jdo.annotations.PersistenceCapable;
+
 @Data
 @ToString(doNotUseGetters = true)
+@PersistenceCapable
 public class NewPasswordWebSession extends AuthenticatedWebSession {
-  // actions required to update the password
+
   protected BrowserActionInstance[] browserActionInstances;
 }

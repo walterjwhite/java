@@ -6,10 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.jdo.annotations.PersistenceCapable;
+
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@PersistenceCapable
 public class Locator {
   protected LocatorType locatorType;
   protected String argument;

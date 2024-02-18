@@ -6,9 +6,9 @@ import com.walterjwhite.property.api.property.ConfigurableProperty;
 
 @PropertyValueType(int.class)
 public interface CommandLineHandlerShutdownTimeout extends ConfigurableProperty {
-  @DefaultValue int Default = 30; // wait up to 30 seconds before dying.
+  @DefaultValue int Default = 30; 
 
-  //  default Class getType() {
-  //    return int.class;
-  //  }
+
+
+
 }

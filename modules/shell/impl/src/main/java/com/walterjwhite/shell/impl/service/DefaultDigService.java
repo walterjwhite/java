@@ -8,8 +8,8 @@ import com.walterjwhite.shell.api.model.dig.DigRequestIPAddress;
 import com.walterjwhite.shell.api.service.DigService;
 import com.walterjwhite.shell.api.service.ShellExecutionService;
 import com.walterjwhite.shell.impl.property.DigTimeout;
-import java.time.LocalDateTime;
 import jakarta.inject.Inject;
+import java.time.LocalDateTime;
 
 public class DefaultDigService extends AbstractSingleShellCommandService<DigRequest>
     implements DigService {

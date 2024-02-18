@@ -4,10 +4,8 @@
   <parent>
     <groupId>com.walterjwhite.java.configuration</groupId>
     <artifactId>cli</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
-
-
   <groupId>com.walterjwhite.java.configuration.cli</groupId>
   <artifactId>guice</artifactId>
   <packaging>pom</packaging>
@@ -15,7 +13,7 @@
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.providers</groupId>
       <artifactId>guice</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

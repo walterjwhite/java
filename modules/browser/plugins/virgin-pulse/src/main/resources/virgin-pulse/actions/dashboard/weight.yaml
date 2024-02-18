@@ -1,3 +1,0 @@
-- click: //*[@id="weight"]/weightstats-widget/div/div[2]/div[2]/weight-entry-form/div/div[1]/div[1]
-- sendKeys: //*[@id="weight"]/weightstats-widget/div/div[2]/div[2]/weight-entry-form/div/div[2]/div[2]/input"|<WEIGHT>
-- click: //*[@id="weight"]/weightstats-widget/div/div[2]/div[2]/weight-entry-form/div/div[2]/div[3]/button/span

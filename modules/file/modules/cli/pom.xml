@@ -4,117 +4,93 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.file</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.file.modules</groupId>
   <artifactId>cli</artifactId>
-
-
   <dependencies>
     <dependency>
-      <groupId>com.walterjwhite.java.modules.compression.modules.xz</groupId>
-      <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <groupId>com.walterjwhite.java.modules.compression.modules</groupId>
+      <artifactId>xz</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.modules.cli</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
       <artifactId>default</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
       <artifactId>environment</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
       <artifactId>file</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
       <artifactId>properties</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
       <artifactId>system</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>-->
-    <!--<artifactId>command</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<scope>runtime</scope>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.modules.encryption</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.file.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.file</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.file.providers.local</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.datastore.modules</groupId>-->
-    <!--<artifactId>google-guice-create</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.datastore.modules</groupId>-->
-    <!--<artifactId>google-guice-create-criteria-builder</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>h2</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--<artifactId>postgresql</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<type>pom</type>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>p6spy</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>hikari-jdbc-connection-pool</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>hibernate-hikari</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
   </dependencies>

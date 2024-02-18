@@ -4,14 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>serialization</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.serialization</groupId>
   <artifactId>modules</artifactId>
   <packaging>pom</packaging>
-  <version>0.2.0</version>
-
-
   <modules>
     <module>time</module>
   </modules>

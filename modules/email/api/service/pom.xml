@@ -4,22 +4,16 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.email</groupId>
     <artifactId>api</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.email.api</groupId>
   <artifactId>service</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.email.api</groupId>
       <artifactId>model</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>-->
-    <!--      <artifactId>repository</artifactId>-->
-    <!--      <version>0.0.19</version>-->
-    <!--    </dependency>-->
+
   </dependencies>
 </project>

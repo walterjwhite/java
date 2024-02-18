@@ -1,29 +1,16 @@
 package com.walterjwhite.serialization.modules.snakeymal;
 
-import com.google.inject.Injector;
-import com.walterjwhite.google.guice.GuiceHelper;
 import com.walterjwhite.serialization.api.service.SerializationService;
-import com.walterjwhite.serialization.modules.snakeyaml.SnakeyamlSerializationServiceModule;
+import com.walterjwhite.serialization.modules.snakeyaml.Snakeyaml;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import org.apache.commons.io.IOUtils;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class TestDefaultMessageSerializationService {
-  private static Injector GUICE_INJECTOR;
 
-  protected SerializationService serializationService;
-
-  @Before
-  public void before() {
-    GuiceHelper.addModules(new SnakeyamlSerializationServiceModule());
-    GuiceHelper.setup();
-
-    serializationService =
-        GuiceHelper.getGuiceApplicationInjector().getInstance(SerializationService.class);
-  }
+  protected SerializationService serializationService = new Snakeyaml();
 
   @Test
   public void testSerialization() throws Exception {

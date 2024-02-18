@@ -28,6 +28,6 @@ public class ShellSink extends AbstractSink<String, ShellSinkConfiguration> {
   }
 
   public void close() {
-    // shellExecutionService.kill(shellCommand);
+
   }
 }

@@ -2,6 +2,7 @@ package com.walterjwhite.data.pipe.modules.csv.service;
 
 import java.util.Objects;
 
+
 public class CSVValidation {
   protected final String filenameKey;
   protected final long count;

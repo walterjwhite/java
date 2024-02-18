@@ -7,17 +7,19 @@ import org.springframework.boot.web.context.ConfigurableWebServerApplicationCont
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.context.ConfigurableWebApplicationContext;
 
+
 @SpringBootApplication(scanBasePackages = {"com.walterjwhite"})
-// the below does not work
-// @Component
+
+
 public class SpringBootRunner implements CommandLineHandler {
-  //  @Inject
-  //  public SpringBootRunner(/*
-  //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds) {
-  //    super(shutdownTimeoutInSeconds);
-  //    */ ) {
-  //    super(15);
-  //  }
+
+
+
+
+
+  
+
+
 
   @Override
   public void run(String... arguments) throws InterruptedException {
@@ -30,7 +32,7 @@ public class SpringBootRunner implements CommandLineHandler {
 
   protected boolean isWebServer(
       final ConfigurableApplicationContext configurableApplicationContext) {
-    /*AnnotationConfigServletWebServerApplicationContext*/
+    
     if (ConfigurableWebServerApplicationContext.class.isInstance(configurableApplicationContext)) {
       return true;
     }

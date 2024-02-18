@@ -1,7 +1,7 @@
 package com.walterjwhite.remote.impl.plugins.heartbeat;
 
 import com.google.common.util.concurrent.AbstractScheduledService;
-import com.walterjwhite.datastore.api.repository.Repository;
+
 import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.remote.api.service.MessageWriterService;
 import com.walterjwhite.shell.api.enumeration.ServiceAction;
@@ -11,15 +11,16 @@ import com.walterjwhite.shell.api.model.ping.PingRequest;
 import com.walterjwhite.shell.api.model.traceroute.TracerouteRequest;
 import com.walterjwhite.shell.api.service.*;
 import com.walterjwhite.shell.api.service.unused.NetworkInterfaceService;
+import jakarta.inject.Inject;
+import jakarta.inject.Provider;
+import jakarta.inject.Singleton;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import jakarta.inject.Inject;
-import jakarta.inject.Provider;
-import jakarta.inject.Singleton;
+
 
 @Singleton
 public class ClientHeartbeatService extends AbstractScheduledService {
@@ -35,7 +36,7 @@ public class ClientHeartbeatService extends AbstractScheduledService {
 
   protected final Provider<UpowerService> upowerServiceProvider;
 
-  protected final Provider<Repository> repositoryProvider;
+
 
   protected final int heartbeatMaximumInterval;
 
@@ -50,7 +51,7 @@ public class ClientHeartbeatService extends AbstractScheduledService {
       Provider<NetworkInterfaceService> networkInterfaceServiceProvider,
       Provider<SystemServiceService> systemServiceServiceProvider,
       Provider<UpowerService> upowerServiceProvider,
-      Provider<Repository> repositoryProvider,
+
       @Property(HeartbeatMaximumInterval.class) int heartbeatMaximumInterval) {
 
     this.digServiceProvider = digServiceProvider;
@@ -60,16 +61,16 @@ public class ClientHeartbeatService extends AbstractScheduledService {
     this.networkInterfaceServiceProvider = networkInterfaceServiceProvider;
     this.systemServiceServiceProvider = systemServiceServiceProvider;
     this.upowerServiceProvider = upowerServiceProvider;
-    this.repositoryProvider = repositoryProvider;
+
 
     this.heartbeatMaximumInterval = heartbeatMaximumInterval;
   }
 
   public void doSendHeartbeat() throws Exception {
     final List<Service> services = null;
-    // serviceRepositoryProvider.get().findAll();
 
-    /** TTL 1hr* */
+
+    
     final HeartbeatMessage heartbeatMessage;
 
     final Set<ServiceStatus> serviceStatuses = new HashSet<>();
@@ -83,7 +84,7 @@ public class ClientHeartbeatService extends AbstractScheduledService {
     }
 
     final NetworkDiagnosticTest networkDiagnosticTest = null;
-    // (NetworkDiagnosticTest) repositoryProvider.get().findRandom(NetworkDiagnosticTest.class);
+
     DigRequest digRequest = digServiceProvider.get().execute(new DigRequest(networkDiagnosticTest));
 
     TracerouteRequest tracerouteRequest =
@@ -92,18 +93,19 @@ public class ClientHeartbeatService extends AbstractScheduledService {
     PingRequest pingRequest =
         pingServiceProvider.get().execute(new PingRequest(networkDiagnosticTest));
 
+    
     heartbeatMessage =
-        new HeartbeatMessage(
-            3600000,
-            upowerServiceProvider.get().execute(new BatteryRequest()).getBatteryStatus(),
-            serviceStatuses,
-            digRequest,
-            tracerouteRequest,
-            pingRequest,
-            networkInterfaceServiceProvider.get().getNetworkInterfaceStatesForNode());
+        new HeartbeatMessage();
+    heartbeatMessage.setTimeToLive(3600000);
+    heartbeatMessage.getServiceStatuses().addAll(serviceStatuses);
+    heartbeatMessage.setDigRequest(digRequest);
+    heartbeatMessage.setTracerouteRequest(tracerouteRequest);
+    heartbeatMessage.setPingRequest(pingRequest);
+    heartbeatMessage.getNetworkInterfaceStates().addAll(networkInterfaceServiceProvider.get().getNetworkInterfaceStatesForNode());
+    heartbeatMessage.setBatteryStatus(upowerServiceProvider.get().execute(new BatteryRequest()).getBatteryStatus());
 
-    // just deliver to "all" queue
-    // heartbeatMessage.getRecipients().addAll(clientRepositoryService.getClients());
+
+
     try {
       messageWriterService.write(heartbeatMessage);
 
@@ -134,9 +136,7 @@ public class ClientHeartbeatService extends AbstractScheduledService {
     return generator.nextInt(heartbeatMaximumInterval) + 1;
   }
 
-  /**
-   * In order to reduce our bandwidth consumption, only send messages during typical business hours.
-   */
+  
   @Override
   protected Scheduler scheduler() {
     return AbstractScheduledService.Scheduler.newFixedDelaySchedule(0, 1, TimeUnit.MINUTES);

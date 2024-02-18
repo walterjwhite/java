@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-/** Used to delete a specific file from the machine. */
+
 @Getter
 @Setter
 @ToString(doNotUseGetters = true, callSuper = true)
@@ -16,6 +16,6 @@ public class DeleteFileMessage extends Message {
 
   protected File file;
 
-  /** Absolute path where this file should be moved * */
+  
   protected String target;
 }

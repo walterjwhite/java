@@ -4,16 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.datastore</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.datastore.providers</groupId>
   <artifactId>jdo</artifactId>
-  <version>0.2.0</version>
-  <packaging>pom</packaging>
-
-  <modules>
-    <module>impl</module>
-    <module>providers</module>
-  </modules>
-  <dependencies/>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
+      <artifactId>core</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>datanucleus-jdo</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
 </project>

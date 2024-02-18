@@ -6,5 +6,6 @@ import lombok.Getter;
 
 @Getter
 public class KryoConfiguration {
+  
   protected final Set<Class> serializationClasses = new LinkedHashSet<>();
 }

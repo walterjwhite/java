@@ -5,10 +5,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+
 @Data
 @ToString(doNotUseGetters = true)
 @PersistenceCapable
 public class ChangePasswordCommand extends AbstractAccountCommand {
 
+  
   @EqualsAndHashCode.Exclude protected String newPassword;
 }

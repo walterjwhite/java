@@ -5,6 +5,7 @@ import com.walterjwhite.identity.api.model.password.PasswordPolicy;
 import org.passay.CharacterRule;
 
 public interface PasswordGenerator {
+  
   org.passay.PasswordGenerator PASSWORD_GENERATOR = new org.passay.PasswordGenerator();
 
   static String generate(final PasswordPolicy passwordPolicy) {

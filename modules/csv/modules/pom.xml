@@ -4,23 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>csv</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.csv</groupId>
   <artifactId>modules</artifactId>
   <packaging>pom</packaging>
-
   <modules>
     <module>apache-commons-csv</module>
     <module>apache-poi</module>
     <module>univocity-csv</module>
-    <module>cli</module>
   </modules>
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.csv</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

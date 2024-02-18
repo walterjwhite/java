@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Data;
 import lombok.ToString;
 
-/** TODO: support more complex data types rather than just strings. */
+
 @Data
 @ToString(doNotUseGetters = true)
 public class DataTable {
@@ -22,21 +22,5 @@ public class DataTable {
     this.rows.add(row);
   }
 
-  /*
-      public String[][] get() {
-          if (rows == null || rows.isEmpty()) {
-              return (new String[][]{});
-          }
-
-          final String[][] results = new String[rows.size()][columnNames.length];
-
-          for (int i = 0; i < rows.size(); i++) {
-              for (int j = 0; j < columnNames.length; j++) {
-                  results[i][j] = rows.get(i).get(j);
-              }
-          }
-
-          return (results);
-      }
-  */
+  
 }

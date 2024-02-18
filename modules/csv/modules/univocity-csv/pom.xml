@@ -4,14 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.csv</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.csv.modules</groupId>
   <artifactId>univocity-csv</artifactId>
-  <version>0.2.0</version>
-
-  <packaging>pom</packaging>
-  <modules>
-    <module>impl</module>
-  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>univocity-csv</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.csv</groupId>
+      <artifactId>impl</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 </project>

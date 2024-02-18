@@ -4,17 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.serialization</groupId>
     <artifactId>api</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.serialization.api</groupId>
   <artifactId>service</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.api</groupId>
       <artifactId>model</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

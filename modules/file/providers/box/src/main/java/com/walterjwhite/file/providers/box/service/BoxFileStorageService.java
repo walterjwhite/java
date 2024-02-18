@@ -1,7 +1,7 @@
 package com.walterjwhite.file.providers.box.service;
 
 import com.walterjwhite.encryption.api.service.CompressionService;
-import com.walterjwhite.encryption.service.DigestService;
+import com.walterjwhite.encryption.enumeration.DigestAlgorithm;
 import com.walterjwhite.encryption.service.EncryptionService;
 import com.walterjwhite.file.api.model.File;
 import com.walterjwhite.file.impl.service.AbstractFileStorageService;
@@ -15,10 +15,10 @@ public class BoxFileStorageService extends AbstractFileStorageService {
   public BoxFileStorageService(
       CompressionService compressionService,
       EncryptionService encryptionService,
-      DigestService digestService,
+      DigestAlgorithm digestAlgorithm,
       @Property(NoOperation.class) boolean nop,
       @Property(Debug.class) boolean debug) {
-    super(compressionService, encryptionService, digestService, nop, debug);
+    super(compressionService, encryptionService, digestAlgorithm, nop, debug);
   }
 
   @Override

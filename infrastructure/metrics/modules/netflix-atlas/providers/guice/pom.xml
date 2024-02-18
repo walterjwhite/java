@@ -4,11 +4,8 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.metrics.modules.netflix-atlas</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.metrics.modules.netflix-atlas.providers</groupId>
   <artifactId>guice</artifactId>
-
-
-
 </project>

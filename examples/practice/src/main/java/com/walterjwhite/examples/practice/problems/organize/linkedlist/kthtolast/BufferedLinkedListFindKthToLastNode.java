@@ -15,7 +15,7 @@ public class BufferedLinkedListFindKthToLastNode implements KthtoLastNode {
       return -1;
     }
 
-    // use a buffer
+
     final Integer[] buffer = new Integer[kthNode];
     SinglyLinkedList current = input;
     while (current != null) {

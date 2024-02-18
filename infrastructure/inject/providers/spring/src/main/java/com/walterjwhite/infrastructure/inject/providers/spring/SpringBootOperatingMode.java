@@ -6,6 +6,7 @@ import com.walterjwhite.property.api.annotation.DefaultValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+
 @RequiredArgsConstructor
 @Getter
 public enum SpringBootOperatingMode implements OperatingMode {

@@ -4,12 +4,9 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.pipe</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.pipe.modules</groupId>
   <artifactId>file</artifactId>
-  <version>0.2.0</version>
-
-
   <dependencies/>
 </project>

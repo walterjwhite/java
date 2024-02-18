@@ -4,16 +4,13 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.modules</groupId>
   <artifactId>cli</artifactId>
   <packaging>pom</packaging>
-
-
   <modules>
     <module>agent</module>
     <module>api</module>
-    <module>providers</module>
   </modules>
 </project>

@@ -4,11 +4,8 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.email.modules.organization</groupId>
     <artifactId>plugins</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.email.modules.organization.plugins</groupId>
   <artifactId>count</artifactId>
-
-
-
 </project>

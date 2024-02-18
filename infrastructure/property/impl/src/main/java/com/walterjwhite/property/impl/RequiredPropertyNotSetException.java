@@ -11,7 +11,7 @@ public class RequiredPropertyNotSetException extends IllegalStateException {
       final Class<? extends ConfigurableProperty> propertyClass) {
     super(
         propertyClass.getName()
-            + " was not set and not default value was provided either, this is likely a"
+            + " was not set and no default value was provided either, this is likely a"
             + " configuration problem.");
     this.propertyClass = propertyClass;
   }

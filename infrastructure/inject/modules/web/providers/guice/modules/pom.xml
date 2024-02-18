@@ -4,22 +4,19 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers</groupId>
     <artifactId>guice</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.guice</groupId>
   <artifactId>modules</artifactId>
   <packaging>pom</packaging>
-
   <modules>
     <module>hk2-bridge</module>
-    <!--    <module>jaxrs</module>-->
-    <!--    <module>servlet</module>-->
   </modules>
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.guice</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

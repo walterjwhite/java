@@ -8,21 +8,23 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum GuiceApplicationEnvironmentMapping {
-  Development(Stage.DEVELOPMENT, ApplicationEnvironment.Development),
-  Testing(Stage.DEVELOPMENT, ApplicationEnvironment.Testing),
-  Production(Stage.PRODUCTION, ApplicationEnvironment.Production);
+    Development(Stage.DEVELOPMENT, ApplicationEnvironment.Development),
+    Testing(Stage.DEVELOPMENT, ApplicationEnvironment.Testing),
+    Production(Stage.PRODUCTION, ApplicationEnvironment.Production);
 
-  private final Stage stage;
-  private final ApplicationEnvironment applicationEnvironment;
+    private final Stage stage;
+    private final ApplicationEnvironment applicationEnvironment;
 
-  public static GuiceApplicationEnvironmentMapping getFromApplicationEnvironment(
-      ApplicationEnvironment applicationEnvironment) {
-    for (final GuiceApplicationEnvironmentMapping guiceApplicationEnvironmentMapping : values()) {
-      if (guiceApplicationEnvironmentMapping
-          .getApplicationEnvironment()
-          .equals(applicationEnvironment)) return guiceApplicationEnvironmentMapping;
+    public static GuiceApplicationEnvironmentMapping getFromApplicationEnvironment(
+            ApplicationEnvironment applicationEnvironment) {
+        for (final GuiceApplicationEnvironmentMapping guiceApplicationEnvironmentMapping : values()) {
+            if (guiceApplicationEnvironmentMapping
+                    .getApplicationEnvironment()
+                    .equals(applicationEnvironment)) {
+                return guiceApplicationEnvironmentMapping;
+            }
+        }
+
+        throw new IllegalArgumentException(applicationEnvironment + " is not currently mapped.");
     }
-
-    throw new IllegalArgumentException(applicationEnvironment + " is not currently mapped.");
-  }
 }

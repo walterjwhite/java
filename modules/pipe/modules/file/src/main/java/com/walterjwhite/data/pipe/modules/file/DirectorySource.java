@@ -16,6 +16,8 @@ public class DirectorySource extends AbstractSource<File, FileSourceConfiguratio
   @Override
   public void close() {}
 
+  
+  
   @Override
   public Iterator<File> iterator() {
     return Arrays.asList(directory.listFiles()).iterator();

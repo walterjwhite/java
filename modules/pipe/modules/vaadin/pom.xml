@@ -4,54 +4,28 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.pipe</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.pipe.modules</groupId>
   <artifactId>vaadin</artifactId>
-
-
   <dependencies>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.vaadin</groupId>-->
-    <!--<artifactId>impl</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>vaadin</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>google-guava</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!-- TODO: refactor this -->
-    <!--<dependency>-->
-    <!--<groupId>org.eclipse.jetty.aggregate</groupId>-->
-    <!--<artifactId>jetty-all</artifactId>-->
-    <!--<version>9.4.8.v20171121</version>-->
-    <!--<type>pom</type>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.eclipse.jetty</groupId>-->
-    <!--<artifactId>jetty-server</artifactId>-->
-    <!--<version>9.4.8.v20171121</version>-->
-    <!--</dependency>-->
-    <!-- replace with vaadin 8 -->
     <dependency>
       <groupId>com.walterjwhite.java.modules.pipe.modules</groupId>
       <artifactId>csv</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.google-guice.modules</groupId>-->
-    <!--<artifactId>property-test</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
   </dependencies>
 </project>

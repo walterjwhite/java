@@ -4,9 +4,9 @@ import com.walterjwhite.datastore.api.repository.AbstractEntityRepository;
 import com.walterjwhite.email.api.model.EmailSendRequest;
 import com.walterjwhite.email.api.service.ExternalEmailSendService;
 import com.walterjwhite.queue.api.job.AbstractCallableJob;
-import java.time.LocalDateTime;
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
+import java.time.LocalDateTime;
 import javax.transaction.Transactional;
 
 public class EmailSendJobExecutor extends AbstractCallableJob<EmailSendRequest, Void> {
@@ -36,7 +36,7 @@ public class EmailSendJobExecutor extends AbstractCallableJob<EmailSendRequest, 
 
   @Override
   protected boolean isRetryable(Throwable thrown) {
-    // if (thrown.getCause() instanceof ConnectionException) return true;
+
 
     return false;
   }

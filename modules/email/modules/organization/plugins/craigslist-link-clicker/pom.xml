@@ -4,23 +4,20 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.email.modules.organization</groupId>
     <artifactId>plugins</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.email.modules.organization.plugins</groupId>
   <artifactId>craigslist-link-clicker</artifactId>
-
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.template.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.email.modules.template</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

@@ -12,6 +12,7 @@ import com.walterjwhite.property.api.annotation.Property;
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
 
+
 public class EncryptionConfigurationProvider implements Provider<EncryptionConfiguration> {
   protected final EncryptionConfiguration encryptionConfiguration;
 

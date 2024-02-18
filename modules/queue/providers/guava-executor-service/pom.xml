@@ -4,13 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
     <artifactId>modules</artifactId>
-    <version>0.0.15-SNAPSHOT</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.modules</groupId>
   <artifactId>guava-executor-service</artifactId>
   <packaging>pom</packaging>
-
-
   <modules>
     <module>impl</module>
     <module>providers</module>

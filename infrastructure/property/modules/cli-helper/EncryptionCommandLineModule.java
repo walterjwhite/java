@@ -11,10 +11,7 @@ public class EncryptionCommandLineModule extends AbstractCommandLineModule {
     super(propertyManager, reflections, PropertyEncryptionOperatingMode.class);
   }
 
-  /**
-   * FYI, at this point, properties should be injected, so we can do a dynamic configuration here
-   * ...
-   */
+  
   @Override
   protected void doCliConfigure() {}
 }

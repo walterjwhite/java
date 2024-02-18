@@ -1,7 +1,7 @@
 package com.walterjwhite.infrastructure.inject.core;
 
 import com.walterjwhite.infrastructure.inject.core.helper.ApplicationHelper;
-import com.walterjwhite.infrastructure.inject.core.helper.ApplicationInstanceBuilder;
+import com.walterjwhite.infrastructure.inject.core.model.ApplicationIdentifier;
 import com.walterjwhite.infrastructure.inject.core.model.ApplicationSession;
 import com.walterjwhite.infrastructure.inject.core.service.ServiceManager;
 import com.walterjwhite.property.api.PropertyManager;
@@ -9,6 +9,9 @@ import com.walterjwhite.property.api.SecretService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.reflections.Reflections;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Getter
 @RequiredArgsConstructor
@@ -33,7 +36,13 @@ public class ApplicationInstance {
         serviceManager,
         secretService,
         injector,
-        ApplicationInstanceBuilder.build());
+        new ApplicationSession(ApplicationIdentifier.builder()
+            .applicationTargetEnvironment(ApplicationHelper.getApplicationTargetEnvironment())
+            .applicationEnvironment(ApplicationHelper.getApplicationEnvironment())
+            .applicationName(ApplicationHelper.getApplicationName())
+            .applicationVersion(ApplicationHelper.getImplementationVersion())
+            .scmVersion(ApplicationHelper.getSCMVersion())
+                .applicationSessions(new ArrayList<>()).build(), ApplicationHelper.getNodeId(), LocalDateTime.now()));
   }
 
   public void run() throws Exception {

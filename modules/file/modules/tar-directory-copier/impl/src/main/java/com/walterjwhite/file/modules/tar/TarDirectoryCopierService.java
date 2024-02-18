@@ -25,7 +25,7 @@ public class TarDirectoryCopierService implements DirectoryCopierService {
       throw new RuntimeException("Error waiting for result");
     }
 
-    // tarXp.waitFor();
+
     tarXp.getOutputStream().flush();
     tarXp.getOutputStream().close();
 

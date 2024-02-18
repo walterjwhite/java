@@ -4,14 +4,12 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.remote</groupId>
     <artifactId>impl</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.remote.impl</groupId>
   <artifactId>plugins</artifactId>
   <packaging>pom</packaging>
-
   <modules>
-    <!--    <module>browser</module>-->
     <module>email</module>
     <module>file-transfer</module>
     <module>heartbeat</module>
@@ -23,7 +21,7 @@
     <dependency>
       <groupId>com.walterjwhite.java.modules.remote.impl</groupId>
       <artifactId>core</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

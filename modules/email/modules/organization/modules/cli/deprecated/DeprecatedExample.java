@@ -4,19 +4,19 @@ import com.sun.mail.imap.IMAPFolder;
 import com.walterjwhite.email.api.model.Email;
 import com.walterjwhite.email.api.model.PrivateEmailAccount;
 import com.walterjwhite.email.api.service.EmailReadService;
+import com.walterjwhite.email.javamail.service.JavaMailNewEmailSupplier;
+import com.walterjwhite.email.javamail.service.example.JavaMailMessageCountListener;
+import com.walterjwhite.email.javamail.service.example.Listener;
 import com.walterjwhite.email.modules.javamail.JavaMailUtils;
-import com.walterjwhite.email.modules.javamail.service.JavaMailNewEmailSupplier;
-import com.walterjwhite.email.modules.javamail.service.example.JavaMailMessageCountListener;
-import com.walterjwhite.email.modules.javamail.service.example.Listener;
 import com.walterjwhite.email.organization.api.configuration.rule.*;
 import com.walterjwhite.email.organization.plugins.count.CountAction;
 import com.walterjwhite.serialization.api.service.SerializationService;
+import jakarta.mail.Folder;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Store;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.stream.Stream;
-import javax.mail.Folder;
-import javax.mail.MessagingException;
-import javax.mail.Store;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -32,7 +32,7 @@ public class DeprecatedExample {
   }
 
   protected void readInbox() {
-    // now try to read our inbox
+
 
     emailReadService.forEachRemaining(
         emailMessage -> LOGGER.info("read: " + emailMessage.getSubject()));
@@ -60,9 +60,7 @@ public class DeprecatedExample {
     }
   }
 
-  /**
-   * This works, stream produces new email messages when they arrive in the inbox (without polling).
-   */
+  
   protected void readNewMessages() {
     Stream.generate(javaMailNewEmailSupplier).forEach(email -> printEmail(email));
   }

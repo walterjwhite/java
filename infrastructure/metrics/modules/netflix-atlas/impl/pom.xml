@@ -4,18 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.metrics.modules</groupId>
     <artifactId>netflix-atlas</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.metrics.modules.netflix-atlas</groupId>
   <artifactId>impl</artifactId>
-
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>micrometer-netflix-atlas</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
   </dependencies>

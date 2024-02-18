@@ -1,6 +1,6 @@
 package com.walterjwhite.exchange.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractNamedEntity;
+
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,4 +12,4 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true, callSuper = true)
 @PersistenceCapable
 @NoArgsConstructor
-public class ExchangeServiceConfiguration extends AbstractNamedEntity {}
+public class ExchangeServiceConfiguration {}

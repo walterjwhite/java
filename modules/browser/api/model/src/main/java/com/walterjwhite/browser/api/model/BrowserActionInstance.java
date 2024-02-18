@@ -7,10 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.jdo.annotations.PersistenceCapable;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(doNotUseGetters = true)
 @Data
+@PersistenceCapable
 public class BrowserActionInstance {
   protected WebElementBrowserAction browserAction;
   protected LocatorType locatorType;

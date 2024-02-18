@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 
 @Slf4j
 public class PartitionListTest {
+  
+  
   protected final Partition partition = new PartitionListC();
 
   @Test

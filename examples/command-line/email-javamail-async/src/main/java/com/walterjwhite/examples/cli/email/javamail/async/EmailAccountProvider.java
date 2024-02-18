@@ -3,10 +3,10 @@ package com.walterjwhite.examples.cli.email.javamail.async;
 import com.walterjwhite.email.api.model.PrivateEmailAccount;
 import com.walterjwhite.inject.cli.CLIApplication;
 import com.walterjwhite.serialization.api.service.SerializationService;
-import java.io.FileInputStream;
-import java.io.IOException;
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
+import java.io.FileInputStream;
+import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)

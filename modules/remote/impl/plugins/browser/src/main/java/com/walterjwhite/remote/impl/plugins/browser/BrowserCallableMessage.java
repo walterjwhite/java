@@ -14,8 +14,8 @@ import lombok.ToString;
 @PersistenceCapable
 
 public class BrowserCallableMessage extends Message {
- // browser manager class that remote controls the browser
- // or browser script, get, type, ...
+
+
  protected BrowserCallable browserCallable;
  public BrowserCallableMessage(
      Set<Client> recipients, int timeToLive, BrowserCallable browserCallable) {

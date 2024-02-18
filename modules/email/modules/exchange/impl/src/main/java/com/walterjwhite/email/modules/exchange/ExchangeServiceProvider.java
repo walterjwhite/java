@@ -1,9 +1,9 @@
 package com.walterjwhite.email.modules.exchange;
 
 import com.walterjwhite.property.api.annotation.Property;
+import jakarta.inject.Provider;
 import java.net.URI;
 import java.net.URISyntaxException;
-import jakarta.inject.Provider;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 import microsoft.exchange.webservices.data.credential.ExchangeCredentials;

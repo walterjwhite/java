@@ -26,9 +26,9 @@ public class TestNetworkInterfaceUtil {
   }
 
   private static void handle(NetworkInterface networkInterface, InetAddress inetAddress) {
-    //            "inetAddress:("
-    //                    + networkInterface.getDisplayName()
-    //                    + "):"
-    //                    + inetAddress.getHostAddress();
+
+
+
+
   }
 }

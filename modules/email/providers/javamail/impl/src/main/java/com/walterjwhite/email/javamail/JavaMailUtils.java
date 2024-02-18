@@ -2,8 +2,8 @@ package com.walterjwhite.email.javamail;
 
 import com.walterjwhite.email.api.model.PrivateEmailAccount;
 import com.walterjwhite.email.javamail.authentication.PasswordAuthenticator;
+import jakarta.mail.*;
 import java.util.Properties;
-import javax.mail.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

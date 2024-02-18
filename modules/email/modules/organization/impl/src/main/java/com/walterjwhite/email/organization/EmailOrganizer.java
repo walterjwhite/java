@@ -56,6 +56,7 @@ public class EmailOrganizer {
   protected void onExecutionError(Exception e) {}
 
   protected Action getActionInstance(final Class<? extends Action> actionClass) {
+    
     return ApplicationHelper.getApplicationInstance().getInjector().getInstance(actionClass);
   }
 }

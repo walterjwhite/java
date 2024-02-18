@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.glassfish.jersey.client.ClientConfig;
 
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RestClientBuilder {
   public static Client build() {

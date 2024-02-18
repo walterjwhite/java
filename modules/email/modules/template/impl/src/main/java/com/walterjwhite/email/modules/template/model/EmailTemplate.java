@@ -1,6 +1,7 @@
 package com.walterjwhite.email.modules.template.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractNamedEntity;
+
+import com.walterjwhite.datastore.jdo.model.AbstractNamedEntity;
 import com.walterjwhite.template.api.model.Template;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +18,8 @@ public class EmailTemplate extends AbstractNamedEntity {
   protected Template subjectTemplate;
   protected Template bodyTemplate;
 
-  /** Static recipients. */
+  
+  
   protected Set<EmailTemplateContact> emailTemplateContacts = new HashSet<>();
 
   protected Set<EmailTemplateEmailRecipientProviderConfiguration>

@@ -17,7 +17,7 @@ public class SumTest {
 
     LOGGER.debug("result: {}", result);
 
-    //        Assertions.assertEquals(1, size);
+
   }
 
   @Test
@@ -32,6 +32,6 @@ public class SumTest {
 
     LOGGER.debug("result: {}", result);
 
-    //        Assertions.assertEquals(1, size);
+
   }
 }

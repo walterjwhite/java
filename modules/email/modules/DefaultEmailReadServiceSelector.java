@@ -6,8 +6,8 @@ import com.walterjwhite.email.api.model.PrivateEmailAccount;
 import com.walterjwhite.email.api.service.EmailReadService;
 import com.walterjwhite.email.api.service.EmailReadServiceSelector;
 import com.walterjwhite.google.guice.implementer.AbstractSelector;
-import java.io.IOException;
 import jakarta.inject.Inject;
+import java.io.IOException;
 import org.reflections.Reflections;
 
 public class DefaultEmailReadServiceSelector

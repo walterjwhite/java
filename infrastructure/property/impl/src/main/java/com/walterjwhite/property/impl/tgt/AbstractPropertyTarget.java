@@ -23,7 +23,9 @@ public abstract class AbstractPropertyTarget<PropertyType extends ConfigurablePr
   protected void set(Class<? extends PropertyType> property) {
     final String value = propertyManager.get(property);
 
-    if (value != null) set(property, value);
+    if (value != null) {
+      set(property, value);
+    }
   }
 
   protected abstract void set(Class<? extends PropertyType> property, final String value);

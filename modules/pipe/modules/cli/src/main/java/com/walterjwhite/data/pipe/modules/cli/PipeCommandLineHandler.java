@@ -13,8 +13,8 @@ public class PipeCommandLineHandler implements CommandLineHandler, AutoCloseable
 
   protected Set<PipeSessionInstance> pipeSessionInstances = new HashSet<>();
 
-  public PipeCommandLineHandler(/*int shutdownTimeoutInSeconds, */ Snakeyaml serializationService) {
-    //    super(shutdownTimeoutInSeconds);
+  public PipeCommandLineHandler( Snakeyaml serializationService) {
+
     this.serializationService = serializationService;
   }
 

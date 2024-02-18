@@ -4,14 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.email</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.email.providers</groupId>
   <artifactId>javamail</artifactId>
   <packaging>pom</packaging>
-
   <modules>
     <module>impl</module>
-    <module>modules</module>
+    <module>organization</module>
   </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.email.modules.organization.plugins</groupId>
+      <artifactId>mark-as-read</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
 </project>

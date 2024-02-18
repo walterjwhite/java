@@ -8,12 +8,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(doNotUseGetters = true)
-@Embeddable
+
 public class TestSerializationKey implements Serializable {
-  //
+
   protected String firstName;
 
-  //
+
   protected String lastName;
 
   public TestSerializationKey(String firstName, String lastName) {

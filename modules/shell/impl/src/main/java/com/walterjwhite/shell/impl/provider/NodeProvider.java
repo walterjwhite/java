@@ -9,7 +9,7 @@ import jakarta.inject.Singleton;
 
 @Singleton
 public class NodeProvider implements Provider<Node> {
-  // set from the command-line on start-up
+
   protected final String nodeId;
   protected final Node node;
 
@@ -24,7 +24,7 @@ public class NodeProvider implements Provider<Node> {
     return new Node(nodeId);
   }
 
-  //  @Singleton
+
   @Override
   public Node get() {
     return node;

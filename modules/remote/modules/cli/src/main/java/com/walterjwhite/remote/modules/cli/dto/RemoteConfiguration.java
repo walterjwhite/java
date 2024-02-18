@@ -1,6 +1,6 @@
 package com.walterjwhite.remote.modules.cli.dto;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
+
 import com.walterjwhite.remote.api.model.Client;
 import com.walterjwhite.remote.modules.cli.enumeration.RemoteOperatingMode;
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ import lombok.ToString;
 @Data
 @ToString(doNotUseGetters = true)
 @PersistenceCapable
-public class RemoteConfiguration extends AbstractEntity {
+public class RemoteConfiguration {
 
   protected Client client;
 
@@ -22,7 +22,7 @@ public class RemoteConfiguration extends AbstractEntity {
 
   @EqualsAndHashCode.Exclude protected RemoteOperatingMode remoteOperatingMode;
 
-  // protected boolean nop;
+
 
   public RemoteConfiguration(Client client, RemoteOperatingMode remoteOperatingMode) {
 

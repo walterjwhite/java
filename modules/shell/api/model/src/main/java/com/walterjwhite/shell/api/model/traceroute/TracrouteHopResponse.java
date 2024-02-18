@@ -1,6 +1,6 @@
 package com.walterjwhite.shell.api.model.traceroute;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
+
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.*;
 
@@ -9,11 +9,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @PersistenceCapable
-public class TracrouteHopResponse extends AbstractEntity {
+public class TracrouteHopResponse {
 
   protected int index;
 
-  @EqualsAndHashCode.Exclude protected double responseTime; // in ms
+  @EqualsAndHashCode.Exclude protected double responseTime; 
 
   protected TracerouteHop tracerouteHop;
 }

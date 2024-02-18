@@ -1,6 +1,6 @@
 package com.walterjwhite.identity.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractUUIDEntity;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.jdo.annotations.PersistenceCapable;
@@ -10,7 +10,7 @@ import lombok.ToString;
 @Data
 @ToString(doNotUseGetters = true)
 @PersistenceCapable
-public class Session extends AbstractUUIDEntity {
+public class Session {
 
   protected LocalDateTime startDateTime;
 

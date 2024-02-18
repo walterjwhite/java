@@ -13,11 +13,12 @@ import lombok.Getter;
 import org.junit.jupiter.api.extension.*;
 import org.reflections.Reflections;
 
-// 1. automatically handles setting up test application stuff (test application instance, test
-// application properties (test property source))
-// 2. ensure application properly starts
-// 3. provides benchmarking facility (outside of scope)
-// see: CLIApplicationHelper
+
+
+
+
+
+
 @Getter
 public class TestApplicationRunner extends ApplicationInstance
     implements Extension,
@@ -27,8 +28,8 @@ public class TestApplicationRunner extends ApplicationInstance
         BeforeEachCallback,
         AfterEachCallback,
         ParameterResolver {
-  //  protected final Reflections reflections = Reflections.collect();
-  //  protected transient ApplicationInstance testApplicationInstance;
+
+
   protected final PropertyValuePair[] propertyValuePairs;
   protected final Class testClass;
 
@@ -45,29 +46,32 @@ public class TestApplicationRunner extends ApplicationInstance
     this.testClass = testClass;
   }
 
-  //  public void run() throws Exception {
-  //    final SecretService secretService = /*CommandLineUtil.getSecretService(reflections)*/
-  //        new DefaultSecretService();
-  //    final Injector injector = getInjector();
-  //    testApplicationInstance =
-  //        new ApplicationInstance(
-  //            reflections,
-  //            new DefaultPropertyManager(
-  //                new DefaultPropertyNameLookupService(), reflections, secretService),
-  //            new ServiceManager(reflections, injector),
-  //            secretService,
-  //            injector,
-  //            new ApplicationSession(
-  //                new TestApplicationIdentifier(testClass), null, LocalDateTime.now()));
-  //    ApplicationHelper.setApplicationInstance(testApplicationInstance);
-  //    testApplicationInstance.initialize();
-  //  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   protected void doRun() throws Exception {
+    
   }
 
   protected PropertyValuePair[] getTestPropertyProvider()
-      throws InstantiationException, IllegalAccessException, NoSuchMethodException,
+      throws InstantiationException,
+          IllegalAccessException,
+          NoSuchMethodException,
           InvocationTargetException {
     return ((UseTestPropertyProvider) testClass.getAnnotation(UseTestPropertyProvider.class))
         .value()
@@ -76,16 +80,16 @@ public class TestApplicationRunner extends ApplicationInstance
         .getTestProperties();
   }
 
-  //  protected Injector getInjector()
-  //      throws IllegalAccessException, InstantiationException, NoSuchMethodException,
-  //          InvocationTargetException {
-  //    return reflections
-  //        .getSubTypesOf(Injector.class)
-  //        .iterator()
-  //        .next()
-  //        .getDeclaredConstructor()
-  //        .newInstance();
-  //  }
+
+
+
+
+
+
+
+
+
+
 
   @Override
   public void afterAll(ExtensionContext context) {}
@@ -96,7 +100,7 @@ public class TestApplicationRunner extends ApplicationInstance
     Method testMethod = context.getRequiredTestMethod();
     Throwable testException = context.getExecutionException().orElse(null);
 
-    // getTestContextManager(context).afterTestMethod(testInstance, testMethod, testException);
+
   }
 
   @Override
@@ -107,7 +111,7 @@ public class TestApplicationRunner extends ApplicationInstance
     Object testInstance = context.getRequiredTestInstance();
     Method testMethod = context.getRequiredTestMethod();
 
-    // getTestContextManager(context).beforeTestMethod(testInstance, testMethod);
+
   }
 
   @Override

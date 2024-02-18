@@ -4,13 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.datastore</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.datastore.modules</groupId>
   <artifactId>jdbc-run</artifactId>
-  <version>0.2.0</version>
   <packaging>pom</packaging>
-
   <modules>
     <module>impl</module>
     <module>modules</module>

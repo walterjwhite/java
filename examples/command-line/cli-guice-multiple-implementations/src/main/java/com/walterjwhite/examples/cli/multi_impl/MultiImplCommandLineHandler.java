@@ -9,10 +9,10 @@ public class MultiImplCommandLineHandler implements CommandLineHandler {
 
   @Inject
   public MultiImplCommandLineHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
+
       @Primary ParentService primaryParentService,
       @Secondary ParentService secondaryParentService) {
-    //    super(shutdownTimeoutInSeconds);
+
     this.primaryParentService = primaryParentService;
     this.secondaryParentService = secondaryParentService;
   }

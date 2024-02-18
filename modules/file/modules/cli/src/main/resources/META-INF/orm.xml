@@ -3,8 +3,6 @@
   <persistence-unit-metadata>
     <persistence-unit-defaults>
       <entity-listeners>
-        <!-- NOT currently used, just storing tokens, so I really can't do much with that yet -->
-        <!--<entity-listener class="com.walterjwhite.datastore.listener.AbstractJPAEntityListener" />-->
       </entity-listeners>
     </persistence-unit-defaults>
   </persistence-unit-metadata>

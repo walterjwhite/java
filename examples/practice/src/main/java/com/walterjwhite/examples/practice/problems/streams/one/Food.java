@@ -7,6 +7,5 @@ import lombok.ToString;
 @Data
 public final class Food {
   protected final String name;
-  @ToString.Exclude
-  protected final int calories;
+  @ToString.Exclude protected final int calories;
 }

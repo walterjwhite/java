@@ -13,7 +13,7 @@ import microsoft.exchange.webservices.data.property.complex.AttachmentCollection
 import microsoft.exchange.webservices.data.property.complex.FileAttachment;
 import org.apache.commons.io.IOUtils;
 
-public class AbstractExchangeService {
+public abstract class AbstractExchangeService {
   protected final ExchangeService exchangeService;
   protected final FileStorageService fileStorageService;
 
@@ -25,16 +25,12 @@ public class AbstractExchangeService {
 
   protected void getAttachments(Item item) throws Exception {
 
-    /*
-    item.getDateTimeSent()
-            created
-                    updated
-    */
+    
     if (hasAttachments(item)) {
-      // item.getAllowedResponseActions();
+
 
       final AttachmentCollection attachments = item.getAttachments();
-      // LOGGER.info("attachments:" + attachments.getCount());
+
 
       for (Attachment attachment : attachments.getItems()) {
         com.walterjwhite.file.api.model.File file = getAttachment(attachment);
@@ -60,14 +56,14 @@ public class AbstractExchangeService {
 
             com.walterjwhite.file.api.model.File file = feos.getFile();
             file.withFilename(fileAttachment.getName());
-            // file.withExtension();
-            //        final int index = fileAttachment.getName().lastIndexOf(".");
-            //        final String extension;
-            //        if (index >= 0) {
-            //          extension = fileAttachment.getName().substring(index + 1);
-            //        } else {
-            //          extension = "";
-            //        }
+
+
+
+
+
+
+
+
 
             return file;
           }

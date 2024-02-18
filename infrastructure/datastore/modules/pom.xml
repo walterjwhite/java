@@ -4,28 +4,17 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure</groupId>
     <artifactId>datastore</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.datastore</groupId>
   <artifactId>modules</artifactId>
-  <version>0.2.0</version>
   <packaging>pom</packaging>
-
   <modules>
-    <!--<module>auto-create</module>-->
-    <!--<module>jpa-event-listener</module>-->
-    <!--<module>index</module>-->
     <module>jdbc</module>
     <module>jdbc-run</module>
-    <!--<module>jpa-ddl</module>-->
-    <!--<module>jpa-repository</module>-->
-    <!--<module>jpa-event-listener-bundler</module>-->
+    <module>hikari</module>
   </modules>
   <dependencies>
-    <dependency>
-      <groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>
-      <artifactId>model</artifactId>
-      <version>0.2.0</version>
-    </dependency>
+
   </dependencies>
 </project>

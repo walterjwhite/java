@@ -7,20 +7,22 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum SpringApplicationEnvironmentMapping {
-  Development(ApplicationEnvironment.Development),
-  Testing(ApplicationEnvironment.Testing),
-  Production(ApplicationEnvironment.Production);
+    Development(ApplicationEnvironment.Development),
+    Testing(ApplicationEnvironment.Testing),
+    Production(ApplicationEnvironment.Production);
 
-  private final ApplicationEnvironment applicationEnvironment;
+    private final ApplicationEnvironment applicationEnvironment;
 
-  public static SpringApplicationEnvironmentMapping getFromApplicationEnvironment(
-      ApplicationEnvironment applicationEnvironment) {
-    for (final SpringApplicationEnvironmentMapping springApplicationEnvironmentMapping : values()) {
-      if (springApplicationEnvironmentMapping
-          .getApplicationEnvironment()
-          .equals(applicationEnvironment)) return springApplicationEnvironmentMapping;
+    public static SpringApplicationEnvironmentMapping getFromApplicationEnvironment(
+            ApplicationEnvironment applicationEnvironment) {
+        for (final SpringApplicationEnvironmentMapping springApplicationEnvironmentMapping : values()) {
+            if (springApplicationEnvironmentMapping
+                    .getApplicationEnvironment()
+                    .equals(applicationEnvironment)) {
+                return springApplicationEnvironmentMapping;
+            }
+        }
+
+        throw new IllegalArgumentException(applicationEnvironment + " is not currently mapped.");
     }
-
-    throw new IllegalArgumentException(applicationEnvironment + " is not currently mapped.");
-  }
 }

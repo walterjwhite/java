@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.reflections.Reflections;
 
+
 @Getter
 @RequiredArgsConstructor
 public class DefaultPropertyManager implements PropertyManager {
@@ -45,6 +46,10 @@ public class DefaultPropertyManager implements PropertyManager {
 
   @Override
   public void set(Class<? extends ConfigurableProperty> configurableProperty, String value) {
+    if(value == null) {
+      return;
+    }
+
     propertySourceManager.set(configurableProperty, value);
   }
 

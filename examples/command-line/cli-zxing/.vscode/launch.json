@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "hostName": "localhost",
+      "mainClass": "com.walterjwhite.inject.cli.CLIApplication",
+      "name": "Debug (Attach)",
+      "port": 5005,
+      "projectName": "cli",
+      "request": "attach",
+      "type": "java"
+    }
+  ],
+  "version": "0.2.0"
+}

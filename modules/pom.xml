@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.walterjwhite</groupId>
     <artifactId>java</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java</groupId>
   <artifactId>modules</artifactId>
@@ -26,18 +26,15 @@
     <module>index</module>
     <module>ip</module>
     <module>keep-alive</module>
-    <!--<module>machine-learning</module>-->
     <module>person</module>
     <module>pipe</module>
     <module>print</module>
     <module>queue</module>
     <module>remote</module>
-    <!--    <module>robotics</module>-->
     <module>serialization</module>
     <module>shell</module>
     <module>ssh</module>
     <module>template</module>
-    <!-- TODO: rename this to interface or something -->
     <module>web-service</module>
   </modules>
 </project>

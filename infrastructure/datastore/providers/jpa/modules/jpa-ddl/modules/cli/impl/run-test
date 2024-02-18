@@ -1,3 +1,0 @@
-#!/bin/bash
-
-java -jar target/jdbc-run-cli-0.0.15-SNAPSHOT-shaded.jar -JDBCDriverClassName org.h2.Driver -RunSQLFile /tmp/test-load -JDBCDriverPath ~/.m2/repository/com/h2database/h2/1.4.197/h2-1.4.197.jar -JDBCUrl target/db

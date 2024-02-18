@@ -1,17 +1,17 @@
 package com.walterjwhite.shell.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractUUIDEntity;
+
 import com.walterjwhite.shell.api.enumeration.MountAction;
 import java.util.ArrayList;
 import java.util.List;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.*;
 
-@ToString(doNotUseGetters = true) // (callSuper = true)
+@ToString(doNotUseGetters = true) 
 @Getter
 @Setter
 @PersistenceCapable
-public class MountCommand extends AbstractUUIDEntity implements MultipleShellCommandable {
+public class MountCommand implements MultipleShellCommandable {
 
   protected String rootPath;
 

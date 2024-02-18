@@ -7,7 +7,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.glassfish.jersey.client.ClientConfig;
 
-// this doesn't produce JSON
+
 @Deprecated
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class WeatherRequestBuilder {

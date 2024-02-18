@@ -14,7 +14,7 @@ public class TailFileChangeListener {
   public TailFileChangeListener(File file, OutputStream outputStream) throws IOException {
     this.file = file;
     this.fileReader = new FileReader(file);
-    // jump to the end of the file
+
     this.fileReader.skip(file.length());
     this.outputStream = outputStream;
   }

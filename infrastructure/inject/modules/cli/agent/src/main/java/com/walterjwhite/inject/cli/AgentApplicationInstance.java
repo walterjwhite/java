@@ -2,6 +2,7 @@ package com.walterjwhite.inject.cli;
 
 import com.walterjwhite.file.modules.resources.JarListUtils;
 import com.walterjwhite.file.modules.resources.JarReadUtils;
+import com.walterjwhite.infrastructure.inject.core.ApplicationArgumentAware;
 import com.walterjwhite.infrastructure.inject.core.ApplicationInstance;
 import com.walterjwhite.infrastructure.inject.core.Injector;
 import com.walterjwhite.infrastructure.inject.core.service.ServiceManager;
@@ -26,16 +27,18 @@ import net.bytebuddy.asm.Advice;
 import net.bytebuddy.matcher.ElementMatchers;
 import org.reflections.Reflections;
 
-// command-line, the remaining, unprocessed arguments are to be passed to the handler)
-// removed because it isn't used currently and may impact dependencies
+
+
+
 @Slf4j
 @Getter
-public class AgentApplicationInstance extends ApplicationInstance {
+public class AgentApplicationInstance extends ApplicationInstance implements ApplicationArgumentAware {
   protected final Instrumentation instrumentation;
-  protected final String arguments;
+  protected final String[] arguments;
 
   protected final transient AgentBuilder.Default agentBuilder = new AgentBuilder.Default();
 
+  
   protected final transient SerializationService serializationService = new Snakeyaml();
 
   public AgentApplicationInstance(
@@ -47,14 +50,19 @@ public class AgentApplicationInstance extends ApplicationInstance {
       Instrumentation instrumentation,
       String arguments) {
     super(reflections, propertyManager, serviceManager, secretService, injector);
-    this.arguments = arguments;
+    if(arguments != null) {
+      this.arguments = new String[]{arguments};
+    } else {
+      this.arguments = null;
+    }
+
     this.instrumentation = instrumentation;
   }
 
   @Override
   protected void initialize() throws Exception {
-    // Recall that the premain runs before main
-    // The actual application instance will override this later
+
+
     super.initialize();
 
     try {
@@ -96,7 +104,7 @@ public class AgentApplicationInstance extends ApplicationInstance {
       final Method initMethod)
       throws IOException, URISyntaxException {
     try {
-      for (final String resource : JarListUtils.getFiles(transformer.pattern())) {
+      for (final String resource : JarListUtils.getFiles(transformerClass, transformer.pattern())) {
         final TransformInstanceConfiguration configuration =
             serializationService.deserialize(
                 JarReadUtils.getFileFromResourceAsStream(resource),

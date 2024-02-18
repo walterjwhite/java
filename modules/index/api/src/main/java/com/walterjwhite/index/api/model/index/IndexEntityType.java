@@ -1,7 +1,7 @@
 package com.walterjwhite.index.api.model.index;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
-import com.walterjwhite.datastore.api.model.entity.EntityType;
+
+
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,9 +13,9 @@ import lombok.ToString;
 @PersistenceCapable
 @AllArgsConstructor
 @NoArgsConstructor
-public class IndexEntityType extends AbstractEntity {
+public class IndexEntityType {
 
   protected Index index;
 
-  protected EntityType entityType;
+
 }

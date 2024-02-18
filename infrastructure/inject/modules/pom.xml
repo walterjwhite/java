@@ -4,23 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure</groupId>
     <artifactId>inject</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
   <artifactId>modules</artifactId>
   <packaging>pom</packaging>
   <modules>
     <module>cli</module>
-    <module>implementer</module>
     <module>web</module>
     <module>test</module>
-    <module>provider</module>
   </modules>
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
       <artifactId>core</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

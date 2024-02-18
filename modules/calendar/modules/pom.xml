@@ -4,27 +4,19 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>calendar</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.calendar</groupId>
   <artifactId>modules</artifactId>
   <packaging>pom</packaging>
-
-
   <modules>
     <module>exchange</module>
   </modules>
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.calendar.api</groupId>
-      <artifactId>service</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.walterjwhite.java.modules.calendar</groupId>
-      <artifactId>impl</artifactId>
-      <version>0.2.0</version>
-      <scope>runtime</scope>
+      <artifactId>model</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

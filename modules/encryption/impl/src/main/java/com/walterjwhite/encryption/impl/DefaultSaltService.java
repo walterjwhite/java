@@ -3,8 +3,8 @@ package com.walterjwhite.encryption.impl;
 import com.walterjwhite.encryption.property.EncryptionSaltLength;
 import com.walterjwhite.encryption.service.SaltService;
 import com.walterjwhite.property.api.annotation.Property;
-import java.security.SecureRandom;
 import jakarta.inject.Inject;
+import java.security.SecureRandom;
 
 public class DefaultSaltService implements SaltService {
   protected final int saltLength;

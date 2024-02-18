@@ -1,0 +1,8 @@
+this does not run, I think there must be multiple steps to get this to run, see transform.replace_main/1.yaml configuration, it appears to configure a TransformInstanceConfiguration which is used in AgentApplicationInstance
+I think the corresponding agent must be provided on the command-line
+this could be useful for altering the runtime behavior of an application whilst retaining the source
+
+-javaagent *MUST* go before -jar
+java21  -javaagent:target/agent-replace-main-0.3.6-SNAPSHOT.jar -jar target/agent-replace-main-0.3.6-SNAPSHOT.jar > .log 2>&1
+
+build && java21 -javaagent:target/agent-replace-main-0.3.6-SNAPSHOT.jar -jar target/agent-replace-main-0.3.6-SNAPSHOT.jar > .log 2>&1

@@ -4,12 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.file</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.file.providers</groupId>
   <artifactId>local</artifactId>
   <packaging>pom</packaging>
-
   <modules>
     <module>impl</module>
   </modules>

@@ -18,13 +18,13 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 @ToString(doNotUseGetters = true)
 public class EmailAccountRules implements Serializable {
-  // protected String folderName;
+
   protected CleanupType cleanupType;
   protected PrivateEmailAccount emailAccount;
   protected String folderName;
   @ToString.Exclude protected List<EmailMatcherRule> emailMatcherRules;
 
-  //  protected transient EmailOrganizer emailOrganizer;
+
 
   @SneakyThrows
   public void process() {
@@ -41,6 +41,7 @@ public class EmailAccountRules implements Serializable {
       }
     }
 
+    
     forkJoinWork.waitForAll(1, TimeUnit.MINUTES);
   }
 }

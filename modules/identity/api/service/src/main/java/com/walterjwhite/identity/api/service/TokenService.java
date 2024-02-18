@@ -1,7 +1,7 @@
 package com.walterjwhite.identity.api.service;
 
 public interface TokenService {
-  String get(final String helpText) throws InterruptedException;
+  String get(final String helpText) throws Exception;
 
   default void onSuccess(final String message, final Object... arguments) throws Exception {}
 

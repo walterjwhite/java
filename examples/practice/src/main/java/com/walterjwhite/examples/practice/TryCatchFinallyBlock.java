@@ -11,8 +11,5 @@ public class TryCatchFinallyBlock {
 
   public static void tryCatchHandler() {}
 
-  public static void main(final String[] args) throws Exception {
-    System.out.println(throwsException("test"));
-    System.out.println(throwsException("ERROR"));
-  }
+  public static void main(final String[] args) throws Exception {}
 }

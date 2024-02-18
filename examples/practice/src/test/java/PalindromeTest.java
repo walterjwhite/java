@@ -3,6 +3,7 @@ import com.walterjwhite.examples.practice.problems.organize.palindrome.Palindrom
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+
 public class PalindromeTest {
   protected final Palindrome palindrome = new PalindromeA();
 

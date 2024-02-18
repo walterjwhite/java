@@ -9,8 +9,8 @@ public class KryoConfigurationProvider implements Provider<KryoConfiguration> {
   @Inject
   public KryoConfigurationProvider() {}
 
-  //    kryo.setDefaultSerializer(AnotherGenericSerializer.class);
-  //    kryo.addDefaultSerializer(List.class, CollectionSerializer.class);
+
+
 
   @Override
   public KryoConfiguration get() {

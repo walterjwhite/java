@@ -4,17 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.file</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.file.providers</groupId>
   <artifactId>criteria</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.datastore.providers.jpa.modules</groupId>
       <artifactId>criteria</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

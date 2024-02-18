@@ -1,7 +1,7 @@
 package com.walterjwhite.formatting;
 
 import java.time.Duration;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class DateTimeFormatterTest {
   @Test
@@ -35,7 +35,5 @@ public class DateTimeFormatterTest {
     print("runtime:" + (end - start));
   }
 
-  private static void print(String s) {
-    System.out.println(s);
-  }
+  private static void print(String s) {}
 }

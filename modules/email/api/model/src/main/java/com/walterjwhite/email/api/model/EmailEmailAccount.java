@@ -1,6 +1,7 @@
 package com.walterjwhite.email.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
+
+import com.walterjwhite.datastore.jdo.model.AbstractEntity;
 import com.walterjwhite.email.api.enumeration.EmailRecipientType;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import lombok.ToString;
 @Data
 @ToString(doNotUseGetters = true)
 @PersistenceCapable
-public class EmailEmailAccount extends AbstractEntity {
+public class EmailEmailAccount  extends AbstractEntity {
 
   protected EmailAccount emailAccount;
 

@@ -7,8 +7,8 @@ import com.walterjwhite.email.organization.api.configuration.rule.EmailMatcherRu
 import com.walterjwhite.index.api.service.IndexMaintenanceService;
 import com.walterjwhite.index.api.service.IndexService;
 import com.walterjwhite.infrastructure.inject.core.service.StartupAware;
-import java.io.IOException;
 import jakarta.inject.Inject;
+import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -32,7 +32,7 @@ public class IndexAction implements Action, StartupAware {
       Email email)
       throws Exception {
 
-    indexService.index(email);
+
   }
 
   @Override

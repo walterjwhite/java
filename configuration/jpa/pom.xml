@@ -4,10 +4,8 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>configuration</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
-
-
   <groupId>com.walterjwhite.java.configuration</groupId>
   <artifactId>jpa</artifactId>
   <packaging>pom</packaging>
@@ -15,33 +13,14 @@
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>hikari-jdbc-connection-pool</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>hibernate-hikari</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
   </dependencies>
-  <!--  <profiles>-->
-  <!--    <profile>-->
-  <!--      <id>debug</id>-->
-  <!--      <activation>-->
-  <!--        &lt;!&ndash;        <file>&ndash;&gt;-->
-  <!--        &lt;!&ndash;          <exists>.debug</exists>&ndash;&gt;-->
-  <!--        &lt;!&ndash;        </file>&ndash;&gt;-->
-  <!--        <activeByDefault>true</activeByDefault>-->
-  <!--      </activation>-->
-  <!--      <dependencies>-->
-  <!--        <dependency>-->
-  <!--          <groupId>com.walterjwhite.java.dependencies</groupId>-->
-  <!--          <artifactId>p6spy</artifactId>-->
-  <!--          <version>0.0.15-SNAPSHOT</version>-->
-  <!--          <type>pom</type>-->
-  <!--        </dependency>-->
-  <!--      </dependencies>-->
-  <!--    </profile>-->
-  <!--  </profiles>-->
 </project>

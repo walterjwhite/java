@@ -16,9 +16,9 @@ public class ServiceManager {
   protected final Reflections reflections;
   protected final Injector injector;
 
-  // @TODO: consider re-instating @ServiceStopTimeout.class
-  //  @Property(ServiceStopTimeout.class)
-  // protected final int serviceStopTimeout = 30;
+  
+
+
 
   public void initialize() {
     getStartupAwareServices().forEach(service -> doStartService(service));

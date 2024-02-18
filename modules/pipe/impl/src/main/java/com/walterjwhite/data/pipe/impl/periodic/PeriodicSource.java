@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.PriorityBlockingQueue;
 
-/** For sources that return output once, we must execute them multiple times to produce output. */
+
 public class PeriodicSource<SourceRecordType extends Serializable>
     extends AbstractSource<PeriodicRecord<SourceRecordType>, PeriodicSourceConfiguration>
     implements Runnable {
@@ -21,10 +21,11 @@ public class PeriodicSource<SourceRecordType extends Serializable>
       new PriorityBlockingQueue<>();
   protected final QueueIterator iterator;
   protected final ListeningScheduledExecutorService executorService;
+  
   protected ListenableScheduledFuture future;
   protected Source source;
 
-  //  @Inject
+
   protected PeriodicSource(ListeningScheduledExecutorService executorService) {
     this.executorService = executorService;
     iterator = new QueueIterator(queue);
@@ -35,11 +36,7 @@ public class PeriodicSource<SourceRecordType extends Serializable>
     return iterator;
   }
 
-  /**
-   * Collect all of the results
-   *
-   * @return the results from the current execution.
-   */
+  
   protected List<SourceRecordType> doRunOnce() {
     List<SourceRecordType> data = new ArrayList<>();
 

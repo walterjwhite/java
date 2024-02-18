@@ -4,13 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.email.modules.organization</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.email.modules.organization.modules</groupId>
   <artifactId>cli</artifactId>
   <packaging>pom</packaging>
-
-
   <modules>
     <module>impl</module>
   </modules>
@@ -18,7 +16,7 @@
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.modules.cli</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

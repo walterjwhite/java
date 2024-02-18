@@ -5,6 +5,7 @@ import com.walterjwhite.email.api.model.PrivateEmailAccount;
 import com.walterjwhite.email.organization.api.Action;
 import com.walterjwhite.email.organization.api.configuration.rule.EmailMatcherRule;
 
+
 public class IndexActionSetup implements Action {
   @Override
   public void execute(
@@ -12,8 +13,8 @@ public class IndexActionSetup implements Action {
       final PrivateEmailAccount privateEmailAccount,
       EmailMatcherRule emailMatcherRule,
       final Email email) {
-    //    final ElasticSearchConfiguration elasticSearchConfiguration = null;
-    //
-    //    new CreateIndexCommand<>(elasticSearchConfiguration, Email.class).execute();
+
+
+
   }
 }

@@ -1,0 +1,4 @@
+The intent of this module was to make web browser scripts appear to be coming from a human by delaying interations with a website.
+Those interactions could be mouse and keyboard interactions, finding, and selecting elements.
+
+It is not intended to be used as a scheduler for which it would be more efficient and precise to just use a ScheduledExecutorService.

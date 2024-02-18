@@ -6,10 +6,4 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(onConstructor_ = @Inject)
 public class CLIDaemonExampleCommandLineHandler implements DaemonCommandLineHandler {
-
-  //  @Inject
-  //  public CLIDaemonExampleCommandLineHandler(
-  //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds) {
-  //    super(shutdownTimeoutInSeconds);
-  //  }
 }

@@ -1,7 +1,8 @@
 package com.walterjwhite.web.jetty;
 
-//import org.eclipse.jetty.server.handler.HandlerCollection;
+import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.server.HandlerContainer;
 
 public interface JettyHandler {
-  //void setup(final HandlerCollection handlerCollection);
+  Handler setup(final HandlerContainer parent);
 }

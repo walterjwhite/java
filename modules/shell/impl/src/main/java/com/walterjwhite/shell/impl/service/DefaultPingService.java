@@ -10,9 +10,9 @@ import com.walterjwhite.shell.api.model.ping.PingResponse;
 import com.walterjwhite.shell.api.service.PingService;
 import com.walterjwhite.shell.api.service.ShellExecutionService;
 import com.walterjwhite.shell.impl.property.PingTimeout;
+import jakarta.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.inject.Inject;
 
 public class DefaultPingService extends AbstractSingleShellCommandService<PingRequest>
     implements PingService {
@@ -29,20 +29,20 @@ public class DefaultPingService extends AbstractSingleShellCommandService<PingRe
     arguments.add("ping");
     if (pingRequest.getCount() > 0) {
       arguments.add("-c");
-      arguments.add(Integer.toString(pingRequest.getCount())); // -C
+      arguments.add(Integer.toString(pingRequest.getCount())); 
     } else {
       arguments.add("-c");
-      arguments.add("1"); // -C
+      arguments.add("1"); 
     }
 
     if (pingRequest.getInterval() > 0) {
       arguments.add("-i");
-      arguments.add(Integer.toString(pingRequest.getInterval())); // -C
+      arguments.add(Integer.toString(pingRequest.getInterval())); 
     }
 
     if (pingRequest.getTimeout() > 0) {
       arguments.add("-W");
-      arguments.add(Integer.toString(pingRequest.getTimeout())); // -W
+      arguments.add(Integer.toString(pingRequest.getTimeout())); 
     }
 
     arguments.add(pingRequest.getNetworkDiagnosticTest().getFqdn());
@@ -60,7 +60,7 @@ public class DefaultPingService extends AbstractSingleShellCommandService<PingRe
           pingRequest
               .getPingResponses()
               .addAll(getPingStatistics(pingRequest, pingRequest.getShellCommand()));
-          // return ((PingRequest) repository.merge(pingRequest));
+
           return;
         }
       }
@@ -68,18 +68,18 @@ public class DefaultPingService extends AbstractSingleShellCommandService<PingRe
       throw new RuntimeException("Unexpected output, did NOT find ping statistics header");
     } else if (pingRequest.getShellCommand().getReturnCode() == 2) {
       pingRequest.setPingResponseType(PingResponseType.UnknownHost);
-      //      return ((PingRequest) repository.merge(pingRequest));
+
       return;
     } else if (pingRequest.getShellCommand().getReturnCode() == 1) {
 
       pingRequest.setPingResponseType(PingResponseType.NoResponse);
-      //      return ((PingRequest) repository.merge(pingRequest));
+
       return;
     } else {
       handleOther(pingRequest);
-      //      return ((PingRequest) repository.merge(pingRequest));
-      // throw new RuntimeException("Something bad happened."));
-      // return(new PingResponse());
+
+
+
 
       return;
     }

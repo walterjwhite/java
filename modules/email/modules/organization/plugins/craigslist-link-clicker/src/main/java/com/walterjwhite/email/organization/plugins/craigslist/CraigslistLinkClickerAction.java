@@ -5,18 +5,18 @@ import com.walterjwhite.email.api.model.PrivateEmailAccount;
 import com.walterjwhite.email.organization.api.Action;
 import com.walterjwhite.email.organization.api.configuration.rule.EmailMatcherRule;
 import com.walterjwhite.property.api.annotation.Property;
+import jakarta.inject.Inject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import jakarta.inject.Inject;
 import lombok.Data;
 import lombok.ToString;
 import org.apache.commons.io.IOUtils;
 
 @Data
 @ToString(doNotUseGetters = true)
-// @RequiredArgsConstructor(onConstructor_ = {@Inject})
+
 public class CraigslistLinkClickerAction implements Action {
   protected final String craigslistLinkPath;
   protected final String craigslistLinkPattern;
@@ -35,12 +35,12 @@ public class CraigslistLinkClickerAction implements Action {
       final PrivateEmailAccount privateEmailAccount,
       EmailMatcherRule emailMatcherRule,
       Email email) {
-    // migrate from Java to GO
+
     writeLink(getLinkAddress(email));
   }
 
   protected String getLinkAddress(final Email email) {
-    // get link in email body (after being matched by a rule)
+
     String link =
         Arrays.stream(email.getBody().split("\n"))
             .filter(line -> line != null && line.contains(craigslistLinkPattern))

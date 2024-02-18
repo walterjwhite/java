@@ -3,7 +3,7 @@ package com.walterjwhite.remote.impl.service.database;
 public class DataRow {
 
   protected final Object[] columns;
-  // retrieved via ORA_ROWSCN
+
   protected final long lastUpdated;
 
   public DataRow(final Object[] columns, final long lastUpdated) {

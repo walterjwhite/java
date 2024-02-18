@@ -8,10 +8,14 @@ public class TestServiceMessageHandlerService {
 
   public static void main(final String[] arguments) {
     final ServiceMessage serviceMessage =
-        new ServiceMessage((Client) null, -1, new Service("minidlna"), ServiceAction.Restart);
-    //    final ServiceMessageHandlerService serviceMessageHandlerService =
-    //        new ServiceMessageHandlerService();
-    //
-    //    serviceMessageHandlerService.process(serviceMessage);
+        new ServiceMessage();
+    serviceMessage.setService(new Service());
+    serviceMessage.setServiceAction(ServiceAction.Restart);
+
+
+
+
+
+
   }
 }

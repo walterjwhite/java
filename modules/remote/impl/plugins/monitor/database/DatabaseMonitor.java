@@ -17,30 +17,21 @@ import java.util.ArrayList;
 import java.util.List;
 import org.yaml.snakeyaml.Yaml;
 
-/** result can be: a single value a row with many columns (and column headers) */
+
 @Data
 @ToString(doNotUseGetters = true)
 public class DatabaseMonitor extends AbstractMonitor<DataTable> {
   protected final Connection connection;
 
-  /** SQL file containing the query to run */
+  
   protected String queryFile;
 
-  /** Parameters to the query above. */
+  
   protected String[] parameters;
 
-  /*
-  protected DatabaseMonitor(int refreshInterval, final String[] columnNames) throws ClassNotFoundException, SQLException, IOException {
-      super(refreshInterval, new DataTable(columnNames));
+  
 
-      configuration.load(DatabaseMonitor.class.getResourceAsStream("database.properties"));
-
-      Class.forName(configuration.getProperty("DATABASE_DRIVER"));
-      connection = DriverManager.getConnection(configuration.getProperty("DATABASE_URI"), configuration.getProperty("DATABASE_USERNAME"), configuration.getProperty("DATABASE_PASSWORD"));
-
-  }
-   */
-
+  
   public DatabaseMonitor() throws ClassNotFoundException, SQLException, IOException {
     super(new DataTable());
 
@@ -58,6 +49,7 @@ public class DatabaseMonitor extends AbstractMonitor<DataTable> {
   protected PreparedStatement setup() throws SQLException, IOException {
     final PreparedStatement statement = connection.prepareStatement(getQuery());
 
+    
     if (parameters != null) {
       for (int i = 0; i < parameters.length; i++) {
         statement.setString(i + 1, parameters[i]);
@@ -79,7 +71,7 @@ public class DatabaseMonitor extends AbstractMonitor<DataTable> {
         result.clear();
 
         while (resultSet.next()) {
-          // final String[] data = new String[fields.length];
+
           final List<String> row = new ArrayList<String>();
           for (int i = 0; i < resultSet.getMetaData().getColumnCount(); i++) {
             row.add(resultSet.getString(i + 1));
@@ -95,7 +87,7 @@ public class DatabaseMonitor extends AbstractMonitor<DataTable> {
 
   protected void setupColumnNames(final ResultSet resultSet) throws SQLException {
     if (result.columnNames == null) {
-      // set the column names
+
       final List<String> columnNames = new ArrayList<String>();
 
       for (int i = 0; i < resultSet.getMetaData().getColumnCount(); i++) {

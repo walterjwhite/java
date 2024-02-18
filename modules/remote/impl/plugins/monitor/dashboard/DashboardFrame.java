@@ -28,12 +28,12 @@ public class DashboardFrame extends JFrame implements Runnable {
     setTitle("Dashboard");
     setSize(800, 800);
     setLocation(0, 0);
-    // final int size = getRows(monitors.size());
-    // setLayout(new GridLayout(size, monitors.size() / size + 1));
+
+
 
     final JPanel mainContainer = new JPanel();
     mainContainer.setLayout(new BoxLayout(mainContainer, BoxLayout.X_AXIS));
-    // final JScrollPane mainContainer = new JScrollPane();
+
 
     add(mainContainer);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,12 +64,7 @@ public class DashboardFrame extends JFrame implements Runnable {
     throw new RuntimeException("Result is not supported:" + monitor.getResult());
   }
 
-  /**
-   * TODO: make table sortable / filterable
-   *
-   * @param monitor
-   * @return
-   */
+  
   protected Component addTable(final Container container, final AbstractMonitor monitor) {
     final JTable jtable = new JTable();
     jtable.setAutoCreateRowSorter(true);
@@ -102,20 +97,7 @@ public class DashboardFrame extends JFrame implements Runnable {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-      /*
-              final TableRowSorter tableRowSorter = (TableRowSorter) table.getRowSorter();
-              final RowFilter rowFilter = tableRowSorter.setRowFilter(filter);
-
-
-      RowFilter<MyTableModel, Object> rf = null;
-      //If current expression doesn't parse, don't update.
-      try {
-          rf = RowFilter.regexFilter(filterText.getText(), 0);
-      } catch (java.util.regex.PatternSyntaxException e) {
-          return;
-      }
-      sorter.setRowFilter(rf);
-               */
+      
     }
 
     @Override
@@ -131,22 +113,7 @@ public class DashboardFrame extends JFrame implements Runnable {
     public void mouseExited(MouseEvent e) {}
   }
 
-  /*
-   protected class FilterFrame extends JFrame{
-      setTitle("Enter Filter Criteria");
-      setSize(800, 800);
-      setLocation(0, 0);
-      final int size = getRows(monitors.size());
-      setLayout(new GridLayout(size, monitors.size() / size + 1));
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-      for (final AbstractMonitor monitor : monitors) {
-          monitorComponents.add(addMonitor(monitor));
-      }
-
-      this.monitors = monitors;
-  }
-   */
+  
   protected Component addScrollingLogWindow(
       final Container container, final AbstractMonitor monitor) {
     final JTextArea jTextArea = new JTextArea(5, 30);
@@ -172,20 +139,14 @@ public class DashboardFrame extends JFrame implements Runnable {
     return (jTextArea);
   }
 
-  /*
-  public static void main(String[] args) {
-      JFrame f = new DashboardFrame();
-      f.pack();
-      f.setVisible(true);
-  }
-   */
+  
   @Override
   public void run() {
     int i = 0;
     for (final AbstractMonitor monitor : monitors) {
-      // update the table / text area
+
       if (monitor.getResult() instanceof Log) {
-        // return (addScrollingLogWindow(monitor));
+
         final JTextArea c = (JTextArea) monitorComponents.get(i);
 
         final StringBuilder buffer = new StringBuilder();

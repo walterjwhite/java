@@ -11,6 +11,7 @@ public class DirectoryCopier implements FileVisitor<Path> {
   private final Path source;
   private final Path target;
 
+  
   private final boolean validateCopiedFiles = false;
 
   private final Set<Path> existingPaths;
@@ -93,14 +94,14 @@ public class DirectoryCopier implements FileVisitor<Path> {
   protected void validateCopiedFiles(Path file, Path targetFile) {
     if (!validateCopiedFiles) return;
 
-    //        final String sourceChecksum = ChecksumUtil.sha256sum(file.toFile());
-    //        final String targetChecksum = ChecksumUtil.sha256sum(targetFile.toFile());
-    //
-    //        if (!sourceChecksum.equals(targetChecksum)) {
-    //          throw new IllegalStateException(
-    //              "source checksum: " + sourceChecksum + " does not match (target): " +
-    //   targetChecksum);
-    //        }
+
+
+
+
+
+
+
+
   }
 
   protected Path getTarget(final Path file) {

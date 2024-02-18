@@ -2,7 +2,7 @@ metrics
 
 TODO:
 1. register all meters (make reflections public static)
-2. write aspectj aspects to count metrics
+2. write aspectj advice to count metrics
     counter
     gauge
     histogram

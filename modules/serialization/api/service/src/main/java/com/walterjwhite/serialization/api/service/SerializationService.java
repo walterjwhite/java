@@ -11,10 +11,10 @@ public interface SerializationService {
 
   Serializable deserialize(InputStream inputStream) throws IOException;
 
-  <EntityType extends Serializable> EntityType deserialize(
-      InputStream inputStream, /*final Class<? extends AbstractEntity> entityClass*/
+  <EntityType> EntityType deserialize(
+      InputStream inputStream, 
       Class<EntityType> entityType)
       throws IOException;
 
-  //  HandlerType get();
+
 }

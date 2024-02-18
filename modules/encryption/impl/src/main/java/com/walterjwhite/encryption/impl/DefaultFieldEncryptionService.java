@@ -1,10 +1,11 @@
 package com.walterjwhite.encryption.impl;
 
 import com.walterjwhite.encryption.EncryptionException;
-import com.walterjwhite.encryption.enumeration.EncryptionType;
+import com.walterjwhite.encryption.enumeration.CryptoFunction;
 import com.walterjwhite.encryption.service.EncryptionService;
 import com.walterjwhite.encryption.service.FieldEncryptionService;
 import com.walterjwhite.encryption.service.SaltService;
+import jakarta.inject.Inject;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -12,7 +13,6 @@ import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
-import jakarta.inject.Inject;
 import org.apache.commons.codec.binary.Base64;
 
 public class DefaultFieldEncryptionService implements FieldEncryptionService {
@@ -34,7 +34,7 @@ public class DefaultFieldEncryptionService implements FieldEncryptionService {
   }
 
   @Override
-  public void encrypt(Object e, Field field, EncryptionType encryptionType) {
+  public void encrypt(Object e, Field field, CryptoFunction cryptoFunction) {
     try {
       final Field encryptedField =
           field.getDeclaringClass().getDeclaredField(FieldUtil.getEncryptedField(field));
@@ -43,7 +43,7 @@ public class DefaultFieldEncryptionService implements FieldEncryptionService {
 
       final String encryptedValue;
 
-      if (EncryptionType.Digest.equals(encryptionType)) {
+      if (CryptoFunction.Digest.equals(cryptoFunction)) {
         final Field saltField =
             field.getDeclaringClass().getDeclaredField(FieldUtil.getSaltField(field));
         final byte[] salt = saltService.generate();
@@ -68,8 +68,8 @@ public class DefaultFieldEncryptionService implements FieldEncryptionService {
     throw new UnsupportedOperationException("Un-implemented.");
   }
 
-  public void decrypt(Object e, Field field, EncryptionType encryptionType) throws Exception {
-    if (EncryptionType.Encrypt.equals(encryptionType)) {
+  public void decrypt(Object e, Field field, CryptoFunction cryptoFunction) throws Exception {
+    if (CryptoFunction.Encrypt.equals(cryptoFunction)) {
       final Field encryptedField =
           field.getDeclaringClass().getDeclaredField(FieldUtil.getEncryptedField(field));
 
@@ -81,7 +81,9 @@ public class DefaultFieldEncryptionService implements FieldEncryptionService {
   }
 
   protected void doDecrypt(Object e, Field field, final String value)
-      throws InvalidAlgorithmParameterException, InvalidKeyException, IOException,
+      throws InvalidAlgorithmParameterException,
+          InvalidKeyException,
+          IOException,
           IllegalAccessException {
     final ByteArrayOutputStream baos = new ByteArrayOutputStream();
     encryptionService.decrypt(new ByteArrayInputStream(Base64.decodeBase64(value)), baos);

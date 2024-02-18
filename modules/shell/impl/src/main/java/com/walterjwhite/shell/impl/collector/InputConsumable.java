@@ -31,6 +31,8 @@ public class InputConsumable implements Runnable {
         .forEach(lineRead -> consumeOutput(lineRead));
   }
 
+  
+  
   protected void consumeOutput(final String line) {
     outputCollectors.forEach(outputCollector -> outputCollector.onData(line, isError));
   }
