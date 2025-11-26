@@ -5,8 +5,6 @@ import java.util.Map;
 import lombok.Data;
 import lombok.ToString;
 
-// public record WebTargetResponse<Output extends Object>(
-//    Response response, Map rawResponse, Output parsedResponse) {}
 
 @ToString(doNotUseGetters = true)
 @Data

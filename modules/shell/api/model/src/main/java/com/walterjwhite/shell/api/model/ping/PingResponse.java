@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model.ping;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.*;
 
@@ -9,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @PersistenceCapable
-public class PingResponse extends AbstractEntity {
+public class PingResponse {
 
   protected PingRequest pingRequest;
 

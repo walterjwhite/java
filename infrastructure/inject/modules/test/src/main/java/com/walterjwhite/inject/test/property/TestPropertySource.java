@@ -7,10 +7,6 @@ import com.walterjwhite.property.impl.source.AbstractSingularPropertySource;
 import java.util.Arrays;
 import java.util.Optional;
 
-/**
- * If we provide any values for our test, those should be of the highest priority, ie. loaded last
- * to overwrite any existing values
- */
 @PropertySourceIndex(Integer.MAX_VALUE)
 public class TestPropertySource extends AbstractSingularPropertySource<ConfigurableProperty> {
 

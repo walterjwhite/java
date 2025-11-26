@@ -69,8 +69,6 @@ public enum EncryptionAlgorithm implements ConfigurableProperty {
       256,
       384,
       512);
-  // PBE ALGORITHMS:      [PBEWITHMD5ANDDES, PBEWITHMD5ANDTRIPLEDES, PBEWITHSHA1ANDDESEDE,
-  // PBEWITHSHA1ANDRC2_40]
 
   private final String algorithmName;
   private final CipherMode[] cipherModes;

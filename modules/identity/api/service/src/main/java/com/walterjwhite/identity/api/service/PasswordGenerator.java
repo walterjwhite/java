@@ -2,6 +2,7 @@ package com.walterjwhite.identity.api.service;
 
 import com.walterjwhite.identity.api.model.password.CharacterSetConfiguration;
 import com.walterjwhite.identity.api.model.password.PasswordPolicy;
+import java.util.Random;
 import org.passay.CharacterRule;
 
 public interface PasswordGenerator {
@@ -25,10 +26,10 @@ public interface PasswordGenerator {
   }
 
   private static int getLength(final PasswordPolicy passwordPolicy) {
-    return Math.round(
-        passwordPolicy.getMinimumLength()
-            + Math.round(
-                Math.random()
-                    * (passwordPolicy.getMaximumLength() - passwordPolicy.getMinimumLength())));
+    final Random random = new Random();
+    return random
+        .ints(passwordPolicy.getMinimumLength(), passwordPolicy.getMaximumLength())
+        .findFirst()
+        .getAsInt();
   }
 }

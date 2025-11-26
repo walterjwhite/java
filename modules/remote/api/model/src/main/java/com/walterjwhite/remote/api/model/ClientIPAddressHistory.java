@@ -1,6 +1,5 @@
 package com.walterjwhite.remote.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.shell.api.model.IPAddress;
 import java.time.LocalDateTime;
 import javax.jdo.annotations.PersistenceCapable;
@@ -13,7 +12,7 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
 @PersistenceCapable
-public class ClientIPAddressHistory extends AbstractEntity {
+public class ClientIPAddressHistory {
 
   protected Client client;
 

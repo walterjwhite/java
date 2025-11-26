@@ -5,7 +5,6 @@ import java.util.List;
 import lombok.Data;
 import lombok.ToString;
 
-/** TODO: support more complex data types rather than just strings. */
 @Data
 @ToString(doNotUseGetters = true)
 public class DataTable {

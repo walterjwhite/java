@@ -1,7 +1,5 @@
 package com.walterjwhite.index.api.model.index;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
-import com.walterjwhite.datastore.api.model.entity.EntityType;
 import com.walterjwhite.index.api.enumeration.IndexAction;
 import java.io.Serializable;
 import javax.jdo.annotations.PersistenceCapable;
@@ -12,10 +10,9 @@ import lombok.*;
 @PersistenceCapable
 @AllArgsConstructor
 @NoArgsConstructor
-public class IndexActivity<ResponseType> extends AbstractEntity {
+public class IndexActivity<ResponseType> {
   protected Index index;
 
-  protected EntityType entityType;
 
   protected IndexAction indexAction;
 

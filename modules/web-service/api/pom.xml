@@ -4,12 +4,8 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>web-service</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.web-service</groupId>
   <artifactId>api</artifactId>
-  <version>0.2.0</version>
-
-
-
 </project>

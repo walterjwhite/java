@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat — WebSocket + STOMP</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+        /* chat-specific tweaks */
+        .chat-root { max-width:1100px; margin: 20px auto; padding: 0 20px; }
+        .chat-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+        .status { font-weight:600; padding:6px 10px; border-radius:10px; font-size:0.9rem; }
+        .status-connected { background: #ecfdf5; color:#065f46; border:1px solid rgba(6,95,70,0.06); }
+        .status-disconnected { background:#fff7ed; color:#92400e; border:1px solid rgba(249,115,22,0.06); }
+        .chat-grid { display:grid; grid-template-columns: 1fr 340px; gap:20px; align-items:start; }
+        .msg { padding:10px; margin-bottom:10px; border-radius:8px; }
+        .msg .meta { color:var(--muted); font-size:0.85rem; margin-bottom:6px; }
+        .msg.system { background:linear-gradient(180deg,#f8fafc,#f1f5f9); color:var(--muted); }
+        .msg.mine { background:linear-gradient(180deg,#eef2ff,#eef2ff); border:1px solid rgba(59,130,246,0.08); }
+        .msg.other { background:linear-gradient(180deg,#f7f7ff,#fff); border:1px solid rgba(15,23,42,0.04); }
+        .composer { display:flex; gap:8px; margin-top:12px; }
+        .composer input[type="text"]{ flex:1; padding:10px 12px; border-radius:8px; border:1px solid rgba(15,23,42,0.08); }
+        .composer button{ padding:10px 12px; border-radius:8px; font-weight:600; }
+        .meta-small { font-size:0.85rem; color:var(--muted); }
+        @media (max-width:880px){
+          .chat-grid{ grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="chat-root">
+    <header class="chat-header">
+        <div>
+            <h1 style="margin:0;">Chat</h1>
+            <div class="meta-small">WebSocket + STOMP (SockJS fallback)</div>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center;">
+            <div id="connStatus" class="status status-disconnected" aria-live="polite">Disconnected</div>
+        </div>
+    </header>
+
+    <div class="chat-grid">
+        <section>
+            <div id="messages" aria-live="polite" role="log" aria-atomic="false"></div>
+
+            <div class="composer" aria-label="Send message">
+                <input id="username" type="text" placeholder="Your name" style="width:180px;" />
+                <input id="messageInput" type="text" placeholder="Type a message…" />
+                <button id="sendBtn" class="btn btn-primary" disabled>Send</button>
+            </div>
+        </section>
+
+        <aside>
+            <div class="panel" style="padding:14px;">
+                <h3 style="margin:0 0 8px;">Info</h3>
+                <p class="meta-small">Connected clients subscribe to <code>/topic/public</code>. Messages are sent to <code>/app/chat.send</code>.</p>
+                <div style="margin-top:12px;">
+                    <button id="forceReconnect" class="btn btn-outline">Reconnect</button>
+                    <button id="clearMessages" class="btn btn-ghost">Clear</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<!-- SockJS & STOMP (UMD) -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+
+<script>
+    const messagesEl = document.getElementById('messages');
+    const usernameEl = document.getElementById('username');
+    const inputEl = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const connStatus = document.getElementById('connStatus');
+    const forceReconnect = document.getElementById('forceReconnect');
+    const clearMessages = document.getElementById('clearMessages');
+
+    let stompClient = null;
+
+    function setStatus(connected) {
+      if (connected) {
+        connStatus.classList.remove('status-disconnected');
+        connStatus.classList.add('status-connected');
+        connStatus.textContent = 'Connected';
+        sendBtn.disabled = false;
+      } else {
+        connStatus.classList.remove('status-connected');
+        connStatus.classList.add('status-disconnected');
+        connStatus.textContent = 'Disconnected';
+        sendBtn.disabled = true;
+      }
+    }
+
+    function connect() {
+      if (stompClient && stompClient.active) return;
+
+      stompClient = new StompJs.Client({
+        webSocketFactory: () => new SockJS('/ws'),
+        connectHeaders: {},
+        debug: () => {},
+        reconnectDelay: 2000,
+        onConnect(frame) {
+          setStatus(true);
+          appendSystem('Connected to server');
+          stompClient.subscribe('/topic/public', (message) => {
+            try {
+              const msg = JSON.parse(message.body);
+              if (msg.type === 'SYSTEM' || msg.type === 'JOIN') {
+                appendSystem((msg.type === 'JOIN' ? msg.from + ' joined' : msg.content));
+              } else {
+                appendMessage(msg.from || 'Anonymous', msg.content, msg.timestamp);
+              }
+            } catch (err) {
+              console.error('Invalid message', err);
+            }
+          });
+          // optional: announce join
+          const joinPayload = { from: (usernameEl.value || 'Anonymous').trim(), type: 'JOIN', timestamp: Date.now() };
+          stompClient.publish({ destination: '/app/chat.join', body: JSON.stringify(joinPayload) });
+        },
+        onStompError(frame) {
+          appendSystem('STOMP error: ' + (frame && frame.body ? frame.body : 'unknown'));
+        },
+        onWebSocketClose(evt) {
+          setStatus(false);
+          appendSystem('Connection closed, retrying...');
+        },
+        onWebSocketError(evt) {
+          setStatus(false);
+          appendSystem('WebSocket error');
+        }
+      });
+
+      stompClient.activate();
+    }
+
+    function appendSystem(text) {
+      const div = document.createElement('div');
+      div.className = 'msg system';
+      div.innerHTML = `<div class="meta">${escapeHtml(text)}</div>`;
+      messagesEl.appendChild(div);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function appendMessage(from, content, timestamp) {
+      const div = document.createElement('div');
+      const isMine = (usernameEl.value || 'Anonymous').trim() === (from || '').trim();
+      div.className = 'msg ' + (isMine ? 'mine' : 'other');
+      const time = timestamp ? new Date(timestamp).toLocaleTimeString() : new Date().toLocaleTimeString();
+      div.innerHTML = `<div class="meta"><strong>${escapeHtml(from)}</strong> <span style="margin-left:8px;" class="meta-small">${time}</span></div>
+                       <div>${escapeHtml(content)}</div>`;
+      messagesEl.appendChild(div);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function escapeHtml(unsafe) {
+      return (unsafe || '').toString()
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    async function sendMessage() {
+      if (!stompClient || !stompClient.active) {
+        appendSystem('Not connected.');
+        return;
+      }
+      const from = (usernameEl.value || 'Anonymous').trim();
+      const content = inputEl.value.trim();
+      if (!content) return;
+      const payload = { from, content, timestamp: Date.now() };
+      stompClient.publish({ destination: '/app/chat.send', body: JSON.stringify(payload) });
+      inputEl.value = '';
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+    forceReconnect.addEventListener('click', () => {
+      if (stompClient) {
+        try { stompClient.deactivate(); } catch(e) {}
+      }
+      setStatus(false);
+      appendSystem('Reconnecting...');
+      setTimeout(connect, 600);
+    });
+    clearMessages.addEventListener('click', () => { messagesEl.innerHTML = ''; });
+
+    // auto-connect on load
+    connect();
+</script>
+</body>
+</html>

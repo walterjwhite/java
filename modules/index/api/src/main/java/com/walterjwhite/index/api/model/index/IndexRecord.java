@@ -1,8 +1,5 @@
 package com.walterjwhite.index.api.model.index;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
-import com.walterjwhite.datastore.api.model.entity.EntityType;
-import com.walterjwhite.index.api.model.query.SearchQuery;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.*;
 
@@ -11,13 +8,11 @@ import lombok.*;
 @PersistenceCapable
 @AllArgsConstructor
 @NoArgsConstructor
-public class IndexRecord extends AbstractEntity {
+public class IndexRecord {
 
-  protected SearchQuery searchQuery;
 
   protected Index index;
 
-  protected EntityType entityType;
 
   protected String entityId;
 

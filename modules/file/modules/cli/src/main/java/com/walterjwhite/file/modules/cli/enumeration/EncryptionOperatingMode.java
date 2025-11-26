@@ -6,7 +6,6 @@ import com.walterjwhite.inject.cli.property.OperatingMode;
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
 import com.walterjwhite.property.api.annotation.DefaultValue;
 
-// I would like to automatically start any services that are needed
 public enum EncryptionOperatingMode implements OperatingMode {
   @DefaultValue
   Encrypt("Encrypt input text", EncryptHandler.class),

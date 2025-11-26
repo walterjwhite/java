@@ -4,13 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure</groupId>
     <artifactId>metrics</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.metrics</groupId>
   <artifactId>modules</artifactId>
   <packaging>pom</packaging>
-
-
   <modules>
     <module>elastic</module>
     <module>netflix-atlas</module>
@@ -20,7 +18,7 @@
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.metrics</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

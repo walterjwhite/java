@@ -3,19 +3,16 @@ package com.walterjwhite.encryption.modules.cli.handler;
 import com.walterjwhite.encryption.service.EncryptionService;
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
 import com.walterjwhite.logging.annotation.Sensitive;
+import jakarta.inject.Inject;
 import java.io.*;
 import java.nio.charset.Charset;
-import jakarta.inject.Inject;
 
-/** Helper to list our client id. */
 public class EncryptHandler implements CommandLineHandler {
   protected final EncryptionService encryptionService;
 
   @Inject
   public EncryptHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       EncryptionService encryptionService) {
-    //    super(shutdownTimeoutInSeconds);
     this.encryptionService = encryptionService;
   }
 

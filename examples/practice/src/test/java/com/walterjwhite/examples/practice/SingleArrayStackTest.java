@@ -27,7 +27,6 @@ public class SingleArrayStackTest {
       defaultStack.push(0, 3);
       Assertions.fail("Expected exception");
     } catch (StackOverflowError e) {
-      // expected
     }
 
     Assertions.assertEquals(2, defaultStack.pop(0));

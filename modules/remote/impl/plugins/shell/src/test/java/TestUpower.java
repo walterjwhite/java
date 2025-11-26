@@ -21,7 +21,6 @@ public class TestUpower {
   }
 
   private static void processOutput(CommandOutput commandOutput) {
-    //        CommandExecutionUtil.run("upower -i /org/freedesktop/UPower/devices/battery_BAT0");
 
     String state = null;
     int percentage = -1;
@@ -32,7 +31,6 @@ public class TestUpower {
 
       processState(line);
       processPercentage(line);
-      // UpowerUtil.getBatteryStatus();
     }
   }
 
@@ -43,8 +41,7 @@ public class TestUpower {
 
     final Matcher percentageMatcher = percentagePattern.matcher(line);
     if (percentageMatcher.matches()) {
-      percentage = Integer.valueOf(percentageMatcher.group(1));
-      continue;
+      final int percentage = Integer.valueOf(percentageMatcher.group(1));
     }
   }
 
@@ -57,9 +54,7 @@ public class TestUpower {
 
     if (stateMatcher.matches()) {
 
-      state = stateMatcher.group(1);
-      // LOGGER.debug("state matches:" + stateMatcher.group(2));
-      continue;
+      final String state = stateMatcher.group(1);
     }
   }
 }

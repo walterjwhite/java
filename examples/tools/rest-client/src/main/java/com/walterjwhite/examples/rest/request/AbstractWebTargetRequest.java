@@ -16,11 +16,6 @@ public abstract class AbstractWebTargetRequest<Output extends Object> {
   protected final MediaType mediaType;
   protected final Function<Map, Output> mapOutputFunction;
 
-  /**
-   * append any authentication headers ...
-   *
-   * @param invocationBuilder
-   */
   public void prepare(final Invocation.Builder invocationBuilder) {}
 
   public abstract Response invoke(final Invocation.Builder invocationBuilder);

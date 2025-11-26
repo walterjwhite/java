@@ -4,27 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.queue</groupId>
     <artifactId>providers</artifactId>
-    <version>0.0.15-SNAPSHOT</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.queue.providers</groupId>
   <artifactId>guice</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.providers</groupId>
       <artifactId>guice</artifactId>
-      <version>0.0.15-SNAPSHOT</version>
-    </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.datastore.providers.jdo.providers</groupId>-->
-    <!--<artifactId>google-guice-persist</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <dependency>
-      <groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>
-      <artifactId>repository</artifactId>
-      <version>0.0.15-SNAPSHOT</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

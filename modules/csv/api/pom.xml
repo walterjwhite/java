@@ -4,17 +4,8 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>csv</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.csv</groupId>
   <artifactId>api</artifactId>
-
-
-  <dependencies>
-    <dependency>
-      <groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>
-      <artifactId>model</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-  </dependencies>
 </project>

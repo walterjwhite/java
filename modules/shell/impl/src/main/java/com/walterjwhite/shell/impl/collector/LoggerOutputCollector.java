@@ -23,12 +23,6 @@ public class LoggerOutputCollector implements OutputCollector {
     this.logger = LoggerFactory.getLogger(targetClass + "(" + name + ")");
   }
 
-  /**
-   * Do not log as it is redundant.
-   *
-   * @param line the output line.
-   * @param isError whether this is an error or just stdout.
-   */
   @NonLoggable
   @Override
   public void onData(String line, boolean isError) {

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.walterjwhite.serialization.api.service.JSON;
 import com.walterjwhite.serialization.api.service.SerializationService;
 import com.walterjwhite.serialization.api.service.YAML;
-import java.io.*;
 import jakarta.inject.Inject;
+import java.io.*;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
@@ -23,8 +23,8 @@ public class Jackson implements SerializationService, JSON, YAML {
   }
 
   @Override
-  public <EntityType extends Serializable> EntityType deserialize(
-      InputStream inputStream, Class<EntityType> entityType) throws IOException {
+  public <EntityType> EntityType deserialize(InputStream inputStream, Class<EntityType> entityType)
+      throws IOException {
     return objectMapper.readValue(inputStream, entityType);
   }
 }

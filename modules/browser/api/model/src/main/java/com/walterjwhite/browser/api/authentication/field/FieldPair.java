@@ -1,12 +1,13 @@
 package com.walterjwhite.browser.api.authentication.field;
 
-import com.walterjwhite.browser.api.authentication.FieldProcessor;
 import com.walterjwhite.browser.api.authentication.FieldSecretType;
+import javax.jdo.annotations.PersistenceCapable;
 import lombok.Data;
 import lombok.ToString;
 
 @ToString(doNotUseGetters = true)
 @Data
+@PersistenceCapable
 public class FieldPair {
   protected String id;
 
@@ -14,8 +15,6 @@ public class FieldPair {
   protected Locator inputLocator;
   protected Locator labelLocator;
 
-  // if elements are not found, should the login process fail?
   protected boolean required = true;
 
-  protected Class<? extends FieldProcessor> fieldProcessorClass;
 }

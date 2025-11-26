@@ -8,7 +8,6 @@ import com.walterjwhite.remote.modules.cli.handler.MessageReader;
 import com.walterjwhite.remote.modules.cli.handler.MessageWriter;
 import com.walterjwhite.remote.modules.cli.handler.RemoteDaemon;
 
-// I would like to automatically start any services that are needed
 public enum RemoteOperatingMode implements OperatingMode {
   @DefaultValue
   Daemon("Run in the background as a service (default)", RemoteDaemon.class),

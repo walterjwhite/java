@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>examples</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.examples</groupId>
@@ -13,26 +13,15 @@
     <dependency>
       <groupId>com.walterjwhite.java.configuration.cli</groupId>
       <artifactId>guice</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.infrastructure.property</groupId>-->
-    <!--      <artifactId>validation</artifactId>-->
-    <!--      <version>0.0.17-SNAPSHOT</version>-->
-    <!--      <scope>provided</scope>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--      <artifactId>slf4j-api</artifactId>-->
-    <!--      <version>0.0.17-SNAPSHOT</version>-->
-    <!--      <type>pom</type>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.slf4j</groupId>-->
-    <!--      <artifactId>slf4j-spi</artifactId>-->
-    <!--      <version>1.7.25</version>-->
-    <!--    </dependency>-->
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+      <artifactId>walterjwhite-secrets</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
   <properties>
     <application.environment>Development</application.environment>

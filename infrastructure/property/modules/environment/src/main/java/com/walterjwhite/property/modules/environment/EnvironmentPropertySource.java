@@ -20,7 +20,6 @@ public class EnvironmentPropertySource extends AbstractSingularStringPropertySou
     return System.getenv().get(lookup(lookupValue));
   }
 
-  // environment variables in linux may not have a "."
   public static String lookup(final String lookupValue) {
     return (lookupValue.replaceAll("\\.", "_"));
   }

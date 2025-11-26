@@ -16,14 +16,18 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JarListUtils {
   public static List<String> getFiles(final String folder) throws IOException, URISyntaxException {
+    return getFiles(JarListUtils.class, folder);
+  }
+
+  public static List<String> getFiles(final Class targetClass, final String folder)
+      throws IOException, URISyntaxException {
     final List<String> files = new ArrayList<>();
 
     try {
-      for (Path path : getPathsFromResourceJAR(folder)) {
+      for (Path path : getPathsFromResourceJAR(targetClass, folder)) {
         files.add(getResourcePath(path));
       }
     } catch (NoSuchFileException e) {
-      // do nothing, the file doesn't exist
     }
     return files;
   }
@@ -37,9 +41,9 @@ public class JarListUtils {
     return outputPath;
   }
 
-  private static List<Path> getPathsFromResourceJAR(String folder)
+  private static List<Path> getPathsFromResourceJAR(final Class targetClass, String folder)
       throws URISyntaxException, IOException {
-    URI uri = URI.create("jar:file:" + getJarPath());
+    URI uri = URI.create("jar:file:" + getJarPath(targetClass));
     try (FileSystem fs = FileSystems.newFileSystem(uri, Collections.emptyMap())) {
       return Files.walk(fs.getPath(folder))
           .filter(Files::isRegularFile)
@@ -47,7 +51,7 @@ public class JarListUtils {
     }
   }
 
-  private static String getJarPath() throws URISyntaxException {
-    return JarListUtils.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+  private static String getJarPath(final Class targetClass) throws URISyntaxException {
+    return targetClass.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
   }
 }

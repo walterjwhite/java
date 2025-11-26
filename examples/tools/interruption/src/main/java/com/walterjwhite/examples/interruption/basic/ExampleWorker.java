@@ -2,7 +2,6 @@ package com.walterjwhite.examples.interruption.basic;
 
 import java.io.IOException;
 
-// this is an example of how to use Process.destroyForcibly to kill a process
 public class ExampleWorker {
   protected transient Process p;
 
@@ -13,7 +12,9 @@ public class ExampleWorker {
 
   public void kill() {
 
-    if (p == null) return;
+    if (p == null) {
+      return;
+    }
 
     p.destroyForcibly();
   }

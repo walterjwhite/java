@@ -1,6 +1,3 @@
-Goals:
 1. illustrate running a CLI daemon
 2. illustrate responding to interrupt request (shutting down cleanly)
-
-Notes:
-1. this project works
+3. illustrate heartbeat usage, run method is modified to have a heartbeat very 2 seconds

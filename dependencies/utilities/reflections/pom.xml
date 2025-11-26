@@ -4,33 +4,34 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>reflections</artifactId>
   <packaging>pom</packaging>
-
   <dependencies>
     <dependency>
       <groupId>org.reflections</groupId>
       <artifactId>reflections</artifactId>
-      <!-- 0.10+ do not work for me -->
-      <!--      <version>0.10</version>-->
       <version>0.10.2</version>
-      <!-- This interferes with Hibernate and will cause Hibernate to be unable to startup -->
-      <!--      <exclusions>-->
-      <!--        <exclusion>-->
-      <!--          <groupId>org.javassist</groupId>-->
-      <!--          <artifactId>javassist</artifactId>-->
-      <!--        </exclusion>-->
-      <!--      </exclusions>-->
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
-    <!-- When writing XML, this is required -->
     <dependency>
       <groupId>org.dom4j</groupId>
       <artifactId>dom4j</artifactId>
-      <version>2.1.4</version>
+      <version>2.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <type>pom</type>
     </dependency>
   </dependencies>
 </project>

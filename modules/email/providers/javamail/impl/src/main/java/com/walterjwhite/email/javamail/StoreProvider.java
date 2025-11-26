@@ -2,11 +2,10 @@ package com.walterjwhite.email.javamail;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Store;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.Store;
 
-// @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class StoreProvider implements Provider<Store> {
   protected final Session session;
 

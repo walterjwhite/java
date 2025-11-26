@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model.traceroute;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.shell.api.model.IPAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
 @PersistenceCapable
-public class TracerouteHop extends AbstractEntity {
+public class TracerouteHop {
 
   protected TracerouteRequest tracerouteRequest;
 

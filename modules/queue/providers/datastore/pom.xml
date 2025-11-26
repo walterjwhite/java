@@ -4,14 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.queue</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.queue.providers</groupId>
   <artifactId>datastore</artifactId>
   <packaging>pom</packaging>
-
   <modules>
-    <module>impl</module>
-<!--    <module>providers</module>-->
   </modules>
 </project>

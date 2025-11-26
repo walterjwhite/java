@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java</groupId>
+    <artifactId>aspect</artifactId>
+    <version>0.3.6-SNAPSHOT</version>
+  </parent>
+  <groupId>com.walterjwhite.java.aspect</groupId>
+  <artifactId>spring-web-logging</artifactId>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>7.0.0-M9</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>7.0.0-M3</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>6.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
+      <artifactId>core</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
+</project>

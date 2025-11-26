@@ -17,8 +17,6 @@ import com.vaadin.flow.router.RouterLink;
 import java.util.HashMap;
 import java.util.Map;
 
-/** The main view contains a menu and a container for either of the hello world variants. */
-// @StyleSheet("frontend://src/styles.css")
 @StyleSheet("frontend://styles.css")
 public class MainLayout extends Composite<Div> implements RouterLayout, AfterNavigationObserver {
 
@@ -26,14 +24,11 @@ public class MainLayout extends Composite<Div> implements RouterLayout, AfterNav
 
   private Div container;
 
-  /** Main layout constructor. */
   public MainLayout() {
-    // Guiding texts
     H1 heading = new H1("3 ways to say Hello");
     Text intro = new Text("Three different ways of implementing Hello World using Vaadin Flow");
     Div menu = buildMenu();
 
-    // Set up the container where sub views will be shown
     container = new Div();
     container.addClassName("container");
 
@@ -42,7 +37,6 @@ public class MainLayout extends Composite<Div> implements RouterLayout, AfterNav
   }
 
   private Div buildMenu() {
-    // Create links to each of the different sub views
     RouterLink template = new RouterLink("Template", VaadinTemplate.class);
     template.setId("template-link");
 
@@ -52,7 +46,6 @@ public class MainLayout extends Composite<Div> implements RouterLayout, AfterNav
     RouterLink elements = new RouterLink("Element", VaadinElement.class);
     elements.setId("elements-link");
 
-    // Add menu links to a map for selection handling.
     targetPaths.put(template.getHref(), template);
     targetPaths.put(components.getHref(), components);
     targetPaths.put(elements.getHref(), elements);
@@ -70,7 +63,6 @@ public class MainLayout extends Composite<Div> implements RouterLayout, AfterNav
 
   @Override
   public void showRouterLayoutContent(HasElement child) {
-    // Update what we show whenever the sub view changes
     container.removeAll();
 
     if (child != null) {
@@ -83,7 +75,6 @@ public class MainLayout extends Composite<Div> implements RouterLayout, AfterNav
   public void afterNavigation(AfterNavigationEvent event) {
     targetPaths.values().forEach(link -> link.removeClassName("selected"));
 
-    // We just use the location path as we don't have nested paths.
     if (!event.getLocation().getPath().isEmpty()) {
       targetPaths.get(event.getLocation().getPath()).addClassName("selected");
     }

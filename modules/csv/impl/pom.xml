@@ -4,23 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>csv</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.csv</groupId>
   <artifactId>impl</artifactId>
-  <version>0.2.0</version>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.csv</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.google-guice</groupId>-->
-    <!--<artifactId>core</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
   </dependencies>
 </project>

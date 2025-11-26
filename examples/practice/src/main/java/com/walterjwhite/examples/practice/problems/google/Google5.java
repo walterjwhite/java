@@ -1,11 +1,9 @@
 package com.walterjwhite.examples.practice.problems.google;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 
-// break the list up into chunks, keep track of distinct elements
 @Slf4j
 public class Google5 implements GoogleProblem {
 
@@ -84,13 +82,7 @@ public class Google5 implements GoogleProblem {
     }
   }
 
-  //    @FunctionalInterface
-  //    public int applyAsInt(int left, int right){
-  //        return -1;
-  //    }
   public static void main(final String[] args) {
     int[] x = new int[] {1, 2, 3, 4, 5};
-    //        System.out.println(Arrays.stream(x).reduce(0, (a,b) -> a+b));
-    System.out.println(Arrays.stream(x).parallel().reduce(0, (a, b) -> a + b));
   }
 }

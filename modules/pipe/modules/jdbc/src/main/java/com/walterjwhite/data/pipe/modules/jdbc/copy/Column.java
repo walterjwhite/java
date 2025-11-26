@@ -1,6 +1,5 @@
 package com.walterjwhite.data.pipe.modules.jdbc.copy;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import java.sql.JDBCType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,7 +9,7 @@ import lombok.ToString;
 @Data
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
-public class Column extends AbstractEntity {
+public class Column {
   protected String name;
   @EqualsAndHashCode.Exclude protected JDBCType type;
   @EqualsAndHashCode.Exclude protected int size;

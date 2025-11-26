@@ -13,7 +13,6 @@ import net.schmizz.sshj.SSHClient;
 import net.schmizz.sshj.connection.channel.direct.Session;
 
 public class DefaultSSHCommandExecutor extends AbstractSSHService<SSHCommand> {
-  // this doesn't work on guice because Guice requires enum constants to follow Case Caps
   protected final ChronoUnit interruptGracePeriodUnits;
   protected final long interruptGracePeriodValue;
 
@@ -27,12 +26,6 @@ public class DefaultSSHCommandExecutor extends AbstractSSHService<SSHCommand> {
     this.interruptGracePeriodValue = interruptGracePeriodValue;
   }
 
-  /**
-   * This works fine for commands that return in a finite amount of time. Lastly, it waits until the
-   * sshCommand is done before processing the input / output.
-   *
-   * @throws IOException
-   */
   @Override
   protected void doExecute(SSHClient sshClient, Session session)
       throws IOException, InterruptedException {

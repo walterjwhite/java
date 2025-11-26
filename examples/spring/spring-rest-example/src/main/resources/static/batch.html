@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Batch Jobs UI</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; margin: 16px; background:#f7f9fc; color:#222; }
+        h1 { margin-top: 0; }
+        .card { background: #fff; border: 1px solid #e1e8f0; border-radius: 6px; padding: 12px 16px; margin: 12px 0; box-shadow: 0 1px 2px rgba(16,24,40,0.04);}
+        label { display:block; margin-top:8px; font-weight:600; }
+        input[type="text"], input[type="number"], textarea, select {
+          width: 100%; padding: 8px; margin-top:4px; box-sizing:border-box; border:1px solid #d7e0ef; border-radius:4px;
+          background: #fbfdff;
+        }
+        textarea { min-height: 80px; font-family: monospace; }
+        .row { display:flex; gap:12px; }
+        .col { flex:1; }
+        button { margin-top:10px; padding:8px 12px; border-radius:4px; border:none; cursor:pointer; background:#2563eb; color:#fff; }
+        button.secondary { background:#6b7280; }
+        pre { background:#0b1220; color:#e6eef8; padding:12px; border-radius:6px; overflow:auto; max-height:320px; }
+        .small { font-size: 0.9em; color:#555; }
+        .kv-rows { display:flex; flex-direction:column; gap:6px; margin-top:8px; }
+        .kv-row { display:flex; gap:6px; }
+        .kv-row input { flex:1; }
+        .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+    </style>
+</head>
+<body>
+<h1>Batch Jobs UI</h1>
+<p class="small">Interact with the BatchJobController endpoints. Enter job names, parameters and execution IDs below.</p>
+
+<div class="card" id="start-job-card">
+    <h2>Start Job</h2>
+    <label>Job name
+        <input id="start-job-name" type="text" placeholder="e.g. myJob" />
+    </label>
+
+    <label>Parameters (key=value per line). If left blank, a timestamp parameter will be added automatically.</label>
+    <textarea id="start-job-params" placeholder="foo=bar&#10;count=10"></textarea>
+
+    <div class="actions">
+        <button id="start-job-btn">Start Job</button>
+        <button class="secondary" id="clear-start">Clear</button>
+    </div>
+
+    <h4>Response</h4>
+    <pre id="start-job-res">-</pre>
+</div>
+
+<div class="card">
+    <h2>Job Registration</h2>
+    <label>Job name
+        <input id="reg-job-name" type="text" placeholder="job name to check" />
+    </label>
+    <div class="actions">
+        <button id="check-reg-btn">Check Registered</button>
+        <button class="secondary" id="clear-reg">Clear</button>
+    </div>
+    <h4>Response</h4>
+    <pre id="reg-res">-</pre>
+</div>
+
+<div class="card">
+    <h2>Execution Operations</h2>
+    <label>Execution ID
+        <input id="exec-id" type="number" placeholder="e.g. 123" />
+    </label>
+    <div class="actions">
+        <button id="get-exec-btn">Get Execution</button>
+        <button id="stop-exec-btn">Request Stop</button>
+        <button id="abandon-exec-btn">Abandon</button>
+        <button class="secondary" id="clear-exec">Clear</button>
+    </div>
+    <h4>Response</h4>
+    <pre id="exec-res">-</pre>
+</div>
+
+<div class="card">
+    <h2>Job History</h2>
+    <div class="row">
+        <div class="col">
+            <label>Job name
+                <input id="hist-job-name" type="text" placeholder="job name" />
+            </label>
+        </div>
+        <div style="width:120px">
+            <label>Start
+                <input id="hist-start" type="number" value="0" min="0" />
+            </label>
+        </div>
+        <div style="width:120px">
+            <label>Count
+                <input id="hist-count" type="number" value="20" min="1" />
+            </label>
+        </div>
+    </div>
+    <div class="actions">
+        <button id="get-hist-btn">Get History</button>
+        <button class="secondary" id="clear-hist">Clear</button>
+    </div>
+    <h4>Response</h4>
+    <pre id="hist-res">-</pre>
+</div>
+
+<script>
+    // Helpers
+    function jsonResToStr(obj) {
+      try { return JSON.stringify(obj, null, 2); } catch (e) { return String(obj); }
+    }
+
+    function parseParamsText(text) {
+      // Accepts lines like "k=v" or empty lines; returns object map string->string
+      const map = {};
+      if (!text) return map;
+      const lines = text.split(/\r?\n/);
+      for (let ln of lines) {
+        ln = ln.trim();
+        if (!ln) continue;
+        const idx = ln.indexOf('=');
+        if (idx === -1) {
+          // treat as flag=true
+          map[ln] = "true";
+        } else {
+          const k = ln.substring(0, idx).trim();
+          const v = ln.substring(idx+1).trim();
+          map[k] = v;
+        }
+      }
+      return map;
+    }
+
+    function handleFetch(promise, outEl) {
+      outEl.textContent = 'Loading...';
+      promise
+        .then(async res => {
+          const text = await res.text();
+          let parsed;
+          try { parsed = JSON.parse(text); } catch (e) { parsed = text || ''; }
+          if (!res.ok) {
+            outEl.textContent = 'Error ' + res.status + ' ' + res.statusText + '\\n\\n' + (typeof parsed === 'string' ? parsed : jsonResToStr(parsed));
+            return;
+          }
+          outEl.textContent = jsonResToStr(parsed);
+        })
+        .catch(err => {
+          outEl.textContent = 'Network/Error: ' + String(err);
+        });
+    }
+
+    // Start job
+    document.getElementById('start-job-btn').addEventListener('click', function() {
+      const name = document.getElementById('start-job-name').value.trim();
+      const paramsText = document.getElementById('start-job-params').value;
+      const out = document.getElementById('start-job-res');
+      if (!name) { out.textContent = 'Please provide job name'; return; }
+      const params = parseParamsText(paramsText);
+      // POST /api/batch/jobs/{jobName}/start
+      const url = '/api/batch/jobs/' + encodeURIComponent(name) + '/start';
+      const p = fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(params)
+      });
+      handleFetch(p, out);
+    });
+
+    document.getElementById('clear-start').addEventListener('click', function() {
+      document.getElementById('start-job-name').value = '';
+      document.getElementById('start-job-params').value = '';
+      document.getElementById('start-job-res').textContent = '-';
+    });
+
+    // Registration check
+    document.getElementById('check-reg-btn').addEventListener('click', function() {
+      const name = document.getElementById('reg-job-name').value.trim();
+      const out = document.getElementById('reg-res');
+      if (!name) { out.textContent = 'Please provide job name'; return; }
+      const url = '/api/batch/jobs/' + encodeURIComponent(name) + '/registered';
+      handleFetch(fetch(url), out);
+    });
+    document.getElementById('clear-reg').addEventListener('click', function() {
+      document.getElementById('reg-job-name').value = '';
+      document.getElementById('reg-res').textContent = '-';
+    });
+
+    // Execution operations
+    document.getElementById('get-exec-btn').addEventListener('click', function() {
+      const id = document.getElementById('exec-id').value;
+      const out = document.getElementById('exec-res');
+      if (!id) { out.textContent = 'Please provide execution id'; return; }
+      const url = '/api/batch/executions/' + encodeURIComponent(id);
+      handleFetch(fetch(url), out);
+    });
+
+    document.getElementById('stop-exec-btn').addEventListener('click', function() {
+      const id = document.getElementById('exec-id').value;
+      const out = document.getElementById('exec-res');
+      if (!id) { out.textContent = 'Please provide execution id'; return; }
+      const url = '/api/batch/executions/' + encodeURIComponent(id) + '/stop';
+      handleFetch(fetch(url, { method: 'POST' }), out);
+    });
+
+    document.getElementById('abandon-exec-btn').addEventListener('click', function() {
+      const id = document.getElementById('exec-id').value;
+      const out = document.getElementById('exec-res');
+      if (!id) { out.textContent = 'Please provide execution id'; return; }
+      const url = '/api/batch/executions/' + encodeURIComponent(id) + '/abandon';
+      handleFetch(fetch(url, { method: 'POST' }), out);
+    });
+
+    document.getElementById('clear-exec').addEventListener('click', function() {
+      document.getElementById('exec-id').value = '';
+      document.getElementById('exec-res').textContent = '-';
+    });
+
+    // History
+    document.getElementById('get-hist-btn').addEventListener('click', function() {
+      const name = document.getElementById('hist-job-name').value.trim();
+      const start = document.getElementById('hist-start').value || '0';
+      const count = document.getElementById('hist-count').value || '20';
+      const out = document.getElementById('hist-res');
+      if (!name) { out.textContent = 'Please provide job name'; return; }
+      const url = '/api/batch/jobs/' + encodeURIComponent(name) + '/history?start=' + encodeURIComponent(start) + '&count=' + encodeURIComponent(count);
+      handleFetch(fetch(url), out);
+    });
+
+    document.getElementById('clear-hist').addEventListener('click', function() {
+      document.getElementById('hist-job-name').value = '';
+      document.getElementById('hist-res').textContent = '-';
+    });
+
+    // Helpful: allow pressing Enter in numeric input to trigger get-exec
+    document.getElementById('exec-id').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('get-exec-btn').click();
+      }
+    });
+</script>
+</body>
+</html>

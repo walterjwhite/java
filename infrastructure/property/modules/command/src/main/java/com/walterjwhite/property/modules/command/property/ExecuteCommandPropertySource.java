@@ -9,7 +9,6 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import org.apache.commons.io.IOUtils;
 
-// executes a command to get a value back
 @PropertySourceIndex(1)
 public class ExecuteCommandPropertySource
     extends AbstractSingularStringPropertySource<ConfigurableProperty> {
@@ -26,7 +25,9 @@ public class ExecuteCommandPropertySource
             .getInputStream()) {
 
       final String output = IOUtils.toString(inputStream, Charset.defaultCharset());
-      if (output == null || output.isEmpty()) return null;
+      if (output == null || output.isEmpty()) {
+        return null;
+      }
 
       return output.trim();
     } catch (IOException e) {

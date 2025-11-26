@@ -4,110 +4,38 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>shell</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.shell</groupId>
   <artifactId>impl</artifactId>
-
-
-
   <dependencies>
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.aspects</groupId>-->
-    <!--      <artifactId>closeable</artifactId>-->
-    <!--      <version>0.1.0</version>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.aspects.timeout</groupId>-->
-    <!--      <artifactId>api</artifactId>-->
-    <!--      <version>0.1.0</version>-->
-    <!--    </dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.modules.shell.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--<artifactId>sshj</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<type>pom</type>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--<artifactId>expectit</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<type>pom</type>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
       <artifactId>core</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.google-guice.modules</groupId>-->
-    <!--<artifactId>guava-event-bus</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>expectit</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>commons-io</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>google-guava</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.modules.queue.api</groupId>-->
-    <!--<artifactId>service</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.google-guice.modules</groupId>-->
-    <!--<artifactId>property-test</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.infrastructure.datastore</groupId>-->
-    <!--      <artifactId>impl</artifactId>-->
-    <!--      <version>0.0.18</version>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--      <artifactId>h2</artifactId>-->
-    <!--      <version>0.0.18</version>-->
-    <!--      <type>pom</type>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--      <artifactId>hikari-jdbc-connection-pool</artifactId>-->
-    <!--      <version>0.0.18</version>-->
-    <!--      <type>pom</type>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--      <artifactId>hibernate-hikari</artifactId>-->
-    <!--      <version>0.0.18</version>-->
-    <!--      <type>pom</type>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>-->
-    <!--      <artifactId>repository</artifactId>-->
-    <!--      <version>0.0.18</version>-->
-    <!--    </dependency>-->
   </dependencies>
 </project>

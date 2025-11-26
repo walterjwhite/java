@@ -7,16 +7,12 @@ public class Trees {
     int value;
     Node left, right;
 
-    // Node peer;
 
     Node(final int value) {
       this.value = value;
     }
   }
 
-  //   12    12
-  //  6   3  9
-  // 5 7     12
   public Trees() {
     root = new Node(12);
     root.left = new Node(6);
@@ -31,19 +27,20 @@ public class Trees {
 
   public void printLevel(final int level, final Node... nodes) {
     int sum = 0;
-    //        Arrays.stream(nodes).forEach(node -> {
-    //            if(node != null){
-    //                sum += node.value;
-    //            }
-    //        });
     final Node[] children = new Node[nodes.length * 2];
     int i = 0;
     for (Node node : nodes) {
-      if (node == null) continue;
+      if (node == null) {
+        continue;
+      }
 
       sum += node.value;
-      if (node.left != null) children[i++] = node.left;
-      if (node.right != null) children[i++] = node.right;
+      if (node.left != null) {
+        children[i++] = node.left;
+      }
+      if (node.right != null) {
+        children[i++] = node.right;
+      }
     }
 
     if (i > 0) {

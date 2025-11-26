@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.concurrent.PriorityBlockingQueue;
 
-/** TODO: 1. get the appropriate source connection here 2. get the appropriate source query here */
 public class EventBusSource extends AbstractSource<Serializable, EventBusSourceConfiguration> {
   protected final PriorityBlockingQueue queue = new PriorityBlockingQueue();
 

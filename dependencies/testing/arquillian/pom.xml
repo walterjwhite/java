@@ -4,13 +4,12 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>arquillian</artifactId>
   <packaging>pom</packaging>
-
   <dependencies>
     <dependency>
       <groupId>org.jboss.arquillian.junit</groupId>
@@ -22,7 +21,7 @@
       <dependency>
         <groupId>org.jboss.arquillian</groupId>
         <artifactId>arquillian-bom</artifactId>
-        <version>1.7.0.Alpha10</version>
+        <version>1.10.0.Final</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>

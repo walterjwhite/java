@@ -10,7 +10,6 @@ import org.apache.commons.codec.binary.Base64;
 https://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html#Examples
 @Stateless
 public class Hasher {
- //TODO: make this algorithm configurable
  public String compute(final String data) throws NoSuchAlgorithmException, IOException {
    final MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
    messageDigest.update(data.getBytes(StandardCharsets.ISO_8859_1));

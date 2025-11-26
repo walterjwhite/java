@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.tensorflow.DataType;
 import org.tensorflow.Graph;
 import org.tensorflow.Output;
@@ -16,7 +17,7 @@ import org.tensorflow.Tensor;
 import org.tensorflow.TensorFlow;
 import org.tensorflow.types.UInt8;
 
-/** Sample use of the TensorFlow Java API to label images using a pre-trained model. */
+@Slf4j
 public class TensorFlowExample {
   private static void printUsage(PrintStream s) {
     final String url =
@@ -35,10 +36,6 @@ public class TensorFlowExample {
   }
 
   public static void main(String[] args) {
-    //        if (args.length != 2) {
-    //            printUsage(System.err);
-    //            System.exit(1);
-    //        }
     String modelDir = "~/Downloads"; // args[0];
     String imageFile = "~/Downloads/1.jpg";
 
@@ -50,29 +47,21 @@ public class TensorFlowExample {
     try (Tensor<Float> image = constructAndExecuteGraphToNormalizeImage(imageBytes)) {
       float[] labelProbabilities = executeInceptionGraph(graphDef, image);
       int bestLabelIdx = maxIndex(labelProbabilities);
-      String.format(
-          "BEST MATCH: %s (%.2f%% likely)",
-          labels.get(bestLabelIdx), labelProbabilities[bestLabelIdx] * 100f);
+      LOGGER.info(
+          String.format(
+              "BEST MATCH: %s (%.2f%% likely)",
+              labels.get(bestLabelIdx), labelProbabilities[bestLabelIdx] * 100f));
     }
   }
 
   private static Tensor<Float> constructAndExecuteGraphToNormalizeImage(byte[] imageBytes) {
     try (Graph g = new Graph()) {
       GraphBuilder b = new GraphBuilder(g);
-      // Some constants specific to the pre-trained model at:
-      // https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip
-      //
-      // - The model was trained with images scaled to 224x224 pixels.
-      // - The colors, represented as R, G, B in 1-byte each were converted to
-      //   float using (value - Mean)/Scale.
       final int H = 224;
       final int W = 224;
       final float mean = 117f;
       final float scale = 1f;
 
-      // Since the graph is being constructed once per execution here, we can use a constant for the
-      // input image. If the graph were to be re-used for multiple input images, a placeholder would
-      // have been more appropriate.
       final Output<String> input = b.constant("input", imageBytes);
       final Output<Float> output =
           b.div(
@@ -123,7 +112,6 @@ public class TensorFlowExample {
     try {
       return Files.readAllBytes(path);
     } catch (IOException e) {
-      // CommandLineUtil.exitError(1, "Failed to read [" + path + "]: " + e.getMessage(), e);
     }
     return null;
   }
@@ -132,14 +120,10 @@ public class TensorFlowExample {
     try {
       return Files.readAllLines(path, StandardCharsets.UTF_8);
     } catch (IOException e) {
-      // CommandLineUtil.exitError(1, "Failed to read [" + path + "]: " + e.getMessage(), e);
     }
     return null;
   }
 
-  // In the fullness of time, equivalents of the methods of this class should be auto-generated from
-  // the OpDefs linked into libtensorflow_jni.so. That would match what is done in other languages
-  // like Python, C++ and Go.
   static class GraphBuilder {
     GraphBuilder(Graph g) {
       this.g = g;

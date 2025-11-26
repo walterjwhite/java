@@ -27,8 +27,6 @@ public class DefaultPipe implements Pipe {
     this.pipeSessionConfiguration = pipeSessionConfiguration;
   }
 
-  // rows / records / etc.
-  //  @Transactional
   public void pipe(DataPipeConfiguration dataPipeConfiguration) throws Exception {
     final Set<Source> sources = new HashSet<>();
     final Set<Stream> streams = new HashSet<>();
@@ -48,10 +46,6 @@ public class DefaultPipe implements Pipe {
 
     DefaultTeeConsumer consumer =
         new DefaultTeeConsumer(dataPipeConfiguration.getSinkConfigurations());
-    // Stream stream = Stream.of(sources);
-    // Stream stream = Streams.stream(sources);
-    //    Stream stream = Streams.concat();
-    // Stream stream = streams.stream();
     DefaultFilterChain defaultFilterChain =
         new DefaultFilterChain(dataPipeConfiguration.getFilterConfigurations());
     DefaultTransformationChain defaultTransformationChain =

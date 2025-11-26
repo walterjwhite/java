@@ -4,13 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>remote</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.remote</groupId>
   <artifactId>impl</artifactId>
   <packaging>pom</packaging>
-
-
   <modules>
     <module>core</module>
     <module>plugins</module>
@@ -19,7 +17,7 @@
     <dependency>
       <groupId>com.walterjwhite.java.modules.remote.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

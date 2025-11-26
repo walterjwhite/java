@@ -1,12 +1,10 @@
 package com.walterjwhite.examples.practice.problems.stacks;
 
-// use single array to implement 3 stacks
 public class FixedEqualSizeSingleArrayStack {
   protected final int length;
   protected final int[] store;
   protected int a = -1, b = -1, c = -1;
 
-  // fixed size
   public FixedEqualSizeSingleArrayStack(final int maxLength) {
     this.length = maxLength;
     this.store = new int[3 * maxLength];

@@ -1,11 +1,7 @@
 package com.walterjwhite.browser.api.authentication.field;
 
-import com.walterjwhite.infrastructure.inject.core.Secret;
-import lombok.Data;
-import lombok.ToString;
+import com.walterjwhite.property.api.property.Secret;
 
-@ToString(doNotUseGetters = true)
-@Data
-public class FieldSecret extends AbstractFieldSecret {
-  protected Secret secret;
+public interface FieldSecret {
+  Secret getSecret();
 }

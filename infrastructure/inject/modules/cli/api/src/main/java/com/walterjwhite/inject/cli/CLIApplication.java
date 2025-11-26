@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.reflections.Reflections;
 
-/** This is configured to launch the application whether it is CDI, Guice, etc. - via pom.xml */
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CLIApplication {
@@ -35,7 +34,6 @@ public class CLIApplication {
               serviceManager,
               secretService,
               injector,
-              // this may potentially pull in the agents ...
               arguments)
           .run();
     } catch (Exception e) {

@@ -4,24 +4,16 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject.modules</groupId>
     <artifactId>guava-executor-service</artifactId>
-    <version>0.0.15-SNAPSHOT</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.modules.guava-executor-service</groupId>
   <artifactId>impl</artifactId>
-
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>google-guava</artifactId>
-      <version>0.0.15-SNAPSHOT</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.inject.modules</groupId>-->
-    <!--<artifactId>property</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
   </dependencies>
 </project>

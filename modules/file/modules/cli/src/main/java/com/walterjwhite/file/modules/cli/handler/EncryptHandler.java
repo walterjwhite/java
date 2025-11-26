@@ -4,10 +4,9 @@ import com.walterjwhite.encryption.api.service.CompressionService;
 import com.walterjwhite.encryption.service.EncryptionService;
 import com.walterjwhite.file.api.service.FileStorageService;
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
-import java.io.File;
 import jakarta.inject.Inject;
+import java.io.File;
 
-/** Helper to list our client id. */
 public class EncryptHandler implements CommandLineHandler {
   protected final FileStorageService fileStorageService;
   protected final EncryptionService encryptionService;
@@ -15,11 +14,9 @@ public class EncryptHandler implements CommandLineHandler {
 
   @Inject
   public EncryptHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       FileStorageService fileStorageService,
       EncryptionService encryptionService,
       CompressionService compressionService) {
-    //    super(shutdownTimeoutInSeconds);
     this.fileStorageService = fileStorageService;
     this.encryptionService = encryptionService;
     this.compressionService = compressionService;

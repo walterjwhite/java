@@ -8,6 +8,7 @@ import com.walterjwhite.shell.api.model.MountPoint;
 import com.walterjwhite.shell.api.service.MountService;
 import com.walterjwhite.shell.api.service.ShellExecutionService;
 import com.walterjwhite.shell.impl.property.MountTimeout;
+import jakarta.inject.Inject;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import jakarta.inject.Inject;
 
 public class DefaultMountService extends AbstractMultipleShellCommandService<MountCommand>
     implements MountService {
@@ -34,11 +34,6 @@ public class DefaultMountService extends AbstractMultipleShellCommandService<Mou
     mountCommand.setTimeout(timeout);
   }
 
-  //  protected Supplier<PersistenceOptionConfiguration> getCreateConfiguration(MountCommand
-  // mountCommand){
-  //    return () -> new PersistenceOptionConfiguration(
-  //            PersistenceOption.Create, mountCommand.getMountPoint());
-  //  }
 
   protected void doBeforeEach(MountCommand mountCommand) {
 
@@ -49,8 +44,6 @@ public class DefaultMountService extends AbstractMultipleShellCommandService<Mou
   }
 
   protected void prepareDevice(MountPoint mountPoint) {
-    // do not create "device" mount points for psuedo filesystems that do not have an actual
-    // underlying device
     if ("none".equals(mountPoint.getDevice())) return;
 
     final File deviceFile = new File(getDevice(mountPoint.getDevice()));
@@ -118,7 +111,6 @@ public class DefaultMountService extends AbstractMultipleShellCommandService<Mou
   }
 
   protected void ensureTmpfsIsGloballyReadableAndWritable(MountCommand mountCommand) {
-    // run this after mounting to ensure it is globally readable/writable
     if (VFSType.TMPFS.equals(mountCommand.getMountPoint().getVfsType())) {
       ensureTmpfsIsGloballyReadableAndWritableCli(mountCommand);
       ensureTmpfsIsGloballyReadableAndWritableNative(mountCommand);
@@ -152,10 +144,5 @@ public class DefaultMountService extends AbstractMultipleShellCommandService<Mou
   }
 
   protected void ensureTmpfsIsGloballyReadableAndWritableCli(MountCommand mountCommand) {
-    //            commandLines.add(
-    //                "chmod 1777 "
-    //                    + mountCommand.getRootPath()
-    //                    + File.separator
-    //                    + mountCommand.getMountPoint().getMountPoint());
   }
 }

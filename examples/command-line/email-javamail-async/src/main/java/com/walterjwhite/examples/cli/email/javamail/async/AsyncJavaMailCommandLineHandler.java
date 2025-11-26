@@ -5,20 +5,13 @@ import com.walterjwhite.email.javamail.async.ImapIdleThread;
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
 import com.walterjwhite.serialization.api.service.SerializationService;
 import jakarta.inject.Inject;
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class AsyncJavaMailCommandLineHandler implements CommandLineHandler {
   protected final SerializationService serializationService;
   protected final PrivateEmailAccount privateEmailAccount;
-
-  @Inject
-  public AsyncJavaMailCommandLineHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
-      SerializationService serializationService, PrivateEmailAccount privateEmailAccount) {
-    //    super(shutdownTimeoutInSeconds);
-    this.serializationService = serializationService;
-    this.privateEmailAccount = privateEmailAccount;
-  }
 
   @Override
   public void run(String... arguments) throws InterruptedException, MessagingException {

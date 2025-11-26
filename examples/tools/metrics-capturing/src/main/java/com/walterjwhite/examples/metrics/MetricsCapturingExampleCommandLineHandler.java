@@ -10,9 +10,7 @@ public class MetricsCapturingExampleCommandLineHandler implements CommandLineHan
 
   @Inject
   public MetricsCapturingExampleCommandLineHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       ExampleService exampleService) {
-    //    super(shutdownTimeoutInSeconds);
     this.exampleService = exampleService;
   }
 

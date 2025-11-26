@@ -20,7 +20,9 @@ public enum GuiceApplicationEnvironmentMapping {
     for (final GuiceApplicationEnvironmentMapping guiceApplicationEnvironmentMapping : values()) {
       if (guiceApplicationEnvironmentMapping
           .getApplicationEnvironment()
-          .equals(applicationEnvironment)) return guiceApplicationEnvironmentMapping;
+          .equals(applicationEnvironment)) {
+        return guiceApplicationEnvironmentMapping;
+      }
     }
 
     throw new IllegalArgumentException(applicationEnvironment + " is not currently mapped.");

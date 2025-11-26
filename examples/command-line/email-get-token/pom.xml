@@ -4,34 +4,32 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>examples</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.examples</groupId>
   <artifactId>email-get-token</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.configuration.cli</groupId>
       <artifactId>guice</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
-      <groupId>com.walterjwhite.java.modules.identity.modules</groupId>
+      <groupId>com.walterjwhite.java.modules.identity.providers</groupId>
       <artifactId>email</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>
       <artifactId>snakeyaml</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>

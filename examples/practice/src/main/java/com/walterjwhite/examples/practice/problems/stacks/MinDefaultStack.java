@@ -1,6 +1,5 @@
 package com.walterjwhite.examples.practice.problems.stacks;
 
-// need to replace node with LocalMinNode
 public class MinDefaultStack extends DefaultStack<Integer> {
   protected Integer min = Integer.MAX_VALUE;
 

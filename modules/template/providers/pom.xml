@@ -4,13 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>template</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.template</groupId>
   <artifactId>providers</artifactId>
   <packaging>pom</packaging>
-
-
   <modules>
     <module>string-template</module>
   </modules>
@@ -18,18 +16,12 @@
     <dependency>
       <groupId>com.walterjwhite.java.modules.template.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.template</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--<artifactId>commons-io</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<type>pom</type>-->
-    <!--</dependency>-->
   </dependencies>
 </project>

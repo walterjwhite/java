@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Client {
-  // avoid having to program network ...
   protected final transient Map<String, Server> nodeMap = new HashMap<>();
 
   public String get(final String key) {
@@ -19,7 +18,6 @@ public class Client {
     return null;
   }
 
-  // make this dht dynamic
   public void removeNode(final Server server) {}
 
   public void addNode(final Server server) {}

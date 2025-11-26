@@ -4,44 +4,30 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.providers</groupId>
   <artifactId>guice-servlet</artifactId>
-
-
-
   <dependencies>
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.configuration</groupId>-->
-    <!--      <artifactId>web-service</artifactId>-->
-    <!--      <version>0.2.0</version>-->
-    <!--      <type>pom</type>-->
-    <!--    </dependency>-->
-    <!-- Actual Servlet Container -->
-    <!-- JAX-RS -->
     <dependency>
-      <groupId>org.glassfish.jersey.containers</groupId>
-      <artifactId>jersey-container-grizzly2-http</artifactId>
-      <!-- jetty 11 -->
-      <!--      <version>3.0.4</version>-->
-      <!--      <version>2.35</version>-->
-      <version>${jersey.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.ws.rs</groupId>
-      <artifactId>javax.ws.rs-api</artifactId>
-      <version>2.1.1</version>
+      <groupId>jakarta.ws.rs</groupId>
+      <artifactId>jakarta.ws.rs-api</artifactId>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-json-jackson</artifactId>
-      <version>${jersey.version}</version>
+      <version>4.0.0-M4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-grizzly2-http</artifactId>
+      <version>4.0.0-M4</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-jetty-http</artifactId>
-      <version>${jersey.version}</version>
+      <version>4.0.0-M4</version>
       <exclusions>
         <exclusion>
           <groupId>org.slf4j</groupId>
@@ -50,10 +36,4 @@
       </exclusions>
     </dependency>
   </dependencies>
-  <properties>
-    <!--    <jetty.version>11.0.8</jetty.version>-->
-    <!--    <jetty.version>10.0.8</jetty.version>-->
-    <jetty.version>9.4.43.v20210629</jetty.version>
-    <jersey.version>3.1.1</jersey.version>
-  </properties>
 </project>

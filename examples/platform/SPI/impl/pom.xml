@@ -4,17 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.examples</groupId>
     <artifactId>SPI</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.examples.SPI</groupId>
   <artifactId>impl</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.examples.SPI</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

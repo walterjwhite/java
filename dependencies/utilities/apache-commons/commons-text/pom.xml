@@ -4,18 +4,17 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>commons-text</artifactId>
   <packaging>pom</packaging>
-
   <dependencies>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-text</artifactId>
-      <version>1.10.0</version>
+      <version>1.14.0</version>
     </dependency>
   </dependencies>
 </project>

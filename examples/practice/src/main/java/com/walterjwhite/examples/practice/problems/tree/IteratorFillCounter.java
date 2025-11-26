@@ -6,10 +6,6 @@ import java.util.Set;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-// 1. iterate through array, create groups as we traverse the array
-// m*n (traversal) + lookup (is neighbor) + iterate through groups to determine max
-// instead of iterating through the groups, we merely keep track of the max count
-// terribly inefficient, but works
 public class IteratorFillCounter implements FillCounter {
   public int count(final int[][] colorGrid) {
     final Set<Group> groups = new HashSet<>();
@@ -41,13 +37,11 @@ public class IteratorFillCounter implements FillCounter {
     return null;
   }
 
-  // terribly inefficient
   static void consolidate(final int[][] colorGrid, final Set<Group> groups) {
     final Iterator<Group> groupIterator = groups.iterator();
     while (groupIterator.hasNext()) {
       final Group group = groupIterator.next();
 
-      // search each group to see if we can join that group
       for (final Group otherGroup : groups) {
         if (group.equals(otherGroup)) {
           continue;
@@ -92,9 +86,7 @@ public class IteratorFillCounter implements FillCounter {
     final Set<Cell> cells = new HashSet<>();
     final int color;
 
-    // inefficient, we need to search through the set
     boolean isConnected(final int[][] colorGrid, final int x, final int y) {
-      // possibilities (x-1,y),(x+1,y),(x,y-1),(x,y+1)
       final Set<Cell> possibleNeighbors = new HashSet<>();
       if (x > 0) {
         possibleNeighbors.add(new Cell(x - 1, y));

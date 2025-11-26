@@ -4,15 +4,15 @@
   <parent>
     <groupId>com.walterjwhite</groupId>
     <artifactId>java</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
-
-
   <groupId>com.walterjwhite.java</groupId>
   <artifactId>dependencies</artifactId>
   <packaging>pom</packaging>
   <modules>
+    <module>vertx</module>
     <module>browser/ashot</module>
+    <module>browser/htmlunit</module>
     <module>browser/selenium-chrome</module>
     <module>browser/selenium-support</module>
     <module>cloud/amazon-config</module>
@@ -28,23 +28,20 @@
     <module>data/database/connection-pool/hikari-jdbc-connection-pool</module>
     <module>data/database/drivers/apache-jackrabbit</module>
     <module>data/database/drivers/datanucleus-jdo</module>
+    <module>data/database/drivers/datanucleus-jdo-rdbms</module>
     <module>data/database/drivers/derby</module>
     <module>data/database/drivers/elasticsearch</module>
     <module>data/database/drivers/h2</module>
     <module>data/database/drivers/lettuce-redis-client</module>
     <module>data/database/drivers/neo4j</module>
-    <module>data/database/drivers/netflix-atlas</module>
-    <!--    <module>data/database/drivers/objectdb</module>-->
+    <module>data/database/drivers/netflix-spectator-api</module>
     <module>data/database/drivers/p6spy</module>
     <module>data/database/drivers/postgresql</module>
     <module>data/database/drivers/prometheus</module>
     <module>data/database/orm/eclipselink</module>
     <module>data/database/orm/hibernate-jpamodelgen</module>
     <module>data/database/orm/hibernate</module>
-    <module>data/database/orm/jooq</module>
-    <module>data/database/orm/querydsl</module>
     <module>data/database/transactions/atomikos-jta</module>
-    <module>data/ML/apache-mahout</module>
     <module>data/ML/apache-opennlp</module>
     <module>data/ML/google-tensorflow</module>
     <module>data/spreadsheet/apache-poi</module>
@@ -58,6 +55,10 @@
     <module>injection/impl/guice/google-guice-servlet</module>
     <module>injection/impl/guice/google-guice</module>
     <module>injection/impl/guice/netflix-governator</module>
+    <module>injection/impl/spring/spring-boot</module>
+    <module>injection/impl/spring/spring-boot-web</module>
+    <module>injection/impl/spring/spring-core</module>
+    <module>injection/impl/spring/spring-web</module>
     <module>logging/slf4j-api</module>
     <module>logging/slf4j-simple</module>
     <module>logging/slf4j-log4j12</module>
@@ -97,7 +98,6 @@
     <module>utilities/jcifs-ng</module>
     <module>utilities/jgit</module>
     <module>utilities/jira-client</module>
-    <!--    <module>utilities/joda-time</module>-->
     <module>utilities/jspeedtest</module>
     <module>utilities/lombok</module>
     <module>utilities/optaplanner</module>
@@ -112,6 +112,7 @@
     <module>utilities/sshj</module>
     <module>utilities/string-template</module>
     <module>utilities/vaadin</module>
+    <module>utilities/zxing</module>
     <module>validation/hibernate-validator</module>
     <module>validation/javax-validation</module>
     <module>utilities/microsoft-graph</module>

@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 @Slf4j
 public class LinkedListFindKthToLastNodeTest {
-  //    protected final KthtoLastNode kthtoLastNode = new BufferedLinkedListFindKthToLastNode();
   protected final KthtoLastNode kthtoLastNode = new IteratingLinkedListFindKthToLastNode();
 
   @Test

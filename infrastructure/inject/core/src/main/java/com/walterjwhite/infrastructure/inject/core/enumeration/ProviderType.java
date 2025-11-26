@@ -3,7 +3,6 @@ package com.walterjwhite.infrastructure.inject.core.enumeration;
 import com.walterjwhite.infrastructure.inject.core.helper.ApplicationHelper;
 import java.lang.reflect.InvocationTargetException;
 
-/** Gets an instance of a given target class, either by reflection, or injection */
 public enum ProviderType {
   Self {
     protected Class[] getConstructorArguments(final Object... arguments) {
@@ -16,7 +15,6 @@ public enum ProviderType {
     }
 
     public <Type> Type get(final Class<Type> targetClass, final Object... arguments) {
-      // return argumentTypes; get(Class<? extends Type> targetClass, final Object... arguments){
       final Class[] constructorArguments = getConstructorArguments(arguments);
 
       try {
@@ -28,7 +26,6 @@ public enum ProviderType {
           | InvocationTargetException
           | NoSuchMethodException e) {
         throw new Error("Unable to create instance of:" + targetClass, e); //
-        // + ArrayUtils.toString(arguments) + " / " + ArrayUtils.toString(constructorArguments));
       }
     }
   },

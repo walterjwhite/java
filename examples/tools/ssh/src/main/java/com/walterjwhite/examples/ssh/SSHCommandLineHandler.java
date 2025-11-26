@@ -15,10 +15,8 @@ public class SSHCommandLineHandler implements CommandLineHandler {
 
   @Inject
   public SSHCommandLineHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       @Property(ExampleSSHUser.class) final String exampleSSHUsername,
       SSHCommandService sshCommandService) {
-    //    super(shutdownTimeoutInSeconds);
     this.exampleSSHUsername = exampleSSHUsername;
     this.sshCommandService = sshCommandService;
   }

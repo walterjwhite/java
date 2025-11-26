@@ -4,34 +4,36 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.browser</groupId>
     <artifactId>api</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.browser.api</groupId>
   <artifactId>service</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.browser.api</groupId>
       <artifactId>model</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>
-      <artifactId>repository</artifactId>
-      <version>0.2.0</version>
+      <groupId>com.walterjwhite.java.modules.browser.api</groupId>
+      <artifactId>property</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>selenium-support</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--<artifactId>snakeyaml</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<type>pom</type>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.file.modules</groupId>
+      <artifactId>resources</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.serialization.api</groupId>
+      <artifactId>service</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 </project>

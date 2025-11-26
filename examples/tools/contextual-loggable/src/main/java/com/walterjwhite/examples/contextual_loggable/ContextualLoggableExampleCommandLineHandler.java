@@ -6,17 +6,18 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(onConstructor_ = @Inject)
 public class ContextualLoggableExampleCommandLineHandler implements CommandLineHandler {
-
-  //  @Inject
-  //  public ContextualLoggableExampleCommandLineHandler(
-  //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds) {
-  //    super(shutdownTimeoutInSeconds);
-  //  }
-
   @Override
   public void run(String... arguments) {
-    new ContextualWorker(arguments).doSomething();
+    try {
+      new ContextualWorker(arguments).doSomething();
+    } catch (Exception e) {
 
-    new FieldContextualWorker(arguments).doSomething();
+    }
+
+    try {
+      new FieldContextualWorker(arguments).doSomething();
+    } catch (Exception e) {
+
+    }
   }
 }

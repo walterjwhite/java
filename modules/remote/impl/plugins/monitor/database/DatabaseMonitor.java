@@ -17,16 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import org.yaml.snakeyaml.Yaml;
 
-/** result can be: a single value a row with many columns (and column headers) */
 @Data
 @ToString(doNotUseGetters = true)
 public class DatabaseMonitor extends AbstractMonitor<DataTable> {
   protected final Connection connection;
 
-  /** SQL file containing the query to run */
   protected String queryFile;
 
-  /** Parameters to the query above. */
   protected String[] parameters;
 
   /*
@@ -79,7 +76,6 @@ public class DatabaseMonitor extends AbstractMonitor<DataTable> {
         result.clear();
 
         while (resultSet.next()) {
-          // final String[] data = new String[fields.length];
           final List<String> row = new ArrayList<String>();
           for (int i = 0; i < resultSet.getMetaData().getColumnCount(); i++) {
             row.add(resultSet.getString(i + 1));
@@ -95,7 +91,6 @@ public class DatabaseMonitor extends AbstractMonitor<DataTable> {
 
   protected void setupColumnNames(final ResultSet resultSet) throws SQLException {
     if (result.columnNames == null) {
-      // set the column names
       final List<String> columnNames = new ArrayList<String>();
 
       for (int i = 0; i < resultSet.getMetaData().getColumnCount(); i++) {

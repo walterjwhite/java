@@ -5,9 +5,11 @@ import com.walterjwhite.ssh.api.model.SSHHost;
 import com.walterjwhite.ssh.api.model.SSHUser;
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SFTPTest {
 
   protected SFTPTransferService sftpTransferService;
@@ -16,7 +18,7 @@ public class SFTPTest {
   protected Set<SSHHost> sshHosts;
   protected SSHUser sshUser;
 
-  @Before
+  @BeforeAll
   public void before() {
     sshHost = new SSHHost("localhost");
     sshHosts = new HashSet<>();
@@ -34,10 +36,8 @@ public class SFTPTest {
 
         final File a = new File(sourceDirectory + "/a");
         final File b = new File(sourceDirectory + "/b");
-        //final File tempSource = File.createTempFile("source", "suffix");
         FileUtils.write(a, "Test a\n\n", Charset.defaultCharset());
         FileUtils.write(b, "Test b\n\n", Charset.defaultCharset());
-        //final File tempTarget = File.createTempFile("target", "suffix");
         final String targetPath = "/tmp/target-test";
         final File tempTarget = new File(targetPath);
 
@@ -45,7 +45,6 @@ public class SFTPTest {
             new SFTPTransfer(sshHost, sshUser, sourceDirectory.getAbsolutePath(), targetPath, 10);
         sftpTransferService.transfer(sftpTransfer);
 
-        // check that the files exist
         if (!sourceDirectory.exists()) LOGGER.warn("source does ! exist.");
         if (!tempTarget.exists()) LOGGER.warn("target does ! exist.");
 

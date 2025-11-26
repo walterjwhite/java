@@ -10,7 +10,6 @@ import com.walterjwhite.timeout.annotation.TimeConstrained;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
-/** This could be a queuedJob that pulls data from a database with a long-running query. */
 @Job(
     jobExecutionConfiguration = @JobExecutionConfiguration(),
     atDateAndTime = @AtDateAndTime(hour = 7, recurrenceUnits = ChronoUnit.DAYS))

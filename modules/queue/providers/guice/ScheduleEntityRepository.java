@@ -7,8 +7,8 @@ import com.walterjwhite.job.api.model.JobExecution;
 import com.walterjwhite.job.api.model.JobExecution_;
 import com.walterjwhite.job.api.model.scheduling.AbstractSchedule;
 import com.walterjwhite.job.api.model.scheduling.AbstractSchedule_;
-import java.util.List;
 import jakarta.inject.Inject;
+import java.util.List;
 
 public class ScheduleEntityRepository extends GenericEntityRepository<AbstractSchedule> {
   @Inject

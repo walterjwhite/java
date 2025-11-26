@@ -31,7 +31,6 @@ public class DefaultPropertySource extends AbstractSingularPropertySource<Config
 
   protected String getStringValue(final Field field) {
     final Object fieldValue = getValue(field);
-    // ChronoUnit patch
     if (Enum.class.isAssignableFrom(fieldValue.getClass())) {
       return ((Enum) fieldValue).name();
     }
@@ -76,8 +75,9 @@ public class DefaultPropertySource extends AbstractSingularPropertySource<Config
     final Set<Class<? extends ConfigurableProperty>> interfaces = new HashSet<>();
     for (final Class<? extends ConfigurableProperty> configurablePropertyClass :
         ((Class<? extends ConfigurableProperty>[]) configurableProperty.getInterfaces())) {
-      if (handleInterface(configurablePropertyClass, defaultValue))
+      if (handleInterface(configurablePropertyClass, defaultValue)) {
         interfaces.add(configurablePropertyClass);
+      }
     }
 
     return interfaces;

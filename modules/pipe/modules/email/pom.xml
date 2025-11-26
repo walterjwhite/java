@@ -4,18 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.pipe</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.pipe.modules</groupId>
   <artifactId>email</artifactId>
-  <version>0.2.0</version>
-
-
   <dependencies>
     <dependency>
-      <groupId>com.walterjwhite.java.modules.email.api</groupId>
-      <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <groupId>com.walterjwhite.java.modules.email</groupId>
+      <artifactId>api</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

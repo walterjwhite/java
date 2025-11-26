@@ -14,17 +14,6 @@ public class ConsumersTest {
     final Disposable o2 = Observable.fromArray(stringIterable).subscribe(new TestConsumer("b"));
     final Disposable o3 = Observable.fromArray(stringIterable).subscribe(new TestConsumer("c"));
 
-    //    PublishProcessor<String> source = PublishProcessor.create();
-    //
-    //            source.doOnNext()
-    //                    .observeOn(Schedulers.computation())
-    //                    .subscribe(v -> compute(v), Main::logError);
-    //
-    //            for (int i = 0; i < 1_000_000; i++) {
-    //                source.onNext(i);
-    //            }
-    //
-    //            Thread.sleep(10_000);
 
   }
 }

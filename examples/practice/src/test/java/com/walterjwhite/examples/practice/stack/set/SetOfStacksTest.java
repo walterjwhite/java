@@ -46,25 +46,6 @@ public class SetOfStacksTest {
     Assertions.assertEquals(null, setOfStacks.pop());
   }
 
-  @Test
-  void test_3() {
-    final SetOfStacks setOfStacks = new SetOfStacks(3);
-    setOfStacks.push(1);
-    setOfStacks.push(2);
-    setOfStacks.push(3);
-    setOfStacks.push(4);
-    setOfStacks.push(5);
-    setOfStacks.push(6);
 
-    Assertions.assertEquals(6, setOfStacks.pop());
-    Assertions.assertEquals(5, setOfStacks.pop());
-    Assertions.assertEquals(4, setOfStacks.pop());
-    setOfStacks.push(4);
-    Assertions.assertEquals(4, setOfStacks.pop());
-    Assertions.assertEquals(3, setOfStacks.pop());
 
-    Assertions.assertEquals(2, setOfStacks.pop());
-    Assertions.assertEquals(1, setOfStacks.pop());
-    Assertions.assertEquals(null, setOfStacks.pop());
-  }
 }

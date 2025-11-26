@@ -3,7 +3,6 @@ package com.walterjwhite.queue.api.annotation.scheduling;
 import java.lang.annotation.*;
 import java.time.temporal.ChronoUnit;
 
-/** Class to register this event listener to. */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

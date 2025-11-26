@@ -4,7 +4,6 @@ import com.walterjwhite.file.api.service.FileStorageService;
 import com.walterjwhite.remote.impl.plugins.file.message.FileTransferMessage;
 import jakarta.inject.Inject;
 
-// import com.walterjwhite.queue.api.queuedJob.AbstractJobRunnable;
 public class FileTransferMessageCallable
 /*extends AbstractRunnable<FileTransferMessage, Void>*/ {
   protected final FileStorageService fileStorageService;
@@ -25,16 +24,4 @@ public class FileTransferMessageCallable
     }
   }
 
-  //  @Override
-  //  protected boolean isRetryable(Throwable thrown) {
-  //    return false;
-  //  }
-  //
-  //  @Override
-  //  public Void call() throws Exception {
-  //    fileStorageService.get(entity.getFile());
-  //    moveFile(entity);
-  //
-  //    return null;
-  //  }
 }

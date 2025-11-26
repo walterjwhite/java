@@ -1,8 +1,16 @@
 package com.walterjwhite.property.impl.source;
 
-public interface PropertyValue {
-  Class getPropertyType();
+import com.walterjwhite.logging.annotation.Sensitive;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-  // NOTE: encrypted values are always stored as a string until they're decrypted
-  String getValue();
+@Data
+@ToString(doNotUseGetters = true)
+@RequiredArgsConstructor
+public class PropertyValue {
+
+  protected final Class propertyType;
+
+  @Sensitive protected final String value;
 }
