@@ -104,7 +104,7 @@ public class BatchService {
         if (!j.isWantToRun()) {
             j.setWantToRun(true);
             j.setSubmittedAt(Instant.now());
-            if (j.getStatus() == BatchJob.Status.PENDING || j.getStatus() == BatchJob.Status.CANCELLED || j.getStatus() == BatchJob.Status.FAILED) {
+            if (j.getStatus() == BatchJob.Status.PENDING || j.getStatus() == BatchJob.Status.CANCELLED || j.getStatus() == BatchJob.Status.FAILED || j.getStatus() == BatchJob.Status.COMPLETED) {
                 j.setStatus(BatchJob.Status.PENDING);
             }
             log.info("Marked job {} wantToRun=true", id);
