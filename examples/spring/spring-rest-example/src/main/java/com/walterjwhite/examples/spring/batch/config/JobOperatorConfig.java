@@ -17,7 +17,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.transaction.*;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -25,6 +25,19 @@ import javax.sql.DataSource;
 @Slf4j
 public class JobOperatorConfig {
 
+    @Primary
+    @Bean(name = "dataSource")
+    public DataSource dataSource() {
+        return new EmbeddedDatabaseBuilder()
+                .setName("batchdb")
+                .setType(EmbeddedDatabaseType.H2)
+                .build();
+    }
+
+    @Bean(name = "transactionManager")
+    public PlatformTransactionManager transactionManager(DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
 
     @Bean
     public JobRegistry jobRegistry(final ApplicationContext applicationContext) {
