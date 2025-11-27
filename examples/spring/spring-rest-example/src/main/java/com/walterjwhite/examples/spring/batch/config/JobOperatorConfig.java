@@ -34,6 +34,7 @@ public class JobOperatorConfig {
                 .build();
     }
 
+    @Primary
     @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
