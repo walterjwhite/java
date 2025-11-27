@@ -1,0 +1,5 @@
+1. illustrate building a CLI application
+2. illustrate use of @Sensitive on parameters, configured to only show last character
+3. illustrate building a simple JDO application (storing and retrieving entities)
+4. illustrate use of Typed interface for injection, Repository<PersistenceManager>, to get a JDORepository
+5. illustrate injecting properties into JDO Persistence Manager

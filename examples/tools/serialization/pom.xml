@@ -4,59 +4,32 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>examples</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.examples</groupId>
   <artifactId>serialization</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.configuration.cli</groupId>
       <artifactId>guice</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.modules</groupId>
       <artifactId>time</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-    <!--        <dependency>-->
-    <!--          <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>-->
-    <!--          <artifactId>snakeyaml</artifactId>-->
-    <!--          <version>0.1.0</version>-->
-    <!--        </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>-->
-    <!--      <artifactId>jackson-json</artifactId>-->
-    <!--      <version>0.1.0</version>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>-->
-    <!--      <artifactId>native</artifactId>-->
-    <!--      <version>0.1.0</version>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.modules.serialization.providers.kryo</groupId>-->
-    <!--      <artifactId>impl</artifactId>-->
-    <!--      <version>0.1.0</version>-->
-    <!--    </dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>
       <artifactId>jackson-yaml</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.walterjwhite.java.modules.email.modules.organization</groupId>
-      <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <properties>

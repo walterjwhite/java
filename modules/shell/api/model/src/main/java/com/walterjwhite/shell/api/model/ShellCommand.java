@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import java.time.LocalDateTime;
 import java.util.*;
 import javax.jdo.annotations.PersistenceCapable;
@@ -13,7 +12,7 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
 @PersistenceCapable
-public class ShellCommand extends AbstractEntity implements EnvironmentAware {
+public class ShellCommand implements EnvironmentAware {
 
   protected Node node;
 
@@ -23,7 +22,6 @@ public class ShellCommand extends AbstractEntity implements EnvironmentAware {
 
   protected LocalDateTime dateTime = LocalDateTime.now();
 
-  /** Specify -1 for long-running, output will be streamed. */
   @EqualsAndHashCode.Exclude protected int timeout;
 
   @EqualsAndHashCode.Exclude

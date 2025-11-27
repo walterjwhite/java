@@ -9,11 +9,11 @@ import com.walterjwhite.shell.api.model.traceroute.TracrouteHopResponse;
 import com.walterjwhite.shell.api.service.ShellExecutionService;
 import com.walterjwhite.shell.api.service.TracerouteService;
 import com.walterjwhite.shell.impl.property.TracerouteTimeout;
+import jakarta.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import jakarta.inject.Inject;
 
 public class DefaultTracerouteService extends AbstractSingleShellCommandService<TracerouteRequest>
     implements TracerouteService {
@@ -49,7 +49,6 @@ public class DefaultTracerouteService extends AbstractSingleShellCommandService<
       arguments.add(Integer.toString(tracerouteRequest.getQueriesPerHop()));
     }
 
-    // do NOT resolve hostnames, adds time to request
     arguments.add("-n");
 
     arguments.add(tracerouteRequest.getNetworkDiagnosticTest().getFqdn());

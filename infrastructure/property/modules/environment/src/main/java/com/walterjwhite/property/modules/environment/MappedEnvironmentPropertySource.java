@@ -16,12 +16,13 @@ public class MappedEnvironmentPropertySource
     super(propertyManager, MappedEnvironmentProperty.class);
   }
 
-  // ie. sets the ProxyHost or ProxyPort from http_proxy or https_proxy ...
   @Override
   protected Set<PropertyPair> get(Class<? extends MappedEnvironmentProperty> property) {
     final Set<PropertyPair> propertyPairs = new HashSet<>();
 
-    if (property.getEnumConstants() == null) return propertyPairs;
+    if (property.getEnumConstants() == null) {
+      return propertyPairs;
+    }
 
     for (final MappedEnvironmentProperty mappedEnvironmentProperty1 : property.getEnumConstants()) {
       for (final Class<? extends ConfigurableProperty> supportedProperty :

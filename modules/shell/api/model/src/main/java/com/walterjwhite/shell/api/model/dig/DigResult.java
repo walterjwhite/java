@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model.dig;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.shell.api.model.IPAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 @Data
 @PersistenceCapable
-public class DigResult extends AbstractEntity /*<DigRequest>*/ {
+public class DigResult /*<DigRequest>*/ {
   protected DigRequest digRequest;
 
   protected List</*DigRequestIPAddress*/ IPAddress> digRequestIPAddresses;
@@ -28,12 +27,4 @@ public class DigResult extends AbstractEntity /*<DigRequest>*/ {
     this.digRequestIPAddresses = new ArrayList<>();
   }
 
-  //    @Override
-  //    public DigRequest getId() {
-  //        return digRequest;
-  //    }
-  //    @Override
-  //    public void setId(DigRequest id) {
-  //        this.digRequest = id;
-  //    }
 }

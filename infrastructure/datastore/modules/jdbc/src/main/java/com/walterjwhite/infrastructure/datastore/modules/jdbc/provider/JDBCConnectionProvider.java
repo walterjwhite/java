@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 public class JDBCConnectionProvider {
   public static Connection get(JDBCConfiguration jdbcConfiguration) throws SQLException {
-    // Class.forName(jdbcConfiguration.getDriverClassName());
 
     return (DriverManager.getConnection(
         jdbcConfiguration.getJdbcUrl(),

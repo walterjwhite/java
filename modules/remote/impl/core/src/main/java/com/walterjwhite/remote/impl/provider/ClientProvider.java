@@ -1,8 +1,6 @@
 package com.walterjwhite.remote.impl.provider;
 
-import com.walterjwhite.datastore.api.repository.Repository;
-// import com.walterjwhite.encryption.impl.RuntimeEncryptionConfiguration;
-import com.walterjwhite.encryption.service.DigestService;
+import com.walterjwhite.encryption.enumeration.DigestAlgorithm;
 import com.walterjwhite.ip.api.service.PublicIPLookupService;
 import com.walterjwhite.remote.api.model.Client;
 import com.walterjwhite.remote.api.model.ClientIPAddressHistory;
@@ -14,44 +12,37 @@ import jakarta.inject.Provider;
 import jakarta.inject.Singleton;
 import javax.transaction.Transactional;
 
-/** This is the local client (self) */
 @Singleton
 public class ClientProvider implements Provider<Client> {
   protected final Client client;
   protected final Node node;
-  protected final Provider<Repository> repositoryProvider;
   protected final PublicIPLookupService publicIPLookupService;
-  protected final DigestService digestService;
+  protected final DigestAlgorithm digestAlgorithm;
   protected final ClientIdentifierService clientIdentifierService;
-  //  protected final RuntimeEncryptionConfiguration runtimeEncryptionConfiguration;
+
 
   @Inject
   public ClientProvider(
-      //      final RuntimeEncryptionConfiguration runtimeEncryptionConfiguration,
       Node node,
-      Provider<Repository> repositoryProvider,
       final PublicIPLookupService publicIPLookupService,
-      DigestService digestService,
+      DigestAlgorithm digestAlgorithm,
       ClientIdentifierService clientIdentifierService)
       throws Exception {
 
     this.node = node;
 
-    this.repositoryProvider = repositoryProvider;
-    this.digestService = digestService;
+    this.digestAlgorithm = digestAlgorithm;
     this.clientIdentifierService = clientIdentifierService;
 
     this.publicIPLookupService = publicIPLookupService;
-    //    this.runtimeEncryptionConfiguration = runtimeEncryptionConfiguration;
 
     this.client = getClient();
   }
 
   protected Client getClient() {
-    // final String id = clientIdentifierService.get();
     final int id = -1;
     try {
-      return (repositoryProvider.get().findById(Client.class, id));
+      return null;
     } catch (/*NoResultException*/ RuntimeException e) {
       return (createClient(/*id*/ "TODO: fix this"));
     }
@@ -75,17 +66,12 @@ public class ClientProvider implements Provider<Client> {
       throw new UnsupportedOperationException("currently broken until encryption code is updated");
     }
 
-    //    if (client.getInitializationVector() == null) {
-    //      client.setInitializationVector(runtimeEncryptionConfiguration.getIvData());
-    //    }
 
-    repositoryProvider.get().create(client);
     return (client);
   }
 
   @Override
   public Client get() {
-    //    repositoryProvider.get().refresh(client);
 
     return (client);
   }

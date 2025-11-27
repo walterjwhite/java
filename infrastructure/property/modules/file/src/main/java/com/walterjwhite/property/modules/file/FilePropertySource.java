@@ -25,7 +25,9 @@ public class FilePropertySource extends AbstractSingularStringPropertySource<Con
 
   @Override
   protected String doGet(String propertyKey) {
-    if (!enabled) return null;
+    if (!enabled) {
+      return null;
+    }
 
     try {
       return IOUtils.toString(
@@ -33,7 +35,6 @@ public class FilePropertySource extends AbstractSingularStringPropertySource<Con
               new FileInputStream(FILE_PATH + propertyKey.replaceAll("\\.", File.separator))),
           Charset.defaultCharset());
     } catch (IOException e) {
-      // throw new RuntimeException("Error reading:", e);
       return null;
     }
   }

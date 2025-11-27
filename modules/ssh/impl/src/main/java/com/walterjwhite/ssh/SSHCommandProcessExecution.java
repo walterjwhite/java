@@ -43,7 +43,6 @@ public class SSHCommandProcessExecution extends AbstractProcessExecution {
   protected void kill(Exception e) throws IOException, InterruptedException {
     super.kill(null);
 
-    // Wait some time for the process to exit:
     sshCommand.join(1, TimeUnit.SECONDS);
   }
 

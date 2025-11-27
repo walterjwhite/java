@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.walterjwhite.java.advice</groupId>
+    <artifactId>heartbeat</artifactId>
+    <version>0.3.6-SNAPSHOT</version>
+  </parent>
+  <groupId>com.walterjwhite.java.advice.heartbeat</groupId>
+  <artifactId>plugin</artifactId>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.advice.heartbeat</groupId>
+      <artifactId>runtime</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
+</project>

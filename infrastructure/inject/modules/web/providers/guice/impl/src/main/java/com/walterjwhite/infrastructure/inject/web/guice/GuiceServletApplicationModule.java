@@ -4,19 +4,16 @@ import com.google.inject.servlet.ServletModule;
 import com.walterjwhite.file.modules.resources.JarReadUtils;
 import com.walterjwhite.infrastructure.inject.core.helper.ApplicationHelper;
 import com.walterjwhite.infrastructure.inject.providers.guice.GuiceApplicationModule;
+import jakarta.servlet.Filter;
+import jakarta.servlet.http.HttpServlet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.function.Function;
 import java.util.regex.Pattern;
-import jakarta.servlet.Filter;
-import jakarta.servlet.http.HttpServlet;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
-// the problem is that we are getting 2 instances
-// one created by registering this
-// and two as a startup service ...
 @Slf4j
 public class GuiceServletApplicationModule extends ServletModule implements GuiceApplicationModule {
   @Override

@@ -4,8 +4,8 @@ import com.walterjwhite.examples.rest.RestClient;
 import com.walterjwhite.examples.rest.WebTargetResponse;
 import com.walterjwhite.examples.rest.builder.IpIfyRequestBuilder;
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
-import java.util.Map;
 import jakarta.inject.Inject;
+import java.util.Map;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,11 +15,6 @@ public class IpIfyRestClientExampleCommandLineHandler implements CommandLineHand
 
   protected final RestClient restClient = new RestClient();
 
-  //  @Inject
-  //  public RestClientExampleCommandLineHandler(
-  //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds) {
-  //    super(shutdownTimeoutInSeconds);
-  //  }
 
   @Override
   public void run(String... arguments) {

@@ -12,7 +12,6 @@ public class DurationRepresenter implements Represent {
   public Node representData(final Object data) {
     final Duration duration = (Duration) data;
     String value = Long.toString(duration.toSeconds());
-    //        return Representer.representScalar(new Tag("!!" + Duration.class.getName()), value);
 
     return new ScalarNode(
         new Tag("!!" + Duration.class.getName()),

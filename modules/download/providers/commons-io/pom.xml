@@ -4,13 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.download</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.download.providers</groupId>
   <artifactId>commons-io</artifactId>
-  <packaging>pom</packaging>
-
-  <modules>
-    <module>impl</module>
-  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.download</groupId>
+      <artifactId>impl</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
 </project>

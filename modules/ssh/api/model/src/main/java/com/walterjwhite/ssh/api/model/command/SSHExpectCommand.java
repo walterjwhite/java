@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-/** Provided class name will perform execution and evaluation of results. */
 @Data
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor

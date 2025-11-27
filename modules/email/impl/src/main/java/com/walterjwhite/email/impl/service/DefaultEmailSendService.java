@@ -8,8 +8,7 @@ import com.walterjwhite.email.impl.property.EmailSendTimeout;
 import com.walterjwhite.property.api.annotation.Property;
 import jakarta.inject.Inject;
 import javax.transaction.Transactional;
-// instead, create the request to send the email (database record)
-// implement the queue integration by picking up "jobs" from the database record
+
 
 public class DefaultEmailSendService implements EmailSendService {
   protected final int emailSendTimeout;
@@ -27,8 +26,6 @@ public class DefaultEmailSendService implements EmailSendService {
   @Override
   public void send(Email email) {
     EmailSendRequest emailSendRequest = buildEmailSendRequest(email);
-    //    repositoryProvider
-    //        .get()
     send(emailSendRequest);
   }
 
@@ -41,9 +38,5 @@ public class DefaultEmailSendService implements EmailSendService {
   }
 
   public void send(EmailSendRequest emailSendRequest) {
-    //    repositoryProvider
-    //        .get()
-    //        .create(emailSendRequest);
-    //    queueService.queue(buildJob(emailSendRequest));
   }
 }

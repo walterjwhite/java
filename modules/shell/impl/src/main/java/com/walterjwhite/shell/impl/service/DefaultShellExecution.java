@@ -8,9 +8,9 @@ import com.walterjwhite.shell.impl.annotation.EntityEnabled;
 import com.walterjwhite.shell.impl.property.InterruptGracePeriodUnits;
 import com.walterjwhite.shell.impl.property.InterruptGracePeriodValue;
 import com.walterjwhite.shell.impl.util.ShellExecutionUtil;
+import jakarta.inject.Inject;
 import java.io.IOException;
 import java.time.temporal.ChronoUnit;
-import jakarta.inject.Inject;
 
 public class DefaultShellExecution implements ShellExecutionService, AutoCloseable {
   protected boolean shutdown;
@@ -72,7 +72,6 @@ public class DefaultShellExecution implements ShellExecutionService, AutoCloseab
     }
     return (Runtime.getRuntime().exec(ShellExecutionUtil.getChrootCmdLine(chrootable)));
 
-    // once chroot process is running, execute actual command ...
   }
 
   private static void setEnvironment(
@@ -105,7 +104,6 @@ public class DefaultShellExecution implements ShellExecutionService, AutoCloseab
     }
     return (Runtime.getRuntime().exec(ShellExecutionUtil.getChrootCmdLine(chrootable)));
 
-    // once chroot process is running, execute actual command ...
   }
 
   protected void doValidate(final ShellCommand shellCommand, final Chrootable chrootable) {

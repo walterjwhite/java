@@ -4,28 +4,17 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>google-guice</artifactId>
   <packaging>pom</packaging>
-
   <dependencies>
     <dependency>
       <groupId>com.google.inject</groupId>
       <artifactId>guice</artifactId>
-      <version>7.0.1-SNAPSHOT</version>
+      <version>7.0.0</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.google.inject.extensions</groupId>-->
-    <!--<artifactId>guice-multibindings</artifactId>-->
-    <!--<version>${google.guice.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.google.inject.integration</groupId>-->
-    <!--<artifactId>integration</artifactId>-->
-    <!--<version>1.0</version>-->
-    <!--</dependency>-->
   </dependencies>
 </project>

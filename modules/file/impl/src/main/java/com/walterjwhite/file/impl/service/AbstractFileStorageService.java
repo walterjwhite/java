@@ -1,19 +1,18 @@
 package com.walterjwhite.file.impl.service;
 
 import com.walterjwhite.encryption.api.service.CompressionService;
-import com.walterjwhite.encryption.service.DigestService;
+import com.walterjwhite.encryption.enumeration.DigestAlgorithm;
 import com.walterjwhite.encryption.service.EncryptionService;
 import com.walterjwhite.file.api.model.File;
 import com.walterjwhite.file.api.service.FileStorageService;
 import java.io.*;
-import java.security.NoSuchAlgorithmException;
 import javax.transaction.Transactional;
 import org.apache.commons.compress.utils.IOUtils;
 
 public abstract class AbstractFileStorageService implements FileStorageService {
   protected final CompressionService compressionService;
   protected final EncryptionService encryptionService;
-  protected final DigestService digestService;
+  protected final DigestAlgorithm digestAlgorithm;
 
   protected final boolean nop;
   protected final boolean debug;
@@ -21,22 +20,22 @@ public abstract class AbstractFileStorageService implements FileStorageService {
   protected AbstractFileStorageService(
       CompressionService compressionService,
       EncryptionService encryptionService,
-      DigestService digestService,
+      DigestAlgorithm digestAlgorithm,
       boolean nop,
       boolean debug) {
 
     this.compressionService = compressionService;
     this.encryptionService = encryptionService;
-    this.digestService = digestService;
+    this.digestAlgorithm = digestAlgorithm;
     this.nop = nop;
     this.debug = debug;
   }
 
   @Transactional
   @Override
-  public File put(File file) throws IOException, NoSuchAlgorithmException {
+  public File put(File file) throws IOException {
     final java.io.File sourceFile = new java.io.File(file.getSource());
-    final String digest = digestService.compute(sourceFile);
+    final String digest = digestAlgorithm.compute(sourceFile);
     file.setChecksum(digest);
 
     return storeReference(file, sourceFile);
@@ -44,10 +43,8 @@ public abstract class AbstractFileStorageService implements FileStorageService {
 
   protected File storeReference(File file, final java.io.File sourceFile) throws IOException {
     try {
-      // return repositoryProvider.get().query(new FindFileByChecksumQuery(file.getChecksum()));
       return file;
     } catch (RuntimeException e /*PersistenceException*/) {
-      // repositoryProvider.get().create(file);
 
       final java.io.File replacedFile;
       if (!debug) {
@@ -58,7 +55,9 @@ public abstract class AbstractFileStorageService implements FileStorageService {
 
       doPut(file);
 
-      if (replacedFile != null) replacedFile.delete();
+      if (replacedFile != null) {
+        replacedFile.delete();
+      }
 
       return file;
     }

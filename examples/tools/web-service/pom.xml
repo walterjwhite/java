@@ -4,57 +4,26 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>web-service</artifactId>
-    <version>0.0.15-SNAPSHOT</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.web-service</groupId>
   <artifactId>sample</artifactId>
-
-
   <dependencies>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.metrics.modules</groupId>-->
-    <!--<artifactId>prometheus</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.metrics.modules</groupId>
       <artifactId>netflix-atlas</artifactId>
-      <version>0.0.15-SNAPSHOT</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>swagger-jaxrs</artifactId>
-      <version>0.0.15-SNAPSHOT</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!--
-		<dependency>
-			<groupId>com.walterjwhite.java.modules.email.api</groupId>
-			<artifactId>service</artifactId>
-			<version>0.0.15-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.walterjwhite.java.modules.email</groupId>
-			<artifactId>impl</artifactId>
-			<version>0.0.15-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.walterjwhite.java.modules.email.modules</groupId>
-			<artifactId>javamail</artifactId>
-			<version>0.0.15-SNAPSHOT</version>
-		</dependency>
-		-->
-    <!--<dependency>-->
-    <!--<groupId>org.glassfish.jersey.core</groupId>-->
-    <!--<artifactId>jersey-server</artifactId>-->
-    <!--<version>2.26</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.configuration</groupId>
       <artifactId>web-service</artifactId>
-      <version>0.1.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

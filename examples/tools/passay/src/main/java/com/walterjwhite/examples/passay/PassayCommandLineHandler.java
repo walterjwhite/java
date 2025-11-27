@@ -10,11 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(onConstructor_ = @Inject)
 public class PassayCommandLineHandler implements CommandLineHandler {
 
-  //  @Inject
-  //  public PassayCommandLineHandler(
-  //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds) {
-  //    super(shutdownTimeoutInSeconds);
-  //  }
 
   @Override
   public void run(String... arguments) {

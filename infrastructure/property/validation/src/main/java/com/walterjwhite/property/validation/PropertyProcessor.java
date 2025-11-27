@@ -6,21 +6,18 @@ import com.walterjwhite.property.api.annotation.PropertyValueType;
 import com.walterjwhite.property.api.property.ConfigurableProperty;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.processing.AbstractProcessor;
-import javax.annotation.processing.Processor;
-import javax.annotation.processing.RoundEnvironment;
-import javax.annotation.processing.SupportedAnnotationTypes;
-import javax.annotation.processing.SupportedSourceVersion;
+import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.AnnotationValue;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
+import lombok.NoArgsConstructor;
 
 @SupportedAnnotationTypes("com.walterjwhite.property.impl.annotation.Property")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @AutoService(Processor.class)
-// @NoArgsConstructor
+@NoArgsConstructor
 public class PropertyProcessor extends AbstractProcessor {
 
   @Override
@@ -39,7 +36,7 @@ public class PropertyProcessor extends AbstractProcessor {
     }
 
     final Class[] propertyTypes = getPropertyType(element);
-    if (!isA(element, propertyTypes[1]))
+    if (!isA(element, propertyTypes[1])) {
       throw new PropertyUsageException(
           new Attribute(propertyTypes[0].getName(), propertyTypes[1].getName()),
           new UsedAttribute(
@@ -47,6 +44,7 @@ public class PropertyProcessor extends AbstractProcessor {
               element.asType().toString(),
               element.getEnclosingElement().getSimpleName().toString(),
               element.getEnclosingElement().asType().toString()));
+    }
   }
 
   private static boolean isA(final Element element, final Class typeClass) {

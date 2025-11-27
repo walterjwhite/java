@@ -11,7 +11,6 @@ public class URLStreamUtil {
     urlConnection.setDoOutput(true);
     urlConnection.setAllowUserInteraction(false);
 
-    // get result
     final StringBuilder buffer = new StringBuilder();
     try (final BufferedReader br =
         new BufferedReader(new InputStreamReader(urlConnection.getInputStream()))) {

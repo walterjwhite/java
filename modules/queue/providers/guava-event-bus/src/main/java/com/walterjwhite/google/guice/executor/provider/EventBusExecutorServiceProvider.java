@@ -4,9 +4,9 @@ import com.google.common.util.concurrent.ListeningScheduledExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.walterjwhite.job.impl.property.property.NumberOfEventBusThreads;
 import com.walterjwhite.property.impl.annotation.Property;
-import java.util.concurrent.Executors;
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
+import java.util.concurrent.Executors;
 
 public class EventBusExecutorServiceProvider
     implements Provider<ListeningScheduledExecutorService> {

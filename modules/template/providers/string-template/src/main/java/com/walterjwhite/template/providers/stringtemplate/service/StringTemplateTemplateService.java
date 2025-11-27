@@ -4,8 +4,8 @@ import com.walterjwhite.file.impl.service.AbstractTemplateService;
 import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.template.providers.stringtemplate.property.StringTemplateDelimeterStartChar;
 import com.walterjwhite.template.providers.stringtemplate.property.StringTemplateDelimeterStopChar;
-import java.util.Map;
 import jakarta.inject.Inject;
+import java.util.Map;
 import org.stringtemplate.v4.ST;
 
 public class StringTemplateTemplateService extends AbstractTemplateService {

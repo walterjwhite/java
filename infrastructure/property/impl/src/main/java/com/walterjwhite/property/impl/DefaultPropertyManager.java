@@ -45,6 +45,10 @@ public class DefaultPropertyManager implements PropertyManager {
 
   @Override
   public void set(Class<? extends ConfigurableProperty> configurableProperty, String value) {
+    if (value == null) {
+      return;
+    }
+
     propertySourceManager.set(configurableProperty, value);
   }
 

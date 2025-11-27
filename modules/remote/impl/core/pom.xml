@@ -4,190 +4,110 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.remote</groupId>
     <artifactId>impl</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.remote.impl</groupId>
   <artifactId>core</artifactId>
-
-
   <dependencies>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.datastore.providers.jdo.modules</groupId>-->
-    <!--<artifactId>criteria</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <!-- External Queue Service -->
-    <!-- responsible for reading/writing from external queues and placing messages in local queues -->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.modules.queue.modules.external</groupId>-->
-    <!--<artifactId>api</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.modules.queue.modules.external</groupId>-->
-    <!--<artifactId>impl</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<scope>runtime</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.modules.queue.modules.external.providers</groupId>-->
-    <!--<artifactId>amazon-sqs</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<scope>runtime</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.modules.queue.modules.external.providers</groupId>-->
-    <!--<artifactId>local</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<scope>runtime</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.queue.modules.external.providers</groupId>-->
-    <!--<artifactId>google-cloud-pub-sub</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<scope>runtime</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.datastore.modules</groupId>-->
-    <!--<artifactId>google-guice-create-criteria-builder</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.modules.queue.api</groupId>-->
-    <!--<artifactId>service</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.modules.queue</groupId>-->
-    <!--<artifactId>impl</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.google-guice.modules</groupId>-->
-    <!--<artifactId>guava-event-bus</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.modules.compression.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>com.walterjwhite.java.modules.compression.modules.xz</groupId>
-      <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <groupId>com.walterjwhite.java.modules.compression.modules</groupId>
+      <artifactId>xz</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.encryption</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.encryption</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
       <artifactId>core</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.ip.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.ip</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
-    <!-- this is required to get the UUID of the client -->
     <dependency>
       <groupId>com.walterjwhite.java.modules.shell</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.file.modules</groupId>
       <artifactId>watcher</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>json</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
-      <groupId>com.walterjwhite.java.modules.queue.modules.external</groupId>
-      <artifactId>api</artifactId>
-      <version>0.2.0</version>
-      <scope>compile</scope>
+      <groupId>com.walterjwhite.java.modules.queue.api</groupId>
+      <artifactId>model</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <profiles>
     <profile>
-      <!-- use amazon to provide the backend messaging service -->
       <id>snakeyaml</id>
       <dependencies>
         <dependency>
           <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>
           <artifactId>snakeyaml</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
         </dependency>
       </dependencies>
     </profile>
     <profile>
-      <!-- use a local file store to provide the backend messaging service (for testing) -->
       <id>jackson</id>
       <dependencies>
         <dependency>
           <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>
           <artifactId>jackson-json</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
         </dependency>
       </dependencies>
     </profile>
     <profile>
-      <!-- use a local file store to provide the backend messaging service (for testing) -->
       <id>native</id>
-      <!--<activation>-->
-      <!--<activeByDefault>true</activeByDefault>-->
-      <!--</activation>-->
       <dependencies>
         <dependency>
           <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>
           <artifactId>native</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
         </dependency>
       </dependencies>
     </profile>
-    <!--<profile>-->
-    <!--&lt;!&ndash; use a local file store to provide the backend messaging service (for testing) &ndash;&gt;-->
-    <!--<id>kryo</id>-->
-    <!--<activation>-->
-    <!--<activeByDefault>true</activeByDefault>-->
-    <!--</activation>-->
-    <!--<dependencies>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.modules.serialization.providers.kryo</groupId>-->
-    <!--<artifactId>impl</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <!--</dependencies>-->
-    <!--</profile>-->
   </profiles>
 </project>

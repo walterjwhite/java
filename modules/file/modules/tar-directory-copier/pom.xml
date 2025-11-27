@@ -4,13 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.file</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.file.modules</groupId>
   <artifactId>tar-directory-copier</artifactId>
-  <packaging>pom</packaging>
-
-  <modules>
-    <module>impl</module>
-  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.modules.file.api</groupId>
+      <artifactId>service</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 </project>

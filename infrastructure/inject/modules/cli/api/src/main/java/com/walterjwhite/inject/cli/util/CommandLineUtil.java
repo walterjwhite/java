@@ -12,7 +12,9 @@ import org.reflections.Reflections;
 @Slf4j
 public class CommandLineUtil {
   public static Injector getInjector(Reflections reflections)
-      throws IllegalAccessException, InstantiationException, NoSuchMethodException,
+      throws IllegalAccessException,
+          InstantiationException,
+          NoSuchMethodException,
           InvocationTargetException {
     return reflections
         .getSubTypesOf(Injector.class)
@@ -22,25 +24,13 @@ public class CommandLineUtil {
         .newInstance();
   }
 
-  //    public static Class<? extends AbstractCommandLineHandler> getCommandLineHandlerClass(
-  //            final Reflections reflections, final PropertyManager propertyManager) {
-  //        return getCommandLineHandlerClass(reflections, propertyManager,
-  // AbstractCommandLineHandler.class);
-  //    }
 
-  //  public static void setHandlerArguments(final String[] handlerArguments) {
-  //    HANDLER_ARGUMENTS = handlerArguments;
-  //  }
-  //
-  //  public static String[] getHandlerArguments() {
-  //    return HANDLER_ARGUMENTS;
-  //  }
 
-  // this was designed to have a different implementation for test / local
   public static SecretService getSecretService(final Reflections reflections)
-      throws IllegalAccessException, InstantiationException, NoSuchMethodException,
+      throws IllegalAccessException,
+          InstantiationException,
+          NoSuchMethodException,
           InvocationTargetException {
-    // use the first available option
     final Iterator<Class<? extends SecretService>> secretServiceIterator =
         reflections.getSubTypesOf(SecretService.class).iterator();
 

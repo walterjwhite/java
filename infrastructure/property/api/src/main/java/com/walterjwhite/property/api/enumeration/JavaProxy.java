@@ -6,13 +6,12 @@ import com.walterjwhite.property.api.property.JavaEnvironmentProperty;
 import com.walterjwhite.property.api.property.NoProxy;
 import com.walterjwhite.property.api.property.ProxyHost;
 import com.walterjwhite.property.api.property.ProxyPort;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-/**
- * If a property source (could be environment, properties, manifest, etc.) has a proxy configured
- * and the system property target is in the classpath, then this will write those values back to the
- * System settings such that any HTTP calls should use the proxy as configured.
- */
 @Optional
+@RequiredArgsConstructor
+@Getter
 public enum JavaProxy implements JavaEnvironmentProperty {
   HttpProxyHost("http.proxyHost", ProxyHost.class),
   HttpProxyPort("http.proxyPort", ProxyPort.class),
@@ -22,19 +21,4 @@ public enum JavaProxy implements JavaEnvironmentProperty {
 
   protected final String key;
   protected final Class<? extends ConfigurableProperty> propertyKey;
-
-  JavaProxy(String key, Class<? extends ConfigurableProperty> propertyKey) {
-    this.key = key;
-    this.propertyKey = propertyKey;
-  }
-
-  @Override
-  public String getKey() {
-    return key;
-  }
-
-  @Override
-  public Class<? extends ConfigurableProperty> getPropertyKey() {
-    return propertyKey;
-  }
 }

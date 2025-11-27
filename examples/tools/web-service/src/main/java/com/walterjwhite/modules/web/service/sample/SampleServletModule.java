@@ -8,10 +8,6 @@ import com.walterjwhite.modules.web.service.core.annotation.ApplicationServletMo
 import io.swagger.v3.jaxrs2.integration.OpenApiServlet;
 import jakarta.inject.Singleton;
 
-/**
- * NOTE: this injector will be separate from the command-line injector. We could return the same
- * one, but it probably makes more sense to keep them separate.
- */
 @ApplicationServletModule
 public class SampleServletModule extends JerseyServletModule {
 

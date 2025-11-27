@@ -26,22 +26,6 @@ public class CSVValidationMap implements Function<CSVValidation, Long> {
     }
   }
 
-  //    protected void getTargetFileCount(final File csvFile, final String[] data) throws
-  // IOException {
-  //        final String csvFilename = data[0];
-  //        final long recordCount = Long.valueOf(data[1]);
-  //
-  //        final File targetCSVFile = getTargetFile(csvFile, csvFilename);
-  //
-  //        final int actualCount = countTargetFile(targetCSVFile);
-  //
-  //        if (recordCount != actualCount) {
-  //            LOGGER.warn("RECORD count does NOT match:(" + recordCount + "," + actualCount +
-  // ")");
-  //        } else {
-  //            LOGGER.info("RECORD count does match:(" + recordCount + "," + actualCount + ")");
-  //        }
-  //    }
 
   protected File getTargetFile(final File csvCountFile, final String name) {
     return (new File(

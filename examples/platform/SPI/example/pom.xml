@@ -4,23 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.examples</groupId>
     <artifactId>SPI</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.examples.SPI</groupId>
   <artifactId>example</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.configuration.cli</groupId>
       <artifactId>guice</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.examples.SPI</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

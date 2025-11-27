@@ -1,7 +1,8 @@
 package com.walterjwhite.browser.api.model;
 
-import com.walterjwhite.browser.api.property.BrowserSSLValidation;
-import java.util.Optional;
+import com.walterjwhite.browser.api.enumeration.BrowserSSLValidation;
+import com.walterjwhite.property.api.enumeration.ProxyType;
+import javax.jdo.annotations.PersistenceCapable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 @ToString(doNotUseGetters = true)
+@PersistenceCapable
 public class BrowserConfiguration {
 
   protected int timeout;
@@ -22,11 +24,11 @@ public class BrowserConfiguration {
 
   protected String cachePath;
 
-  protected Optional<String> proxyType;
+  protected ProxyType proxyType;
 
-  protected Optional<String> proxyHost;
+  protected String proxyHost;
 
-  protected Optional<Integer> proxyPort;
+  protected Integer proxyPort;
 
   protected BrowserSSLValidation browserSSLValidation;
 

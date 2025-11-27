@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model.traceroute;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.shell.api.model.NetworkDiagnosticTest;
 import com.walterjwhite.shell.api.model.ShellCommand;
 import com.walterjwhite.shell.api.model.ShellCommandable;
@@ -17,7 +16,7 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
 @PersistenceCapable
-public class TracerouteRequest extends AbstractEntity implements ShellCommandable {
+public class TracerouteRequest implements ShellCommandable {
 
   protected NetworkDiagnosticTest networkDiagnosticTest;
 

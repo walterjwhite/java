@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.Data;
 import lombok.ToString;
@@ -8,7 +7,7 @@ import lombok.ToString;
 @Data
 @ToString(doNotUseGetters = true)
 @PersistenceCapable
-public class MountCommandShellCommand extends AbstractEntity {
+public class MountCommandShellCommand {
   protected MountCommand mountCommand;
 
   protected ShellCommand shellCommand;

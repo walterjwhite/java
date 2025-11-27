@@ -1,15 +1,15 @@
 package com.walterjwhite.file.providers.local.service;
 
 import com.walterjwhite.encryption.api.service.CompressionService;
-import com.walterjwhite.encryption.service.DigestService;
+import com.walterjwhite.encryption.enumeration.DigestAlgorithm;
 import com.walterjwhite.encryption.service.EncryptionService;
 import com.walterjwhite.file.api.model.File;
 import com.walterjwhite.file.impl.service.AbstractFileStorageService;
 import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.property.api.enumeration.Debug;
 import com.walterjwhite.property.api.enumeration.NoOperation;
-import java.io.IOException;
 import jakarta.inject.Inject;
+import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
 public class LocalFileStorageService extends AbstractFileStorageService {
@@ -19,11 +19,11 @@ public class LocalFileStorageService extends AbstractFileStorageService {
   public LocalFileStorageService(
       CompressionService compressionService,
       EncryptionService encryptionService,
-      DigestService digestService,
+      DigestAlgorithm digestAlgorithm,
       @Property(NoOperation.class) boolean nop,
       @Property(Debug.class) boolean debug,
       @Property(LocalFileStoragePath.class) String localStoragePath) {
-    super(compressionService, encryptionService, digestService, nop, debug);
+    super(compressionService, encryptionService, digestAlgorithm, nop, debug);
     this.localStoragePath = localStoragePath;
     setup();
   }

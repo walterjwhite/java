@@ -4,20 +4,16 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>examples</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.examples</groupId>
   <artifactId>java-agent</artifactId>
-
-
   <dependencies>
   </dependencies>
   <properties>
     <application.environment>Development</application.environment>
   </properties>
-  <!-- For demonstrative purposes, we're not using .agent profile activation to show using a barebone agent configuration -->
-  <!-- If using .agent, this is all provided and we can instead focus on the transformations we need to implement -->
   <build>
     <plugins>
       <plugin>

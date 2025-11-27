@@ -1,23 +1,20 @@
 package com.walterjwhite.encryption.impl;
 
 import com.walterjwhite.encryption.service.EncryptionService;
+import jakarta.inject.Inject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import jakarta.inject.Inject;
 import org.apache.commons.io.IOUtils;
 
 public class DefaultEncryptionService implements EncryptionService {
-  //  protected final RuntimeEncryptionConfiguration runtimeEncryptionConfiguration;
 
   protected final EncryptionConfiguration encryptionConfiguration;
 
   @Inject
   public DefaultEncryptionService(
-      //      RuntimeEncryptionConfiguration runtimeEncryptionConfiguration,
       EncryptionConfiguration encryptionConfiguration) {
 
-    //    this.runtimeEncryptionConfiguration = runtimeEncryptionConfiguration;
     this.encryptionConfiguration = encryptionConfiguration;
   }
 
@@ -32,12 +29,6 @@ public class DefaultEncryptionService implements EncryptionService {
 
   @Override
   public OutputStream getEncryptionStream(OutputStream outputStream) {
-    //    return new CryptoOutputStream(
-    //        getTransformation(),
-    //        new Properties(),
-    //        outputStream,
-    //        runtimeEncryptionConfiguration.getKey(),
-    //        runtimeEncryptionConfiguration.getIv());
     throw new UnsupportedOperationException("Encryption is deimplemented");
   }
 
@@ -51,12 +42,6 @@ public class DefaultEncryptionService implements EncryptionService {
 
   @Override
   public InputStream getDecryptionStream(InputStream cipherStream) {
-    //    return new CryptoInputStream(
-    //        getTransformation(),
-    //        new Properties(),
-    //        cipherStream,
-    //        runtimeEncryptionConfiguration.getKey(),
-    //        runtimeEncryptionConfiguration.getIv());
     throw new UnsupportedOperationException("Encryption is deimplemented");
   }
 

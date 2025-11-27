@@ -8,7 +8,6 @@ public class PartitionListB implements Partition {
     SinglyLinkedList next;
 
     SinglyLinkedList current = get(input, value, false);
-    // list has no elements that are < value
     if (current == null) {
       return null;
     }

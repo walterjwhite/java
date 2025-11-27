@@ -3,11 +3,11 @@ package com.walterjwhite.google;
 import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.walterjwhite.google.property.GoogleCloudAccessToken;
 import com.walterjwhite.property.api.annotation.Property;
+import jakarta.inject.Inject;
+import jakarta.inject.Provider;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import jakarta.inject.Inject;
-import jakarta.inject.Provider;
 
 public class CredentialsProvider implements Provider<ServiceAccountCredentials> {
   protected final ServiceAccountCredentials credentials;

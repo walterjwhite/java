@@ -4,19 +4,17 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>kryo</artifactId>
   <packaging>pom</packaging>
-
-  <!-- https://github.com/EsotericSoftware/kryo#integration-with-maven -->
   <dependencies>
     <dependency>
       <groupId>com.esotericsoftware</groupId>
       <artifactId>kryo</artifactId>
-      <version>5.4.0</version>
+      <version>5.6.2</version>
     </dependency>
   </dependencies>
 </project>

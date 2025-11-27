@@ -1,6 +1,5 @@
 package com.walterjwhite.encryption.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractNamedEntity;
 import com.walterjwhite.encryption.enumeration.EncryptionDataType;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.AllArgsConstructor;
@@ -13,7 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @PersistenceCapable
-public class EncryptionConfiguration extends AbstractNamedEntity {
+public class EncryptionConfiguration {
 
   protected EncryptionDataType encryptionDataType;
 }

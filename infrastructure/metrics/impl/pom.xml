@@ -4,23 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure</groupId>
     <artifactId>metrics</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.metrics</groupId>
   <artifactId>impl</artifactId>
-
-
-
+  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
       <artifactId>core</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>com.walterjwhite.java.aspects</groupId>
-      <artifactId>metrics</artifactId>
-      <version>0.1.0</version>
+      <groupId>com.walterjwhite.java.advice.metrics</groupId>
+      <artifactId>runtime</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

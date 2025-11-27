@@ -4,10 +4,6 @@ import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-/**
- * Since we're not bundling the JDBC driver, we need to load this dynamically, this let's us do
- * that.
- */
 public class DriverShim implements Driver {
   protected final Driver driver;
 

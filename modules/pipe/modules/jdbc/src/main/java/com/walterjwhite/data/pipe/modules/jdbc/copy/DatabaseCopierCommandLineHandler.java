@@ -35,11 +35,5 @@ public class DatabaseCopierCommandLineHandler extends AbstractCommandLineHandler
             new DatabaseTableCopierCallable(
                 new TableCopy(tableName, "table - " + tableName, databaseCopySession)));
   }
-  //
-  //  //TODO: implement shutdown hook to allow the current process to die more gracefully
-  //  @Override
-  //  public boolean isSafeToTerminate() {
-  //    return true;
-  //  }
 }
 */

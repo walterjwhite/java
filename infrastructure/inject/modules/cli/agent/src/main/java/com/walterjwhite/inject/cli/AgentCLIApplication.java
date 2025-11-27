@@ -13,11 +13,18 @@ import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.reflections.Reflections;
 
-/** see: com.walterjwhite.inject.cli.CLIApplication */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AgentCLIApplication {
-  @SneakyThrows
   public static void premain(final String arguments, final Instrumentation instrumentation) {
+    instrument(arguments, instrumentation);
+  }
+
+  public static void agentmain(final String arguments, final Instrumentation instrumentation) {
+    instrument(arguments, instrumentation);
+  }
+
+  @SneakyThrows
+  private static void instrument(final String arguments, final Instrumentation instrumentation) {
     final Reflections reflections = Reflections.collect();
 
     try {
@@ -27,17 +34,17 @@ public class AgentCLIApplication {
       new AgentApplicationInstance(
               reflections,
               new DefaultPropertyManager(
-                  new DefaultPropertyNameLookupService(), reflections, secretService),
+                      new DefaultPropertyNameLookupService(), reflections, secretService),
               new ServiceManager(reflections, injector),
               secretService,
               injector,
               instrumentation,
               arguments)
-          .run();
+              .run();
     } catch (IllegalAccessException
-        | InstantiationException
-        | NoSuchMethodException
-        | InvocationTargetException e) {
+             | InstantiationException
+             | NoSuchMethodException
+             | InvocationTargetException e) {
       throw new Error("Error running agent", e);
     }
   }

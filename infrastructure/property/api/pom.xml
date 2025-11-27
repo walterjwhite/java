@@ -4,29 +4,27 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure</groupId>
     <artifactId>property</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.property</groupId>
   <artifactId>api</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>reflections</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>javax-inject</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
   </dependencies>

@@ -1,18 +1,15 @@
 package com.walterjwhite.print.providers.java;
 
-import com.walterjwhite.datastore.api.repository.Repository;
 import com.walterjwhite.file.api.service.FileStorageService;
-import com.walterjwhite.print.impl.AbstractPrinterService;
 import com.walterjwhite.print.model.PrintJob;
 import com.walterjwhite.print.model.PrintRequest;
 import com.walterjwhite.print.model.Printer;
 import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.property.api.enumeration.NoOperation;
+import jakarta.inject.Inject;
 import java.awt.print.Pageable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import jakarta.inject.Inject;
-import jakarta.inject.Provider;
 import javax.print.DocFlavor;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
@@ -22,23 +19,17 @@ import javax.print.attribute.standard.Sides;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.printing.PDFPageable;
 
-public class NativePrinterService extends AbstractPrinterService {
-  // protected final PrintJobRepository printJobRepository;
+public class NativePrinterService /*extends AbstractPrinterService*/ {
 
   @Inject
   public NativePrinterService(
-      FileStorageService fileStorageService,
-      @Property(NoOperation.class) boolean isNooperation,
-      Provider<Repository> repositoryProvider) {
-    super(isNooperation, fileStorageService, repositoryProvider);
+      FileStorageService fileStorageService, @Property(NoOperation.class) boolean isNooperation
+      ) {
   }
 
-  @Override
   protected void doPrint(PrintJob printJob) throws Exception {
-    // printJobRepository.save(printJob);
 
     doPrint(printJob.getPrinter(), getPDFPageable(printJob.getPrintRequest()));
-    // getPrinterService(printer).print(printer, );
   }
 
   protected PDFPageable getPDFPageable(PrintRequest printRequest) throws Exception {

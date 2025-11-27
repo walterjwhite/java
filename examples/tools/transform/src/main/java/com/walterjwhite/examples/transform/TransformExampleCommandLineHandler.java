@@ -9,11 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(onConstructor_ = @Inject)
 public class TransformExampleCommandLineHandler implements CommandLineHandler {
 
-  //  @Inject
-  //  public TransformExampleCommandLineHandler(
-  //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds) {
-  //    super(shutdownTimeoutInSeconds);
-  //  }
 
   @Override
   public void run(String... arguments) {
@@ -32,7 +27,6 @@ public class TransformExampleCommandLineHandler implements CommandLineHandler {
     LOGGER.debug("TransformExampleCommandLineHandler.SomeComplexObject.build: {}", build());
   }
 
-  // *MUST* be public
   public String testMethod(final String argument1, final String argument2) {
     return "ORIGINAL METHOD: " + argument1 + ":" + argument2;
   }

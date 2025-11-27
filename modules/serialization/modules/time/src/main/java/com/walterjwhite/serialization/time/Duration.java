@@ -1,6 +1,5 @@
 package com.walterjwhite.serialization.time;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import java.time.temporal.ChronoUnit;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +10,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Duration extends AbstractEntity {
+public class Duration {
   protected long amount;
   protected ChronoUnit unit;
 

@@ -4,24 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.remote.impl</groupId>
     <artifactId>plugins</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.remote.impl.plugins</groupId>
   <artifactId>printing</artifactId>
-  <version>0.2.0</version>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.print.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.walterjwhite.java.modules.print</groupId>
-      <artifactId>impl</artifactId>
-      <version>0.2.0</version>
-      <scope>runtime</scope>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

@@ -65,19 +65,9 @@ public abstract class AbstractRunnable<QueuedType extends AbstractQueued>
         .update(queued);
   }
 
-  /**
-   * NOTE: for timeouts, use the @TimeConstrained annotation and override the properties for the
-   * value/units. that will handle interrupting the method just as any other method can be
-   * interrupted.
-   *
-   * @throws Exception if there is an exception during execution
-   */
   @Heartbeat
   protected abstract void doCall() throws Exception;
 
-  //  if (Thread.currentThread().isInterrupted()) {
-  //    throw new RuntimeException("Interrupted")
-  //  }
 
   protected void onSuccess() {
     jobWorkerService.remove(runningFuture);
@@ -90,9 +80,9 @@ public abstract class AbstractRunnable<QueuedType extends AbstractQueued>
 
   @Transactional
   protected void updateJobStatus() {
-    // job is completed as it is not recurring
-    if (((QueuedJob) queued).getScheduleInstance().isRecurring())
+    if (((QueuedJob) queued).getScheduleInstance().isRecurring()) {
       queued.setQueueState(QueueState.Completed);
+    }
   }
 
   protected void doOnSuccess() {}
@@ -108,25 +98,21 @@ public abstract class AbstractRunnable<QueuedType extends AbstractQueued>
     retry(e);
   }
 
-  /** Invoked periodically through aspectj plugin - annotation does *NOT* apply here */
   @Transactional
   public void onHeartbeat() {
     if (ApplicationHelper.getApplicationInstance()
         .getInjector()
         .getInstance(QueueService.class)
         .wasCancelled(queued)) {
-      // InterruptableInvocationType.Task.getInterruptableRegistry().interrupt(this);
       close();
       return;
     }
 
-    // update job state
     updateJobExecutionStatus(currentJobExecution.getExecutionState());
   }
 
   protected void retry(Exception e) {
     if (isRetryable(e)) {
-      // jobWorkerService.submit(callable);
       return;
     }
   }
@@ -135,7 +121,6 @@ public abstract class AbstractRunnable<QueuedType extends AbstractQueued>
     return t instanceof RuntimeException;
   }
 
-  // implemented by subclass if there is anything that can be closed such as file handles
   @Override
   public void close() {
     try {

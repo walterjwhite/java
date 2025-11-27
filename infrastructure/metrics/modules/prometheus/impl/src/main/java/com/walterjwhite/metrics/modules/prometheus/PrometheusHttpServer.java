@@ -5,13 +5,12 @@ import com.walterjwhite.metrics.modules.prometheus.property.PrometheusServerCont
 import com.walterjwhite.metrics.modules.prometheus.property.PrometheusServerPort;
 import com.walterjwhite.property.api.annotation.Property;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import jakarta.inject.Inject;
-import jakarta.inject.Singleton;
 
-// db?
 @Singleton
 public class PrometheusHttpServer {
   protected final HttpServer httpServer;
@@ -35,6 +34,6 @@ public class PrometheusHttpServer {
           os.close();
         });
 
-    new Thread(httpServer::start).run();
+    new Thread(httpServer::start).start();
   }
 }

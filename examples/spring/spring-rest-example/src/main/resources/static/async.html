@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Async Jobs — Spring MVC Example</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <style>
+        /* small page-specific overrides */
+        .async-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+        .async-form { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+        .panel-inline { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+        .badge { padding:4px 8px; border-radius:999px; font-weight:700; font-size:0.8rem; }
+        .badge-queued { background:#f3f4f6; color:#374151; border:1px solid rgba(15,23,42,0.04); }
+        .badge-running { background:linear-gradient(90deg,#fff7ed,#fff1f2); color:#92400e; border:1px solid rgba(249,115,22,0.08); }
+        .badge-completed { background:linear-gradient(90deg,#ecfdf5,#f0fdf4); color:#065f46; border:1px solid rgba(6,95,70,0.06); }
+        .list-section { margin-top:12px; }
+        .task-item { display:flex; justify-content:space-between; gap:12px; padding:12px; border-radius:10px; background:linear-gradient(180deg,#fff,#fbfdff); border:1px solid rgba(15,23,42,0.04); box-shadow: 0 4px 10px rgba(16,24,40,0.03); margin-bottom:8px; align-items:center;}
+        .task-meta { color:var(--muted); font-size:0.9rem; }
+        .small { font-size:0.9rem; color:var(--muted); }
+        .controls { display:flex; gap:8px; align-items:center; }
+
+        /* Modal */
+        .modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(2,6,23,0.54);
+          display: none;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+        }
+        .modal {
+          background: var(--card);
+          border-radius: 12px;
+          padding: 18px;
+          width: 90%;
+          max-width: 520px;
+          box-shadow: 0 10px 30px rgba(2,6,23,0.3);
+          border: 1px solid rgba(15,23,42,0.06);
+        }
+        .modal h3 { margin: 0 0 8px; font-size: 1.05rem; }
+        .modal .modal-body { color: var(--muted); margin-bottom: 14px; white-space: pre-wrap; word-break: break-word; }
+        .modal .modal-actions { display:flex; gap:8px; justify-content:flex-end; }
+        .btn-modal-primary { background:var(--accent); color:#fff; padding:8px 12px; border-radius:8px; border:0; font-weight:600; }
+        .btn-modal-ghost { background:transparent; color:var(--muted); padding:8px 12px; border-radius:8px; border:1px solid rgba(15,23,42,0.04); }
+
+        /* disabled action appearance */
+        .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <div class="container">
+        <h1 class="brand"><a href="/">Async</a></h1>
+        <p class="tagline">Async jobs demo — submit, list, cancel</p>
+    </div>
+</header>
+
+<main class="container" style="max-width:1100px;">
+    <div class="panel" style="margin-top:18px;">
+        <div class="async-header">
+            <div>
+                <h2 style="margin:0 0 6px;">Async Jobs</h2>
+                <div class="small">Submit simulated background jobs and manage them (queued / running / history).</div>
+            </div>
+
+            <div class="panel-inline">
+                <button id="refreshAll" class="btn btn-outline">Refresh</button>
+                <div id="debugInfo" class="small" aria-live="polite" style="min-width:180px;"></div>
+            </div>
+        </div>
+
+        <div class="panel" style="padding:14px; margin-bottom:12px;">
+            <form id="submitForm" class="async-form" onsubmit="return false;">
+                <label class="field" style="margin:0;">
+                    <span class="field-label" style="display:block; margin-bottom:6px;">Job name</span>
+                    <input id="jobName" type="text" value="demo-job" />
+                </label>
+
+                <label class="field" style="margin:0;">
+                    <span class="field-label" style="display:block; margin-bottom:6px;">Duration (s)</span>
+                    <input id="jobDur" type="number" value="8" style="width:120px;" min="0" />
+                </label>
+
+                <div style="display:flex; align-items:flex-end; gap:8px;">
+                    <button id="submitBtn" class="btn btn-primary">Submit Job</button>
+                    <button id="submitFastBtn" class="btn btn-ghost">Submit Short</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="list-section">
+            <h3 style="margin:0 0 8px;">Queued</h3>
+            <div id="queuedList" aria-live="polite"></div>
+        </div>
+
+        <div class="list-section">
+            <h3 style="margin:0 0 8px;">Running</h3>
+            <div id="runningList" aria-live="polite"></div>
+        </div>
+
+        <div class="list-section">
+            <h3 style="margin:0 0 8px;">All (history)</h3>
+            <div id="allList" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <footer class="site-footer" style="margin-top:18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <small>Spring MVC example • Async jobs demo</small>
+            <small id="statusMsg" class="small"></small>
+        </div>
+    </footer>
+</main>
+
+<!-- Modal markup -->
+<div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="modalTitle">
+        <h3 id="modalTitle">Title</h3>
+        <div id="modalBody" class="modal-body">Message</div>
+        <div class="modal-actions">
+            <button id="modalCancel" class="btn-modal-ghost">Cancel</button>
+            <button id="modalOk" class="btn-modal-primary">OK</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const queuedEl = document.getElementById('queuedList');
+    const runningEl = document.getElementById('runningList');
+    const allEl = document.getElementById('allList');
+    const debugEl = document.getElementById('debugInfo');
+    const statusMsg = document.getElementById('statusMsg');
+
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalOk = document.getElementById('modalOk');
+    const modalCancel = document.getElementById('modalCancel');
+
+    document.getElementById('submitBtn').addEventListener('click', () => submitJob(false));
+    document.getElementById('submitFastBtn').addEventListener('click', () => submitJob(true));
+    document.getElementById('refreshAll').addEventListener('click', refresh);
+
+    // Modal helpers
+    function showModal(title, message, okText = 'OK') {
+      modalTitle.textContent = title;
+      modalBody.textContent = message;
+      modalOk.textContent = okText;
+      modalCancel.style.display = 'none';
+      return new Promise((resolve) => {
+        modalOverlay.style.display = 'flex';
+        modalOverlay.setAttribute('aria-hidden', 'false');
+        modalOk.focus();
+        const cleanup = () => {
+          modalOverlay.style.display = 'none';
+          modalOverlay.setAttribute('aria-hidden', 'true');
+          modalOk.removeEventListener('click', onOk);
+        };
+        const onOk = () => { cleanup(); resolve(true); };
+        modalOk.addEventListener('click', onOk);
+      });
+    }
+
+    function showConfirm(title, message, okText = 'Yes', cancelText = 'Cancel') {
+      modalTitle.textContent = title;
+      modalBody.textContent = message;
+      modalOk.textContent = okText;
+      modalCancel.textContent = cancelText;
+      modalCancel.style.display = '';
+      return new Promise((resolve) => {
+        modalOverlay.style.display = 'flex';
+        modalOverlay.setAttribute('aria-hidden', 'false');
+        modalOk.focus();
+        const cleanup = () => {
+          modalOverlay.style.display = 'none';
+          modalOverlay.setAttribute('aria-hidden', 'true');
+          modalOk.removeEventListener('click', onOk);
+          modalCancel.removeEventListener('click', onCancel);
+        };
+        const onOk = () => { cleanup(); resolve(true); };
+        const onCancel = () => { cleanup(); resolve(false); };
+        modalOk.addEventListener('click', onOk);
+        modalCancel.addEventListener('click', onCancel);
+      });
+    }
+
+    async function submitJob(short) {
+      setStatus('Submitting...');
+      const name = document.getElementById('jobName').value || (short ? 'short' : 'job');
+      const durationSeconds = short ? 1 : parseInt(document.getElementById('jobDur').value || '5', 10);
+      try {
+        const res = await fetch('/async/submit', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ name, durationSeconds })
+        });
+        if (res.status === 429) {
+          const json = await res.json();
+          await showModal('Rate limited', json.error || 'Too many requests');
+        } else if (!res.ok) {
+          const txt = await res.text();
+          await showModal('Submit failed', txt || 'Unknown error');
+        } else {
+          const json = await res.json();
+          setStatus('Submitted: ' + json.taskId);
+          await showModal('Submitted', 'Task submitted: ' + json.taskId, 'Close');
+        }
+      } catch (e) {
+        await showModal('Submit error', e.message || String(e));
+      } finally {
+        refresh();
+        setTimeout(() => setStatus(''), 2000);
+      }
+    }
+
+    function renderTasks(list) {
+      if (!list || list.length === 0) return '<p class="small"><em>none</em></p>';
+      return list.map(t => renderTaskItem(t)).join('');
+    }
+
+    function renderTaskItem(t) {
+      const id = escapeHtml(t.id);
+      const name = escapeHtml(t.name);
+      const status = (t.status || '').toUpperCase();
+      const submitted = t.submittedAt ? new Date(t.submittedAt).toLocaleTimeString() : '';
+      const started = t.startedAt ? new Date(t.startedAt).toLocaleTimeString() : '';
+      const completed = t.completedAt ? new Date(t.completedAt).toLocaleTimeString() : '';
+      let badge = '<span class="badge badge-queued">QUEUED</span>';
+      if (status === 'RUNNING') badge = '<span class="badge badge-running">RUNNING</span>';
+      if (status === 'COMPLETED') badge = '<span class="badge badge-completed">COMPLETED</span>';
+      if (status === 'CANCELLED') badge = '<span class="badge" style="background:#fff0f6;color:#7f1d1d;border:1px solid rgba(239,68,68,0.06)">CANCELLED</span>';
+      if (status === 'FAILED') badge = '<span class="badge" style="background:#fff7ed;color:#92400e;border:1px solid rgba(249,115,22,0.06)">FAILED</span>';
+
+      const meta = `<div class="task-meta">${submitted}${started ? ' • ' + started : ''}${completed ? ' • ' + completed : ''}</div>`;
+
+      // only show refresh/cancel for active tasks
+      const isActive = status === 'QUEUED' || status === 'RUNNING';
+      const refreshBtn = isActive ? `<button class="btn btn-outline" onclick="refreshTask('${id}')">Refresh</button>` : '';
+      const cancelBtn = isActive ? `<button class="btn btn-danger" onclick="cancelTask('${id}')">Cancel</button>` : '';
+
+      const actions = `<div class="controls">
+        ${refreshBtn}
+        ${cancelBtn}
+      </div>`;
+
+      return `<div class="task-item">
+        <div style="flex:1 1 0;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="font-weight:700;">${name}</div>
+            ${badge}
+          </div>
+          <div style="margin-top:8px;" class="small">${meta}</div>
+          <div style="color:var(--muted); margin-top:6px;">ID: ${id}</div>
+        </div>
+        <div style="flex:0 0 auto;">${actions}</div>
+      </div>`;
+    }
+
+    function escapeHtml(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    async function refresh() {
+      try {
+        const [q, r, a, d] = await Promise.all([
+          fetch('/async/queued').then(r => r.json()),
+          fetch('/async/running').then(r => r.json()),
+          fetch('/async/all').then(r => r.json()),
+          fetch('/async/debug').then(r => r.json()).catch(()=>null)
+        ]);
+        queuedEl.innerHTML = renderTasks(q);
+        runningEl.innerHTML = renderTasks(r);
+        allEl.innerHTML = renderTasks(a.sort((x,y)=> new Date(y.submittedAt)-new Date(x.submittedAt)).slice(0,50));
+        if (d) {
+          debugEl.textContent = `queued=${d.queuedCount} running=${d.runningCount} tokens=${Math.round(d.globalTokens)}/${Math.round(d.identityTokens)}`;
+        }
+      } catch (e) {
+        console.error(e);
+        setStatus('Refresh error');
+      }
+    }
+
+    async function refreshTask(id) {
+      try {
+        const res = await fetch('/async/' + encodeURIComponent(id));
+        if (!res.ok) {
+          await showModal('Not found', 'Task ' + id + ' not found');
+          return;
+        }
+        const t = await res.json();
+        refresh();
+        await showModal('Task status', 'Task ' + id + ' status: ' + t.status);
+      } catch (e) {
+        await showModal('Error', e.message || String(e));
+      }
+    }
+
+    async function cancelTask(id) {
+      const ok = await showConfirm('Cancel task', 'Cancel task ' + id + '?');
+      if (!ok) return;
+      try {
+        const res = await fetch('/async/' + encodeURIComponent(id) + '/cancel', { method: 'POST' });
+        if (!res.ok) {
+          await showModal('Cancel failed', 'Failed to cancel task ' + id);
+          return;
+        }
+        const json = await res.json();
+        setStatus('Cancel requested: ' + id);
+        refresh();
+        await showModal('Cancel requested', 'Cancel requested for ' + id);
+      } catch (e) {
+        await showModal('Cancel error', e.message || String(e));
+      } finally {
+        setTimeout(()=>setStatus(''), 2000);
+      }
+    }
+
+    function setStatus(msg) { statusMsg.textContent = msg || ''; }
+
+    // initial load
+    refresh();
+    // periodic refresh
+    setInterval(refresh, 5000);
+</script>
+</body>
+</html>

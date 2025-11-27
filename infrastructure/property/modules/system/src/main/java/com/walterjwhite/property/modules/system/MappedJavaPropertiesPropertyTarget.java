@@ -22,6 +22,8 @@ public class MappedJavaPropertiesPropertyTarget
 
   protected void setProperty(final JavaEnvironmentProperty javaEnvironmentProperty) {
     final String value = propertyManager.get(javaEnvironmentProperty.getPropertyKey());
-    if (value != null) System.setProperty(javaEnvironmentProperty.getKey(), value);
+    if (value != null) {
+      System.setProperty(javaEnvironmentProperty.getKey(), value);
+    }
   }
 }

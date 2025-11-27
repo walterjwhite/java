@@ -4,5 +4,5 @@ Goals:
 
 Notes:
 1. this is working, @see InterruptableExampleCommandLineHandler, InterruptableExampleOperatingMode, InterruptableTaskExample, InterruptableServiceExample
-2. to perform the same functionality without using the annotations, look at how the annotations are implemented - /aspects/shutdownAware
+2. to perform the same functionality without using the annotations, look at how the annotations are implemented - /advice/shutdownAware
 3. implement a sleep in the main application / handler so we can also press CTRL+C to request an abort

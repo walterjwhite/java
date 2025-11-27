@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class IteratorFillCounterTest {
-  // sample data: red=0,white=1,blue=2,gray=3
   protected int[][] init_1() {
     return new int[][] {
       {2, 2, 1, 0},

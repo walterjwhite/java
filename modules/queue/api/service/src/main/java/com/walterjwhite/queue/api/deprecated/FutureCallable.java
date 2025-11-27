@@ -1,6 +1,10 @@
-package com.walterjwhite.queue.api.job;
+package com.walterjwhite.queue.api.deprecated;
 
-import java.util.concurrent.*;
+import com.walterjwhite.queue.api.job.AbstractRunnable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import lombok.Getter;
 
 @Getter

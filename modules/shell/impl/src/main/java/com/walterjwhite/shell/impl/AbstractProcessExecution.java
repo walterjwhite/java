@@ -117,10 +117,6 @@ public abstract class AbstractProcessExecution
     errorThread.interrupt();
   }
 
-  /**
-   * Sets the timeout on the run method, if the execution fails to complete within that time, it is
-   * interrupted
-   */
   public Duration getAllowedExecutionDuration() {
     return Duration.of(getTimeout(), ChronoUnit.SECONDS);
   }
@@ -141,9 +137,6 @@ public abstract class AbstractProcessExecution
   }
 
   protected void exitAfterCompletionOfCommand() throws IOException {
-    // if we're running in a chroot (or SSH), type this in
-    // whenever the actual command finishes, this will execute and cause the input/error streams
-    // to close
     outputStream.write("\nexit\n".getBytes(Charset.defaultCharset()));
     outputStream.flush();
   }

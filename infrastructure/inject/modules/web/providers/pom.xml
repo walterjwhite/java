@@ -4,14 +4,12 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject.modules</groupId>
     <artifactId>web</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.modules.web</groupId>
   <artifactId>providers</artifactId>
   <packaging>pom</packaging>
-
   <modules>
-    <!-- still depends on deprecated javax.servlet, look at guiced ee -->
     <module>guice</module>
     <module>jetty</module>
   </modules>
@@ -19,7 +17,7 @@
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.modules.web</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
-/** TODO: support more complicated chaining such as And, Or, Negate ... */
 public class DefaultFilterChain implements Predicate {
   protected final Set<Filter> filters = new HashSet<>();
 

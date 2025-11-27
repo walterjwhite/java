@@ -8,9 +8,7 @@ public class IdentityExampleCommandLineHandler implements CommandLineHandler {
 
   @Inject
   public IdentityExampleCommandLineHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       EntityCreator entityCreator) {
-    //    super(shutdownTimeoutInSeconds);
     this.entityCreator = entityCreator;
   }
 

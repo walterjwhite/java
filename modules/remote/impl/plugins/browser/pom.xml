@@ -4,43 +4,35 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.remote.impl</groupId>
     <artifactId>plugins</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.remote.impl.plugins</groupId>
   <artifactId>browser</artifactId>
-  <version>0.2.0</version>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.browser.api</groupId>
       <artifactId>model</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.browser.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.browser</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.queue.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.queue.modules.event</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.modules.queue.modules.jpa-event</groupId>-->
-    <!--<artifactId>impl</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
   </dependencies>
 </project>

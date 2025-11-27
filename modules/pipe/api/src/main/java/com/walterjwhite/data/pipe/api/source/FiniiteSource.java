@@ -37,7 +37,5 @@ public class FiniiteSource<Type> implements Spliterator<Type> {
   @Override
   public int characteristics() {
     return Spliterator.ORDERED;
-    // return Spliterator.ORDERED | Spliterator.SIZED | Spliterator.IMMUTABLE |
-    // Spliterator.SUBSIZED;
   }
 }

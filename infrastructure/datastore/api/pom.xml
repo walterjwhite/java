@@ -4,14 +4,16 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure</groupId>
     <artifactId>datastore</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.datastore</groupId>
   <artifactId>api</artifactId>
-  <packaging>pom</packaging>
-
-  <modules>
-    <module>model</module>
-    <module>repository</module>
-  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.walterjwhite.java.dependencies</groupId>
+      <artifactId>javax-transaction</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
 </project>

@@ -4,73 +4,27 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>examples</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.examples</groupId>
   <artifactId>index</artifactId>
-
   <dependencies>
-    <dependency>
-      <groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>
-      <artifactId>model</artifactId>
-      <version>0.2.0</version>
-    </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.configuration.cli</groupId>
       <artifactId>guice</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.configuration</groupId>-->
-    <!--      <artifactId>jpa</artifactId>-->
-    <!--      <version>0.0.19</version>-->
-    <!--      <type>pom</type>-->
-    <!--    </dependency>-->
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>
       <artifactId>jackson-json</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.index</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.infrastructure.datastore.providers.jpa.providers</groupId>-->
-    <!--      <artifactId>google-guice-persist</artifactId>-->
-    <!--      <version>0.0.19</version>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--      <artifactId>h2</artifactId>-->
-    <!--      <version>0.0.19</version>-->
-    <!--      <type>pom</type>-->
-    <!--    </dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--<artifactId>postgresql</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--<type>pom</type>-->
-    <!--</dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--      <artifactId>p6spy</artifactId>-->
-    <!--      <version>0.0.19</version>-->
-    <!--      <type>pom</type>-->
-    <!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.walterjwhite.java.modules.encryption.providers</groupId>-->
-<!--      <artifactId>guice</artifactId>-->
-<!--      <version>0.2.0</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.walterjwhite.java.modules.index.providers.elasticsearch.providers</groupId>-->
-<!--      <artifactId>guice</artifactId>-->
-<!--      <version>0.2.0</version>-->
-<!--    </dependency>-->
   </dependencies>
 </project>

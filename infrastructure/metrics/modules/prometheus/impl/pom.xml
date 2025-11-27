@@ -4,24 +4,22 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.metrics.modules</groupId>
     <artifactId>prometheus</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.metrics.modules.prometheus</groupId>
   <artifactId>impl</artifactId>
-
-
-
+  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>micrometer-prometheus</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
   </dependencies>

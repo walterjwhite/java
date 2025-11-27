@@ -14,7 +14,6 @@ public class ContextualWorker implements ContextualLoggable {
   }
 
   public String printContextualInformation() {
-    //        return "arguments:" + Arrays.toString(arguments);
-    return toString();
+    return "custom implementation, put whatever you want here\n" + this;
   }
 }

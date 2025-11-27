@@ -16,11 +16,15 @@ public abstract class AbstractPropertyManager<PropertyClassType extends Object> 
   protected boolean invoked = false;
 
   public void call() {
-    if (invoked) return;
+    if (invoked) {
+      return;
+    }
 
     try {
       for (final Class propertyClass : getClasses()) {
-        if (!PropertyHelper.isConcrete(propertyClass)) continue;
+        if (!PropertyHelper.isConcrete(propertyClass)) {
+          continue;
+        }
 
         try {
           processClass(propertyClass);
@@ -41,6 +45,8 @@ public abstract class AbstractPropertyManager<PropertyClassType extends Object> 
   protected abstract Collection<Class<? extends PropertyClassType>> getClasses();
 
   protected abstract void processClass(Class<? extends PropertyClassType> targetClass)
-      throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
+      throws NoSuchMethodException,
+          IllegalAccessException,
+          InvocationTargetException,
           InstantiationException;
 }

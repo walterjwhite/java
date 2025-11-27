@@ -4,32 +4,30 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>encryption</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.encryption</groupId>
   <artifactId>api</artifactId>
-
-
   <dependencies>
     <dependency>
-      <groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>
-      <artifactId>model</artifactId>
-      <version>0.2.0</version>
+      <groupId>com.walterjwhite.java.infrastructure.datastore.providers</groupId>
+      <artifactId>jdo</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
       <artifactId>core</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
   </dependencies>

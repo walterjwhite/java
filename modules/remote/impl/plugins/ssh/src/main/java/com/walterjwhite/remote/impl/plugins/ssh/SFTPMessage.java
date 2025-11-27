@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-/** Execute a sshCommand on a remote server. */
 @Getter
 @Setter
 @ToString(doNotUseGetters = true, callSuper = true)

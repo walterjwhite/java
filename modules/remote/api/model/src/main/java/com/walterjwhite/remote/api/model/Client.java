@@ -1,6 +1,5 @@
 package com.walterjwhite.remote.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.remote.api.model.message.Message;
 import com.walterjwhite.shell.api.model.Node;
 import java.util.ArrayList;
@@ -15,9 +14,9 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
 @PersistenceCapable
-public class Client extends AbstractEntity {
+public class Client {
+  protected int id;
 
-  // this is the UUID from the root device
   @EqualsAndHashCode.Exclude protected transient String uuid;
 
   protected String hashedIdentifier;

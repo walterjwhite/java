@@ -1,7 +1,7 @@
 package com.walterjwhite.metrics;
 
 import com.walterjwhite.infrastructure.inject.core.service.StartupAware;
-import com.walterjwhite.metrics.api.MetricsRegistryHelper;
+import com.walterjwhite.metrics.util.MetricsRegistryHelper;
 import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.inject.Inject;
 import lombok.RequiredArgsConstructor;

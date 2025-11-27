@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Batch DAG — Spring MVC Example</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <style>
+        .container { max-width:1100px; margin: 18px auto; padding: 0 20px; }
+        .panel { padding:14px; border-radius:12px; background: #fff; box-shadow: 0 6px 18px rgba(18,22,47,0.04); }
+        .grid { display:flex; gap:18px; flex-wrap:wrap; }
+        .job-card { flex:1 1 320px; border-radius:10px; padding:12px; background:linear-gradient(180deg,#fff,#fbfdff); border:1px solid rgba(15,23,42,0.04); }
+        .job-header { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+        .meta-small { font-size:0.9rem; color:var(--muted); }
+        .controls { display:flex; gap:8px; margin-top:10px; }
+        .badge { padding:4px 8px; border-radius:999px; font-weight:700; font-size:0.8rem;}
+        .badge-pending{ background:#f3f4f6; color:#374151; }
+        .badge-running{ background:linear-gradient(90deg,#fff7ed,#fff1f2); color:#92400e; }
+        .badge-completed{ background:linear-gradient(90deg,#ecfdf5,#f0fdf4); color:#065f46; }
+        .badge-cancelled{ background:#fff0f6; color:#7f1d1d; }
+        .badge-failed{ background:#fff7ed; color:#92400e; }
+        .graph { margin-top:10px; font-size:0.9rem; color:var(--muted); }
+        .small { font-size:0.9rem; color:var(--muted); }
+        .btn { padding:8px 10px; border-radius:8px; font-weight:600; }
+        /* disabled action appearance */
+        .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Batch DAG Demo</h1>
+    <p class="meta-small">Jobs with dependencies. Start a job to ensure upstream run; rerun triggers downstream once upstream complete.</p>
+
+    <div class="panel" style="margin-top:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <strong>Jobs</strong>
+                <div class="small">Click actions to manage jobs</div>
+            </div>
+            <div>
+                <button id="refresh" class="btn btn-outline">Refresh</button>
+            </div>
+        </div>
+
+        <div id="jobsGrid" class="grid" style="margin-top:12px;"></div>
+    </div>
+</div>
+
+<script>
+    async function fetchJobs() {
+      const res = await fetch('/batch_simple/jobs');
+      return res.ok ? res.json() : [];
+    }
+
+    function badgeFor(status) {
+      if (!status) return '<span class="badge badge-pending">PENDING</span>';
+      status = status.toUpperCase();
+      switch(status) {
+        case 'RUNNING': return '<span class="badge badge-running">RUNNING</span>';
+        case 'COMPLETED': return '<span class="badge badge-completed">COMPLETED</span>';
+        case 'CANCELLED': return '<span class="badge badge-cancelled">CANCELLED</span>';
+        case 'FAILED': return '<span class="badge badge-failed">FAILED</span>';
+        default: return '<span class="badge badge-pending">PENDING</span>';
+      }
+    }
+
+    function renderJob(job) {
+      const deps = job.dependencies && job.dependencies.length ? job.dependencies.join(', ') : '—';
+      const depsText = '<div class="graph"><strong>depends:</strong> ' + deps + '</div>';
+      const status = (job.status || '').toUpperCase();
+      const statusBadge = badgeFor(status);
+      const started = job.startedAt ? new Date(job.startedAt).toLocaleTimeString() : '';
+      const completed = job.completedAt ? new Date(job.completedAt).toLocaleTimeString() : '';
+
+      // enable/disable buttons per requested rules:
+      // - cancel button only enabled if job is presently RUNNING
+      // - start button only enabled if job is not RUNNING
+      const canCancel = status === 'RUNNING';
+      const canStart = status !== 'RUNNING';
+
+      const startAttr = canStart ? '' : 'disabled';
+      const cancelAttr = canCancel ? '' : 'disabled';
+
+      return `<div class="job-card" id="job-${escapeHtml(job.id)}">
+        <div class="job-header">
+          <div>
+            <div style="font-weight:700">${escapeHtml(job.name)}</div>
+            <div class="small">ID: ${escapeHtml(job.id)}</div>
+          </div>
+          <div style="text-align:right">
+            ${statusBadge}
+            <div class="small">${started ? 'started: ' + started : ''}${completed ? '<br>finished: ' + completed : ''}</div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <div class="small">${depsText}</div>
+          <div style="margin-top:8px;" class="small"><strong>Dependents:</strong> ${job.dependents && job.dependents.length ? job.dependents.join(', ') : '—'}</div>
+          <div class="controls">
+            <button class="btn btn-primary" ${startAttr} onclick="startJob('${encodeURIComponent(job.id)}')">Start</button>
+            <button class="btn btn-ghost" onclick="rerunJob('${encodeURIComponent(job.id)}')">Rerun (and downstream)</button>
+            <button class="btn btn-danger" ${cancelAttr} onclick="cancelJob('${encodeURIComponent(job.id)}')">Cancel</button>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function escapeHtml(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    async function refresh() {
+      const jobs = await fetchJobs();
+      const grid = document.getElementById('jobsGrid');
+      grid.innerHTML = jobs.map(renderJob).join('');
+    }
+
+    async function startJob(id) {
+      await fetch('/batch_simple/jobs/' + id + '/start', { method: 'POST' });
+      await refresh();
+    }
+
+    async function cancelJob(id) {
+      await fetch('/batch_simple/jobs/' + id + '/cancel', { method: 'POST' });
+      await refresh();
+    }
+
+    async function rerunJob(id) {
+      await fetch('/batch_simple/jobs/' + id + '/rerun', { method: 'POST' });
+      await refresh();
+    }
+
+    document.getElementById('refresh').addEventListener('click', refresh);
+    // initial load and periodic refresh
+    refresh();
+    setInterval(refresh, 3000);
+</script>
+</body>
+</html>

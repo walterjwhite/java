@@ -4,31 +4,17 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>selenium-chrome</artifactId>
   <packaging>pom</packaging>
-
   <dependencies>
-    <!-- Is this really needed, this causes issues when creating an uber jar -->
-    <!--<dependency>-->
-    <!--<groupId>org.seleniumhq.webdriver</groupId>-->
-    <!--<artifactId>webdriver-support</artifactId>-->
-    <!--<version>${selenium.support.version}</version>-->
-    <!--</dependency>-->
-    <!--
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-support</artifactId>
-            <version>${selenium.support.version}</version>
-        </dependency>
-        -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-chrome-driver</artifactId>
-      <version>4.8.1</version>
+      <version>4.36.0</version>
     </dependency>
   </dependencies>
 </project>

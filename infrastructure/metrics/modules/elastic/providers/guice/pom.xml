@@ -4,18 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.metrics.modules.elastic</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.metrics.modules.elastic.providers</groupId>
   <artifactId>guice</artifactId>
-
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.providers</groupId>
       <artifactId>guice</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

@@ -2,19 +2,16 @@ package com.walterjwhite.property.modules.cli.handler;
 
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
 import com.walterjwhite.property.api.SecretService;
+import jakarta.inject.Inject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import jakarta.inject.Inject;
 
-/** Helper to list our client id. */
 public class PutSecretPropertyHandler implements CommandLineHandler {
   protected final SecretService secretService;
 
   @Inject
   public PutSecretPropertyHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       SecretService secretService) {
-    //    super(shutdownTimeoutInSeconds);
     this.secretService = secretService;
   }
 

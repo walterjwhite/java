@@ -9,9 +9,7 @@ public class EmailTokenCommandLineHandler implements CommandLineHandler {
 
   @Inject
   public EmailTokenCommandLineHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       TokenService tokenService) {
-    //    super(shutdownTimeoutInSeconds);
     this.tokenService = tokenService;
   }
 

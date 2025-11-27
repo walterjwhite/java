@@ -2,11 +2,10 @@ package com.walterjwhite.remote.impl.plugins.file.handler;
 
 import com.walterjwhite.file.api.service.FileStorageService;
 import com.walterjwhite.remote.impl.plugins.file.message.DeleteFileMessage;
-import java.io.IOException;
 import jakarta.inject.Inject;
+import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
-// import com.walterjwhite.queue.api.queuedJob.AbstractJobRunnable;
 public class DeleteFileMessageCallable /* extends AbstractRunnable<DeleteFileMessage, Void>*/ {
   protected final FileStorageService fileStorageService;
 
@@ -27,15 +26,4 @@ public class DeleteFileMessageCallable /* extends AbstractRunnable<DeleteFileMes
     }
   }
 
-  //  @Override
-  //  protected boolean isRetryable(Throwable thrown) {
-  //    return false;
-  //  }
-  //
-  //  @Override
-  //  public Void call() throws Exception {
-  //    deleteFile(entity);
-  //
-  //    return null;
-  //  }
 }

@@ -28,7 +28,9 @@ public class PropertiesPropertySource
       if (url != null) {
         tempProperties.load(url.openStream());
         return tempProperties;
-      } else handlePropertiesFileDoesNotExist();
+      } else {
+        handlePropertiesFileDoesNotExist();
+      }
     } catch (Exception e) {
       handleLoadException(e);
     }

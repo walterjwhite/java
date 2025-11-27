@@ -2,9 +2,9 @@ package com.walterjwhite.infrastructure.inject.providers.spring;
 
 import com.walterjwhite.infrastructure.inject.core.Injector;
 import com.walterjwhite.infrastructure.inject.core.helper.ApplicationHelper;
+import jakarta.enterprise.util.AnnotationLiteral;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
-import jakarta.enterprise.util.AnnotationLiteral;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.BeanFactory;
@@ -19,25 +19,23 @@ public class SpringInjector implements Injector {
   protected transient volatile BeanFactory beanFactory;
 
   public void initialize()
-      throws InstantiationException, IllegalAccessException, NoSuchMethodException,
+      throws InstantiationException,
+          IllegalAccessException,
+          NoSuchMethodException,
           InvocationTargetException {
-    // see: https://www.baeldung.com/spring-application-context
-    applicationContext =
-        new AnnotationConfigApplicationContext(getSpringApplicationModule().scanBasePackages());
+      final SpringApplicationModule springApplicationModule = getSpringApplicationModule();
 
-    //    try (ConfigurableApplicationContext context = SpringApplication.run(Application.class,
-    // args))
-    //    {
-    //
-    //      context.registerShutdownHook();
-    //      context.stop();
-    //    }
+    applicationContext =
+        new AnnotationConfigApplicationContext(springApplicationModule.scanBasePackages());
+
 
     beanFactory = applicationContext.getAutowireCapableBeanFactory();
   }
 
   protected SpringApplicationModule getSpringApplicationModule()
-      throws IllegalAccessException, InstantiationException, NoSuchMethodException,
+      throws IllegalAccessException,
+          InstantiationException,
+          NoSuchMethodException,
           InvocationTargetException {
     final Iterator<Class<? extends SpringApplicationModule>> springApplicationModuleIterator =
         ApplicationHelper.getApplicationInstance()
@@ -45,8 +43,9 @@ public class SpringInjector implements Injector {
             .getSubTypesOf(SpringApplicationModule.class)
             .iterator();
 
-    if (springApplicationModuleIterator.hasNext())
+    if (springApplicationModuleIterator.hasNext()) {
       return springApplicationModuleIterator.next().getDeclaredConstructor().newInstance();
+    }
 
     return null;
   }

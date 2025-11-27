@@ -21,7 +21,6 @@ public class SampleWebService2 {
     this.injector = injector;
   }
 
-  // bad example, since name is a required parameter, we should use a path parameter instead
   @Counter
   @Deprecated
   @GET
@@ -46,11 +45,9 @@ public class SampleWebService2 {
   @Produces(MediaType.APPLICATION_JSON)
   @Path("/good/greet/{name}")
   public Response greet(@PathParam("name") final String name) {
-    // return new Greeting(name);
     return Response.status(200).entity(new Greeting(name)).build();
   }
 
-  // @Loggable
   @Counter
   @Operation(
       summary = "test injector",
@@ -60,12 +57,6 @@ public class SampleWebService2 {
   @Path("/good/testInjector/{name}")
   public Response testInjector(@PathParam("name") final String name) {
     MeterRegistry meterRegistry = injector.getInstance(MeterRegistry.class);
-    //    try {
-    //      MetricType.Counter.get(meterRegistry, getClass().getMethod("testInjector"), null
-    // /*Counter.class*/);
-    //    } catch (NoSuchMethodException e) {
-    //      throw(new RuntimeException(e));
-    //    }
 
     for (Meter meter : meterRegistry.getMeters()) {}
 

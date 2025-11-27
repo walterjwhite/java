@@ -15,19 +15,5 @@ public enum PaddingType implements ConfigurableProperty /*, CommandLineOption*/ 
     return (toString().replace("_", "-"));
   }
 
-  //  @Override
-  //  public String getCliArgumentName() {
-  //    return getClass().getSimpleName();
-  //  }
 
-  //  @Override
-  //  public String getDefaultValue() {
-  //    // null because this depends on the encryption algorithm
-  //    return null;
-  //  }
-  //
-  //  @Override
-  //  public String getDescription() {
-  //    return "padding to use with the encryption algorithm";
-  //  }
 }

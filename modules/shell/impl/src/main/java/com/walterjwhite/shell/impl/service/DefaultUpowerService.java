@@ -8,10 +8,10 @@ import com.walterjwhite.shell.api.model.Node;
 import com.walterjwhite.shell.api.service.ShellExecutionService;
 import com.walterjwhite.shell.api.service.UpowerService;
 import com.walterjwhite.shell.impl.property.UpowerTimeout;
+import jakarta.inject.Inject;
 import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import jakarta.inject.Inject;
 
 public class DefaultUpowerService extends AbstractSingleShellCommandService<BatteryRequest>
     implements UpowerService {

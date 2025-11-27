@@ -4,9 +4,9 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Stage;
 import com.walterjwhite.infrastructure.inject.core.helper.ApplicationHelper;
+import jakarta.enterprise.util.AnnotationLiteral;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
-import jakarta.enterprise.util.AnnotationLiteral;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -18,13 +18,17 @@ public class GuiceInjector implements com.walterjwhite.infrastructure.inject.cor
   protected transient volatile Injector injector;
 
   public void initialize()
-      throws InstantiationException, IllegalAccessException, NoSuchMethodException,
+      throws InstantiationException,
+          IllegalAccessException,
+          NoSuchMethodException,
           InvocationTargetException {
     createInjector();
   }
 
   public void createInjector()
-      throws InstantiationException, IllegalAccessException, NoSuchMethodException,
+      throws InstantiationException,
+          IllegalAccessException,
+          NoSuchMethodException,
           InvocationTargetException {
     guiceApplicationPropertyRegistrationModule =
         new GuiceApplicationPropertyRegistrationModule(getGuiceApplicationModules());
@@ -41,7 +45,9 @@ public class GuiceInjector implements com.walterjwhite.infrastructure.inject.cor
   }
 
   protected GuiceApplicationModule[] getGuiceApplicationModules()
-      throws IllegalAccessException, InstantiationException, NoSuchMethodException,
+      throws IllegalAccessException,
+          InstantiationException,
+          NoSuchMethodException,
           InvocationTargetException {
     final Set<Class<? extends GuiceApplicationModule>> guiceApplicationModuleSet =
         ApplicationHelper.getApplicationInstance()

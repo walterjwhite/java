@@ -4,9 +4,9 @@ import com.google.common.util.concurrent.ListeningScheduledExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.walterjwhite.job.impl.property.property.NumberOfExecutorServiceThreads;
 import com.walterjwhite.property.impl.annotation.Property;
-import java.util.concurrent.Executors;
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
+import java.util.concurrent.Executors;
 
 public class ExecutorServiceProvider implements Provider<ListeningScheduledExecutorService> {
   protected final ListeningScheduledExecutorService executorService;
@@ -17,10 +17,7 @@ public class ExecutorServiceProvider implements Provider<ListeningScheduledExecu
 
     executorService =
         MoreExecutors.listeningDecorator(Executors.newScheduledThreadPool(numberOfThreads));
-    // this is needed unless we handle it differently (ie. wrap executor service as an idle service,
-    // then let our handler call shutdown on the service)
 
-    // Runtime.getRuntime().addShutdownHook(new ShutdownHook());
   }
 
   @Override

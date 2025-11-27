@@ -4,18 +4,17 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>microsoft-graph</artifactId>
   <packaging>pom</packaging>
-
   <dependencies>
     <dependency>
       <groupId>com.microsoft.graph</groupId>
       <artifactId>microsoft-graph</artifactId>
-      <version>5.47.0</version>
+      <version>6.54.0</version>
     </dependency>
     <dependency>
       <groupId>com.microsoft.graph</groupId>

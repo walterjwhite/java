@@ -8,8 +8,6 @@ public class HttpBinPublicIPLookupService implements PublicIPLookupService {
   public String getPublicIPAddress() throws Exception {
     final String response = URLStreamUtil.getResponse("http://httpbin.org/ip");
     final JSONObject jsonObject = new JSONObject(response);
-    final String ip = jsonObject.getString("origin");
-
-    return (ip);
+    return jsonObject.getString("origin");
   }
 }

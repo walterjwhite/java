@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @PersistenceCapable
-public class NetworkInterfaceState extends AbstractEntity {
+public class NetworkInterfaceState {
 
   protected NetworkInterface networkInterface;
 

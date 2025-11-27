@@ -4,15 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules</groupId>
   <artifactId>identity</artifactId>
   <packaging>pom</packaging>
-
   <modules>
     <module>api</module>
     <module>modules</module>
+    <module>providers</module>
   </modules>
   <dependencies/>
 </project>

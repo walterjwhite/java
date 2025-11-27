@@ -9,7 +9,6 @@ public class PDFViewer {
 
     /*
     PDDocument document = PDDocument.load(pdfFile);
-    //PDFRenderer pdfRenderer = new PDFRenderer(document);
 
     List<PDPage> allPages = document.getPages().getCount();
 
@@ -18,8 +17,6 @@ public class PDFViewer {
 
     PDFPagePanel pdfPanel = new PDFPagePanel();
     pdfPanel.setPage(testPage);
-    //testFrame.add(pdfPanel);
-    //testFrame.add(document.getPage(0).);
     testFrame.setBounds(40, 40, pdfPanel.getWidth(), pdfPanel.getHeight());
     testFrame.setVisible(true);
 
@@ -27,7 +24,6 @@ public class PDFViewer {
     PDPage testPage = (PDPage)allPages.get(0);
     */
 
-    // simply launch and wait for us to close the viewer
     Process process =
         Runtime.getRuntime().exec(new String[] {"AcroRd32.exe", pdfFile.getAbsolutePath()});
     process.waitFor();

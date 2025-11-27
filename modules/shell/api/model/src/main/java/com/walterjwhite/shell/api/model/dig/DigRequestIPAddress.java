@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model.dig;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.shell.api.model.IPAddress;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
@@ -12,7 +11,7 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class DigRequestIPAddress extends AbstractEntity {
+public class DigRequestIPAddress {
 
   protected LocalDateTime currentDateTime = LocalDateTime.now();
 

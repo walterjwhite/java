@@ -2,16 +2,17 @@ package com.walterjwhite.browser.api.model;
 
 import com.walterjwhite.browser.api.authentication.field.FieldGroup;
 import com.walterjwhite.browser.api.authentication.field.Locator;
-import com.walterjwhite.datastore.api.model.entity.AbstractNamedEntity;
 import com.walterjwhite.identity.api.model.password.PasswordPolicy;
 import java.time.Duration;
+import javax.jdo.annotations.PersistenceCapable;
 import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(doNotUseGetters = true)
 @Data
-public class Website extends AbstractNamedEntity {
+@PersistenceCapable
+public class Website {
   protected String uri;
 
   @EqualsAndHashCode.Exclude protected Duration sessionTimeout;
@@ -30,7 +31,6 @@ public class Website extends AbstractNamedEntity {
 
   @EqualsAndHashCode.Exclude protected Feature[] features;
 
-  @Override
   public String getId() {
     return uri;
   }

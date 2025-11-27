@@ -3,7 +3,9 @@ package service;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class Demo {
   public static final int portNumber = 4444;
 
@@ -47,7 +49,6 @@ public class Demo {
   public static void showPDF() throws InterruptedException, IOException {
     final File pdfFile = new File("label.pdf");
 
-    // simply launch and wait for us to close the viewer
     Process process =
         Runtime.getRuntime().exec(new String[] {"AcroRd32.exe", pdfFile.getAbsolutePath()});
     process.waitFor();

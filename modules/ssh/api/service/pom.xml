@@ -4,27 +4,25 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.ssh</groupId>
     <artifactId>api</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.ssh.api</groupId>
   <artifactId>service</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.ssh.api</groupId>
       <artifactId>model</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.shell.api</groupId>
       <artifactId>model</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

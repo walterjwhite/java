@@ -4,29 +4,26 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.remote.impl</groupId>
     <artifactId>plugins</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.remote.impl.plugins</groupId>
   <artifactId>shell</artifactId>
-  <version>0.2.0</version>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.shell.api</groupId>
       <artifactId>model</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>commons-io</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.modules.shell</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

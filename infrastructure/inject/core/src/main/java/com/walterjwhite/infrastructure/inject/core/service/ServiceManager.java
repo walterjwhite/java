@@ -16,9 +16,6 @@ public class ServiceManager {
   protected final Reflections reflections;
   protected final Injector injector;
 
-  // @TODO: consider re-instating @ServiceStopTimeout.class
-  //  @Property(ServiceStopTimeout.class)
-  // protected final int serviceStopTimeout = 30;
 
   public void initialize() {
     getStartupAwareServices().forEach(service -> doStartService(service));
@@ -35,5 +32,17 @@ public class ServiceManager {
     final StartupAware startupAware = injector.getInstance(serviceClass);
     startupAware.startup();
     CloseableUtil.addAutoCloseable(startupAware);
+  }
+
+  protected Set<Class<? extends ShutdownAware>> gethutdownAwareServices() {
+    return reflections.getSubTypesOf(ShutdownAware.class).stream()
+        .filter(serviceClass -> PropertyHelper.isConcrete(serviceClass))
+        .collect(Collectors.toSet());
+  }
+
+  @SneakyThrows
+  protected void doStopService(final Class<? extends ShutdownAware> serviceClass) {
+    final ShutdownAware shutdownAware = injector.getInstance(serviceClass);
+    shutdownAware.shutdown();
   }
 }

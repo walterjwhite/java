@@ -1,6 +1,5 @@
 package com.walterjwhite.print.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +11,7 @@ import lombok.ToString;
 @PersistenceCapable
 @AllArgsConstructor
 @NoArgsConstructor
-public class PrintJob extends AbstractEntity {
+public class PrintJob {
 
   protected Printer printer;
 

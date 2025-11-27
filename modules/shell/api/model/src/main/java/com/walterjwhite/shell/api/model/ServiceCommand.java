@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.shell.api.enumeration.ServiceAction;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.Data;
@@ -10,7 +9,7 @@ import lombok.ToString;
 @Data
 @ToString(doNotUseGetters = true)
 @PersistenceCapable
-public class ServiceCommand extends AbstractEntity implements ShellCommandable {
+public class ServiceCommand implements ShellCommandable {
 
   protected Service service;
 

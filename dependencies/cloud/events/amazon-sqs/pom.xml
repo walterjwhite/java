@@ -4,39 +4,33 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>amazon-sqs</artifactId>
   <packaging>pom</packaging>
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.amazon</groupId>
       <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>json</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.amazonaws</groupId>-->
-    <!--<artifactId>amazon-sqs-java-messaging-lib</artifactId>-->
-    <!--<version>${amazon.sqs.version}</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-sqs</artifactId>
-      <version>1.12.415</version>
+      <version>1.12.792</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>commons-logging</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
   </dependencies>

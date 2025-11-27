@@ -6,7 +6,6 @@ import org.apache.commons.text.RandomStringGenerator;
 public class DefaultRandomSequenceGenerator implements RandomSequenceGenerator {
   @Override
   public String generate(int minLength, int maxLength) {
-    //    UniformRandomProvider rng = RandomSource.create(...);
     RandomStringGenerator generator =
         new RandomStringGenerator.Builder()
             /*.withinRange('a', 'z')
@@ -28,15 +27,6 @@ public class DefaultRandomSequenceGenerator implements RandomSequenceGenerator {
 
   @Override
   public String generate(int minLength, int maxLength, String characters) {
-    //    RandomStringGenerator.Builder builder = new RandomStringGenerator.Builder();
-    //
-    //    for (int i = 0; i < characterSets.length; i++) {
-    //      builder.withinRange(characterSets[i][0], characterSets[i][1]);
-    //    }
-    //
-    //    RandomStringGenerator generator = builder.build();
-    //
-    //    return generator.generate(getLength(minLength, maxLength));
     throw new UnsupportedOperationException("NOT SUPPORTED");
   }
 }

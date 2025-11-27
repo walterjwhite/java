@@ -4,20 +4,13 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>datanucleus-jdo</artifactId>
   <packaging>pom</packaging>
-
   <dependencies>
-    <!-- these may overlap? -->
-    <!--<dependency>-->
-    <!--<groupId>javax.jdo</groupId>-->
-    <!--<artifactId>jdo-api</artifactId>-->
-    <!--<version>${javax-jdo.version}</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>javax.jdo</artifactId>
@@ -26,34 +19,17 @@
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>datanucleus-api-jdo</artifactId>
-      <version>6.0.1</version>
+      <version>6.0.5</version>
     </dependency>
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>datanucleus-core</artifactId>
-      <version>6.0.3</version>
-<!--      <scope>provided</scope>-->
+      <version>6.0.11</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>org.datanucleus</groupId>-->
-    <!--<artifactId>datanucleus-accessplatform-jdo-rdbms</artifactId>-->
-    <!--<version>6.0.0-release</version>-->
-    <!--<type>pom</type>-->
-    <!--</dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.datanucleus</groupId>-->
-<!--      <artifactId>datanucleus-rdbms</artifactId>-->
-<!--      <version>6.0.0-release</version>-->
-<!--    </dependency>-->
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>datanucleus-jdo-query</artifactId>
       <version>6.0.1</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>org.datanucleus</groupId>-->
-    <!--<artifactId>datanucleus-enhancer</artifactId>-->
-    <!--<version>${datanucleus-enhancer.version}</version>-->
-    <!--</dependency>-->
   </dependencies>
 </project>

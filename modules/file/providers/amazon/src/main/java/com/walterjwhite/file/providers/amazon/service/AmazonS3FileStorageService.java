@@ -9,7 +9,7 @@ import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3Object;
 import com.walterjwhite.amazon.property.AmazonRegion;
 import com.walterjwhite.encryption.api.service.CompressionService;
-import com.walterjwhite.encryption.service.DigestService;
+import com.walterjwhite.encryption.enumeration.DigestAlgorithm;
 import com.walterjwhite.encryption.service.EncryptionService;
 import com.walterjwhite.file.api.model.File;
 import com.walterjwhite.file.impl.service.AbstractFileStorageService;
@@ -17,11 +17,11 @@ import com.walterjwhite.file.providers.amazon.property.AmazonS3Bucket;
 import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.property.api.enumeration.Debug;
 import com.walterjwhite.property.api.enumeration.NoOperation;
+import com.walterjwhite.property.api.enumeration.ProxyType;
 import com.walterjwhite.property.api.property.ProxyHost;
 import com.walterjwhite.property.api.property.ProxyPort;
-import com.walterjwhite.property.api.property.ProxyType;
-import java.io.FileOutputStream;
 import jakarta.inject.Inject;
+import java.io.FileOutputStream;
 
 public class AmazonS3FileStorageService extends AbstractFileStorageService {
   protected final String bucketName;
@@ -32,16 +32,16 @@ public class AmazonS3FileStorageService extends AbstractFileStorageService {
   public AmazonS3FileStorageService(
       CompressionService compressionService,
       EncryptionService encryptionService,
-      DigestService digestService,
+      DigestAlgorithm digestAlgorithm,
       @Property(NoOperation.class) boolean nop,
       @Property(Debug.class) boolean debug,
-      @Property(ProxyType.class) com.walterjwhite.property.api.enumeration.ProxyType proxyType,
+      @Property(ProxyType.class) ProxyType proxyType,
       @Property(ProxyHost.class) String proxyHost,
       @Property(ProxyPort.class) int proxyPort,
       @Property(AmazonS3Bucket.class) String bucketName,
       @Property(AmazonRegion.class) Regions region) {
 
-    super(compressionService, encryptionService, digestService, nop, debug);
+    super(compressionService, encryptionService, digestAlgorithm, nop, debug);
     this.bucketName = bucketName;
 
     ClientConfiguration clientConfiguration = new ClientConfiguration();
@@ -67,17 +67,9 @@ public class AmazonS3FileStorageService extends AbstractFileStorageService {
     clientConfiguration.setProxyPort(proxyPort);
   }
 
-  //  protected void createBucket(final String bucketName) {
-  //    try {
-  //      s3client.createBucket(bucketName);
-  //    } catch (Exception e) {
-  //      LOGGER.error("error creating bucket", e);
-  //    }
-  //  }
 
   @Override
   protected void doPut(File file) {
-    //    createBucket(bucketName);
     doAmazonPut(bucketName, file.getChecksum() /*.getId()*/, file.getSource());
   }
 
@@ -85,11 +77,6 @@ public class AmazonS3FileStorageService extends AbstractFileStorageService {
       final String bucketName, final String fileChecksum, final String fileSource) {
     return s3client.putObject(bucketName, fileChecksum, new java.io.File(fileSource));
 
-    // I believe the below code only works if we enable versioning
-    //    if (putObjectResult.getVersionId() == null || putObjectResult.getVersionId().length() ==
-    // 0) {
-    //      throw new RuntimeException("Upload failed.");
-    //    }
   }
 
   @Override
