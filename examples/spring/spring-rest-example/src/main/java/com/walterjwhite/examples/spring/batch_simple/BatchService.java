@@ -16,11 +16,6 @@ public class BatchService {
 
     private final Map<String, BatchJob> jobs = new LinkedHashMap<>();
     private final Map<String, Future<?>> running = new ConcurrentHashMap<>();
-    private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(r -> {
-        Thread t = new Thread(r, "batch-scheduler");
-        t.setDaemon(true);
-        return t;
-    });
     private final ExecutorService workers = Executors.newFixedThreadPool(4, r -> {
         Thread t = new Thread(r);
         t.setDaemon(true);
@@ -43,7 +38,6 @@ public class BatchService {
             }
         }
 
-        scheduler.scheduleAtFixedRate(this::scheduleReadyJobs, 0, 500, TimeUnit.MILLISECONDS);
         log.info("BatchService initialized with jobs: {}", jobs.keySet());
     }
 
@@ -193,7 +187,6 @@ public class BatchService {
     }
 
     public void shutdown() {
-        scheduler.shutdownNow();
         workers.shutdownNow();
     }
 }
