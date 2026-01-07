@@ -18,29 +18,4 @@ class DefaultNetworkManagerManagedNetworkInterfacesService /*implements NetworkM
     this.shellExecutionService = shellExecutionService;
   }
 
-  //  @Override
-  //  public Set<String> getManagedInterfaces() throws Exception {
-  //    final Set<String> interfaces = new HashSet<>();
-  //
-  //    ShellCommand shellCommand = new ShellCommand("nmcli d", 10);
-  //    shellExecutionService.run(shellCommand);
-  //
-  //    final String pattern =
-  //
-  // "^([\\w]{1,})[\\W]{1,}(ethernet|wifi)[\\W]{1,}(connected|unavailable|disconnected)[\\W]{1,}(.*)$";
-  //
-  //    final Pattern nmcliPattern = Pattern.compile(pattern);
-  //    for (final CommandOutput commandOutput : shellCommand.getOutputs()) {
-  //      final Matcher nmcliMatcher = nmcliPattern.matcher(commandOutput.getOutput());
-  //
-  //      if (nmcliMatcher.matches()) {
-  //
-  //        interfaces.add(nmcliMatcher.group(1));
-  //
-  //      } else {
-  //      }
-  //    }
-  //
-  //    return (interfaces);
-  //  }
 }

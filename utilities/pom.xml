@@ -4,17 +4,12 @@
   <parent>
     <groupId>com.walterjwhite</groupId>
     <artifactId>java</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java</groupId>
   <artifactId>utilities</artifactId>
-  <version>0.2.0</version>
   <packaging>pom</packaging>
-
-
   <modules>
-    <module>citrix-workspace</module>
     <module>cli-comment-remover</module>
-    <module>virgin-pulse</module>
   </modules>
 </project>

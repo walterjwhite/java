@@ -1,6 +1,5 @@
 package com.walterjwhite.file.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractNamedEntity;
 import java.time.Duration;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.Getter;
@@ -11,6 +10,6 @@ import lombok.ToString;
 @Setter
 @ToString(doNotUseGetters = true, callSuper = true)
 @PersistenceCapable
-public class RetentionPolicy extends AbstractNamedEntity {
+public class RetentionPolicy {
   protected Duration retentionDuration;
 }

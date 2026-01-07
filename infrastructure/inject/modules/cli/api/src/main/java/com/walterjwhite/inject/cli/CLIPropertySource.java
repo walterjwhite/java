@@ -1,5 +1,7 @@
 package com.walterjwhite.inject.cli;
 
+import com.walterjwhite.infrastructure.inject.core.ApplicationArgumentAware;
+import com.walterjwhite.infrastructure.inject.core.helper.ApplicationHelper;
 import com.walterjwhite.inject.cli.service.CLIParser;
 import com.walterjwhite.property.api.PropertyManager;
 import com.walterjwhite.property.api.annotation.PropertySourceIndex;
@@ -13,10 +15,17 @@ public class CLIPropertySource extends AbstractSingularStringPropertySource<Conf
   public CLIPropertySource(PropertyManager propertyManager) {
     super(propertyManager, ConfigurableProperty.class);
 
-    final CLIParser cliParser = getCLIParser();
-    setCommandLineProperties(
-        cliParser.parseCommandLineArguments(
-            propertyManager.getKeys(), CLIApplication.getRawArguments()));
+    setApplicationArguments();
+  }
+
+  private void setApplicationArguments() {
+    if (ApplicationHelper.getApplicationInstance()
+        instanceof ApplicationArgumentAware applicationArgumentAware) {
+      final CLIParser cliParser = getCLIParser();
+      setCommandLineProperties(
+          cliParser.parseCommandLineArguments(
+              propertyManager.getKeys(), applicationArgumentAware.getArguments()));
+    }
   }
 
   protected CLIParser getCLIParser() {

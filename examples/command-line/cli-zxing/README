@@ -1,0 +1,6 @@
+1 illustrate building a CLI application and basic argument handling
+2 illustrate use of @Sensitive on parameters, configured to only show last character
+3 illustrate basic use of JPA including using hikari for connection pooling and configuring persistence.xml with H2 memory as the backend
+4 illustrate basic use of Criteria API, type safe queries
+
+1. application runs without arguments, but specifying argument will be consumed, for each argument, it will be persisted to an in memory database and printed on screen

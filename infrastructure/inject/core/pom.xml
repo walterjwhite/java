@@ -4,49 +4,36 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure</groupId>
     <artifactId>inject</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
   <artifactId>core</artifactId>
-
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>javax-inject</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
-      <groupId>com.walterjwhite.java.infrastructure.property</groupId>
-      <artifactId>api</artifactId>
-      <version>0.2.0</version>
+      <groupId>com.walterjwhite.java.advice.closeable</groupId>
+      <artifactId>runtime</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
       <artifactId>environment</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
       <artifactId>manifest</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>-->
-    <!--<artifactId>model</artifactId>-->
-    <!--<version>0.0.15-SNAPSHOT</version>-->
-    <!--</dependency>-->
-    <dependency>
-      <groupId>com.walterjwhite.java.modules.shell.api</groupId>
-      <artifactId>model</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

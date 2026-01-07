@@ -4,23 +4,19 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>identity</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.identity</groupId>
   <artifactId>modules</artifactId>
   <packaging>pom</packaging>
-
   <modules>
-    <module>cli</module>
-    <module>email</module>
     <module>management</module>
-    <module>stdin</module>
   </modules>
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.identity.api</groupId>
       <artifactId>service</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

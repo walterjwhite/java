@@ -4,4 +4,8 @@ public interface SpringApplicationModule {
   default String[] scanBasePackages() {
     return null;
   }
+
+  default boolean isWebServer() {
+    return false;
+  }
 }

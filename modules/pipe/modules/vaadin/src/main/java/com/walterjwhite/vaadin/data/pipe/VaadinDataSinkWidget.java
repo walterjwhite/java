@@ -17,7 +17,6 @@ import org.eclipse.jetty.servlet.ServletHolder;
 public class VaadinDataSinkWidget extends UI {
  protected final VaadinDataSink dataSink;
  protected final VaadinServlet vaadinServlet = new VaadinServlet();
- //ui=>VaadinDataSinkWidget.class
  public VaadinDataSinkWidget(VaadinDataSink dataSink) {
    this.dataSink = dataSink;
  }
@@ -40,14 +39,8 @@ VaadinDeploymentConfiguration());
    }
  }
  protected void initializeScreen(Layout layout) {
-   //dataSink.update();
    setContent(layout);
-   //        form.setVisible(false);
-   //dataSink.configureEntitySelection();
  }
- //    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
- //  @VaadinServletConfiguration(ui = VaadinDataSinkWidget.class, productionMode = false)
- //    public static class MyUIServlet extends VaadinServlet {}
  protected void startServer() throws Exception {
    final Server server = new Server(8080);
    ServletContextHandler contextHandler =
@@ -55,11 +48,6 @@ VaadinDeploymentConfiguration());
    contextHandler.setContextPath(".");
    server.setHandler(contextHandler);
    contextHandler.addServlet(new ServletHolder(vaadinServlet), "/*");
-   //    final WebAppContext root = new WebAppContext();
-   //    root.setContextPath("/");
-   //    root.setDescriptor(
-   //        Thread.currentThread().getContextClassLoader().getResource("web.xml").getPath());
-   //    root.setResourceBase(".");
    server.start();
    server.join();
  }

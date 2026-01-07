@@ -9,8 +9,8 @@ import com.walterjwhite.ssh.executor.DefaultSSHCommandExecutor;
 import com.walterjwhite.ssh.executor.ExpectSSHCommandExecutor;
 import com.walterjwhite.ssh.property.InterruptGracePeriodUnits;
 import com.walterjwhite.ssh.property.InterruptGracePeriodValue;
-import java.time.temporal.ChronoUnit;
 import jakarta.inject.Inject;
+import java.time.temporal.ChronoUnit;
 
 public class DefaultSSHCommandService implements SSHCommandService, AutoCloseable {
   protected final String sshPublicKeyPath;

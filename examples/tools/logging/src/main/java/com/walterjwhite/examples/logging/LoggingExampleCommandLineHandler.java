@@ -4,20 +4,15 @@ import com.walterjwhite.heartbeat.Heartbeatable;
 import com.walterjwhite.heartbeat.annotation.Heartbeat;
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
 import com.walterjwhite.logging.annotation.NonLoggable;
+import jakarta.inject.Inject;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import jakarta.inject.Inject;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(onConstructor_ = @Inject)
 public class LoggingExampleCommandLineHandler implements CommandLineHandler, Heartbeatable {
   protected int i = 0;
 
-  //  @Inject
-  //  public LoggingExampleCommandLineHandler(
-  //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds) {
-  //    super(shutdownTimeoutInSeconds);
-  //  }
 
   @Heartbeat
   @Override
@@ -37,7 +32,6 @@ public class LoggingExampleCommandLineHandler implements CommandLineHandler, Hea
     }
   }
 
-  // test if non-loggable annotation works, yes
   @NonLoggable
   @Override
   public void onHeartbeat() {}

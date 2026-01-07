@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<web-app>
+  <filter>
+    <filter-name>cidrRoutingFilter</filter-name>
+    <filter-class>com.walterjwhite.web.servlet.cidr_filter.CIDRRoutingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>cidrRoutingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+</web-app>

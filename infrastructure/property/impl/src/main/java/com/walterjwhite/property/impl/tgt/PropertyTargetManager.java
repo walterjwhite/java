@@ -18,7 +18,9 @@ public class PropertyTargetManager extends AbstractPropertyManager<PropertyTarge
   }
 
   protected void processClass(Class<? extends PropertyTarget> targetClass)
-      throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
+      throws NoSuchMethodException,
+          IllegalAccessException,
+          InvocationTargetException,
           InstantiationException {
     final PropertyTarget propertyTarget =
         targetClass.getConstructor(PropertyManager.class).newInstance(propertyManager);

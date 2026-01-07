@@ -2,41 +2,29 @@ package com.walterjwhite.examples.serialization;
 
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
 import com.walterjwhite.serialization.api.service.SerializationService;
+import jakarta.inject.Inject;
 import java.io.*;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
-import jakarta.inject.Inject;
 
 public class SerializationExampleCommandLineHandler implements CommandLineHandler {
   protected final SerializationService serializationService;
 
   @Inject
   public SerializationExampleCommandLineHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       SerializationService serializationService) {
-    //    super(shutdownTimeoutInSeconds);
     this.serializationService = serializationService;
   }
 
   protected void setupKyro() {
-    // simulate the use of Reflections ...
 
-    // this worked
-    //    ((KryoSerializationService)serializationService).getKryo().register(Duration.class);
-    // this did not work, it says warn?
-    //
-    // ((KryoSerializationService)serializationService).getKryo().setWarnUnregisteredClasses(true);
   }
 
-  // worked: Jackson, native, kryo (must register all classes)
-  // failed: Snakeyaml (need to serialize / deserialize Duration)
   @Override
   public void run(String... arguments) throws Exception {
-    //    final Duration input = new Duration(1, ChronoUnit.HOURS);
     final Duration input = Duration.ofHours(1);
 
-    //    final Duration output = byteArray(input);
     final Duration output = file(input);
 
     final Car car =
@@ -62,7 +50,6 @@ public class SerializationExampleCommandLineHandler implements CommandLineHandle
       return (Type)
           serializationService.deserialize(new FileInputStream(tempFile), input.getClass());
     } finally {
-      //      tempFile.deleteOnExit();
     }
   }
 

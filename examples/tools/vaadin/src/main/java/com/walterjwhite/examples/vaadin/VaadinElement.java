@@ -7,19 +7,15 @@ import com.vaadin.flow.dom.ElementFactory;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-/** Hello World view based on elements. */
 @PageTitle("Hello World with elements")
 @Route(value = "element", layout = MainLayout.class)
 public class VaadinElement extends Component {
 
   public static final String VALUE_PROPERTY = "value";
 
-  /** Element demo constructor. */
   public VaadinElement() {
-    // Set the root of the view to be a div element
     super(ElementFactory.createDiv());
 
-    // Add an HTML import for the paper-input element and create one
     UI.getCurrent()
         .getPage()
         .addHtmlImport("frontend://bower_components/paper-input/paper-input.html");
@@ -27,7 +23,6 @@ public class VaadinElement extends Component {
 
     Element greeting = ElementFactory.createDiv();
 
-    // Set the initial greeting value
     updateGreeting(input, greeting);
 
     /*
@@ -37,10 +32,8 @@ public class VaadinElement extends Component {
      */
     input.synchronizeProperty(VALUE_PROPERTY, "value-changed");
 
-    // Listen for value change events
     input.addPropertyChangeListener(VALUE_PROPERTY, event -> updateGreeting(input, greeting));
 
-    // Set up DOM id values used for integration tests
     input.setAttribute("id", "inputId");
     greeting.setAttribute("id", "elementsGreeting");
 
@@ -54,7 +47,6 @@ public class VaadinElement extends Component {
   private void updateGreeting(Element input, Element greeting) {
     String name = input.getProperty(VALUE_PROPERTY, "");
 
-    // Update the element based on the name
     if (name.isEmpty()) {
       greeting.setText("Please enter your name");
     } else {

@@ -1,6 +1,5 @@
 package com.walterjwhite.ssh.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractNamedEntity;
 import com.walterjwhite.ssh.api.model.command.SSHCommand;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,8 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
 @PersistenceCapable
-public class SSHHost extends AbstractNamedEntity {
+public class SSHHost {
+  protected String hostname;
   protected int port;
 
   protected String hostkey;
@@ -21,12 +21,12 @@ public class SSHHost extends AbstractNamedEntity {
   protected List<SSHCommand> commands = new ArrayList<>();
 
   public SSHHost(String hostname, int port, String hostkey) {
-    super(hostname);
+    this.hostname = hostname;
     this.port = port;
     this.hostkey = hostkey;
   }
 
   public SSHHost(String hostname) {
-    super(hostname);
+    this.hostname = hostname;
   }
 }

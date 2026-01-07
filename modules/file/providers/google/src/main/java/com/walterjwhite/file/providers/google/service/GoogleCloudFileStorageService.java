@@ -3,7 +3,7 @@ package com.walterjwhite.file.providers.google.service;
 import com.google.auth.Credentials;
 import com.google.cloud.storage.*;
 import com.walterjwhite.encryption.api.service.CompressionService;
-import com.walterjwhite.encryption.service.DigestService;
+import com.walterjwhite.encryption.enumeration.DigestAlgorithm;
 import com.walterjwhite.encryption.service.EncryptionService;
 import com.walterjwhite.file.api.model.File;
 import com.walterjwhite.file.impl.service.AbstractFileStorageService;
@@ -12,11 +12,11 @@ import com.walterjwhite.google.property.GoogleCloudProjectId;
 import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.property.api.enumeration.Debug;
 import com.walterjwhite.property.api.enumeration.NoOperation;
+import jakarta.inject.Inject;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import jakarta.inject.Inject;
 
 public class GoogleCloudFileStorageService extends AbstractFileStorageService {
   protected final String bucketName;
@@ -27,14 +27,14 @@ public class GoogleCloudFileStorageService extends AbstractFileStorageService {
   public GoogleCloudFileStorageService(
       CompressionService compressionService,
       EncryptionService encryptionService,
-      DigestService digestService,
+      DigestAlgorithm digestAlgorithm,
       @Property(NoOperation.class) boolean nop,
       @Property(Debug.class) boolean debug,
       @Property(GoogleCloudBucket.class) String bucketName,
       @Property(GoogleCloudProjectId.class) String projectId,
       Credentials credentials) {
 
-    super(compressionService, encryptionService, digestService, nop, debug);
+    super(compressionService, encryptionService, digestAlgorithm, nop, debug);
 
     this.bucketName = bucketName;
 

@@ -7,11 +7,13 @@ import com.walterjwhite.infrastructure.datastore.modules.jdbc.run.property.*;
 import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.property.api.enumeration.Debug;
 import com.walterjwhite.serialization.api.service.SerializationService;
-import java.io.*;
+import jakarta.inject.Inject;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
-import jakarta.inject.Inject;
 import org.apache.commons.io.IOUtils;
 
 public class RunSQLService {
@@ -39,12 +41,14 @@ public class RunSQLService {
             MasterRunScript.class);
     this.debug = debug;
 
-    if (debug) jdbcAwareContainer = null;
-    else
+    if (debug) {
+      jdbcAwareContainer = null;
+    } else {
       jdbcAwareContainer =
           new JDBCAwareContainer(
               new JDBCConfiguration(
                   jdbcUsername, jdbcPassword, jdbcUrl, jdbcDriverClassname, jdbcDriverPath));
+    }
   }
 
   public void run() throws IOException, SQLException {
@@ -89,7 +93,6 @@ public class RunSQLService {
 
           jdbcAwareContainer.getConnection().commit();
 
-          // close(jdbcAwareContainer.getConnection());
 
           jdbcAwareContainer.getConnection().close();
         }
@@ -104,9 +107,4 @@ public class RunSQLService {
     super.finalize();
   }
 
-  //  protected void close(final AutoCloseable closeable) throws Exception {
-  //    if(closeable != null){
-  //
-  //    }
-  //  }
 }

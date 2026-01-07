@@ -4,14 +4,11 @@
   <parent>
     <groupId>com.walterjwhite.java.modules</groupId>
     <artifactId>ssh</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.ssh</groupId>
   <artifactId>providers</artifactId>
-  <version>0.2.0</version>
   <packaging>pom</packaging>
-
-
   <modules>
     <module>guice</module>
   </modules>

@@ -37,8 +37,6 @@ public class PreparedStatementJDBCAwareContainer extends JDBCAwareContainer {
           this.preparedStatement.setInt(i + 1, (Integer) argument);
         else if (argument instanceof Double)
           this.preparedStatement.setDouble(i + 1, (Double) argument);
-        //        else if(argument instanceof LocalDate)
-        //          this.preparedStatement.setDate(i + 1, ((LocalDate)argument).);
         else throw new IllegalArgumentException(argument.getClass() + " is unsupported");
       }
     }

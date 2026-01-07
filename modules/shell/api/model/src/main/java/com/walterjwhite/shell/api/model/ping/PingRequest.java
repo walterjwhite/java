@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model.ping;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.shell.api.enumeration.PingResponseType;
 import com.walterjwhite.shell.api.model.IPAddress;
 import com.walterjwhite.shell.api.model.NetworkDiagnosticTest;
@@ -16,23 +15,19 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-/** Instructs a client to ping a target. */
 @PersistenceCapable
 @Data
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
-public class PingRequest extends AbstractEntity implements ShellCommandable {
+public class PingRequest implements ShellCommandable {
   protected NetworkDiagnosticTest networkDiagnosticTest;
 
   protected LocalDateTime dateTime = LocalDateTime.now();
 
-  // -c
   @EqualsAndHashCode.Exclude protected int count = 10;
 
-  // -W
   @EqualsAndHashCode.Exclude protected int timeout = 5;
 
-  // -i
   @EqualsAndHashCode.Exclude protected int interval = 1;
 
   @EqualsAndHashCode.Exclude protected IPAddress ipAddress;

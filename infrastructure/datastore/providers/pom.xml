@@ -4,27 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure</groupId>
     <artifactId>datastore</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.datastore</groupId>
   <artifactId>providers</artifactId>
-  <version>0.2.0</version>
   <packaging>pom</packaging>
-
   <modules>
     <module>jdo</module>
-<!--    <module>jpa</module>-->
+    <module>jpa</module>
+    <module>criteria</module>
   </modules>
   <dependencies>
     <dependency>
-      <groupId>com.walterjwhite.java.infrastructure.datastore.api</groupId>
-      <artifactId>repository</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-    <dependency>
       <groupId>com.walterjwhite.java.infrastructure.datastore</groupId>
-      <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <artifactId>api</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

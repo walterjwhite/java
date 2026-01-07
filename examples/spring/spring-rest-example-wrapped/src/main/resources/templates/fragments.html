@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:fragment="head(title)">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title th:text="${title}">Application</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/site.css}" />
+</head>
+
+<body>
+
+  <!-- Header fragment -->
+  <header th:fragment="header">
+    <div class="site-header">
+      <div class="container">
+        <h1 class="brand"><a th:href="@{/}">People</a></h1>
+        <p class="tagline">A small demo of Spring MVC with server-side rendering</p>
+        <nav class="site-nav" role="navigation">
+          <a th:href="@{/}">Home</a>
+          <a th:href="@{/contact}">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Footer fragment -->
+  <footer th:fragment="footer(text)">
+    <div class="site-footer">
+      <div class="container">
+        <small th:text="${text}">Spring MVC example</small>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

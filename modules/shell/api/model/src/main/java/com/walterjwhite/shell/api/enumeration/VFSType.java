@@ -58,8 +58,6 @@ public enum VFSType {
       arguments.add(commandArguments);
     }
   },
-  // while these values may not be used directly in code, keep in mind they may be used later for
-  // the FstabModule
   DEVPTS("devpts", RBIND),
   EXT4("ext4", _GENERIC_BLOCK),
   VFAT("vfat", _GENERIC_BLOCK),

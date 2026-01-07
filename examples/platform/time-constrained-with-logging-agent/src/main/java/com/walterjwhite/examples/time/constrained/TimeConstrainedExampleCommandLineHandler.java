@@ -7,11 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(onConstructor_ = @Inject)
 public class TimeConstrainedExampleCommandLineHandler implements CommandLineHandler {
 
-  //  @Inject
-  //  public TimeConstrainedExampleCommandLineHandler(
-  //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds) {
-  //    super(shutdownTimeoutInSeconds);
-  //  }
 
   @Override
   public void run(String... arguments) throws InterruptedException {

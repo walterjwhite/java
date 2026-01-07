@@ -4,16 +4,11 @@ import com.walterjwhite.property.api.property.ConfigurableProperty;
 import java.util.*;
 import lombok.RequiredArgsConstructor;
 
-// moved this code from the cli property source
-// handler arguments was never really used, but demonstrated that it could be used
-// instead, re-evaluate if it is useful, the last time I checked, it seemed property injection would
-// be simpler and more universal
 @Deprecated
 @RequiredArgsConstructor
 public class HandlerArgumentsHelper {
   protected final String[] arguments;
 
-  // CLIApplicationHelper.setHandlerArguments(getUnusedArguments(configurablePropertyMap));
 
   protected String[] getUnusedArguments(
       final Map<Class<? extends ConfigurableProperty>, String> configurablePropertyMap) {
@@ -43,7 +38,10 @@ public class HandlerArgumentsHelper {
   }
 
   protected int contains(final String key) {
-    for (int i = 0; i < arguments.length; i++) if (key.equals(arguments[i])) return i;
+    for (int i = 0; i < arguments.length; i++)
+      if (key.equals(arguments[i])) {
+        return i;
+      }
 
     return -1;
   }

@@ -7,7 +7,6 @@ import org.cups4j.PrintJob;
 
 public class PrintTestCups4J {
   public static void main(final String[] arguments) throws Exception {
-    // @TODO: inject these parameters / let the user select them
     CupsClient cupsClient = new CupsClient("localhost", 631);
 
     final byte[] data = FileUtils.readFileToByteArray(new File("/tmp/print-queuedJob-test"));

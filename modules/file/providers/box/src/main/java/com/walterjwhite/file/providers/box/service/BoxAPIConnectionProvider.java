@@ -1,6 +1,6 @@
 package com.walterjwhite.file.providers.box.service;
 
-import com.box.sdk.BoxAPIConnection;
+
 import com.walterjwhite.file.providers.box.service.property.BoxClientId;
 import com.walterjwhite.file.providers.box.service.property.BoxClientSecret;
 import com.walterjwhite.file.providers.box.service.property.BoxDeveloperToken;

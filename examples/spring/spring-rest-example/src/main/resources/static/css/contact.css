@@ -1,0 +1,29 @@
+/* simple spinner — small and unobtrusive */
+/* hide spinner by default; become visible when button is busy/disabled */
+.spinner {
+    display: none;
+    width: 14px;
+    height: 14px;
+    margin-left: 8px;
+    border: 2px solid rgba(0,0,0,0.1);
+    border-top-color: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+/* show spinner when the button is busy or disabled */
+.btn[aria-busy="true"] .spinner,
+.btn[disabled] .spinner {
+    display: inline-block;
+}
+.btn[disabled] { opacity: 0.7; cursor: not-allowed; }
+/* make spinner visible on dark primary buttons */
+.btn-primary .spinner {
+    border: 2px solid rgba(255,255,255,0.25);
+    border-top-color: #fff;
+}
+/* message styling fallback (if fragments don't include alert styles) */
+.alert { padding: 10px; border-radius: 4px; margin-bottom: 12px; }
+.alert-success { background: #e6ffed; color: #0a6b2b; border: 1px solid #b7f0c8; }
+.alert-error { background: #fff0f0; color: #8b1e1e; border: 1px solid #f2b8b8; }

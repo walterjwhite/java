@@ -7,6 +7,7 @@ import jakarta.ws.rs.core.MediaType;
 
 @Path("/sample-rest-service")
 public class SampleRestService {
+  @Path("/status")
   @GET
   @Produces(MediaType.TEXT_HTML)
   public String getStatus() {

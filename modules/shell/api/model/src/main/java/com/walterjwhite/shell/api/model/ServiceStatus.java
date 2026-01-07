@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.shell.api.enumeration.ServiceState;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -13,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @PersistenceCapable
-public class ServiceStatus extends AbstractEntity {
+public class ServiceStatus {
 
   protected Service service;
 

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Batch Simple — Spring REST Demo</title>
+    <link rel="stylesheet" href="/css/site.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/">Spring REST Demo</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/chat.html">Chat</a>
+      <a href="/batch_simple.html" class="active">Batch Simple</a>
+      <a href="/batch.html">Batch</a>
+      <a href="/async.html">Async</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+    <h1 class="brand">CapitalFlow Batch</h1>
+    <p class="summary">This page shows a lightweight batch job dashboard backed by Spring Batch endpoints (server) and minimal client-side JavaScript to manage jobs and download exports. Spring Batch provides robust job lifecycle APIs; the frontend uses vanilla fetch-based code to keep the client small and easily auditable.</p>
+
+    <div class="panel" style="margin-top:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <strong>Jobs</strong>
+                <div class="small">Click actions to manage jobs</div>
+            </div>
+            <div>
+                <button id="refresh" class="btn btn-outline">Refresh</button>
+            </div>
+        </div>
+
+        <div id="jobsGrid" class="grid" style="margin-top:12px;"></div>
+    </div>
+</div>
+
+<script>
+    let latestExport = null;
+
+    async function fetchJobs() {
+      const res = await fetch('/batch_simple/jobs');
+      return res.ok ? res.json() : [];
+    }
+
+    async function fetchLatestExport() {
+      const res = await fetch('/batch_simple/exports/latest');
+      if (!res.ok) return null;
+      const data = await res.json();
+      // data: { filename: "...", url: "/batch_simple/export/..." }
+      return data && data.filename ? data : null;
+    }
+
+    function badgeFor(status) {
+      if (!status) return '<span class="badge badge-pending">PENDING</span>';
+      status = status.toUpperCase();
+      switch(status) {
+        case 'RUNNING': return '<span class="badge badge-running">RUNNING</span>';
+        case 'COMPLETED': return '<span class="badge badge-completed">COMPLETED</span>';
+        case 'CANCELLED': return '<span class="badge badge-cancelled">CANCELLED</span>';
+        case 'FAILED': return '<span class="badge badge-failed">FAILED</span>';
+        default: return '<span class="badge badge-pending">PENDING</span>';
+      }
+    }
+
+    function renderJob(job) {
+      const deps = job.dependencies && job.dependencies.length ? job.dependencies.join(', ') : '—';
+      const depsText = '<div class="graph"><strong>depends:</strong> ' + deps + '</div>';
+      const status = (job.status || '').toUpperCase();
+      const statusBadge = badgeFor(status);
+      const started = job.startedAt ? new Date(job.startedAt).toLocaleTimeString() : '';
+      const completed = job.completedAt ? new Date(job.completedAt).toLocaleTimeString() : '';
+
+      // enable/disable buttons per requested rules:
+      const canCancel = status === 'RUNNING';
+      const canStart = status !== 'RUNNING';
+
+      const startAttr = canStart ? '' : 'disabled';
+      const cancelAttr = canCancel ? '' : 'disabled';
+
+      // For job id "5" (Export), show download link if latestExport is present and job completed
+      let exportLinkHtml = '';
+      if (job.id === '5' && status === 'COMPLETED' && latestExport && latestExport.filename) {
+        // show a small download link/button
+        exportLinkHtml = `<div style="margin-top:8px;"><a class="btn btn-primary" href="${encodeURI(latestExport.url)}" download>Download export (${escapeHtml(latestExport.filename)})</a></div>`;
+      }
+
+      return `<div class="job-card" id="job-${escapeHtml(job.id)}">
+        <div class="job-header">
+          <div>
+            <div style="font-weight:700">${escapeHtml(job.name)}</div>
+            <div class="small">ID: ${escapeHtml(job.id)}</div>
+          </div>
+          <div style="text-align:right">
+            ${statusBadge}
+            <div class="small">${started ? 'started: ' + started : ''}${completed ? '<br>finished: ' + completed : ''}</div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <div class="small">${depsText}</div>
+          <div style="margin-top:8px;" class="small"><strong>Dependents:</strong> ${job.dependents && job.dependents.length ? job.dependents.join(', ') : '—'}</div>
+          <div class="controls">
+            <button class="btn btn-primary" ${startAttr} onclick="startOrRerun('${encodeURIComponent(job.id)}','${status}')">Start</button>
+            <button class="btn btn-danger" ${cancelAttr} onclick="cancelJob('${encodeURIComponent(job.id)}')">Cancel</button>
+          </div>
+          ${exportLinkHtml}
+        </div>
+      </div>`;
+    }
+
+    function escapeHtml(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    async function refresh() {
+      // fetch latest export first so we can render link immediately if available
+      latestExport = await fetchLatestExport();
+      const jobs = await fetchJobs();
+      const grid = document.getElementById('jobsGrid');
+      grid.innerHTML = jobs.map(renderJob).join('');
+    }
+
+    async function startOrRerun(id, status) {
+      await fetch('/batch_simple/jobs/' + id + '/start', { method: 'POST' });
+
+      await refresh();
+    }
+
+    async function cancelJob(id) {
+      await fetch('/batch_simple/jobs/' + id + '/cancel', { method: 'POST' });
+      await refresh();
+    }
+
+    document.getElementById('refresh').addEventListener('click', refresh);
+    // initial load and periodic refresh
+    refresh();
+    setInterval(refresh, 3000);
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div class="small">Spring REST Demo — Batch Simple</div>
+    <div class="small">&copy; Example</div>
+  </div>
+</footer>
+</body>
+</html>

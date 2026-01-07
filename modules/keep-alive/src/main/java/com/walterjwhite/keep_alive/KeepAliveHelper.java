@@ -1,6 +1,10 @@
 package com.walterjwhite.keep_alive;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -20,7 +24,6 @@ public class KeepAliveHelper {
     final ScheduledFuture durationFuture = getDurationFuture(data, keepAliveFuture);
 
     try {
-      // block until done
       keepAliveFuture.get();
     } finally {
       durationFuture.cancel(true);

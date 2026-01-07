@@ -4,25 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.guice</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.guice.modules</groupId>
   <artifactId>hk2-bridge</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>org.glassfish.jersey.inject</groupId>
       <artifactId>jersey-hk2</artifactId>
-      <version>${jersey.version}</version>
+      <version>4.0.0</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.glassfish.hk2</groupId>
       <artifactId>guice-bridge</artifactId>
-      <version>3.0.3</version>
-
-      <!-- We are providing this, hopefully they're compatible -->
+      <version>4.0.0-M3</version>
       <exclusions>
         <exclusion>
           <groupId>com.google.inject</groupId>
@@ -33,10 +29,7 @@
     <dependency>
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-servlet-core</artifactId>
-      <version>${jersey.version}</version>
+      <version>4.0.0-M2</version>
     </dependency>
   </dependencies>
-  <properties>
-    <jersey.version>3.1.1</jersey.version>
-  </properties>
 </project>

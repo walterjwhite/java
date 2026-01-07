@@ -6,15 +6,13 @@ import com.google.inject.AbstractModule;
 import com.walterjwhite.google.guice.executor.annotation.ExecutorManagementServiceOnly;
 import com.walterjwhite.google.guice.executor.annotation.ExecutorServiceOnly;
 import com.walterjwhite.google.guice.executor.provider.ExecutorServiceProvider;
-import java.util.concurrent.ExecutorService;
 import jakarta.inject.Singleton;
+import java.util.concurrent.ExecutorService;
 
-/** TODO: 1. support configuring # of threads 2. support configuring executor service type */
 public class GuavaExecutorServiceModule extends AbstractModule {
 
   @Override
   protected void configure() {
-    // https://github.com/google/guava/wiki/ListenableFutureExplained
     bind(ListeningScheduledExecutorService.class)
         .annotatedWith(ExecutorServiceOnly.class)
         .toProvider(ExecutorServiceProvider.class)

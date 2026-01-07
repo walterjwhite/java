@@ -152,16 +152,10 @@ public class StreamTest02 {
   @Test
   @DisplayName("Task: Collect only second and forth (with odd index) food from foodList")
   void task8() {
-    // Do you know why list have to be sorted?
     final List<Food> foodList =
         new ArrayList<>(FOODS)
             .stream().sorted(Comparator.comparing(Food::getName)).collect(Collectors.toList());
 
-    //        final AtomicInteger index = new AtomicInteger();
-    //        final List<Food> filteredFoods = foodList.stream()
-    //                .takeWhile(food ->
-    //                        index.addAndGet(1) != 1 || index.get() !=
-    // 3).collect(Collectors.toList());
     final List<Food> filteredFoods =
         IntStream.range(0, foodList.size())
             .filter(index -> index % 2 == 1)

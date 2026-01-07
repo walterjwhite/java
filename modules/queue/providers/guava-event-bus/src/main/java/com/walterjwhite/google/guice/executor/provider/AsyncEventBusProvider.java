@@ -4,11 +4,10 @@ import com.google.common.eventbus.AsyncEventBus;
 import com.walterjwhite.google.guice.annotation.EventBusOnly;
 import com.walterjwhite.job.impl.property.property.AsyncEventBusName;
 import com.walterjwhite.property.impl.annotation.Property;
-import java.util.concurrent.ExecutorService;
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
+import java.util.concurrent.ExecutorService;
 
-// @Getter
 public class AsyncEventBusProvider implements Provider<AsyncEventBus> {
   protected final AsyncEventBus asyncEventBus;
 

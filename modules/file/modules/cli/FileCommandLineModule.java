@@ -16,10 +16,6 @@ public class FileCommandLineModule extends AbstractCommandLineModule {
     super(propertyManager, reflections, EncryptionOperatingMode.class);
   }
 
-  /**
-   * FYI, at this point, properties should be injected, so we can do a dynamic configuration here
-   * ...
-   */
   @Override
   protected void doCliConfigure() {
     install(new FileStorageModule());

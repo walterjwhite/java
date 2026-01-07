@@ -1,2 +1,0 @@
-_OTHER_ARGS="-JaxRSContextPath /test-jaxrs -JaxRSPackages com.walterjwhite.examples.cli.jersey -ServletContextPath /servlets"
-

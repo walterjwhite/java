@@ -12,5 +12,5 @@ public enum SpringBootOperatingMode implements OperatingMode {
   @DefaultValue
   SpringBoot(SpringBootRunner.class);
 
-  protected final Class<? extends CommandLineHandler> initiatorClass;
+  private final Class<? extends CommandLineHandler> initiatorClass;
 }

@@ -1,9 +1,9 @@
 package com.walterjwhite.examples.cli.email.javamail.async;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.event.MessageCountAdapter;
+import jakarta.mail.event.MessageCountEvent;
 import java.util.Arrays;
-import javax.mail.MessagingException;
-import javax.mail.event.MessageCountAdapter;
-import javax.mail.event.MessageCountEvent;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

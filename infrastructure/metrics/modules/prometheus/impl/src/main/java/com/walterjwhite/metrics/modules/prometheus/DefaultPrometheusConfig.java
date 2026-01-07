@@ -1,6 +1,7 @@
 package com.walterjwhite.metrics.modules.prometheus;
 
-import io.micrometer.prometheus.PrometheusConfig;
+import io.micrometer.prometheusmetrics.PrometheusConfig;
+
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;

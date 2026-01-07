@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Test;
 
 @Slf4j
 public class LinkedListDuplicateRemoverTest {
-  //    protected final DuplicateRemover duplicateRemover = new
-  // BufferedLinkedListDuplicateRemover();
   protected final DuplicateRemover duplicateRemover = new IteratingLinkedListDuplicateRemover();
 
   @Test

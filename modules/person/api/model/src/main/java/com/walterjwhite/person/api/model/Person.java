@@ -1,6 +1,5 @@
 package com.walterjwhite.person.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import java.time.LocalDate;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.AllArgsConstructor;
@@ -13,7 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @PersistenceCapable
-public class Person extends AbstractEntity {
+public class Person {
 
   protected String firstName;
 
@@ -21,9 +20,7 @@ public class Person extends AbstractEntity {
 
   protected String lastName;
 
-  // @Encrypted
 
   protected LocalDate birthDate;
 
-  // protected Set<EmailAccount> emailAccounts;
 }

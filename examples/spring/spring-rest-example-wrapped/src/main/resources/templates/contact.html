@@ -1,0 +1,188 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('Contact — Spring MVC Example')"></head>
+<body>
+
+<!-- header -->
+<div th:replace="fragments :: header"></div>
+
+<main class="container">
+  <div class="panel">
+    <h2>Contact</h2>
+
+    <!-- message container: server-rendered alerts (for non-JS) will still appear here -->
+    <div id="ajax-messages" role="status" aria-live="polite">
+      <div th:if="${successMessage}" class="alert alert-success">
+        <span th:text="${successMessage}"></span>
+      </div>
+
+      <div th:if="${errorMessage}" class="alert alert-error">
+        <span th:text="${errorMessage}"></span>
+      </div>
+    </div>
+
+    <form th:action="@{/contact}" th:object="${contactForm}" method="post" class="form" id="contact-form">
+      <label class="field">
+        <span class="field-label">Your name</span>
+        <input type="text" th:field="*{name}" required />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Your email</span>
+        <input type="email" th:field="*{email}" required />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Subject</span>
+        <input type="text" th:field="*{subject}" required />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Message</span>
+        <textarea th:field="*{message}" rows="8" required></textarea>
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="contact-submit" aria-busy="false" aria-live="polite">
+          <span class="btn-text">Send message</span>
+          <span class="spinner" id="contact-spinner" aria-hidden="true"></span>
+        </button>
+        <a th:href="@{/}" class="btn btn-ghost">Cancel</a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<!-- footer -->
+<div th:replace="fragments :: footer('Spring MVC example • Contact form')"></div>
+
+<!-- Inline styles and JS for progressive enhancement -->
+<style>
+  /* simple spinner — small and unobtrusive */
+  /* hide spinner by default; become visible when button is busy/disabled */
+  .spinner {
+    display: none;
+    width: 14px;
+    height: 14px;
+    margin-left: 8px;
+    border: 2px solid rgba(0,0,0,0.1);
+    border-top-color: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  /* show spinner when the button is busy or disabled */
+  .btn[aria-busy="true"] .spinner,
+  .btn[disabled] .spinner {
+    display: inline-block;
+  }
+  .btn[disabled] { opacity: 0.7; cursor: not-allowed; }
+  /* make spinner visible on dark primary buttons */
+  .btn-primary .spinner {
+    border: 2px solid rgba(255,255,255,0.25);
+    border-top-color: #fff;
+  }
+  /* message styling fallback (if fragments don't include alert styles) */
+  .alert { padding: 10px; border-radius: 4px; margin-bottom: 12px; }
+  .alert-success { background: #e6ffed; color: #0a6b2b; border: 1px solid #b7f0c8; }
+  .alert-error { background: #fff0f0; color: #8b1e1e; border: 1px solid #f2b8b8; }
+</style>
+
+<script>
+  (function(){
+    var form = document.getElementById('contact-form');
+    if (!form) return; // nothing to do
+
+    var submitBtn = document.getElementById('contact-submit');
+    var spinner = document.getElementById('contact-spinner');
+    var messages = document.getElementById('ajax-messages');
+
+    function clearMessages() {
+      if (!messages) return;
+      messages.innerHTML = '';
+    }
+
+    function scheduleAutoHideSuccess() {
+      if (!messages) return;
+      var successEl = messages.querySelector('.alert-success');
+      if (!successEl) return;
+      // remove any existing timeout marker
+      // Auto-hide after 5s
+      setTimeout(function(){
+        var e = messages.querySelector('.alert-success');
+        if (e) {
+          e.remove();
+        }
+      }, 5000);
+    }
+
+    function showMessage(html) {
+      if (!messages) return;
+      messages.innerHTML = html;
+      // schedule auto-hide if it's a success message
+      scheduleAutoHideSuccess();
+    }
+
+    // If server rendered a success message on initial load, schedule hiding it
+    if (messages && messages.querySelector('.alert-success')) {
+      scheduleAutoHideSuccess();
+    }
+
+    form.addEventListener('submit', function(ev){
+      // progressive enhancement: intercept submit and do AJAX
+      ev.preventDefault();
+
+      // show spinner and mark busy
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.setAttribute('aria-busy','true'); }
+      if (spinner) { spinner.setAttribute('aria-hidden','false'); }
+
+      clearMessages();
+
+      var action = form.getAttribute('action') || window.location.href;
+      var formData = new FormData(form);
+
+      // send the request and parse returned HTML for server-provided messages (.alert-success/.alert-error)
+      fetch(action, {
+        method: (form.getAttribute('method') || 'POST').toUpperCase(),
+        body: formData,
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      }).then(function(response){
+        return response.text().then(function(text){
+          // attempt to parse returned HTML and extract alerts
+          try {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(text, 'text/html');
+            var success = doc.querySelector('.alert-success');
+            var error = doc.querySelector('.alert-error');
+            if (success) {
+              showMessage('<div class="alert alert-success">' + success.innerHTML + '</div>');
+            } else if (error) {
+              showMessage('<div class="alert alert-error">' + error.innerHTML + '</div>');
+            } else if (response.ok) {
+              // Generic success if server didn't include alert markup
+              showMessage('<div class="alert alert-success">Message sent.</div>');
+            } else {
+              showMessage('<div class="alert alert-error">An unexpected error occurred.</div>');
+            }
+          } catch (e) {
+            // fallback message
+            if (response.ok) showMessage('<div class="alert alert-success">Message sent.</div>');
+            else showMessage('<div class="alert alert-error">An unexpected error occurred.</div>');
+          }
+
+          // re-enable and hide spinner
+          if (spinner) spinner.setAttribute('aria-hidden','true');
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.setAttribute('aria-busy','false'); }
+        });
+      }).catch(function(err){
+        showMessage('<div class="alert alert-error">Could not send message. Please try again later.</div>');
+        if (spinner) spinner.setAttribute('aria-hidden','true');
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.setAttribute('aria-busy','false'); }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

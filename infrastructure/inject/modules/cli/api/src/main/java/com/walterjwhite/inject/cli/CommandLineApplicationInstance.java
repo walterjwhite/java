@@ -1,5 +1,6 @@
 package com.walterjwhite.inject.cli;
 
+import com.walterjwhite.infrastructure.inject.core.ApplicationArgumentAware;
 import com.walterjwhite.infrastructure.inject.core.ApplicationInstance;
 import com.walterjwhite.infrastructure.inject.core.Injector;
 import com.walterjwhite.infrastructure.inject.core.service.ServiceManager;
@@ -14,12 +15,10 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.reflections.Reflections;
 
-// command-line, the remaining, unprocessed arguments are to be passed to the handler)
-// removed because it isn't used currently and may impact dependencies
 @Slf4j
 @Getter
-public class CommandLineApplicationInstance extends ApplicationInstance {
-  //  protected final Class<? extends OperatingMode> operatingModeClass;
+public class CommandLineApplicationInstance extends ApplicationInstance
+    implements ApplicationArgumentAware {
   protected transient Class<? extends CommandLineHandler> commandLineHandlerClass;
 
   protected final String[] arguments;
@@ -35,9 +34,7 @@ public class CommandLineApplicationInstance extends ApplicationInstance {
     this.arguments = arguments;
   }
 
-  // protected final String[] handlerArguments;
 
-  /** This must be set after property registration has taken place */
   @Override
   protected void initialize() throws Exception {
     super.initialize();
@@ -81,9 +78,7 @@ public class CommandLineApplicationInstance extends ApplicationInstance {
             (Class<? extends Enum>) operatingModeClass, propertyManager.get(operatingModeClass));
   }
 
-  // Selects first non-null command-line handler class
   protected Optional<Class<? extends CommandLineHandler>> getCommandLineHandlerClass() {
-    // use the first available option
     return reflections.getSubTypesOf(CommandLineHandler.class).stream()
         .filter(c -> PropertyHelper.isConcrete(c))
         .findFirst();

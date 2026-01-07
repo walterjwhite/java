@@ -1,8 +1,7 @@
 package com.walterjwhite.serialization.modules.jackson;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
-import java.time.LocalDateTime;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,11 +13,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "class")
-public class TestSerialization extends AbstractEntity {
-  @EqualsAndHashCode.Exclude protected TestSerializationKey id;
+public class TestSerialization implements Serializable {
+  @EqualsAndHashCode.Exclude protected String firstName;
+  protected String lastName;
   protected int age;
-  protected LocalDateTime creationDateTime;
 
-  // clients constructing this object now will have to do this manually
-  // this.id = new TestSerializationKey(firstName, lastName);
 }

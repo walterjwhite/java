@@ -6,10 +6,6 @@ import com.google.inject.spi.TypeEncounter;
 import com.google.inject.spi.TypeListener;
 import com.walterjwhite.google.guice.annotation.EventListener;
 
-/**
- * This automatically registers listeners upon instantiating them with an event bus. I think this is
- * processing all instantiations for listeners, so it isn't efficient, but maintainable.
- */
 public class GuavaSubscriberTypeListener implements TypeListener {
   protected final EventBusDelegate eventBusDelegate;
 

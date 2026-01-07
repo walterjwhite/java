@@ -6,51 +6,31 @@ import com.walterjwhite.email.api.model.EmailAccount;
 import com.walterjwhite.email.api.model.EmailEmailAccount;
 import com.walterjwhite.email.api.service.EmailSendService;
 import com.walterjwhite.file.api.model.File;
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
+import jakarta.activation.FileDataSource;
+import jakarta.inject.Inject;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
 import java.util.HashSet;
 import java.util.Set;
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
-import jakarta.inject.Inject;
-import javax.mail.*;
-import javax.mail.internet.*;
 import lombok.RequiredArgsConstructor;
 
-// @ServiceSupports(EmailProviderType.Default)
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class JavaMailEmailSendService implements EmailSendService /*ExternalEmailSendService*/ {
-  //  protected final int maximumAttachmentSize;
 
-  //  protected final FileStorageService fileStorageService;
 
-  //  @Inject
-  //  public JavaMailEmailSendService(
-  //      @Property(MaximumAttachmentSize.class) int maximumAttachmentSize,
-  //      FileStorageService fileStorageService) {
-  //
-  //    this.maximumAttachmentSize = maximumAttachmentSize;
-  ////    this.fileStorageService = fileStorageService;
-  //  }
 
   @Override
   public void send(Email email) throws Exception {
     final Session session = JavaMailUtils.getSession(email.getFrom());
 
-    //    final Set<File> remainingAttachments = new HashSet<>();
-    //    if (email.getFiles() != null && !email.getFiles().isEmpty())
-    //      remainingAttachments.addAll(email.getFiles());
 
-    //    int previousRemainingAttachments;
-    //    do {
-    //      previousRemainingAttachments = remainingAttachments.size();
 
-    // AutoCreate a default MimeMessage object.
     MimeMessage message = new MimeMessage(session);
 
-    // Set From: header field of the header.
     message.setFrom(getFrom(email));
 
-    // use from to setup authentication (if required)
     for (EmailEmailAccount emailEmailAccount : email.getEmailEmailAccounts())
       addRecipient(
           message, emailEmailAccount.getEmailAccount(), emailEmailAccount.getEmailRecipientType());
@@ -64,18 +44,9 @@ public class JavaMailEmailSendService implements EmailSendService /*ExternalEmai
 
     message.setContent(multipart);
 
-    //      addAttachments(multipart, email, remainingAttachments);
 
-    // message.setText(email.getBody());
 
-    // Send message
     Transport.send(message);
-    //      if (previousRemainingAttachments > 0
-    //          && previousRemainingAttachments == remainingAttachments.size()) {
-    //        // throw(new RuntimeException("One attachment is too large"));
-    //        throw new RuntimeException("One attachment is too large");
-    //      }
-    //    } while (remainingAttachments.size() > 0);
   }
 
   protected InternetAddress getFrom(final Email email) throws AddressException {
@@ -109,9 +80,6 @@ public class JavaMailEmailSendService implements EmailSendService /*ExternalEmai
     return emailAccount.getName();
   }
 
-  //  protected int addAttachments(Multipart multipart, Email email) throws MessagingException {
-  //    return (addAttachments(multipart, email, null));
-  //  }
 
   protected int addAttachments(Multipart multipart, Email email, Set<File> files) throws Exception {
     if (files == null || files.isEmpty()) return (0);
@@ -121,22 +89,9 @@ public class JavaMailEmailSendService implements EmailSendService /*ExternalEmai
     long totalAttachmentSize = 0;
     int index = 0;
     for (File attachmentFile : files) {
-      // disabled - 2021/10/28
-      //      fileStorageService.get(attachmentFile);
 
       final java.io.File f = new java.io.File(attachmentFile.getSource());
 
-      // disabled - 2021/10/28
-      //      if (totalAttachmentSize + f.length() > maximumAttachmentSize) {
-      //        // LOGGER.info("total attachment size:" + totalAttachmentSize + ":" +
-      //        // maximumAttachmentSize);
-      //        // break;
-      //        throw new RuntimeException(
-      //            "Total attachment size:"
-      //                + totalAttachmentSize
-      //                + " is greater than the maximum size of: "
-      //                + maximumAttachmentSize);
-      //      }
 
       totalAttachmentSize += attachmentFile.getSource().length();
       addAttachment(multipart, f);
@@ -145,7 +100,6 @@ public class JavaMailEmailSendService implements EmailSendService /*ExternalEmai
       filesAdded.add(attachmentFile);
     }
 
-    // remove this from the files we must add
     files.removeAll(filesAdded);
     return (files.size() - index);
   }

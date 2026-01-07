@@ -1,0 +1,61 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('Batch Job History', '', '')"></head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<main class="container">
+  <div class="card">
+    <h1>Batch Job History</h1>
+    <p class="summary">Inspect historical executions and instances for Spring Batch jobs. The backend exposes Spring Batch endpoints; the UI provides controls to fetch, stop, or abandon executions. Using Spring Batch simplifies lifecycle management compared to rolling your own scheduler.</p>
+  </div>
+
+<div class="card">
+    <div class="row">
+        <div class="col">
+            <label>Job name
+                <input id="job-name" type="text" placeholder="job name (or ?job= in URL)" />
+            </label>
+        </div>
+        <div style="width:120px">
+            <label>Start
+                <input id="start" type="number" value="0" min="0" />
+            </label>
+        </div>
+        <div style="width:120px">
+            <label>Count
+                <input id="count" type="number" value="20" min="1" />
+            </label>
+        </div>
+    </div>
+    <div class="actions">
+        <button id="fetch-btn">Fetch History</button>
+        <button class="secondary" id="clear-btn">Clear</button>
+        <button id="open-main" class="secondary">Open Jobs Page</button>
+    </div>
+
+    <div id="status" class="muted" style="margin-top:10px">Idle</div>
+</div>
+
+<div id="history-container"></div>
+
+<div class="card" id="detail-card" style="display:none">
+    <h3>Execution Detail</h3>
+    <pre id="exec-detail">-</pre>
+    <div class="actions">
+        <button id="detail-close" class="secondary">Close</button>
+    </div>
+</div>
+
+<script src="/scripts/batch_history.js"></script>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="small">Spring REST Demo — Batch History</div>
+    <div class="small">&copy; Example</div>
+  </div>
+</footer>
+</body>
+</html>

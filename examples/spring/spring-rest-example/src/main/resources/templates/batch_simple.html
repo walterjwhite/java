@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('Batch Job History', '', '')"></head>
+<body>
+<div th:replace="fragments :: header"></div>
+
+<div class="container">
+    <h1 class="brand">CapitalFlow Batch</h1>
+    <p class="summary">This page shows a lightweight batch job dashboard backed by Spring Batch endpoints (server) and minimal client-side JavaScript to manage jobs and download exports. Spring Batch provides robust job lifecycle APIs; the frontend uses vanilla fetch-based code to keep the client small and easily auditable.</p>
+
+    <div class="panel" style="margin-top:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <strong>Jobs</strong>
+                <div class="small">Click actions to manage jobs</div>
+            </div>
+            <div>
+                <button id="refresh" class="btn btn-outline">Refresh</button>
+            </div>
+        </div>
+
+        <div id="jobsGrid" class="grid" style="margin-top:12px;"></div>
+    </div>
+</div>
+
+<script src="/scripts/simple_batch.js"></script>
+</body>
+</html>

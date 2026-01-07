@@ -1,0 +1,86 @@
+function qs(name){return (new URL(window.location.href)).searchParams.get(name)}
+    function jsonStr(o){try{return JSON.stringify(o,null,2)}catch(e){return String(o)} }
+    function setStatus(s){document.getElementById('status').textContent = s}
+    async function fetchHistory(job, step){
+      setStatus('Loading...');
+      try {
+        const res = await fetch('/api/batch/jobs/' + encodeURIComponent(job) + '/steps/' + encodeURIComponent(step) + '/history');
+        if (!res.ok) { setStatus('Error ' + res.status); document.getElementById('container').innerHTML = '<div class="muted">Failed to fetch</div>'; return; }
+        const payload = await res.json();
+        render(payload);
+        setStatus('OK');
+      } catch (e) { setStatus('Network/Error: ' + e.message); }
+    }
+    function render(items){
+      const c = document.getElementById('container');
+      if (!items || items.length===0){ c.innerHTML = '<div class="card muted">No step executions found</div>'; return; }
+      let html = '<div class="card"><table><thead><tr><th>StepExecutionId</th><th>JobExecutionId</th><th>Status</th><th>Start</th><th>End</th><th>Reads</th><th>Writes</th><th>Actions</th></tr></thead><tbody>';
+      for (const it of items){
+        html += `<tr>
+          <td>${it.id}</td>
+          <td>${it.executionId}</td>
+          <td>${it.status||''}</td>
+          <td>${it.startTime||''}</td>
+          <td>${it.endTime||''}</td>
+          <td>${it.readCount||0}</td>
+          <td>${it.writeCount||0}</td>
+          <td>
+            <button onclick="viewJobExecution(${it.executionId})">View Job Exec</button>
+            <button onclick="stopStep(${it.stepName||''}, ${it.executionId})" class="secondary">Stop</button>
+          </td>
+        </tr>`;
+      }
+      html += '</tbody></table></div>';
+      c.innerHTML = html;
+    }
+
+    function viewJobExecution(id){
+      if (!id) return alert('missing id');
+      window.open('/batch-history.html?exec=' + encodeURIComponent(id), '_blank');
+    }
+
+    async function stopStep(stepName, jobExecId){
+      const job = document.getElementById('job').value.trim();
+      if (!job) return alert('missing job');
+      if (!confirm('Stop step ' + stepName + ' in job executions?')) return;
+      try {
+        const res = await fetch('/api/batch/jobs/' + encodeURIComponent(job) + '/steps/' + encodeURIComponent(stepName) + '/stop', { method:'POST' });
+        const txt = await res.text();
+        alert('Response: ' + txt);
+      } catch (e) { alert('Failed: ' + e.message); }
+    }
+
+    document.getElementById('fetch').addEventListener('click', function(){
+      const job=document.getElementById('job').value.trim();
+      const step=document.getElementById('step').value.trim();
+      if (!job || !step) return alert('provide job and step');
+      fetchHistory(job, step);
+    });
+
+    document.getElementById('open-job').addEventListener('click', function(){
+      const job=document.getElementById('job').value.trim();
+      if (!job) return alert('provide job name');
+      window.open('/batch-history.html?job=' + encodeURIComponent(job), '_blank');
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+      const j = qs('job'); if (j) document.getElementById('job').value = j;
+      const s = qs('step'); if (s) document.getElementById('step').value = s;
+      if (j && s) fetchHistory(j,s);
+
+      if (!!window.EventSource) {
+        const es = new EventSource('/api/batch/stream');
+        const log = document.getElementById('sse-log');
+        es.addEventListener('snapshot', function(evt){
+          try {
+            const payload = JSON.parse(evt.data);
+            log.textContent = jsonStr(payload);
+          } catch(e) {
+            log.textContent = evt.data;
+          }
+        });
+        es.onerror = function(e){ log.textContent = 'SSE error'; }
+      } else {
+        document.getElementById('sse-log').textContent = 'EventSource not supported in this browser';
+      }
+    });

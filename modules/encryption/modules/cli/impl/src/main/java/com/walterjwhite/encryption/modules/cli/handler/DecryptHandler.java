@@ -2,23 +2,20 @@ package com.walterjwhite.encryption.modules.cli.handler;
 
 import com.walterjwhite.encryption.service.EncryptionService;
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
+import jakarta.inject.Inject;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
-import jakarta.inject.Inject;
 import org.apache.commons.codec.binary.Base64;
 
-/** Helper to list our client id. */
 public class DecryptHandler implements CommandLineHandler {
   protected final EncryptionService encryptionService;
 
   @Inject
   public DecryptHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       EncryptionService encryptionService) {
-    //    super(shutdownTimeoutInSeconds);
     this.encryptionService = encryptionService;
   }
 

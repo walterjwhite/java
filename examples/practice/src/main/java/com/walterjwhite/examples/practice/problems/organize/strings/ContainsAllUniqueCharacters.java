@@ -15,10 +15,7 @@ public class ContainsAllUniqueCharacters {
       return true;
     }
 
-    // option 1, store data O(n)
-    //        return store(input);
 
-    // option 2, do not explicitly store data (stack) O(n^2)
     return noStore(input);
   }
 
@@ -32,7 +29,6 @@ public class ContainsAllUniqueCharacters {
   }
 
   private static boolean noStore(final String input) {
-    //        input.chars().forEach(c -> input.sub);
     for (int i = 0; i < input.length() - 1; i++) {
       if (!noStore(input.charAt(i), input.substring(i + 1))) {
         return false;

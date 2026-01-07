@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>White Financial</title>
+    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/css/bank.css" />
+    <link rel="icon" type="image/x-icon" href="/white-financial-48x48.ico">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <header class="flex spaced">
+            <div>
+                <h1>White Financial</h1>
+                <div class="muted"><img height="48" width="48" src="/Seal_of_the_United_States_Federal_Deposit_Insurance_Corporation.svg" /> FDIC-Insured - Backed by the full faith and credit of the U.S. Government</div>
+            </div>
+            <div id="auth-area"></div>
+
+            <!-- simple select dropdown for admins (stable, doesn't move) -->
+            <select id="user-select" style="display:none; margin-left:12px;"></select>
+        </header>
+    </div>
+
+    <div id="alert"></div>
+
+    <!-- Actions row: Add (opens modal) + totals -->
+    <div class="card" id="actions-card" style="display:none">
+        <div class="flex spaced" style="align-items:center;">
+            <div class="flex" style="gap:8px; align-items:center;">
+                <button class="btn" id="open-add-btn">Add Transaction</button>
+                <div id="selected-user" class="muted-small" style="margin-left:8px;"></div>
+            </div>
+
+            <div class="totals">
+                <div class="total-card">
+                    <div class="muted-small">Verified total</div>
+                    <div id="verified-total" style="font-size:1.15rem; font-weight:600;">$0.00</div>
+                </div>
+                <div class="total-card">
+                    <div class="muted-small">Unverified (pending) net</div>
+                    <div id="unverified-total" style="font-size:1.15rem; font-weight:600;">$0.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction list (default view) -->
+    <div class="card">
+        <h3 style="margin-top:0">Transactions</h3>
+        <div id="table-wrap">
+            <table id="tx-table" aria-live="polite">
+                <thead>
+                <tr>
+                    <th style="width:120px">Date</th>
+                    <th>Description</th>
+                    <th style="width:120px" class="right">Amount</th>
+                    <th style="width:120px">Status</th>
+                    <th style="width:220px">Action</th>
+                </tr>
+                </thead>
+                <tbody id="tx-body"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Add modal -->
+<div id="modal-backdrop" class="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-header">
+            <strong id="modal-title">Add Transaction</strong>
+            <button class="btn ghost" id="modal-close">Close</button>
+        </div>
+        <div>
+            <div class="inline-edit">
+                <label class="muted-small">Date</label>
+                <input type="date" id="modal-date" />
+                <label class="muted-small">Description</label>
+                <input type="text" id="modal-desc" />
+                <label class="muted-small">Amount</label>
+                <input type="number" id="modal-amount" step="0.01" />
+            </div>
+            <div class="muted-small" style="margin-top:8px;">Date will be sent as yyyy/MM/dd to the server.</div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn ghost" id="modal-cancel">Cancel</button>
+            <button class="btn" id="modal-save">Save</button>
+        </div>
+    </div>
+</div>
+
+<script src="/scripts/bank.js"></script>
+
+</body>
+</html>

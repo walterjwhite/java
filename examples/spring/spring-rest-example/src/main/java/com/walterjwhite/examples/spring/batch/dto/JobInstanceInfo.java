@@ -1,0 +1,11 @@
+package com.walterjwhite.examples.spring.batch.dto;
+
+import java.util.List;
+import lombok.Data;
+
+@Data
+public class JobInstanceInfo {
+  private final long instanceId;
+  private final String jobName;
+  private final List<JobExecutionInfo> executions;
+}

@@ -9,11 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(onConstructor_ = @Inject)
 public class PracticeCommandLineHandler implements CommandLineHandler {
 
-  //  @Inject
-  //  public PracticeCommandLineHandler(
-  //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds) {
-  //    super(shutdownTimeoutInSeconds);
-  //  }
 
   @Override
   public void run(String... arguments) {
@@ -23,9 +18,5 @@ public class PracticeCommandLineHandler implements CommandLineHandler {
 
     Trees trees = new Trees();
     trees.print();
-    // PathRecursion pathRecursion = new PathRecursion();
-    // Assert.assertTrue
-    // final PathRecursion2 pathRecursion2 = new PathRecursion2();
-    // Node(1,0)));
   }
 }

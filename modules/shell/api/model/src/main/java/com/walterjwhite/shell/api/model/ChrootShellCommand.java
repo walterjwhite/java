@@ -3,9 +3,6 @@ package com.walterjwhite.shell.api.model;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.*;
 
-// @EqualsAndHashCode(s)
-// @ToString(doNotUseGetters=true,callSuper = true)
-// @Data
 @ToString(doNotUseGetters = true)
 @Getter
 @Setter

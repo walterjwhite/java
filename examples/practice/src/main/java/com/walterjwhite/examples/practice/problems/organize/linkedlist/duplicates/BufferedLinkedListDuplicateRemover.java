@@ -6,8 +6,6 @@ import java.util.Set;
 
 public class BufferedLinkedListDuplicateRemover implements DuplicateRemover {
   public void removeDuplicates(final LinkedList<Integer> input) {
-    // use a buffer to determine duplicates
-    // list is not sorted
     if (input == null) {
       return;
     }

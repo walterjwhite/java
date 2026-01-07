@@ -1,8 +1,8 @@
 package com.walterjwhite.serialization.modules.java;
 
 import com.walterjwhite.serialization.api.service.SerializationService;
-import java.io.*;
 import jakarta.inject.Inject;
+import java.io.*;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
@@ -20,7 +20,7 @@ public class NativeSerializationService implements SerializationService {
   }
 
   @Override
-  public <EntityType extends Serializable> EntityType deserialize(
+  public <EntityType> EntityType deserialize(
       InputStream inputStream, Class<EntityType> entityClass) {
     return (EntityType) deserialize(inputStream);
   }

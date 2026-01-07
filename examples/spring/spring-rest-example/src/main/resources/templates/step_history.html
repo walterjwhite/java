@@ -1,0 +1,35 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('Batch Job History', '', '')"></head>
+<body>
+<div th:replace="fragments :: header"></div>
+
+<main class="container">
+  <div class="card">
+    <h1>Step History</h1>
+    <p class="summary">Inspect individual step executions for Spring Batch jobs. The server-side Spring Batch APIs provide rich execution metadata; the client reads and displays it and can request stop operations when supported.</p>
+  </div>
+
+  <div class="card">
+      <div>
+          <label>Job name<input id="job" type="text" placeholder="job name (or ?job=)" /></label>
+          <label>Step name<input id="step" type="text" placeholder="step name (or ?step=)" /></label>
+      </div>
+      <div style="margin-top:8px;">
+          <button id="fetch">Fetch</button>
+          <button id="open-job" class="secondary">Open Job History</button>
+      </div>
+      <div id="status" class="muted" style="margin-top:8px">Idle</div>
+  </div>
+
+  <div id="container"></div>
+
+  <div class="card">
+      <h3>Realtime status (SSE)</h3>
+      <pre id="sse-log">Connecting...</pre>
+  </div>
+</main>
+
+<script src="/scripts/step_history.js"></script>
+</body>
+</html>

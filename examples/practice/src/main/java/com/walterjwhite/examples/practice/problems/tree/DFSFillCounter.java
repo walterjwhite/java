@@ -5,13 +5,6 @@ import java.util.Queue;
 import java.util.Vector;
 import lombok.RequiredArgsConstructor;
 
-// 2. use a HashMap to map color to the connected cells
-// iterate through the array
-// if the color is already in the map, check if this cell is connected, if not, add this under a
-// separate count? -> NO
-// or
-// start @ 0,0, get (valid) neighbors, exclude out of bounds, visited before
-// time/space complexity? -> visit each node once, O(m*n), space?
 public class DFSFillCounter implements FillCounter {
   @RequiredArgsConstructor
   class Cell {
@@ -34,7 +27,6 @@ public class DFSFillCounter implements FillCounter {
         final Queue<Cell> neighbors = new LinkedList<>();
         neighbors.addAll(getNeighbors(data, i, j, currentColor));
 
-        // mark as traversed, limit additional data storage
         data[i][j] = -1;
         while (neighbors.peek() != null) {
           final Cell neighbor = neighbors.remove();

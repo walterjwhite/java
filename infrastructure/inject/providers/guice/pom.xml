@@ -4,25 +4,16 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.providers</groupId>
   <artifactId>guice</artifactId>
-
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>google-guice</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.walterjwhite.java.dependencies</groupId>-->
-    <!--<artifactId>netflix-governator</artifactId>-->
-    <!--<version>0.1-SNAPSHOT</version>-->
-    <!--<type>pom</type>-->
-    <!--</dependency>-->
   </dependencies>
 </project>

@@ -60,7 +60,6 @@ public class DatabaseTableCopierCallable implements Callable<Void> {
   }
 
   protected void printTable(final ResultSet sourceTableResultSet) {
-    // LOGGER.debug("table:" + sourceTableResultSet.getString("TABLE_NAME"));
   }
 
   protected List<Column> printColumnNames(Connection sourceConnection) throws SQLException {
@@ -71,7 +70,6 @@ public class DatabaseTableCopierCallable implements Callable<Void> {
     try (final ResultSet sourceTableResultSet =
         databaseMetaData.getColumns(null, null, tableCopy.getName(), null)) {
       while (sourceTableResultSet.next()) {
-        //                LOGGER.debug("table:" + sourceTableResultSet.getString("TABLE_NAME"));
         columns.add(
             new Column(
                 sourceTableResultSet.getString("COLUMN_NAME"),

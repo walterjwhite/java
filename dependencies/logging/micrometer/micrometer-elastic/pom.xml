@@ -4,18 +4,17 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>dependencies</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.dependencies</groupId>
   <artifactId>micrometer-elastic</artifactId>
   <packaging>pom</packaging>
-
   <dependencies>
     <dependency>
       <groupId>io.micrometer</groupId>
       <artifactId>micrometer-registry-elastic</artifactId>
-      <version>1.10.4</version>
+      <version>1.16.1</version>
     </dependency>
   </dependencies>
 </project>

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-java -jar target/javamail-reader-*-shaded.jar -KeyFilePath $(cat key.file.path.secret) -IVFilePath $(cat iv.file.path.secret) -JavaMailEmailReaderOperatingMode ReadAccount $@

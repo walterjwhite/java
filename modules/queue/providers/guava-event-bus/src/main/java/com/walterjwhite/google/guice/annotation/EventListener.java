@@ -8,6 +8,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EventListener {
-  /** Is the listener asynchronous (true) or synchronous (false, default)? */
   boolean value() default false;
 }

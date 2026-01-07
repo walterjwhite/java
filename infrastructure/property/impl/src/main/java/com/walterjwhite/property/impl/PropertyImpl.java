@@ -2,8 +2,8 @@ package com.walterjwhite.property.impl;
 
 import com.walterjwhite.property.api.annotation.Property;
 import com.walterjwhite.property.api.property.ConfigurableProperty;
-import java.lang.annotation.Annotation;
 import jakarta.enterprise.util.AnnotationLiteral;
+import java.lang.annotation.Annotation;
 import lombok.ToString;
 
 @ToString(doNotUseGetters = true)
@@ -32,7 +32,6 @@ public class PropertyImpl extends AnnotationLiteral<Property> implements Propert
 
   @Override
   public int hashCode() {
-    // This is specified in java.lang.Annotation.
     return (127 * "value".hashCode()) ^ value.hashCode();
   }
 

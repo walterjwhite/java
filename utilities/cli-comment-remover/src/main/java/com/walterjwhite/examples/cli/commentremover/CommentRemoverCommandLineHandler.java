@@ -7,13 +7,11 @@ import com.walterjwhite.examples.cli.commentremover.property.*;
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
 import com.walterjwhite.property.api.annotation.Property;
 import jakarta.inject.Inject;
-import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class CommentRemoverCommandLineHandler implements CommandLineHandler {
-  protected final Optional<String> absolutePath;
-  protected final String relativePath;
+  protected final String path;
   protected final boolean preserveClassHeaders;
   protected final boolean preserveCopyRightHeaders;
   protected final boolean removeJava;
@@ -22,13 +20,11 @@ public class CommentRemoverCommandLineHandler implements CommandLineHandler {
   protected final boolean removeMultiLines;
   protected final boolean removeSingleLines;
   protected final boolean removeTodos;
-  protected final Optional<String> excludePackages;
+  protected final String excludePackages;
 
   @Inject
   public CommentRemoverCommandLineHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
-      @Property(AbsolutePath.class) Optional<String> absolutePath,
-      @Property(RelativePath.class) String relativePath,
+      @Property(Path.class) String path,
       @Property(PreserveClassHeaders.class) boolean preserveClassHeaders,
       @Property(PreserveCopyRightHeaders.class) boolean preserveCopyRightHeaders,
       @Property(RemoveJava.class) boolean removeJava,
@@ -37,11 +33,9 @@ public class CommentRemoverCommandLineHandler implements CommandLineHandler {
       @Property(RemoveMultiLines.class) boolean removeMultiLines,
       @Property(RemoveSingleLines.class) boolean removeSingleLines,
       @Property(RemoveTodos.class) boolean removeTodos,
-      @Property(ExcludePackages.class) Optional<String> excludePackages) {
-    //    super(shutdownTimeoutInSeconds);
+      @Property(ExcludePackages.class) String excludePackages) {
 
-    this.absolutePath = absolutePath;
-    this.relativePath = relativePath;
+    this.path = path;
     this.preserveClassHeaders = preserveClassHeaders;
     this.preserveCopyRightHeaders = preserveCopyRightHeaders;
     this.removeJava = removeJava;
@@ -65,18 +59,15 @@ public class CommentRemoverCommandLineHandler implements CommandLineHandler {
             .removeMultiLines(removeMultiLines)
             .preserveJavaClassHeaders(preserveClassHeaders)
             .preserveCopyRightHeaders(preserveCopyRightHeaders);
+    builder.startExternalPath(path);
 
-    if (absolutePath.isPresent()) {
-      builder.startExternalPath(absolutePath.get());
-    } else {
-      builder.startInternalPath(relativePath);
+    if (excludePackages != null && excludePackages.length() > 0) {
+      builder.setExcludePackages(excludePackages.split("|"));
     }
 
-    if (excludePackages.isPresent()) {
-      builder.setExcludePackages(excludePackages.get().split("|"));
-    }
-
-    CommentProcessor commentProcessor = new CommentProcessor(builder.build());
+    final CommentRemover commentRemover = builder.build();
+    LOGGER.info("comment remover conf: {}", commentRemover);
+    CommentProcessor commentProcessor = new CommentProcessor(commentRemover);
     commentProcessor.start();
   }
 }

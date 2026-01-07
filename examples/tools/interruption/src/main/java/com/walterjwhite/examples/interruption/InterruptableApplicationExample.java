@@ -13,7 +13,6 @@ public class InterruptableApplicationExample {
     Set<Future> futures = new HashSet<>();
     futures.add(interruptableServiceExample.run(new InterruptableTaskExample(1000000)));
     futures.add(interruptableServiceExample.run(new InterruptableTaskExample(10)));
-    // final Future f = interruptableServiceExample.run(new InterruptableProcessTaskExample());
 
     futures.stream()
         .forEach(

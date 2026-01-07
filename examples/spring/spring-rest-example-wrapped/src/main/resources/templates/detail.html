@@ -1,0 +1,83 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head(${'Person: ' + person.name})"></head>
+<body>
+
+<!-- header -->
+<div th:replace="fragments :: header"></div>
+
+<main class="container" style="max-width:720px;">
+    <div class="panel mt-18">
+        <div class="flex-between" style="gap:12px;">
+            <div>
+                <h2 style="margin:0 0 6px;" th:text="${person.name}">Person Name</h2>
+                <div class="small" th:text="'ID: ' + ${person.id}">ID: 1</div>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <a th:href="@{/}" class="btn btn-outline">Back</a>
+
+                <!-- Delete form -->
+                <form th:action="@{|/person/${person.id}/delete|}" method="post" onsubmit="return confirmDelete();" style="margin:0;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+
+        <hr style="margin:16px 0; border:none; border-top:1px solid rgba(15,23,42,0.04)" />
+
+        <!-- Show any error messages -->
+        <div th:if="${errorMessage}" class="alert alert-error" role="alert" style="margin-bottom:12px;">
+            <span th:text="${errorMessage}">Error message</span>
+        </div>
+
+        <div style="display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;">
+            <div style="flex:1 1 320px;">
+                <!-- Edit form (posts to /person and uses the same service for update) -->
+                <div class="panel" style="padding:14px;">
+                    <h3 style="margin:0 0 8px;">Edit Contact</h3>
+
+                    <form th:action="@{/person}" th:object="${person}" method="post" class="form">
+                        <input type="hidden" th:field="*{id}" />
+
+                        <label class="field">
+                            <span class="field-label">Name</span>
+                            <input type="text" th:field="*{name}" placeholder="Full name" required />
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Email</span>
+                            <input type="email" th:field="*{email}" placeholder="email@example.org" required />
+                        </label>
+
+                        <div class="form-actions" style="margin-top:8px;">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a th:href="@{/}" class="btn btn-ghost">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div style="flex:0 0 220px;">
+                <div class="panel" style="padding:12px; box-shadow:none; border:1px dashed rgba(15,23,42,0.04);">
+                    <h4 style="margin:0 0 8px;">Actions</h4>
+                    <p class="small" style="margin:0 0 10px;">Manage this entry</p>
+                    <div style="display:flex; gap:8px;">
+                        <a th:href="@{|/person/${person.id}|}" class="btn btn-outline">Refresh</a>
+                        <a th:href="@{/}" class="btn btn-ghost">Directory</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-18"></div>
+    <div th:replace="fragments :: footer('Spring MVC example • Minimal demo — no persistence')"></div>
+</main>
+
+<script>
+    function confirmDelete() {
+      return confirm('Are you sure you want to delete this person? This action cannot be undone.');
+    }
+</script>
+</body>
+</html>

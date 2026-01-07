@@ -4,23 +4,21 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.web-service</groupId>
     <artifactId>modules</artifactId>
-    <version>0.0.15-SNAPSHOT</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.web-service.modules</groupId>
   <artifactId>tomcat</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>0.0.15-SNAPSHOT</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>jetty-servlet</artifactId>
-      <version>0.0.15-SNAPSHOT</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
   </dependencies>

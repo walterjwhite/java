@@ -1,0 +1,195 @@
+    function q(id){return document.getElementById(id)}
+    function jsonStr(o){try{return JSON.stringify(o,null,2)}catch(e){return String(o)}}
+    function esc(s){return s===undefined||s===null?'':String(s)}
+
+    let jobs = [];
+    let selectedJob = null;
+    let statusSnapshot = {};
+
+    async function apiGet(path){
+      const r = await fetch(path);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }
+    async function apiPost(path, body){
+      const opts={method:'POST', headers:{'Content-Type':'application/json'}};
+      if (body!==undefined) opts.body=JSON.stringify(body);
+      const r = await fetch(path, opts);
+      const text = await r.text();
+      try { return JSON.parse(text); } catch(e){ return text; }
+    }
+
+    async function loadJobs(){
+      try{
+        jobs = await apiGet('/api/batch/jobs');
+        renderJobs();
+      }catch(e){ q('jobs').innerHTML = '<li class="muted">Failed to load: '+e.message+'</li>'; }
+    }
+
+    function renderJobs(){
+      const ul = q('jobs'); ul.innerHTML='';
+      const filter = q('filter').value.toLowerCase();
+      const list = Array.isArray(jobs)?jobs: [jobs];
+      const filtered = list.filter(n => !filter || (''+n).toLowerCase().includes(filter));
+      for (const name of filtered){
+        const li = document.createElement('li');
+        li.className='job-item';
+        li.innerHTML = `<div>${esc(name)}</div><div><span id="pill-${btoa(name)}" class="muted">-</span> <button data-job="${esc(name)}">Open</button></div>`;
+        li.querySelector('button')?.addEventListener('click', ()=> selectJob(name));
+        ul.appendChild(li);
+      }
+    }
+
+    async function selectJob(name){
+      selectedJob = name;
+      q('no-selection').style.display='none';
+      q('selected').style.display='block';
+      q('jobname').textContent = name;
+      q('jobstatus').textContent = 'Loading...';
+      q('jobparams').value = '';
+      q('job-res').textContent = '-';
+      q('stepsList').innerHTML = 'Loading steps...';
+      try{
+        await refreshStatus(name);
+        const payload = await apiGet('/api/batch/jobs/' + encodeURIComponent(name) + '/steps');
+        q('stepsList').innerHTML = '';
+        if (Array.isArray(payload)){
+          for (const s of payload){
+            const stepName = typeof s === 'string' ? s : (s.name || s.stepName || JSON.stringify(s));
+            const div = document.createElement('div');
+            div.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:center; padding:8px; border:1px solid #eef3fb; border-radius:6px; margin-bottom:6px;">
+              <div><strong>${esc(stepName)}</strong><div class="muted" id="step-sub-${btoa(name+'|'+stepName)}">loading...</div></div>
+              <div>
+                <button data-restart="${esc(stepName)}">Restart</button>
+                <button data-stop="${esc(stepName)}" class="secondary">Stop</button>
+                <button data-history="${esc(stepName)}" class="secondary">History</button>
+              </div>
+            </div>`;
+            q('stepsList').appendChild(div);
+            div.querySelector('[data-restart]')?.addEventListener('click', async ()=>{
+              const paramsText = prompt('Parameters (key=value per line) for step restart','');
+              const params = {};
+              if (paramsText) paramsText.split(/\r?\n/).forEach(l=>{ const i=l.indexOf('='); if (i===-1) params[l]=true; else params[l.substring(0,i).trim()]=l.substring(i+1).trim();});
+              try {
+                const r = await apiPost('/api/batch/jobs/' + encodeURIComponent(name) + '/steps/' + encodeURIComponent(stepName) + '/start', params);
+                q('job-res').textContent = 'Step start requested: '+jsonStr(r);
+              } catch(e){ q('job-res').textContent = 'Step start failed: '+e.message; }
+            });
+
+            div.querySelector('[data-stop]')?.addEventListener('click', async ()=>{
+              if (!confirm('Stop step '+stepName+'?')) return;
+              try {
+                const r = await apiPost('/api/batch/jobs/' + encodeURIComponent(name) + '/steps/' + encodeURIComponent(stepName) + '/stop', {});
+                q('job-res').textContent = 'Step stop requested: '+jsonStr(r);
+                setTimeout(()=>refreshStatus(name),1000);
+              } catch(e){ q('job-res').textContent = 'Step stop failed: '+e.message; }
+            });
+
+            div.querySelector('[data-history]')?.addEventListener('click', (ev)=>{
+              ev.stopPropagation();
+              window.open('/step_history.html?job=' + encodeURIComponent(name) + '&step=' + encodeURIComponent(stepName), '_blank');
+            });
+
+            updateStepSub(name, stepName);
+          }
+        } else {
+          q('stepsList').innerHTML = '<pre>' + JSON.stringify(payload,null,2) + '</pre>';
+        }
+      }catch(e){
+        q('jobstatus').textContent = 'Failed: '+e.message;
+      }
+    }
+
+    async function updateStepSub(jobName, stepName){
+      const el = document.getElementById('step-sub-' + btoa(jobName + '|' + stepName));
+      if (!el) return;
+      try {
+        const payload = await apiGet('/api/batch/jobs/' + encodeURIComponent(jobName) + '/steps');
+        let found = null;
+        if (Array.isArray(payload)){
+          for (const it of payload){
+            const n = typeof it === 'string' ? it : (it.name || it.stepName || it.id || JSON.stringify(it));
+            if (String(n) === String(stepName)) { found = it; break; }
+          }
+        }
+        if (found && (found.status || found.batchStatus || found.state)){
+          el.textContent = 'Status: ' + (found.status || found.batchStatus || found.state);
+        } else {
+          el.textContent = 'Metadata available';
+        }
+      } catch(e){
+        el.textContent = 'unknown';
+      }
+    }
+
+    async function refreshStatus(name){
+      try {
+        const running = await apiGet('/api/batch/jobs/' + encodeURIComponent(name) + '/executions').catch(()=>[]);
+        const history = await apiGet('/api/batch/jobs/' + encodeURIComponent(name) + '/history?start=0&count=1').catch(()=>[]);
+        let last = null;
+        if (Array.isArray(history) && history.length>0 && Array.isArray(history[0].executions) && history[0].executions.length>0) last = history[0].executions[0];
+        const pill = q('jobstatus');
+        const runningFlag = (Array.isArray(running) && running.length>0) || (last && ['STARTED','STARTING','STOPPING'].includes((last.status||'').toUpperCase()));
+        pill.textContent = runningFlag ? 'RUNNING' : (last ? (last.status||'') : 'IDLE');
+        const pillList = document.querySelectorAll('[id^="pill-"]');
+        pillList.forEach(p => {
+          if (p.id.endsWith(btoa(name))) p.textContent = pill.textContent;
+        });
+        q('stopJob').disabled = !runningFlag;
+      } catch(e){}
+    }
+
+    if (!!window.EventSource) {
+      const es = new EventSource('/api/batch/stream');
+      es.addEventListener('snapshot', function(evt){
+        try {
+          const payload = JSON.parse(evt.data);
+          q('sse').textContent = jsonStr(payload);
+          if (payload && payload.jobs) {
+            payload.jobs.forEach(j => {
+              const b = document.querySelector('#pill-' + btoa(j.jobName));
+              if (b) {
+                const running = j.runningExecutionIds && j.runningExecutionIds.length>0;
+                b.textContent = running ? 'RUNNING' : (j.lastExecution && j.lastExecution.status ? j.lastExecution.status : 'IDLE');
+              }
+            });
+            if (selectedJob) {
+              const jobObj = payload.jobs.find(x => x.jobName === selectedJob);
+              if (jobObj) {
+                q('jobstatus').textContent = (jobObj.runningExecutionIds && jobObj.runningExecutionIds.length>0) ? 'RUNNING' : (jobObj.lastExecution ? (jobObj.lastExecution.status||'') : 'IDLE');
+                q('stopJob').disabled = !(jobObj.runningExecutionIds && jobObj.runningExecutionIds.length>0);
+              }
+            }
+          }
+        } catch (e) {
+          q('sse').textContent = evt.data;
+        }
+      });
+      es.onerror = function(){ q('sse').textContent = 'SSE error'; };
+    } else {
+      q('sse').textContent = 'EventSource not supported';
+    }
+
+    q('refresh').addEventListener('click', loadJobs);
+    q('filter').addEventListener('input', renderJobs);
+    q('startJob').addEventListener('click', async ()=>{
+      if (!selectedJob) return alert('select job');
+      const paramsText = q('jobparams').value || '';
+      const params = {};
+      paramsText.split(/\r?\n/).forEach(l=>{ if (!l) return; const i=l.indexOf('='); if (i===-1) params[l]=true; else params[l.substring(0,i).trim()]=l.substring(i+1).trim(); });
+      try {
+        const r = await apiPost('/api/batch/jobs/' + encodeURIComponent(selectedJob) + '/start', params);
+        q('job-res').textContent = 'Start requested: ' + jsonStr(r);
+      } catch(e){ q('job-res').textContent = 'Start failed: ' + e.message; }
+    });
+    q('stopJob').addEventListener('click', async ()=>{
+      if (!selectedJob) return;
+      if (!confirm('Stop running executions for ' + selectedJob + '?')) return;
+      try {
+        const r = await apiPost('/api/batch/jobs/' + encodeURIComponent(selectedJob) + '/cancel', {});
+        q('job-res').textContent = 'Cancel requested: ' + jsonStr(r);
+      } catch(e){ q('job-res').textContent = 'Cancel failed: ' + e.message; }
+    });
+    q('jobHistory').addEventListener('click', ()=>{ if (!selectedJob) return; window.open('/batch_history.html?job=' + encodeURIComponent(selectedJob), '_blank')});
+
+    document.addEventListener('DOMContentLoaded', loadJobs);

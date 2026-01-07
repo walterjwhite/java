@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-
   <url>https://github.com.walterjwhite/java.git</url>
   <groupId>com.walterjwhite</groupId>
   <artifactId>java</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.6-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <name>Java</name>
+  <description>root project for all Java projects</description>
   <modules>
-    <module>aspects</module>
+    <module>advice</module>
+    <module>aspect</module>
     <module>configuration</module>
     <module>dependencies</module>
     <module>examples</module>
@@ -21,96 +22,81 @@
     <dependency>
       <groupId>org.junit</groupId>
       <artifactId>junit-bom</artifactId>
-      <version>${junit.jupiter.version}</version>
+      <version>6.1.0-M1</version>
       <type>pom</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>6.1.0-M1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>${junit.jupiter.version}</version>
+      <version>6.1.0-M1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>4.0.0-M1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
     <sourceDirectory>${src.directory}</sourceDirectory>
-    <!--    <directory>/tmp/${env.USER}/maven</directory>-->
-    <pluginManagement>
-      <plugins>
-        <!--        <plugin>-->
-        <!--          <groupId>org.apache.maven.plugins</groupId>-->
-        <!--          <artifactId>maven-failsafe-plugin</artifactId>-->
-        <!--          &lt;!&ndash;<version>2.21.0</version>&ndash;&gt;-->
-        <!--          <version>3.0.0-M5</version>-->
-        <!--          <dependencies>-->
-        <!--            <dependency>-->
-        <!--              <groupId>org.junit.platform</groupId>-->
-        <!--              <artifactId>junit-platform-surefire-provider</artifactId>-->
-        <!--              <version>${junit.platform.version}</version>-->
-        <!--            </dependency>-->
-        <!--            &lt;!&ndash; Vintage engine only needed if JUnit 3/4 tests present &ndash;&gt;-->
-        <!--&lt;!&ndash;            <dependency>&ndash;&gt;-->
-        <!--&lt;!&ndash;              <groupId>org.junit.vintage</groupId>&ndash;&gt;-->
-        <!--&lt;!&ndash;              <artifactId>junit-vintage-engine</artifactId>&ndash;&gt;-->
-        <!--&lt;!&ndash;              <version>${junit.jupiter.version}</version>&ndash;&gt;-->
-        <!--&lt;!&ndash;            </dependency>&ndash;&gt;-->
-        <!--            <dependency>-->
-        <!--              <groupId>org.junit.jupiter</groupId>-->
-        <!--              <artifactId>junit-jupiter-engine</artifactId>-->
-        <!--              <version>${junit.jupiter.version}</version>-->
-        <!--            </dependency>-->
-        <!--          </dependencies>-->
-        <!--&lt;!&ndash;          <executions>&ndash;&gt;-->
-        <!--&lt;!&ndash;            <execution>&ndash;&gt;-->
-        <!--&lt;!&ndash;              <id>integration-test</id>&ndash;&gt;-->
-        <!--&lt;!&ndash;              <goals>&ndash;&gt;-->
-        <!--&lt;!&ndash;                <goal>integration-test</goal>&ndash;&gt;-->
-        <!--&lt;!&ndash;              </goals>&ndash;&gt;-->
-        <!--&lt;!&ndash;            </execution>&ndash;&gt;-->
-        <!--&lt;!&ndash;          </executions>&ndash;&gt;-->
-        <!--        </plugin>-->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.0.0-M5</version>
-          <dependencies>
-            <!--            <dependency>-->
-            <!--              <groupId>org.junit.platform</groupId>-->
-            <!--              <artifactId>junit-platform-surefire-provider</artifactId>-->
-            <!--              <version>${junit.platform.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--              <groupId>me.fabriciorby</groupId>-->
-            <!--              <artifactId>maven-surefire-junit5-tree-reporter</artifactId>-->
-            <!--              <version>0.1.0</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--              <groupId>org.junit.jupiter</groupId>-->
-            <!--              <artifactId>junit-jupiter-engine</artifactId>-->
-            <!--              <version>${junit.jupiter.version}</version>-->
-            <!--            </dependency>-->
-          </dependencies>
-          <!--          <configuration>-->
-          <!--            <reportFormat>plain</reportFormat>-->
-          <!--            <consoleOutputReporter>-->
-          <!--              <disable>true</disable>-->
-          <!--            </consoleOutputReporter>-->
-          <!--            <statelessTestsetInfoReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporter"/>-->
-          <!--          </configuration>-->
-        </plugin>
-        <plugin>
-          <groupId>org.sonarsource.scanner.maven</groupId>
-          <artifactId>sonar-maven-plugin</artifactId>
-          <!--<version>3.5.0.1254</version>-->
-          <version>3.2</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
     <plugins>
+      <plugin>
+        <groupId>io.github.git-commit-id</groupId>
+        <artifactId>git-commit-id-maven-plugin</artifactId>
+        <version>7.0.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <runOnlyOnce>true</runOnlyOnce>
+          <generateGitPropertiesFile>true</generateGitPropertiesFile>
+          <commitIdGenerationMode>full</commitIdGenerationMode>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>5.5.0.6356</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.4</version>
+
+        <configuration>
+          <argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.7.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>properties</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>3.0.0-M7</version>
+        <version>3.5.4</version>
       </plugin>
       <plugin>
         <inherited>true</inherited>
@@ -120,21 +106,30 @@
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
-          <!-- This breaks lombok -->
-          <!--          <compilerArgument>-proc:none</compilerArgument>-->
-          <compilerArguments>
-            <endorseddirs>${endorsed.dir}</endorseddirs>
-          </compilerArguments>
-          <!--          <compilerArgs>-->
-          <!--            &#45;&#45;enable-preview-->
-          <!--          </compilerArgs>-->
+          <release>${java.version}</release>
+          <compilerArgs>
+             <arg>-endorseddirs</arg>
+             <arg>${endorsed.dir}</arg>
+          </compilerArgs>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.hibernate</groupId>
+              <artifactId>hibernate-jpamodelgen</artifactId>
+              <version>7.2.0.Final</version>
+            </path>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.42</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
       </plugin>
       <plugin>
         <inherited>true</inherited>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.7</version>
+        <version>0.8.14</version>
         <executions>
           <execution>
             <goals>
@@ -150,7 +145,6 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Mutation Coverage -->
       <plugin>
         <inherited>true</inherited>
         <groupId>org.pitest</groupId>
@@ -169,23 +163,6 @@
           </avoidCallsTo>
         </configuration>
       </plugin>
-      <!-- https://stackoverflow.com/questions/770364/what-is-a-good-way-to-handle-a-version-number-in-a-java-application -->
-      <!--
-                              <plugin>
-                          <artifactId>maven-scm-plugin</artifactId>
-                          <executions>
-                            <execution>
-                              <id>getting-scm.revision</id>
-                              <phase>validate</phase>
-                              <goals>
-                                <goal>update</goal>
-                              </goals>
-                            </execution>
-                          </executions>
-                        </plugin>
-                        -->
-      <!-- Project Structure -> Modules -> Click generated-sources folder (and make it a sources folder) -->
-      <!-- https://stackoverflow.com/questions/5170620/unable-to-use-intellij-with-a-generated-sources-folder#5171035 -->
       <plugin>
         <inherited>true</inherited>
         <groupId>org.codehaus.mojo</groupId>
@@ -201,41 +178,11 @@
             <configuration>
               <sources>
                 <source>${basedir}/target/generated-sources</source>
+                <source>${project.build.directory}/generated-sources/annotations</source>
               </sources>
             </configuration>
           </execution>
         </executions>
-      </plugin>
-      <!-- Automatically update dependencies, this does not obey Maven proxy settings -->
-      <!-- manually run -->
-      <plugin>
-        <inherited>true</inherited>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>versions-maven-plugin</artifactId>
-        <version>2.10.0</version>
-        <configuration>
-          <!-- only update external dependencies -->
-          <excludes>
-            <exclude>com.walterjwhite.*</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>pl.project13.maven</groupId>
-        <artifactId>git-commit-id-plugin</artifactId>
-        <version>4.9.10</version>
-        <executions>
-          <execution>
-            <id>get-the-git-infos</id>
-            <goals>
-              <goal>revision</goal>
-            </goals>
-            <phase>validate</phase>
-          </execution>
-        </executions>
-        <configuration>
-          <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
-        </configuration>
       </plugin>
       <plugin>
         <inherited>true</inherited>
@@ -247,25 +194,14 @@
             <manifest>
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-              <!--<Implementation-Version>${this.version}.${scm.revision}</Implementation-Version>-->
-              <!--
-                                                                    Package p = getClass().getPackage();
-                                                                  String version = p.getImplementationVersion();
-                                                                  -->
             </manifest>
             <manifestEntries>
               <Implementation-Version>${project.version}</Implementation-Version>
               <Implementation-Build>${project.version}.${git.commit.id.abbrev}</Implementation-Build>
+              <Built-By>Walter J. White</Built-By>
             </manifestEntries>
           </archive>
-          <resources>
-            <entityReference>
-              <directory>src/main/java</directory>
-              <includes>
-                <include>**/*properties</include>
-              </includes>
-            </entityReference>
-          </resources>
+
         </configuration>
       </plugin>
     </plugins>
@@ -292,39 +228,20 @@
         <reportSets>
           <reportSet>
             <reports>
-              <!-- select non-aggregate reports -->
               <report>report</report>
             </reports>
           </reportSet>
         </reportSets>
       </plugin>
-      <!--      <plugin>-->
-      <!--        <inherited>true</inherited>-->
-      <!--        <groupId>org.apache.maven.plugins</groupId>-->
-      <!--        <artifactId>maven-javadoc-plugin</artifactId>-->
-      <!--        <version>${maven.javadoc.plugin.version}</version>-->
-      <!--        <configuration>-->
-      <!--          <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>-->
-      <!--          <docletArtifact>-->
-      <!--            <groupId>org.umlgraph</groupId>-->
-      <!--            <artifactId>doclet</artifactId>-->
-      <!--            <version>5.6.6</version>-->
-      <!--          </docletArtifact>-->
-      <!--          <show>private</show>-->
-      <!--          <additionalparam>-all -constructors</additionalparam>-->
-      <!--          <useStandardDocletOptions>false</useStandardDocletOptions>-->
-      <!--        </configuration>-->
-      <!--      </plugin>-->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
-        <version>${findbugs.version}</version>
+        <version>3.0.5</version>
       </plugin>
     </plugins>
   </reporting>
   <licenses>
     <license>
-
       <url>https://opensource.org/licenses/BSD-3-Clause</url>
     </license>
   </licenses>
@@ -332,7 +249,7 @@
     <developer>
       <email>3d6b84b0@gmail.com</email>
       <organization>com.walterjwhite</organization>
-      <organizationUrl>http://github.com/walterjwhite</organizationUrl>
+      <organizationUrl>http://github.com.walterjwhite</organizationUrl>
     </developer>
   </developers>
   <scm>
@@ -351,46 +268,25 @@
     </repository>
   </distributionManagement>
   <properties>
-    <java.version>17</java.version>
+    <java.version>21</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
-    <!--<maven.compiler.plugin.version>3.5</maven.compiler.plugin.version>-->
-    <!--<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>-->
-    <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
-    <sonar.maven.plugin.version>3.2</sonar.maven.plugin.version>
+    <maven.compiler.plugin.version>3.14.1</maven.compiler.plugin.version>
     <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!--<junit.version>4.12</junit.version>-->
-    <findbugs.version>3.0.5</findbugs.version>
-    <hibernate.version>6.0.0.Alpha3</hibernate.version>
-    <jaxb.version>2.3.0</jaxb.version>
-    <javax.activation.version>1.2.0</javax.activation.version>
-    <junit.jupiter.version>5.9.2</junit.jupiter.version>
-    <junit.platform.version>1.3.2</junit.platform.version>
     <application.environment>Development</application.environment>
-    <lombok.version>1.18.26</lombok.version>
     <src.directory>src/main/java</src.directory>
     <lombok.log.fieldName>LOGGER</lombok.log.fieldName>
-    <!--<external.build.root>/tmp/${env.USER}/maven</external.build.root>-->
-    <!--<maven.build.directory>/tmp/${env.USER}/maven</maven.build.directory>-->
   </properties>
   <profiles>
     <profile>
-      <id>deploy</id>
-      <activation>
-        <file>
-          <exists>/tmp/${env.USER}/.deploy</exists>
-        </file>
-      </activation>
+      <id>publish</id>
       <build>
-        <!-- This works -->
-        <!--        <directory>/tmp/${env.USER}/maven</directory>-->
         <plugins>
           <plugin>
             <groupId>com.github.danielflower.mavenplugins</groupId>
             <artifactId>multi-module-maven-release-plugin</artifactId>
-            <version>3.5.8</version>
+            <version>3.8.2</version>
             <configuration>
               <releaseGoals>
                 <releaseGoal>deploy</releaseGoal>
@@ -400,7 +296,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-release-plugin</artifactId>
-            <version>2.5.3</version>
+            <version>3.3.1</version>
             <configuration>
               <localCheckout>true</localCheckout>
               <pushChanges>false</pushChanges>
@@ -409,47 +305,31 @@
               <arguments>-Dmaven.test.skipTests=true -Dmaven.test.skip=true</arguments>
               <skip>true</skip>
               <skipTests>true</skipTests>
-              <!--              <preparationGoals>clean validate</preparationGoals>-->
             </configuration>
             <dependencies>
               <dependency>
                 <groupId>org.apache.maven.scm</groupId>
                 <artifactId>maven-scm-provider-gitexe</artifactId>
-                <version>1.12.0</version>
+                <version>2.2.1</version>
               </dependency>
             </dependencies>
-            <!--
-                                                                            <executions>
-                                                                                <execution>
-                                                                                    <phase>clean</phase>
-                                                                                    <id>set-release-versions</id>
-                                                                                    <goals>
-                                                                                        <goal>update-versions</goal>
-                                                                                    </goals>
-                                                                                    <configuration>
-                                                                                        <autoVersionSubmodules>true</autoVersionSubmodules>
-                                                                                    </configuration>
-                                                                                </execution>
-                                                                            </executions>
-                                                            -->
           </plugin>
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>nexus-staging-maven-plugin</artifactId>
-            <version>1.6.8</version>
+            <version>1.7.0</version>
             <extensions>true</extensions>
             <configuration>
               <serverId>ossrh</serverId>
               <nexusUrl>https://oss.sonatype.org/</nexusUrl>
               <autoReleaseAfterClose>true</autoReleaseAfterClose>
-              <!-- with a large project, we need a higher number here -->
               <stagingProgressTimeoutMinutes>60</stagingProgressTimeoutMinutes>
             </configuration>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
-            <version>3.2.1</version>
+            <version>3.4.0</version>
             <executions>
               <execution>
                 <id>attach-sources</id>
@@ -460,9 +340,9 @@
             </executions>
           </plugin>
           <plugin>
-            <groupId>org.projectlombok</groupId>
+            <groupId>dev.pcms</groupId>
             <artifactId>lombok-maven-plugin</artifactId>
-            <version>1.18.20.0</version>
+            <version>1.18.36.2</version>
             <executions>
               <execution>
                 <phase>generate-sources</phase>
@@ -479,29 +359,25 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.3.1</version>
+            <version>3.12.0</version>
             <executions>
               <execution>
                 <id>attach-javadocs</id>
-                <!--                <phase>package</phase>-->
                 <phase>process-resources</phase>
                 <goals>
                   <goal>jar</goal>
                 </goals>
               </execution>
             </executions>
-            <!-- 2019/11/26 - temporarily disabled until I figure out how to handle lombok ... -->
             <configuration>
-              <!--              <excludePackageNames>com.walterjwhite.*,java.jpametamodel.*</excludePackageNames>-->
               <excludePackageNames>java.jpametamodel.*</excludePackageNames>
-              <!-- delombok first -->
               <sourcepath>target/generated-sources/delombok</sourcepath>
             </configuration>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>3.0.1</version>
+            <version>3.2.8</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -518,23 +394,6 @@
               </execution>
             </executions>
           </plugin>
-          <!--<plugin>-->
-          <!--<groupId>org.codehaus.mojo</groupId>-->
-          <!--<artifactId>buildnumber-maven-plugin</artifactId>-->
-          <!--<version>1.4</version>-->
-          <!--<executions>-->
-          <!--<execution>-->
-          <!--<phase>validate</phase>-->
-          <!--<goals>-->
-          <!--<goal>create</goal>-->
-          <!--</goals>-->
-          <!--</execution>-->
-          <!--</executions>-->
-          <!--<configuration>-->
-          <!--<doCheck>true</doCheck>-->
-          <!--<doUpdate>false</doUpdate>-->
-          <!--</configuration>-->
-          <!--</plugin>-->
         </plugins>
       </build>
       <properties>
@@ -546,123 +405,69 @@
       <build>
         <pluginManagement>
           <plugins>
-            <!-- Use Google Error Prone to perform static code analysis -->
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
-              <version>${maven.compiler.plugin.version}</version>
+              <version>3.14.1</version>
               <configuration>
-                <release>${java.version}</release>
-                <!--                <compilerId>javac-with-errorprone</compilerId>-->
-                <!--                <forceJavacCompilerUse>true</forceJavacCompilerUse>-->
-                <!--                <useIncrementalCompilation>false</useIncrementalCompilation>-->
-                <!--                <source>${java.version}</source>-->
-                <!--                <target>${java.version}</target>-->
-                <!--                &lt;!&ndash;-->
-                <!--                                                    <compilerArgs>-->
-                <!--                                                      <arg>- -add-modules</arg>-->
-                <!--                                                      <arg>java.sql</arg>-->
-                <!--                                                    </compilerArgs>-->
-                <!--                                                    &ndash;&gt;-->
-                <!--                <compilerArgs>-->
-                <!--                  <arg>-Xep:ParameterName:OFF</arg>-->
-                <!--                </compilerArgs>-->
-                <!--                <compilerArguments>-->
-                <!--                  <endorseddirs>${endorsed.dir}</endorseddirs>-->
-                <!--                </compilerArguments>-->
-                <includes>
-                  <!--<include>src/main/java/**/*.java</include>-->
-                  <include>target/generated-sources/delombok/**/*.java</include>
-                </includes>
-                <excludes>
-                  <exclude>src/main/java/**/*.java</exclude>
-                </excludes>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+                <encoding>UTF-8</encoding>
+                <compilerArgs>
+                  <arg>-XDcompilePolicy=simple</arg>
+                  <arg>-Xplugin:ErrorProne</arg>
+                </compilerArgs>
+                <annotationProcessorPaths>
+                  <path>
+                    <groupId>com.google.errorprone</groupId>
+                    <artifactId>error_prone_core</artifactId>
+                    <version>2.45.0</version>
+                  </path>
+                  <path>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                    <version>1.18.42</version>
+                  </path>
+                  <path>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-jpamodelgen</artifactId>
+                    <version>7.2.0.Final</version>
+                  </path>
+                </annotationProcessorPaths>
               </configuration>
-              <!--              <dependencies>-->
-              <!--                <dependency>-->
-              <!--                  <groupId>org.codehaus.plexus</groupId>-->
-              <!--                  <artifactId>plexus-compiler-javac-errorprone</artifactId>-->
-              <!--                  <version>2.8.4</version>-->
-              <!--                </dependency>-->
-              <!--                &lt;!&ndash; override plexus-compiler-javac-errorprone's dependency on-->
-              <!--                                        Error Prone with the latest version &ndash;&gt;-->
-              <!--                <dependency>-->
-              <!--                  <groupId>com.google.errorprone</groupId>-->
-              <!--                  <artifactId>error_prone_core</artifactId>-->
-              <!--                  <version>2.3.1</version>-->
-              <!--                </dependency>-->
-              <!--              </dependencies>-->
             </plugin>
           </plugins>
         </pluginManagement>
       </build>
     </profile>
     <profile>
-      <id>enforce-dependencies</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-enforcer-plugin</artifactId>
-            <version>3.0.0</version>
-            <configuration>
-              <rules>
-                <dependencyConvergence/>
-              </rules>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <version>3.3.0</version>
-            <executions>
-              <execution>
-                <id>analyze</id>
-                <goals>
-                  <goal>analyze-only</goal>
-                </goals>
-                <configuration>
-                  <failOnWarning>true</failOnWarning>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
       <id>executable-jar</id>
       <activation>
         <file>
-          <exists>src/main/resources/simplelogger.properties</exists>
+          <exists>.walterjwhite-application</exists>
         </file>
       </activation>
       <dependencies>
         <dependency>
           <groupId>com.walterjwhite.java.dependencies</groupId>
           <artifactId>slf4j-simple</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
           <type>pom</type>
         </dependency>
         <dependency>
           <groupId>com.walterjwhite.java.infrastructure.inject.modules.cli</groupId>
           <artifactId>api</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
         </dependency>
       </dependencies>
       <build>
-        <!--<sourceDirectory>target/generated-sources/delombok/**/*.java</sourceDirectory>-->
         <plugins>
-          <!-- When this plugin is installed at the parent pom level, it messes up the classes -->
           <plugin>
             <groupId>org.codehaus.gmavenplus</groupId>
             <artifactId>gmavenplus-plugin</artifactId>
             <version>2.1.0</version>
             <executions>
               <execution>
-                <!--<phase>generate-resources</phase>-->
-                <!--<phase>prepare-package</phase>-->
-                <!-- works fine, but the current project fails to generate any reflections as a result when unit testing-->
                 <phase>process-classes</phase>
                 <goals>
                   <goal>execute</goal>
@@ -670,16 +475,6 @@
               </execution>
             </executions>
             <configuration>
-              <!--
-              <sources>
-                <source>
-                  <directory>${project.basedir}/target/generated-sources/delombok</directory>
-                  <includes>
-                    <include>**/*.java</include>
-                  </includes>
-                </source>
-              </sources>
-              -->
               <scripts>
                 <script><![CDATA[
             new org.reflections.Reflections(
@@ -693,7 +488,7 @@
               <dependency>
                 <groupId>org.codehaus.groovy</groupId>
                 <artifactId>groovy-all</artifactId>
-                <version>2.4.12</version>
+                <version>2.4.21</version>
                 <scope>runtime</scope>
               </dependency>
               <dependency>
@@ -701,7 +496,6 @@
                 <artifactId>reflections</artifactId>
                 <version>0.10.2</version>
               </dependency>
-              <!-- When writing XML, this is required -->
               <dependency>
                 <groupId>org.dom4j</groupId>
                 <artifactId>dom4j</artifactId>
@@ -709,47 +503,11 @@
               </dependency>
             </dependencies>
           </plugin>
-          <!-- Prepare DDL -->
-          <!--<plugin>-->
-          <!--<groupId>org.codehaus.gmavenplus</groupId>-->
-          <!--<artifactId>gmavenplus-plugin</artifactId>-->
-          <!--<version>1.6</version>-->
-          <!--<executions>-->
-          <!--<execution>-->
-          <!--<phase>verify</phase>-->
-          <!--<goals>-->
-          <!--<goal>execute</goal>-->
-          <!--</goals>-->
-          <!--</execution>-->
-          <!--</executions>-->
-          <!--<configuration>-->
-          <!--<scripts>-->
-          <!--<script><![CDATA[-->
-          <!--]]></script>-->
-          <!--</scripts>-->
-          <!--</configuration>-->
-          <!--<dependencies>-->
-          <!--<dependency>-->
-          <!--<groupId>org.codehaus.groovy</groupId>-->
-          <!--<artifactId>groovy-all</artifactId>-->
-          <!--<version>2.4.12</version>-->
-          <!--<scope>runtime</scope>-->
-          <!--</dependency>-->
-          <!--<dependency>-->
-          <!--<groupId>com.walterjwhite.java.infrastructure.datastore.modules</groupId>-->
-          <!--<artifactId>jpa-ddl</artifactId>-->
-          <!--<version>0.0.15-SNAPSHOT</version>-->
-          <!--</dependency>-->
-          <!--</dependencies>-->
-          <!--</plugin>-->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
             <version>3.1.1</version>
             <configuration>
-              <!--<classpathLayoutType>repository</classpathLayoutType>-->
-              <!--<classpathLayoutType>simple</classpathLayoutType>-->
-              <!--<useRepositoryLayout>true</useRepositoryLayout>-->
               <archive>
                 <manifest>
                   <classpathLayoutType>repository</classpathLayoutType>
@@ -767,7 +525,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
-            <version>3.3.0</version>
+            <version>3.7.0</version>
             <executions>
               <execution>
                 <id>copy</id>
@@ -776,43 +534,12 @@
                   <goal>copy-dependencies</goal>
                 </goals>
                 <configuration>
-                  <!--<prependGroupId>true</prependGroupId>-->
                   <useRepositoryLayout>true</useRepositoryLayout>
                   <outputDirectory>${project.build.directory}/lib</outputDirectory>
                 </configuration>
               </execution>
             </executions>
           </plugin>
-<!--                    <plugin>-->
-<!--                      <groupId>org.apache.maven.plugins</groupId>-->
-<!--                      <artifactId>maven-shade-plugin</artifactId>-->
-<!--                      <version>3.3.0</version>-->
-<!--                      <executions>-->
-<!--                        <execution>-->
-<!--                          <goals>-->
-<!--                            <goal>shade</goal>-->
-<!--                          </goals>-->
-<!--                          <configuration>-->
-<!--                            <finalName>${artifactId}-shaded</finalName>-->
-<!--                            <shadedArtifactAttached>true</shadedArtifactAttached>-->
-<!--                            <transformers>-->
-<!--                              <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
-<!--                                <manifestEntries>-->
-<!--                                  <Premain-Class>com.walterjwhite.inject.cli.CLIApplication</Premain-Class>-->
-<!--                                  <ApplicationEnvironment>${application.environment}</ApplicationEnvironment>-->
-<!--                                  <ApplicationSCMVersion>${git.commit.id.abbrev}</ApplicationSCMVersion>-->
-<!--                                  <Can-Redefine-Classes>false</Can-Redefine-Classes>-->
-<!--                                  <Can-Retransform-Classes>true</Can-Retransform-Classes>-->
-
-<!--                                  &lt;!&ndash; remove classpath from jar plugin above &ndash;&gt;-->
-<!--                                  <Class-Path></Class-Path>-->
-<!--                                </manifestEntries>-->
-<!--                              </transformer>-->
-<!--                            </transformers>-->
-<!--                          </configuration>-->
-<!--                        </execution>-->
-<!--                      </executions>-->
-<!--                    </plugin>-->
         </plugins>
       </build>
       <properties>
@@ -830,19 +557,34 @@
         <dependency>
           <groupId>com.walterjwhite.java.dependencies</groupId>
           <artifactId>slf4j-simple</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
           <type>pom</type>
         </dependency>
         <dependency>
           <groupId>com.walterjwhite.java.infrastructure.inject.modules.cli</groupId>
           <artifactId>agent</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+          <groupId>com.walterjwhite.java.advice.transform</groupId>
+          <artifactId>api</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+          <groupId>com.walterjwhite.java.dependencies</groupId>
+          <artifactId>byte-buddy</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+          <type>pom</type>
+        </dependency>
+        <dependency>
+          <groupId>com.walterjwhite.java.infrastructure.property.modules</groupId>
+          <artifactId>walterjwhite-secrets</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+          <scope>runtime</scope>
         </dependency>
       </dependencies>
       <build>
-        <!--<sourceDirectory>target/generated-sources/delombok/**/*.java</sourceDirectory>-->
         <plugins>
-          <!-- When this plugin is installed at the parent pom level, it messes up the classes -->
           <plugin>
             <groupId>org.codehaus.gmavenplus</groupId>
             <artifactId>gmavenplus-plugin</artifactId>
@@ -884,100 +626,105 @@
               </dependency>
             </dependencies>
           </plugin>
-          <!--          <plugin>-->
-          <!--            <groupId>org.apache.maven.plugins</groupId>-->
-          <!--            <artifactId>maven-shade-plugin</artifactId>-->
-          <!--            <executions>-->
-          <!--              <execution>-->
-          <!--                <goals>-->
-          <!--                  <goal>shade</goal>-->
-          <!--                </goals>-->
-          <!--                <configuration>-->
-          <!--                  <shadedArtifactAttached>true</shadedArtifactAttached>-->
-          <!--                  <transformers>-->
-          <!--                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
-          <!--                      <manifestEntries>-->
-          <!--                        <Premain-Class>com.walterjwhite.inject.cli.AgentCLIApplication</Premain-Class>-->
-          <!--                        <ApplicationEnvironment>${application.environment}</ApplicationEnvironment>-->
-          <!--                        <ApplicationSCMVersion>${git.commit.id.abbrev}</ApplicationSCMVersion>-->
-          <!--                        <Can-Redefine-Classes>false</Can-Redefine-Classes>-->
-          <!--                        <Can-Retransform-Classes>true</Can-Retransform-Classes>-->
-          <!--                      </manifestEntries>-->
-          <!--                    </transformer>-->
-          <!--                  </transformers>-->
-          <!--                </configuration>-->
-          <!--              </execution>-->
-          <!--            </executions>-->
-          <!--          </plugin>-->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <version>3.1.1</version>
-            <configuration>
-              <archive>
-                <manifest>
-                  <addClasspath>true</addClasspath>
-                  <classpathPrefix>lib/</classpathPrefix>
-                  <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                  <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                </manifest>
-                <manifestEntries>
-                  <Implementation-Version>${project.version}</Implementation-Version>
-                  <Implementation-Build>${project.version}.${git.commit.id.abbrev}</Implementation-Build>
-                  <Premain-Class>com.walterjwhite.inject.cli.AgentCLIApplication</Premain-Class>
-                  <ApplicationEnvironment>${application.environment}</ApplicationEnvironment>
-                  <ApplicationSCMVersion>${git.commit.id.abbrev}</ApplicationSCMVersion>
-                  <Can-Redefine-Classes>false</Can-Redefine-Classes>
-                  <Can-Retransform-Classes>true</Can-Retransform-Classes>
-                </manifestEntries>
-              </archive>
-              <!--              <resources>-->
-              <!--                <entityReference>-->
-              <!--                  <directory>src/main/java</directory>-->
-              <!--                  <includes>-->
-              <!--                    <include>**/*properties</include>-->
-              <!--                  </includes>-->
-              <!--                </entityReference>-->
-              <!--              </resources>-->
-            </configuration>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.3.0</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>shade</goal>
+                </goals>
+                <configuration>
+                  <finalName>${project.artifactId}-shaded</finalName>
+                  <shadedArtifactAttached>true</shadedArtifactAttached>
+                  <transformers>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                      <manifestEntries>
+                        <Premain-Class>com.walterjwhite.inject.cli.AgentCLIApplication</Premain-Class>
+                        <ApplicationEnvironment>${application.environment}</ApplicationEnvironment>
+                        <ApplicationSCMVersion>${git.commit.id.abbrev}</ApplicationSCMVersion>
+                        <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                        <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                        <Class-Path/>
+                      </manifestEntries>
+                    </transformer>
+                  </transformers>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
     </profile>
-    <!-- Compile Time Byte-Code Manipulation -->
     <profile>
-      <id>aspects</id>
+      <id>advice</id>
       <activation>
         <file>
-          <exists>.aspects</exists>
+          <exists>.advice</exists>
         </file>
       </activation>
       <dependencies>
-        <!-- Aspects (now Byte Buddy) -->
         <dependency>
-          <groupId>com.walterjwhite.java.aspects.delay</groupId>
+          <groupId>com.walterjwhite.java.advice.delay</groupId>
           <artifactId>api</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-          <groupId>com.walterjwhite.java.aspects.heartbeat</groupId>
+          <groupId>com.walterjwhite.java.advice.heartbeat</groupId>
           <artifactId>api</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-          <groupId>com.walterjwhite.java.aspects</groupId>
-          <artifactId>closeable</artifactId>
-          <version>0.2.0</version>
+          <groupId>com.walterjwhite.java.advice.logging</groupId>
+          <artifactId>api</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-          <groupId>com.walterjwhite.java.aspects.logging</groupId>
+          <groupId>com.walterjwhite.java.advice.timeout</groupId>
           <artifactId>api</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-          <groupId>com.walterjwhite.java.aspects.timeout</groupId>
+          <groupId>com.walterjwhite.java.advice.resilience4j</groupId>
           <artifactId>api</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+          <groupId>com.walterjwhite.java.advice.heartbeat</groupId>
+          <artifactId>runtime</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+          <scope>runtime</scope>
+        </dependency>
+        <dependency>
+          <groupId>com.walterjwhite.java.advice.timeout</groupId>
+          <artifactId>runtime</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+          <scope>runtime</scope>
+        </dependency>
+        <dependency>
+          <groupId>com.walterjwhite.java.advice.logging</groupId>
+          <artifactId>runtime</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+          <scope>runtime</scope>
+        </dependency>
+        <dependency>
+          <groupId>com.walterjwhite.java.advice.metrics</groupId>
+          <artifactId>runtime</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+          <scope>runtime</scope>
+        </dependency>
+        <dependency>
+          <groupId>com.walterjwhite.java.advice.closeable</groupId>
+          <artifactId>runtime</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+          <scope>runtime</scope>
+        </dependency>
+        <dependency>
+          <groupId>com.walterjwhite.java.advice.resilience4j</groupId>
+          <artifactId>runtime</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+          <scope>runtime</scope>
         </dependency>
       </dependencies>
       <build>
@@ -985,7 +732,7 @@
           <plugin>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy-maven-plugin</artifactId>
-            <version>1.11.19</version>
+            <version>1.14.11</version>
             <executions>
               <execution>
                 <goals>
@@ -995,29 +742,34 @@
             </executions>
             <dependencies>
               <dependency>
-                <groupId>com.walterjwhite.java.aspects.delay</groupId>
+                <groupId>com.walterjwhite.java.advice.delay</groupId>
                 <artifactId>plugin</artifactId>
-                <version>0.2.0</version>
+                <version>0.3.6-SNAPSHOT</version>
               </dependency>
               <dependency>
-                <groupId>com.walterjwhite.java.aspects.heartbeat</groupId>
+                <groupId>com.walterjwhite.java.advice.heartbeat</groupId>
                 <artifactId>plugin</artifactId>
-                <version>0.2.0</version>
+                <version>0.3.6-SNAPSHOT</version>
               </dependency>
               <dependency>
-                <groupId>com.walterjwhite.java.aspects</groupId>
-                <artifactId>closeable</artifactId>
-                <version>0.2.0</version>
+                <groupId>com.walterjwhite.java.advice.closeable</groupId>
+                <artifactId>plugin</artifactId>
+                <version>0.3.6-SNAPSHOT</version>
               </dependency>
               <dependency>
-                <groupId>com.walterjwhite.java.aspects.logging</groupId>
+                <groupId>com.walterjwhite.java.advice.logging</groupId>
                 <artifactId>plugin</artifactId>
-                <version>0.2.0</version>
+                <version>0.3.6-SNAPSHOT</version>
               </dependency>
               <dependency>
-                <groupId>com.walterjwhite.java.aspects.timeout</groupId>
+                <groupId>com.walterjwhite.java.advice.timeout</groupId>
                 <artifactId>plugin</artifactId>
-                <version>0.2.0</version>
+                <version>0.3.6-SNAPSHOT</version>
+              </dependency>
+              <dependency>
+                <groupId>com.walterjwhite.java.advice.resilience4j</groupId>
+                <artifactId>plugin</artifactId>
+                <version>0.3.6-SNAPSHOT</version>
               </dependency>
             </dependencies>
           </plugin>
@@ -1028,15 +780,48 @@
       <id>lombok</id>
       <activation>
         <file>
-          <missing>.no-lombok</missing>
+          <exists>.lombok</exists>
         </file>
       </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <annotationProcessorPaths>
+                <path>
+                  <groupId>org.projectlombok</groupId>
+                  <artifactId>lombok</artifactId>
+                  <version>1.18.42</version>
+                </path>
+              </annotationProcessorPaths>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
       <dependencies>
         <dependency>
           <groupId>org.projectlombok</groupId>
           <artifactId>lombok</artifactId>
-          <version>${lombok.version}</version>
+          <version>1.18.42</version>
           <scope>provided</scope>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>slf4j</id>
+      <activation>
+        <file>
+          <exists>.slf4j</exists>
+        </file>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>com.walterjwhite.java.dependencies</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
+          <type>pom</type>
         </dependency>
       </dependencies>
     </profile>
@@ -1052,6 +837,7 @@
           <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>4.0.1</version>
             <executions>
               <execution>
                 <goals>
@@ -1066,8 +852,38 @@
         <dependency>
           <groupId>com.walterjwhite.java.dependencies</groupId>
           <artifactId>spring-boot</artifactId>
-          <version>0.2.0</version>
+          <version>0.3.6-SNAPSHOT</version>
           <type>pom</type>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>criteria</id>
+      <activation>
+        <file>
+          <exists>.criteria</exists>
+        </file>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-jpamodelgen</artifactId>
+          <version>7.2.0.Final</version>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>criteria-query</id>
+      <activation>
+        <file>
+          <exists>.criteria-query</exists>
+        </file>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>com.walterjwhite.java.infrastructure.datastore.providers</groupId>
+          <artifactId>criteria</artifactId>
+          <version>0.3.6-SNAPSHOT</version>
         </dependency>
       </dependencies>
     </profile>

@@ -4,63 +4,47 @@
   <parent>
     <groupId>com.walterjwhite.java</groupId>
     <artifactId>examples</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.walterjwhite.java.examples</groupId>
   <artifactId>cli-jersey-guice</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.configuration.cli</groupId>
       <artifactId>guice</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.jetty.modules</groupId>
       <artifactId>jaxrs</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.jetty.modules</groupId>
       <artifactId>servlet</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.guice</groupId>
       <artifactId>impl</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.guice.modules</groupId>
       <artifactId>hk2-bridge</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
-    <!-- required so we can serialize/deserialize JSON -->
     <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-json-jackson</artifactId>
-      <version>${jersey.version}</version>
+      <version>4.0.0</version>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.infrastructure.inject.providers</groupId>-->
-    <!--      <artifactId>guice-servlet</artifactId>-->
-    <!--      <version>0.2.0</version>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.walterjwhite.java.configuration</groupId>-->
-    <!--      <artifactId>web-service</artifactId>-->
-    <!--      <version>0.2.0</version>-->
-    <!--      <type>pom</type>-->
-    <!--    </dependency>-->
-    <!-- external dependencies, TODO: move this to dependencies -->
-    <!-- JAX-RS -->
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
-      <version>5.3.0</version>
+      <version>6.0.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -88,6 +72,5 @@
   </build>
   <properties>
     <application.environment>Development</application.environment>
-    <jersey.version>3.1.1</jersey.version>
   </properties>
 </project>

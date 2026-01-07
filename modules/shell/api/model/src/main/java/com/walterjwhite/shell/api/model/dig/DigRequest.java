@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model.dig;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import com.walterjwhite.shell.api.model.NetworkDiagnosticTest;
 import com.walterjwhite.shell.api.model.ShellCommand;
 import com.walterjwhite.shell.api.model.ShellCommandable;
@@ -17,7 +16,7 @@ import lombok.ToString;
 @Data
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
-public class DigRequest extends AbstractEntity implements ShellCommandable {
+public class DigRequest implements ShellCommandable {
   protected NetworkDiagnosticTest networkDiagnosticTest;
 
   protected LocalDateTime requestDateTime = LocalDateTime.now();
@@ -26,8 +25,6 @@ public class DigRequest extends AbstractEntity implements ShellCommandable {
 
   @EqualsAndHashCode.Exclude protected ShellCommand shellCommand;
 
-  //
-  //  protected String status;
 
   protected List<DigRequestIPAddress> digRequestIPAddresses = new ArrayList<>();
 

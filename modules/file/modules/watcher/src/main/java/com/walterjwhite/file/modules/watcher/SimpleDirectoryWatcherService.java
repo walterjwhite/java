@@ -11,12 +11,6 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
-/**
- * A simple class which can monitor files and notify interested parties (i.e. listeners) of file
- * changes.
- *
- * <p>This class is kept lean by only keeping methods that are actually being called.
- */
 public class SimpleDirectoryWatcherService implements DirectoryWatcherService, Runnable {
   private final WatchService mWatchService;
   private final AtomicBoolean mIsRunning;
@@ -24,11 +18,6 @@ public class SimpleDirectoryWatcherService implements DirectoryWatcherService, R
   private final ConcurrentMap<Path, Set<OnFileChangeListener>> mDirPathToListenersMap;
   private final ConcurrentMap<OnFileChangeListener, Set<PathMatcher>> mListenerToFilePatternsMap;
 
-  /**
-   * A simple no argument constructor for creating a <code>SimpleDirectoryWatchService</code>.
-   *
-   * @throws IOException If an I/O error occurs.
-   */
   public SimpleDirectoryWatcherService() throws IOException {
     mWatchService = FileSystems.getDefault().newWatchService();
     mIsRunning = new AtomicBoolean(false);
@@ -90,8 +79,6 @@ public class SimpleDirectoryWatcherService implements DirectoryWatcherService, R
     for (WatchEvent<?> event : key.pollEvents()) {
       WatchEvent.Kind eventKind = event.kind();
 
-      // Overflow occurs when the watch event queue is overflown
-      // with events.
       if (eventKind.equals(OVERFLOW)) {
         return;
       }
@@ -112,7 +99,6 @@ public class SimpleDirectoryWatcherService implements DirectoryWatcherService, R
     }
   }
 
-  /** {@inheritDoc} */
   @Override
   public void register(OnFileChangeListener listener, String dirPath, String... globPatterns)
       throws IOException {
@@ -123,7 +109,6 @@ public class SimpleDirectoryWatcherService implements DirectoryWatcherService, R
     }
 
     if (!mDirPathToListenersMap.containsKey(dir)) {
-      // May throw
       WatchKey key = dir.register(mWatchService, ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE);
 
       mWatchKeyToDirPathMap.put(key, dir);
@@ -145,11 +130,6 @@ public class SimpleDirectoryWatcherService implements DirectoryWatcherService, R
     mListenerToFilePatternsMap.put(listener, patterns);
   }
 
-  /**
-   * Start this <code>SimpleDirectoryWatchService</code> instance by spawning a new thread.
-   *
-   * <p>see: #stop()
-   */
   @Override
   public void start() {
     if (mIsRunning.compareAndSet(false, true)) {
@@ -158,18 +138,11 @@ public class SimpleDirectoryWatcherService implements DirectoryWatcherService, R
     }
   }
 
-  /**
-   * Stop this <code>SimpleDirectoryWatchService</code> thread. The killing happens lazily, giving
-   * the running thread an opportunity to finish the work at hand.
-   *
-   * <p>see: #start()
-   */
   @Override
   public void stop() {
     mIsRunning.set(false);
   }
 
-  /** {@inheritDoc} */
   @Override
   public void run() {
     while (mIsRunning.get() && doRunIteration()) {}
@@ -194,7 +167,6 @@ public class SimpleDirectoryWatcherService implements DirectoryWatcherService, R
   }
 
   protected boolean resetKey(WatchKey watchKey) {
-    // Reset key to allow further events for this key to be processed.
     boolean valid = watchKey.reset();
     if (!valid) {
       mWatchKeyToDirPathMap.remove(watchKey);

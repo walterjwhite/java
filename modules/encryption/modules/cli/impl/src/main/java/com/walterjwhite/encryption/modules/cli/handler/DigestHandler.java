@@ -1,30 +1,27 @@
 package com.walterjwhite.encryption.modules.cli.handler;
 
-import com.walterjwhite.encryption.enumeration.EncryptionType;
+import com.walterjwhite.encryption.enumeration.CryptoFunction;
 import com.walterjwhite.encryption.model.Encrypted;
 import com.walterjwhite.encryption.service.FieldEncryptionService;
 import com.walterjwhite.inject.cli.service.CommandLineHandler;
 import com.walterjwhite.logging.annotation.Sensitive;
+import jakarta.inject.Inject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import jakarta.inject.Inject;
 
-/** Helper to list our client id. */
 public class DigestHandler implements CommandLineHandler {
   protected final FieldEncryptionService fieldEncryptionService;
 
   @Inject
   public DigestHandler(
-      //      @Property(CommandLineHandlerShutdownTimeout.class) int shutdownTimeoutInSeconds,
       FieldEncryptionService fieldEncryptionService) {
-    //    super(shutdownTimeoutInSeconds);
     this.fieldEncryptionService = fieldEncryptionService;
   }
 
   @Override
   public void run(final String... arguments) throws Exception {
-    final Encrypted encrypted = new Encrypted(getInput(), EncryptionType.Digest);
+    final Encrypted encrypted = new Encrypted(getInput(), CryptoFunction.Digest);
 
     doDigest(encrypted);
     showResult(encrypted);
@@ -37,7 +34,7 @@ public class DigestHandler implements CommandLineHandler {
 
   protected void doDigest(Encrypted encrypted) throws NoSuchFieldException {
     fieldEncryptionService.encrypt(
-        encrypted, Encrypted.class.getDeclaredField("password"), EncryptionType.Digest);
+        encrypted, Encrypted.class.getDeclaredField("password"), CryptoFunction.Digest);
   }
 
   protected void showResult(Encrypted encrypted) {}

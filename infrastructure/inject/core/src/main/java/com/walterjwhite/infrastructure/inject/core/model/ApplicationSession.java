@@ -1,6 +1,5 @@
 package com.walterjwhite.infrastructure.inject.core.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,13 +8,9 @@ import lombok.ToString;
 
 @Data
 @ToString(doNotUseGetters = true)
-public class ApplicationSession extends AbstractEntity {
+public class ApplicationSession {
   @NonNull protected ApplicationIdentifier applicationIdentifier;
 
-  //  @NonNull
-  //
-  //
-  //  protected Node node;
   @NonNull protected String nodeId;
 
   @NonNull protected LocalDateTime startDateTime;

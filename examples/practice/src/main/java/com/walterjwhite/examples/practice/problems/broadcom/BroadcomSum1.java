@@ -7,7 +7,6 @@ public class BroadcomSum1 implements BroadcomSum {
       return 0;
     }
 
-    // will exceed long
     if (n > 119) {
       return 0;
     }
@@ -24,7 +23,6 @@ public class BroadcomSum1 implements BroadcomSum {
 
     long product = (long) Math.pow(3, threes);
     if (remainder == 2) {
-      // validate
       if (threes * 3 + 2 != n) {
         throw new IllegalStateException(
             "Poorly written algorithm, failed: " + threes + "*3+ 2 != " + n);

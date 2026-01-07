@@ -22,12 +22,10 @@ public class PartitionListC implements Partition {
       current = next;
     }
 
-    // all elements are > value
     if (before == null) {
       return after;
     }
 
-    // append after to before
     current = before;
     while (current.getNext() != null) {
       current = current.getNext();

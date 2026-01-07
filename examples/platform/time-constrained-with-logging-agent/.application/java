@@ -1,4 +1,0 @@
-
-_AGENT=$(find ../../../aspects/logging/agent/target -maxdepth 1 -type f | grep \\-shaded.jar$ | /usr/local/bin/grep -Pv "(javadoc|sources)")
-_AGENT_ARGS="-javaagent:$_AGENT=com.walterjwhite.examples.timeout"
-

@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 import lombok.*;
 
 @ToString(doNotUseGetters = true)
-// @Data
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,9 +16,6 @@ public class ScheduleInstance implements Unqueueable {
 
   protected TimeUnit units;
 
-  //
-  //
-  //  protected ScheduleType scheduleType;
 
   public boolean isRecurring() {
     return fixedDelay > 0;

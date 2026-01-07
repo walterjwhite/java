@@ -1,0 +1,67 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('Async', '', '')"></head>
+<body>
+<div th:replace="fragments :: header"></div>
+
+<main class="container container-wide">
+  <div class="card">
+    <h1 class="brand">Async Jobs</h1>
+    <p class="summary">This page demonstrates background job submission and management backed by a lightweight async task service in the Spring backend. The frontend uses vanilla JS to submit work and poll or subscribe for status updates; this keeps the client code simple and avoids a heavy runtime/framework.</p>
+
+    <div class="panel mt-18">
+      <div class="async-header">
+        <div>
+          <h2 class="heading-compact">Async Jobs</h2>
+          <div class="small">Submit simulated background jobs and manage them (queued / running / history).</div>
+        </div>
+        <div class="panel-inline">
+          <button id="refreshAll" class="btn btn-outline">Refresh</button>
+          <div id="debugInfo" class="small debug-info" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="panel p-14 mb-12">
+        <div class="flex-between">
+          <small id="statusMsg" class="small"></small>
+        </div>
+
+        <form id="submitForm" class="async-form" onsubmit="return false;">
+          <label class="field field--no-margin">
+            <span class="field-label">Job name</span>
+            <input id="jobName" type="text" value="job" />
+          </label>
+
+          <label class="field field--no-margin">
+            <span class="field-label">Duration (s)</span>
+            <input id="jobDur" type="number" value="8" min="0" />
+          </label>
+
+          <div class="form-actions">
+            <button id="submitBtn" class="btn btn-primary">Submit Job</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="list-section">
+        <h3 class="list-heading">Queued</h3>
+        <div id="queuedList" aria-live="polite"></div>
+      </div>
+
+      <div class="list-section">
+        <h3 class="list-heading">Running</h3>
+        <div id="runningList" aria-live="polite"></div>
+      </div>
+
+      <div class="list-section">
+        <h3 class="list-heading">All (history)</h3>
+        <div id="allList" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="/scripts/async.js"></script>
+
+</body>
+</html>

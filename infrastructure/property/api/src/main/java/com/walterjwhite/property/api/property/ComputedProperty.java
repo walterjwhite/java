@@ -1,4 +1,6 @@
 package com.walterjwhite.property.api.property;
 
-/** Marks a property for injection. */
+import com.walterjwhite.property.api.annotation.Optional;
+
+@Optional
 public interface ComputedProperty extends ConfigurableProperty {}

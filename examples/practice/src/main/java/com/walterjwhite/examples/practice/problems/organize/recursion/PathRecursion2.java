@@ -12,7 +12,6 @@ public class PathRecursion2 {
   protected final Set<Node> visitedNodes = new HashSet<>();
   protected final Set<Vector> vistedVectors = new HashSet<>();
 
-  // see where all we can go in the map
   public void traverse() {
     for (int i = 0; i < map.length; i++) {
       for (int j = 0; j < map[0].length; j++) {
@@ -23,7 +22,6 @@ public class PathRecursion2 {
         final Node accessibleNode = new Node(i, j);
         visitedNodes.add(accessibleNode);
 
-        // up
         if (canVisit(accessibleNode.i - 1, accessibleNode.j)) {}
       }
     }

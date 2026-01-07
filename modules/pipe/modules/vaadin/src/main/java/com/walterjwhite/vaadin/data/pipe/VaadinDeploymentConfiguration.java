@@ -57,7 +57,6 @@ public class VaadinDeploymentConfiguration implements DeploymentConfiguration {
 
   @Override
   public String getUIClassName() {
-    // return VaadinDataSinkWidget.class.getName();
     throw new UnsupportedOperationException("Not implemented");
   }
 

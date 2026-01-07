@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="/css/site.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/">Spring REST Demo</a>
+    <div class="header-tagline">Example microservices & UI demos — backend: Spring Boot; frontend: lightweight React module</div>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/chat.html" class="active">Chat</a>
+      <a href="/batch_simple.html">Batch Simple</a>
+      <a href="/batch.html">Batch</a>
+      <a href="/async.html">Async</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h1>Chat UI</h1>
+    <p class="summary">Real-time messaging demo backed by Spring WebSocket or SSE. The frontend uses a small React entry to keep interactive behavior modular and buildable by your frontend toolchain.</p>
+
+    <div id="root" style="margin-top:12px"></div>
+  </div>
+</main>
+<script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

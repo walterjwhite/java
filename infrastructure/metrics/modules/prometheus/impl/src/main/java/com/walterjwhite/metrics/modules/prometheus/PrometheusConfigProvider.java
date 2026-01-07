@@ -3,12 +3,13 @@ package com.walterjwhite.metrics.modules.prometheus;
 import com.walterjwhite.metrics.modules.prometheus.property.PrometheusDescriptions;
 import com.walterjwhite.metrics.modules.prometheus.property.PrometheusPrefix;
 import com.walterjwhite.property.api.annotation.Property;
-import io.micrometer.prometheus.PrometheusConfig;
-import java.time.Duration;
+
+import io.micrometer.prometheusmetrics.PrometheusConfig;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
 import jakarta.inject.Singleton;
+import java.time.Duration;
 
 public class PrometheusConfigProvider implements Provider<PrometheusConfig> {
   protected final PrometheusConfig prometheusConfig;

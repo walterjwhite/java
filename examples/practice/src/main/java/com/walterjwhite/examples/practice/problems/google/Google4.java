@@ -2,7 +2,6 @@ package com.walterjwhite.examples.practice.problems.google;
 
 import lombok.extern.slf4j.Slf4j;
 
-// break the list up into chunks, keep track of distinct elements
 @Slf4j
 public class Google4 implements GoogleProblem {
 

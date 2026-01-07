@@ -18,7 +18,9 @@ public enum SpringApplicationEnvironmentMapping {
     for (final SpringApplicationEnvironmentMapping springApplicationEnvironmentMapping : values()) {
       if (springApplicationEnvironmentMapping
           .getApplicationEnvironment()
-          .equals(applicationEnvironment)) return springApplicationEnvironmentMapping;
+          .equals(applicationEnvironment)) {
+        return springApplicationEnvironmentMapping;
+      }
     }
 
     throw new IllegalArgumentException(applicationEnvironment + " is not currently mapped.");

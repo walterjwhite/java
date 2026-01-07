@@ -4,17 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.modules.serialization</groupId>
     <artifactId>providers</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>
   <artifactId>jackson-json</artifactId>
-
-
   <dependencies>
     <dependency>
       <groupId>com.walterjwhite.java.modules.serialization.providers</groupId>
       <artifactId>jackson-base</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

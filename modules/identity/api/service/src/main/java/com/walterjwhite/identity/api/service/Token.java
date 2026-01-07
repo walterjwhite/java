@@ -14,12 +14,8 @@ public class Token {
   protected transient String key;
   protected Duration lifespan = Duration.ofSeconds(30);
 
-  @Getter(onMethod = @__(@Sensitive))
-  @Setter(onMethod = @__(@Sensitive))
-  @Sensitive
-  protected transient String value;
+  @Sensitive protected transient String value;
 
-  // tokens are time-sensitive
   protected transient LocalDateTime expirationDateTime;
 
   protected void init() {
@@ -29,6 +25,7 @@ public class Token {
     }
   }
 
+  @Sensitive
   @SneakyThrows
   public String getValue() {
     if (value != null) {
@@ -65,5 +62,10 @@ public class Token {
 
   public void onException(final Exception e) throws Exception {
     TOKEN_SERVICE.onException(e);
+  }
+
+  @Sensitive
+  public void setValue(final String value) {
+    this.value = value;
   }
 }

@@ -1,0 +1,88 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('People — Spring MVC Example')"></head>
+<body>
+
+<!-- header -->
+<div th:replace="fragments :: header"></div>
+
+<main class="container layout">
+    <section class="list-panel">
+        <div class="panel-header">
+            <h2 class="panel-title">Directory</h2>
+            <p class="panel-sub">Current people in the system</p>
+        </div>
+
+        <!-- Search form -->
+        <form method="get" th:action="@{/}" class="search-form">
+            <label>
+                <input type="search" name="q" th:value="${q}" placeholder="Search by name or email" />
+                <button type="submit" class="btn">Search</button>
+                <a th:href="@{/}" class="btn btn-ghost">Clear</a>
+            </label>
+        </form>
+
+        <!-- Error banner -->
+        <div th:if="${errorMessage}" class="alert alert-error" role="alert">
+            <span th:text="${errorMessage}">Error message</span>
+        </div>
+
+        <div class="cards">
+            <article class="card" th:each="p : ${people}">
+                <div class="card-body">
+                    <div class="card-main">
+                        <a th:href="@{|/person/${p.id}|}" class="card-title" th:text="${p.name}">Person Name</a>
+                        <div class="card-meta" th:text="${p.email}">email@example.org</div>
+                    </div>
+                    <div class="card-actions">
+                        <a th:href="@{|/person/${p.id}|}" class="btn btn-outline">View</a>
+                        <form th:action="@{|/person/${p.id}/delete|}" method="post" th:object="${p}" class="inline-form">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Empty state -->
+            <div class="empty" th:if="${#lists.isEmpty(people)}">
+                <p>No people yet. Add one from the form on the right.</p>
+            </div>
+        </div>
+    </section>
+
+    <aside class="form-panel">
+        <div class="panel">
+            <h3 class="panel-title">Add Person</h3>
+            <form th:action="@{/person}" th:object="${personForm}" method="post" class="form">
+                <label class="field">
+                    <span class="field-label">Name</span>
+                    <input type="text" th:field="*{name}" placeholder="Full name" required />
+                </label>
+
+                <label class="field">
+                    <span class="field-label">Email</span>
+                    <input type="email" th:field="*{email}" placeholder="email@example.org" required />
+                </label>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add Person</button>
+                    <button type="reset" class="btn btn-ghost">Reset</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel help">
+            <h4>Tips</h4>
+            <ul>
+                <li>Click a name to view details.</li>
+                <li>Use the Delete button to remove an entry.</li>
+            </ul>
+        </div>
+    </aside>
+</main>
+
+<!-- footer -->
+<div th:replace="fragments :: footer('Spring MVC example • Thymeleaf - JPA H2')"></div>
+
+</body>
+</html>

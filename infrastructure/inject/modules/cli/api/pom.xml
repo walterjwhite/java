@@ -4,18 +4,15 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject.modules</groupId>
     <artifactId>cli</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.modules.cli</groupId>
   <artifactId>api</artifactId>
-
-
-
   <dependencies>
     <dependency>
-      <groupId>com.walterjwhite.java.aspects</groupId>
-      <artifactId>closeable</artifactId>
-      <version>0.2.0</version>
+      <groupId>com.walterjwhite.java.advice.closeable</groupId>
+      <artifactId>runtime</artifactId>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

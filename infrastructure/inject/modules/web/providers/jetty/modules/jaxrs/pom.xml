@@ -4,29 +4,26 @@
   <parent>
     <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.jetty</groupId>
     <artifactId>modules</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.6-SNAPSHOT</version>
   </parent>
   <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.jetty.modules</groupId>
   <artifactId>jaxrs</artifactId>
-
-
   <dependencies>
-    <!-- TODO: perhaps pull this dependency out -->
     <dependency>
       <groupId>com.walterjwhite.java.dependencies</groupId>
       <artifactId>google-guice-servlet</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
       <type>pom</type>
     </dependency>
     <dependency>
       <groupId>com.walterjwhite.java.infrastructure.inject.modules.web.providers.guice.modules</groupId>
       <artifactId>hk2-bridge</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
-      <version>${jetty.version}</version>
+      <version>11.0.26</version>
       <exclusions>
         <exclusion>
           <groupId>org.slf4j</groupId>
@@ -35,9 +32,4 @@
       </exclusions>
     </dependency>
   </dependencies>
-  <properties>
-    <!--    <jetty.version>11.0.8</jetty.version>-->
-    <!--    <jetty.version>10.0.8</jetty.version>-->
-    <jetty.version>11.0.13</jetty.version>
-  </properties>
 </project>

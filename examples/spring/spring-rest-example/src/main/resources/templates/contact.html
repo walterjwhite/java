@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('Contact', '/css/contact.css', '')"></head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<main class="container">
+  <div class="panel">
+    <h2>Contact</h2>
+
+    <!-- message container: server-rendered alerts (for non-JS) will still appear here -->
+    <div id="ajax-messages" role="status" aria-live="polite">
+      <div th:if="${successMessage}" class="alert alert-success">
+        <span th:text="${successMessage}"></span>
+      </div>
+
+      <div th:if="${errorMessage}" class="alert alert-error">
+        <span th:text="${errorMessage}"></span>
+      </div>
+    </div>
+
+    <form th:action="@{/contact}" th:object="${contactForm}" method="post" class="form" id="contact-form">
+      <label class="field">
+        <span class="field-label">Your name</span>
+        <input type="text" th:field="*{name}" required />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Your email</span>
+        <input type="email" th:field="*{email}" required />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Subject</span>
+        <input type="text" th:field="*{subject}" required />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Message</span>
+        <textarea th:field="*{message}" rows="8" required></textarea>
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="contact-submit" aria-busy="false" aria-live="polite">
+          <span class="btn-text">Send message</span>
+          <span class="spinner" id="contact-spinner" aria-hidden="true"></span>
+        </button>
+        <a th:href="@{/}" class="btn btn-ghost">Cancel</a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<script src="/scripts/contact.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments :: head('Batch Job History', '', '')"></head>
+<body>
+<div th:replace="fragments :: header"></div>
+
+<main class="container">
+<h1>Batch Jobs UI (with realtime updates)</h1>
+<p class="summary">This page provides a realtime batch jobs manager backed by Spring Batch and Spring MVC endpoints. It uses SSE (EventSource) on the frontend for low-overhead live updates rather than a heavy WebSocket framework; Spring's batch APIs handle job lifecycle and history for reliability.</p>
+
+<div class="card">
+    <div style="display:flex; gap:8px;">
+        <label for="filter" class="small">Filter</label>
+        <input id="filter" placeholder="Filter jobs..." />
+        <button id="refresh">Refresh</button>
+    </div>
+    <ul id="jobs" class="jobs-list"><li class="muted">Loading jobs...</li></ul>
+</div>
+
+<div id="detail" class="card">
+    <div id="no-selection" class="muted">Select a job to view details</div>
+    <div id="selected" style="display:none">
+        <div><strong id="jobname"></strong> <span id="jobstatus" class="muted"></span> <button id="jobHistory" class="secondary">History</button></div>
+
+        <div style="margin-top:8px;">
+            <label>Parameters<textarea id="jobparams" style="width:100%;min-height:60px"></textarea></label>
+            <div style="margin-top:8px;">
+                <button id="startJob">Start/Restart</button>
+                <button id="stopJob" class="secondary">Stop</button>
+            </div>
+            <div id="job-res" style="margin-top:8px" class="muted">-</div>
+        </div>
+
+        <div id="steps" style="margin-top:12px">
+            <h3>Steps</h3>
+            <div id="stepsList"></div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Realtime snapshot</h3>
+    <pre id="sse">Connecting...</pre>
+</div>
+</main>
+
+<script src="/scripts/batch.js"></script>
+
+</body>
+</html>

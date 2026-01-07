@@ -1,6 +1,5 @@
 package com.walterjwhite.shell.api.model;
 
-import com.walterjwhite.datastore.api.model.entity.AbstractEntity;
 import java.time.LocalDateTime;
 import javax.jdo.annotations.PersistenceCapable;
 import lombok.AllArgsConstructor;
@@ -13,7 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @PersistenceCapable
-public class IPAddressState extends AbstractEntity {
+public class IPAddressState {
 
   protected LocalDateTime currentDateTime = LocalDateTime.now();
 
